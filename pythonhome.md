@@ -1,4 +1,4 @@
-## ** "*args" and "**kwargs" **
+## **"*args" and "**kwargs"**
 
 
 #### **zip star(*) idiom**
