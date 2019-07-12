@@ -4,6 +4,7 @@
 #### **zip star(*) idiom**
 
 
+
 transpose wide lists together into thin ones
 
 ```python
@@ -21,17 +22,16 @@ list(zip(*all_))
 
 ```python
 def hyper_volumne(length, *lengths):
-V = length
-for length in lengths:
-V *= lengths
-return V 
-
+    V = length
+    for length in lengths:
+        V *= lengths
+    return V 
 ```
 
 ## **comprehensions**
 
-
 #### **nested comprehensions**
+
 
 ```python
 vals = [[y*3 for y in range(x)] for x in range(10)]
@@ -39,10 +39,10 @@ vals = [[y*3 for y in range(x)] for x in range(10)]
 # is equivalent to 
 outer = []
 for x in range(10):
-inner = []
-for y in range(x):
-inner.append(y*3)
-outer.append(inner)
+    inner = []
+    for y in range(x):
+        inner.append(y*3)
+    outer.append(inner)
 ```
 #### **nested if statements**
 
@@ -51,7 +51,9 @@ values = [
     x/ (x-y)
     for x in range(100) if x > 50
     for y in range(100)
-]```
+    ]
+```
+
 ## **recursion**
 [stackover_flow link](https://stackoverflow.com/questions/30214531/basics-of-recursion-in-python
 
@@ -89,6 +91,7 @@ context of a unit test. Still working on this!
 
 patching can be used to replace whole objects with mock ones. This can be done with the
 @patch decorator or .patch()
+
 
 
 
