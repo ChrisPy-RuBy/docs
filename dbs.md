@@ -1,4 +1,9 @@
-## postgres
+--- 
+Title: DBS
+summary: Everything concerning dbs
+---
+- - - 
+# postgres
 
 #### **generate large table of fake data**
 
@@ -34,3 +39,47 @@ RESET work_mem
 2. **index scan**: Read index to filter on the where clause
 3. **bitmap index**: Same as above but quicket for large number of rows
 4. **index only scan**: for covering index
+
+
+- - -
+## accessing
+- - - 
+#### **access local postgres db**
+
+```bash
+psql
+```
+
+#### **access remote postgres dbs**
+
+```bash
+psql -h <hostname> -U <user> postgres
+```
+example
+```bash
+psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis postgres
+```
+
+#### **leave server**
+```bash
+\q
+```
+
+#### **list databases**
+```bash
+\l
+```
+
+
+# mongo
+- - - 
+## Useful docs ##
+[mongo shell](https://docs.mongodb.com/manual/reference/mongo-shell/)i
+[collection('dbs')](https://docs.mongodb.com/manual/reference/method/js-collection/)
+
+## Querying ##
+
+
+
+### accessing
+- - -
