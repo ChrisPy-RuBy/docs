@@ -1,4 +1,107 @@
-# UNIX
+Title: UNIX
+summery: unix tools
+- - - 
+## bash
+[v.good guide to bash](https://www.tldp.org/LDP/abs/html/)
+[process management](https://mywiki.wooledge.org/ProcessManagement)
+Important point! Syntax for running stuff from the command line is v. different to running in script
+
+#### **basics**
+
+```bash
+Myvariable=Hello
+Anothervar=Fred
+echo $myvariable 
+sample/etc
+ls $sample
+```
+
+#### **basic data types**
+
+```bash
+names=("chris" "dan" "alex")
+```
+
+#### **ways to increment variables**
+[increment variables](https://askubuntu.com/questions/385528/how-to-increment-a-variable-in-bash)
+```bash
+var=$((var+1))
+((var=var+1))
+((var+=1))
+((var++))
+```
+
+#### **basic if else statements**
+
+```bash
+for tag in $(git tag); do
+    if [[ $tag == *'tvs'* ]]; then
+        echo $tag
+    elif [[ <do something else> ]]; then
+        echo do something else""
+    else
+        echo "Unknown parameter"
+    fi
+done
+```
+
+#### **check for specific file extensions**
+
+```bash
+elif [[ $file =~ \.bz2$ ]]
+```
+
+#### **check if file exists**
+[check file exists](https://linuxize.com/post/bash-check-if-file-exists/)
+
+#### **loops**
+
+xarsg and parallel are alternatives to looping
+
+basic loop
+```bash
+names=("chris" "dan" "alex")
+for name in $names;do 
+    echo $name
+done
+```
+
+basic while loop
+```bash
+counter=1
+while [[ $counter -le 10 ]]; do 
+    echo $counter
+    ((counter++))
+done
+```
+
+basic until loop
+```bash
+counter=1 
+until [[ $counter -gt 10 ]]; do 
+    echo $counter 
+    ((counter++))
+done
+```
+
+
+loop through all files in a folder
+```bash
+for file in ./*.log; do 
+    echo $file; <do something>; 
+done
+```
+
+copy all files in a file list
+
+```bash
+for file in $(cat filestocopy.txt); 
+do cp ${file} ~/dev/tvsquared-backend/data/testdata/assist/; 
+done
+```
+
+
+
 
 ## awk
 https://www.tutorialspoint.com/awk/awk_basic_examples.htm
@@ -10,8 +113,27 @@ ls -l | awk '{print $5}'
 ```
 would get all the files for the contents of the current folder
 
+## bc
+use bc for maths
+```bash
+echo "2+2" | bc
+```
+
+
+
 ## chmod
 change permissions of files or folders
+
+| # | permission | rwx |
+|---|---|---|
+|7| read, write, exec | rwx|
+|6|read, write|rw|
+|5|read, exec|r-x|
+|4|read|r--|
+|3|write, exec|-wx|
+|2|write|-w-|
+|1|exec|--x|
+|0|none|---| 
 
 ## cut
 
@@ -65,6 +187,8 @@ You can use the following to git init all your existing tvsquared local git repo
 find . -type d -name tvsquared-\* -exec git init \{\} \;
 ```
 
+
+## grep
 ## head
 
 #### **get subset of data from csv**
