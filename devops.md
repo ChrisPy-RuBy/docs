@@ -86,7 +86,55 @@ aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
 
 ### **jq**
 - - - 
-parse json from the cmdline
+
+jq is a super useful tool for processing json from cmdline  
+Can easily pipe results to other comdline tools.
+[docs](https://stedolan.github.io/jq/manual/)  
+[useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
+
+#### **pipecomplressed files to jq**
+```bash
+bzcat <filename>.json.bz2 | jq '.' - | sort | less
+```
+
+#### **pretty print json on cmdline**
+```bash
+jq '.' <filename>.json
+```
+
+#### **extract info from json**
+```bash
+jq'.['pizz', 'shiz']' <yout shitty filename>.json
+# alternative 
+jq '. | {url, k5}' actions-4834-1-2019.06.29.json
+```
+
+#### **selective extraction from json**
+```bash
+jq '. | select(.k5 == "viewnewvehiclepage") | {url}' actions-4834-1-2019.06.29.json 
+```
+
+where . is
+```bash
+{
+  "cfgid": {
+    "$oid": "0000000042903b7c3e"
+  },
+  "v5": null,
+  "time": {
+    "$date": "2019-06-29T16:14:46+00:00"
+  },
+  "visit": {
+    "$oid": "5d178dd5394058b467f"
+  },
+  "visitor": {
+    "$oid": "0000000080b2e7c8db"
+  },
+  "url": "https://www.<derp>.com/all-inventory/index.htm?compositeType=new&make=Ford&model=Mustang",
+  "k5": "tngviewnewvehiclepage"
+}
+```
+
 
 ### **parquet-tools** 
 - - - 

@@ -70,6 +70,69 @@ psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis 
 \l
 ```
 
+## **querying**
+
+#### **basic in clause**
+
+```sql
+SELECT * FROM <blah> 
+WHERE <col_derp> in ('thing1', 'thing2')
+```
+
+#### **fuzzy string matching**
+```sql
+SELECT * 
+FROM adspots.data 
+WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03' 
+AND tags::TEXT LIKE '%cost%'
+```
+
+
+#### **pulling stuff out of tags**
+
+```sql
+SELECT D.tags, D.channelid, channel,
+    D.tags -> 'sh',
+	d.tags ? 'prog'
+  	FROM adspots.data as D
+JOIN adspots.channel ac ON (D.channelid = ac.channelid)
+WHERE datadatetime BETWEEN '2017-08-17 12:00:00' AND '2017-08-18 00:00:00'
+```
+D.tags -> ‘sh’    will create a column with the values of the ‘sh’ tag  
+D.tags ? ‘prog’  will create a column of Boolean masks that determine weather prog is present in the table or not.   
+
+
+#### **basic joins**
+§
+[guide to joins](http://www.postgresqltutorial.com/postgresql-joins/)
+
+```sql
+-- generic
+SELECT shared_col, tab1.col_name 
+FROM schema1.tab1 A  
+JOIN schema2.tab1 B ON (A.colname = B.colname)
+WHERE ...
+
+-- example
+SELECT tags, D.channelid, channel
+FROM adspots.data as D
+JOIN adspots.channel ac ON (D.channelid = ac.channelid)
+WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
+AND tags::TEXT LIKE '%cost%'
+ 
+```
+
+#### **with temp tables**
+
+```sql
+with temp as (
+    SELECT * FROM <blah>
+)
+    temp2 as (
+    SELECT * FROM somewhereelse.
+) 
+
+```
 
 # mongo
 - - - 

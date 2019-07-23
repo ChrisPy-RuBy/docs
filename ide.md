@@ -12,6 +12,14 @@ summary: summary of useful stuff for writing code
 ctrl-w, ctrl-w -> switch screens
 ```
 
+### **goto line**
+
+```bash
+<line number>G
+i.e.
+42G
+```
+
 ### **config**
 
 #### **map keys in vim**
