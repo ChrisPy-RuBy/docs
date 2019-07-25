@@ -43,6 +43,10 @@ like postgres
 ```bash
 brew services stop <service>
 brew services start <service>
+
+example
+brew services stop mongodb
+brew services start mongodb
 ```
 
 #### *:*link packages together**
@@ -113,6 +117,14 @@ jq '. | {url, k5}' actions-4834-1-2019.06.29.json
 ```bash
 jq '. | select(.k5 == "viewnewvehiclepage") | {url}' actions-4834-1-2019.06.29.json 
 ```
+
+can also do this
+```bash
+bzcat actions-4837-1-2019.06.22.json.bz2 | jq '. | select(.k5 | contains("viewusedvehiclepage")) | {url}' | wc -l
+```
+using regex here.
+Can pip has many filters together as you want as long as it stays within the ''
+
 
 where . is
 ```bash

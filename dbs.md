@@ -133,6 +133,26 @@ with temp as (
 ) 
 
 ```
+#### **scratch**
+
+```sql
+-- query to try and work out which sessions are matched with original vs regex shizzle
+SELECT count(*) FROM (
+	SELECT usersessionid, datadatetime, action 
+	FROM usersessionactions.v_usersessionactions
+	WHERE datadatetime BETWEEN '2019-06-22' 
+		AND '2019-06-23'
+	AND brandid = 1
+	AND action = 'viewusedvehiclepage') tng
+RIGHT OUTER JOIN (
+	SELECT usersessionid, datadatetime, action FROM usersessionactions.v_usersessionactions
+	WHERE datadatetime BETWEEN '2019-06-22' 
+	AND '2019-06-23'
+	AND brandid = 1
+	AND action = 'tngviewusedvehiclepage') orig ON (orig.usersessionid = tng.usersessionid and orig.datadatetime = tng.datadatetime) 
+
+
+```
 
 # mongo
 - - - 
@@ -146,3 +166,15 @@ with temp as (
 
 ### accessing
 - - -
+
+# athena 
+- - - 
+
+examples of doing stuff in athena programatically in
+tvsquared/model.advancedtv L565 etc.
+
+#### **Setting up a new table/database**
+
+
+#### **querying using the partion structure**
+

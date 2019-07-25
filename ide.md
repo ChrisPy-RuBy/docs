@@ -29,6 +29,19 @@ i.e.
 ```
 map jk to esc to stop pressing esc
 
+
+#### **basic column editing**
+
+```bash
+crtl-v
+```
+select the lines that you want
+enter writing mode
+write the thing you want. Note nothing will appear on any other lines than the first
+press esc
+
+
+
 #### **diffing files**
 
 https://lornajane.net/posts/2015/vimdiff-and-vim-to-compare-files
