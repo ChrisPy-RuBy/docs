@@ -3,9 +3,19 @@ title: maths
 summary: useful maths
 ---
 
+# algebra
+
+#### **perfect square**
+
+$$
+x^2 + 2bx + b^2 = (x+b)^2
+$$
+
 # probabilty
 
+
 #### **Rule of Completement**
+
 
 $$
 P(A^c) = 1 - P(A)
