@@ -540,6 +540,58 @@ This is advantagious if you ....
 
 It is not that useful for problems that are IO bound i.e. waiting for a web response or database query result.
 
+Important. If you have written you code in a functional style it is v.easy to implement multiprocessing
+
+#### **simple multiprocess example**
+
+the data is here is faking an io bound process with sleep. 
+
+```python
+
+def transform(x):
+    print("process {ospid} processing record {name}".format(**{'name': x.name, 'ospid': os.getpid()}))
+    time.sleep(1)
+    result = {'name': x.name, 'age': 2019 - x.born}
+    print("processed record")
+    return result
+
+
+def with_multiprocess(func, data):
+    start = datetime.datetime.now()
+
+    # pool = multiprocessing.Pool()
+    # can specify the number of processes
+    pool = multiprocessing.Pool(processes=len(scientists))
+
+    result = pool.map(transform, scientists)
+
+    end = datetime.datetime.now()
+    print('Process took {}'.format(end - start))
+    pp.pprint(result)
+
+
+with_multiprocess(transform, scientists)
+```
+
+#### **multiproessing with concurrent.futures**
+
+```python
+def with_concurrent_futures(func, data):
+
+    start = datetime.datetime.now()
+    with concurrent.futures.ProcessPoolExecutor() as executor:
+    # can swap out the ProcessPool with a ThreadPoolExcutor and now it is threading rather than processes!
+        result = executor.map(func, data)
+
+    end = datetime.datetime.now()
+    print('Process took {}'.format(end - start))
+    pp.pprint(tuple(result))
+
+
+with_concurrent_futures(transform, scientists)
+```
+
+
 ## **multithreading**
 
 Multithreading is a another approach to speed up programs that are single threaded, single cored.
@@ -551,6 +603,8 @@ It is advantageous when...
 
 It is not good when...
 1. Doing cpu bound processes as the GIL is still there. 
+
+Note: concurrent.futures can swap between threaded or multiprocess by changing the ProcessPoolExecutor to ThreadPoolExecutor
 
 
 ## object oriented programing
