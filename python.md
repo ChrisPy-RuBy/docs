@@ -310,6 +310,18 @@ print("{}: {}").format(k, len(v))
 ```
 [link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
 
+#### **defaultdict**
+
+super useful way to lazily generate keys in dicts
+
+```python
+from collections import defaultdict
+
+test = defaultdict(list)
+test['testkey'].append(123)
+{'testkey': [123]}
+```
+
 #### **merge values baed on key n dictionary**
 
 ```python
@@ -358,8 +370,45 @@ except Exception as ex:
 logging.exception('Caught an error')
 ```
 
+
+
 ## fabric
 - - -
+## functools
+
+function programming tools, map, filter and reduce
+
+#### **simple reduce example**
+
+```python
+reduce([1,2,3,4,5], lambda acc, val: acc + val, 0)
+```
+where values are data, func to apply and starter value
+
+#### **complex example with defaultdict**
+
+can use reduce to group items by value
+```python
+def reducer(acc, val):
+    acc[val['letter']].append(val['value'])
+    return acc
+
+results = defaultdict(list)
+data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter': 'b', 'value': 123}]
+reduce(data, reducer, results)
+
+```
+
+## itertools
+
+#### **groupby**
+
+can do similar things to reduce. Need to work these examples out as they don't quite work at the moment
+```python
+data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter': 'b', 'value': 123}]
+
+{item[0]: list(item[1]) for item in itertools.groupby(data)}
+```
 
 ## ipython
 - - -
@@ -449,7 +498,7 @@ new_list = old_list[:]
 #### **parse a string to a dict**
 [link](https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary)
 ```python
-x = '{"x": 1, "a": 3}'
+x = ' {"x": 1, "a": 3}'
 json.loads(x)
 {"x": 1, "a": 3}
 ```
