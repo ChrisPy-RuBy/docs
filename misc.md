@@ -51,6 +51,11 @@ docker rm 305297d7a235
 docker rm $(docker ps -a -q -f status=exited)
 ```
 
+## javascript 
+
+#### **node package manager**
+controls what goes and gets installed. 
+Config lives in ~/.npm
 
 
 ## java
