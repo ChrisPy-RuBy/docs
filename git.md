@@ -195,6 +195,13 @@ Stashing stores tracked and untracked changes for a later date so that you can a
 
 https://git-scm.com/docs/git-stash
 
+#### **name your stash like a mad lad!**
+
+```bash
+git stash save <your crappy name!>
+``` 
+
+
 #### **stash all stages and unstaged changes**
 
 Allows you to change branches and pull etc without merge issues

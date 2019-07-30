@@ -343,6 +343,13 @@ splits output to both stdout and to file. Get to see what you are getting and ou
 ## tr
 used to trim data quickly
 
+#### **remove characters from a csv v.quickly**
+could also use sed here
+This would remove all " from a file and write to a new file.
+```bash
+cat <filename>.csv | tr -d \" > new_filename.csv
+```
+
 ## tree 
 display file structure
 ```bash

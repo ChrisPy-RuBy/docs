@@ -88,6 +88,15 @@ aws s3 cp s3://tvsquared-userdata/collector/282-1/2018.01/ s3://tvsquared-userda
 aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
 ```
 
+### **bash-completion**
+
+
+### **fuzzy finder (fzf)**
+[intro_docs](https://github.com/junegunn/fzf)
+[basic use cases](https://sourabhbajaj.com/mac-setup/iTerm/fzf.html<Paste>)
+
+
+
 ### **jq**
 - - - 
 
@@ -146,6 +155,20 @@ where . is
   "k5": "tngviewnewvehiclepage"
 }
 ```
+### **pyenv**
+Have multiple python versions on your machine
+
+#### **switch py3.5 to py3.7 and back**
+```bash
+pyenv global 3.5.0
+or 
+pyenv global system
+```
+You will need to install all the relevant pip packages into the correct python folder
+
+
+
+
 
 
 ### **parquet-tools** 
