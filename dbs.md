@@ -70,7 +70,7 @@ psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis 
 \l
 ```
 
-## **querying**
+#E **querying**
 
 #### **basic in clause**
 
@@ -160,7 +160,23 @@ RIGHT OUTER JOIN (
 [mongo shell](https://docs.mongodb.com/manual/reference/mongo-shell/)i
 [collection('dbs')](https://docs.mongodb.com/manual/reference/method/js-collection/)
 
-## Querying ##
+##  **Querying** ##
+
+#### **regex shizzle**
+
+``` sql
+SELECT regexp_like(url, <regex> FROM <blah> 
+```
+
+```sql
+SELECT * FROM <foo> WHERE
+strpos(url, '<regex>')
+```
+
+```sql
+SELECT * FROM  <foo> WHERE
+url is like '%derp%'
+```
 
 
 
@@ -175,6 +191,18 @@ tvsquared/model.advancedtv L565 etc.
 
 #### **Setting up a new table/database**
 
+## Querying
+
 
 #### **querying using the partion structure**
+```sql
+SELECT url FROM “collector_tng_pre_visit”.“data”
+WHERE site_id = ‘4432-1’
+AND yy=‘2019’
+AND mm=‘06’
+AND dd=‘26’
+AND hh=‘11’
+AND url like ‘%nvcc%’
+```
+WHERE site_id, yy, mm, dd, and hh are partitions
 
