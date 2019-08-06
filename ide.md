@@ -7,6 +7,8 @@ summary: summary of useful stuff for writing code
 
 ## vim
 
+# TODO: yank to clipboard please
+
 ### **basic key mappings**
 ```bash
 ctrl-w, ctrl-w -> switch screens
