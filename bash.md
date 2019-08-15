@@ -291,6 +291,13 @@ sed -n '6643913,6643920p;6643921q' split_data.csv > dodgy.txt
 
 ## scp
 
+#### **glomming / globbing scp**
+
+```bash
+scp 'backend@backend.preprod.tvsquared.private:/tmp/4008-1*' .
+```
+
+
 #### **transfer from local to remote**
 
 ```bash

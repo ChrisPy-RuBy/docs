@@ -7,7 +7,15 @@ summary: summary of useful stuff for writing code
 
 ## vim
 
-# TODO: yank to clipboard please
+### **yank to clipboard please**
+
+```bash
+" select the thing you want.
+<Visual line>
+"+y
+" yank to the clipboard
+```
+
 
 ### **basic key mappings**
 ```bash

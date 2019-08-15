@@ -17,17 +17,19 @@ summary: A collections of personal notes
 
 
 
-Doing …. 
-- Move labbook to server (122, 123)
-- Give up vim for 1 sprint (sneaky, I'm using nvim!) 
+Doing
+
+- Move labbook to server (122, 123, 124)
 
 Done ….
-Give up source tree for 1 sprint (Sprint 119)
-Learn 3 more vim modes (120) (better search, better replace, )
-Give up mouse for 1 hour per day per sprint (121)
-Give up sourcetree for 1 sprint. (119 COMPLETE)
-Give up sublime for 1 sprint (120)
-Give up source tree for 1 sprint (Sprint 119)
+
+- Give up vim for 1 sprint (sneaky, I'm using nvim! 123) 
+- Give up source tree for 1 sprint (Sprint 119)
+- Learn 3 more vim modes (120) (better search, better replace, )
+- Give up mouse for 1 hour per day per sprint (121)
+- Give up sourcetree for 1 sprint. (119 COMPLETE)
+- Give up sublime for 1 sprint (120)
+- Give up source tree for 1 sprint (Sprint 119)
 
 
 DOWNTIME PROJECTS :
