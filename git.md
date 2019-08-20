@@ -74,6 +74,14 @@ git cherry-pick <commit hash>
 git commit --amend -m "ref T6251 - WIP"
 ```
 
+#### **amend the previous commit**
+
+good to do if the previous commit failed due to pep8 etc
+
+```bash
+git commit --amend
+```
+
 #### **Commit without pre-commit hook**
 
 ```bash
