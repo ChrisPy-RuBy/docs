@@ -6,6 +6,19 @@ summery: unix tools
 [process management](https://mywiki.wooledge.org/ProcessManagement)
 Important point! Syntax for running stuff from the command line is v. different to running in script
 
+#### **define a functin on the command line**
+
+```bash
+test_func () {<do something> $1}
+```
+
+a useful example 
+
+```bash
+site_collector_copy () {aws s3 cp s3://tvsquared-userdata/collector/$1/2019.08/ s3://tvsquared-userdata-preprod/collector/$1/2019.08/ --recursive}
+```
+
+
 #### **basics**
 
 ```bash
