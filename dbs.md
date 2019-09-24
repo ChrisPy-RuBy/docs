@@ -72,7 +72,18 @@ psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis 
 \l
 ```
 
+#### **display all data metadata**
+
+```
+\d+
+-- for a specific table
+\d+ <schema>.<table>
+-- all tables
+\d+ *.*
+```
+- - -
 ## **admin**
+- - -
 
 #### **turning logging on / off**
 
@@ -96,7 +107,107 @@ pg_dump -s c1129_australiademo -n usersessions > /tmp/usersessions.sql
 psql testdata < schema.sql
 ```
 
+#### **creating indexes**
 
+```sql
+ux_<index name>
+  ON <schema>.<table>
+  USING btree
+  (hasheduserip COLLATE pg_catalog."default", datadatetime);
+```
+
+#### **foreign keys**
+
+```sql
+ALTER TABLE adspotvalues.data 
+    DROP CONSTRAINT fk_adspotvalues_data_adspotid
+```
+
+#### **transactions**
+
+```sql
+begin; 
+```
+starts the transactions
+
+```sql
+rollback;
+-- if you dont want to keep your changes or want to dryrun
+commit;
+-- if you do want your changes
+```
+
+#### **grant premissions and access**
+
+```sql
+GRANT ALL ON TABLE <schema>.<table> TO <profile>;
+GRANT SELECT ON TABLE <schema>.<table> TO <profile>;
+```
+
+#### **create a table**
+
+```sql
+CREATE TABLE IF NOT EXISTS <schema. table> (
+col1 col1type
+col2 col2type
+col3 col3type
+)
+```
+
+#### **copy data from db to disk**
+
+```sql
+COPY (SELECT * FROM <schema>.<table> 
+        WHERE brandid =1 
+        AND datadatetime BETWEEN '2016-04-17' and '2016-04-18' 
+        ORDER BY brandid, datadatetime, mediumid, actionid, modelid, adspotid, usersessionid)
+        to '/<filelocation>' with CSV;
+```
+
+with the table header
+
+```sql
+```sql
+COPY (SELECT * FROM <schema>.<table> 
+        WHERE brandid =1 
+        AND datadatetime BETWEEN '2016-04-17' and '2016-04-18' 
+        ORDER BY brandid, datadatetime, mediumid, actionid, modelid, adspotid, usersessionid)
+        to '/<filelocation>' with CSV HEADER;
+```
+
+- - -
+## inerting / updating
+- - -
+
+
+#### **table of fake data**
+
+```sql
+CREATE table foo (c1 integer, c2 text, c3 integer);
+INSERT INTO foo (SELECT i, md5(random()::text), i/10
+        FROM generate_series(1, 1000000) AS i);
+```
+
+#### **add a column**
+
+
+#### **basic update **
+
+updates current data
+
+```sql
+UPDATE  <schema>.<table>
+SET datadatetime = datedatetime + INTERVAL "1 days"
+```
+
+#### **basic insert**
+
+```sql
+INSERT into <table> ( col1, col2, col3)
+SELECT nextval('<table>_id_seq'), col2, (number + 5 ) as col3
+FROM <table>
+WHERE col1 = 3
+```
 
 
 - - - 
@@ -118,6 +229,26 @@ WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
 AND tags::TEXT LIKE '%cost%'
 ```
 
+#### **querying ips**
+
+```sql
+select *
+from usersessions.data
+where userip << '2001:0db8::/32'::cidr
+limit 10
+```
+
+#### **hashing ips**
+
+```sql
+SELECT ENCODE(DIGEST('120.145.43.100', 'sha1'), 'hex')
+
+SELECT ENCODE(DIGEST(userip::VARCHAR, 'sha1'), 'hex') FROM usersessions.data LIMIT 10;
+SELECT userip::text, userip::inet, (SELECT ENCODE(DIGEST(host(userip), 'sha1'), 'hex')) as TEST FROM usersessions.data
+LIMIT 4;
+```
+[encrypting shizzle](https://www.dbrnd.com/2016/03/postgresql-best-way-for-password-encryption-using-pgcryptos-cryptographic-functions/
+)
 
 #### **pulling stuff out of tags**
 
@@ -132,9 +263,36 @@ WHERE datadatetime BETWEEN '2017-08-17 12:00:00' AND '2017-08-18 00:00:00'
 D.tags -> ‘sh’    will create a column with the values of the ‘sh’ tag  
 D.tags ? ‘prog’  will create a column of Boolean masks that determine weather prog is present in the table or not.   
 
+#### **average tables**
+
+```sql
+with day_count as(
+    SELECT date_trunc('day', datadatetime),
+    COUNT(*) as c FROM usersessions.data 
+    WHERE brandid = 1 group by 1) select avg(c) from day_count
+)
+```
+
+#### **check something exists v.fast**
+good for v.large datasets. Will exist as soon as it finds something. 
+```sql
+SELECT exists(SELECT 1 FROM <schema>.<table> WHERE <condition to check> LIMIT 1)
+```
+
+#### **group by datetimes**
+[v.useful groupby datetime](http://ben.goodacre.name/tech/Group_by_day,_week_or_month_%28PostgreSQL%29)
+```sql
+SELECt date_trunc('day', datadatetime), count(*) FROM <schema>.<table>
+WHERE <filter condition>
+GROUP BY 1,
+ORDER BY 1;
+```
+
+
+
 
 #### **basic joins**
-§
+
 [guide to joins](http://www.postgresqltutorial.com/postgresql-joins/)
 
 ```sql
