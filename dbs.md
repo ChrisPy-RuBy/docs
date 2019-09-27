@@ -1,8 +1,7 @@
-Title: Postgres
+Title: Postgres/table 
 summary: Everything concerning dbs
-- - -
-## theory
- 
+# theory
+- - - 
 #### **Understanding Analze / Explain**
 
 Basic rules  
@@ -30,7 +29,7 @@ RESET work_mem
 
 
 - - -
-## accessing postgres
+# accessing postgres
 - - - 
 #### **access local postgres db**
 
@@ -68,7 +67,7 @@ psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis 
 \d+ *.*
 ```
 - - -
-## **admin**
+# admin
 - - -
 
 #### **turning logging on / off**
@@ -153,7 +152,6 @@ COPY (SELECT * FROM <schema>.<table>
 with the table header
 
 ```sql
-```sql
 COPY (SELECT * FROM <schema>.<table> 
         WHERE brandid =1 
         AND datadatetime BETWEEN '2016-04-17' and '2016-04-18' 
@@ -172,7 +170,7 @@ DELIMITER E'\t NULL'\\N'
 ```
 
 - - -
-## inerting / updating
+# inserting / updating
 - - -
 
 
@@ -253,7 +251,7 @@ FROM randomtable WHERE id = 4;
 
 
 - - - 
-## **querying**
+# querying
 - - - 
 
 #### **basic operators**
@@ -428,7 +426,6 @@ with temp as (
 )
 
 #### **scratch**
-
 ```sql
 -- query to try and work out which sessions are matched with original vs regex shizzle
 SELECT count(*) FROM (
@@ -444,186 +441,6 @@ RIGHT OUTER JOIN (
 	AND '2019-06-23'
 	AND brandid = 1
 	AND action = 'tngviewusedvehiclepage') orig ON (orig.usersessionid = tng.usersessionid and orig.datadatetime = tng.datadatetime) 
-
-
 ```
 
-# mongo
-- - - 
-## Useful docs ##
-[mongo shell](https://docs.mongodb.com/manual/reference/mongo-shell/)
-
-[methods_collection_ref](https://docs.mongodb.com/manual/reference/method/js-collection/)
-
-
-## **Maintainence and Manangment**
-
-#### **dealing with indexes**
-
-An index looks like this
-brand_1_gran_1_group_1_metric_1_date_1_split_1_splitname_1_action_1
-The query will go through the index sequentially until it can’t do anymore. Always specify the exact value not a range if possible. 
-
-
-#### **setting up a raw db connection**
-
-```python
-server_url =  mongodb://username:password@somewhere.mongolayer.com:10011/my_database
-username = analysis
-password = <fuck shit bum>
-```
-
-#### **fast server stuff**
-
-```python
-for db in request.backenddb.mongo.list_databases():
-    name = db.get('name')
-    if name.startswith('bclient{}'.format(clienttorun)):
-        clientdb = request.backenddb.mongo.get_database(db['name'])
-        collections  set(clientdb.collections_names(include_system_colelctions=False))
-        for collection in collections :
-            <fuck shit bum>
-```
-
-#### **Deleting documents**
-
-```javascript
-db.getCollection("jobqueue").deleteMany({'jobtype': 'INF.CRON', 'jobstatus': 'FAILED'}
-```
-
-#### **Updating Docs**
-
-find and update multidocs
-```javascript
-db.getCollection("jobqueue").update(<query>, {'$set': {'fuck': 'shit'}}, multi=True)
-```
-
-#### **sorting with pymongo**
-[sorting](https://stackoverflow.com/questions/8109122/how-to-sort-mongodb-with-pymongo)
-
-## **Basic Queries**
-
-#### **Search for value where value is not equal to another value**
-
-```javascript
-{
-        "$cond": {
-            "if": {
-                "$eq": [
-                     "$_id", "$channel" ]
-               
-            },
-            "then": "$$KEEP",
-            "else": "$$PRUNE"
-        }
-    }
-```
-#### **distinct values**
-
-```javascript
-db.demographics.distinct('<thing>')
-```
-
-#### **count docs**
-```javascript
-db.brands.find({}).count()
-```
-
-#### **conditional querying of sub-docs**
-
-example
-```jvascript
-db.brands.find({viscodeSettings: {$exists: true}}).
-forEach(function(brand) {
-if Object.keys(brand.viscodeSettings).length > 10 {
-    print(brand._id)
-}})
-```
-
-
-#### **where field A > B**
-
-```javascript
-db.getCollection("piwik1410-1.sessions").find({$expr: {$gt: ["$lasttime", "$time"]}}).sort({lasttime: 1})
-```
-
-#### **all values between two dates**
-
-```python
-q = { "datetime": { $gte: ISODate("2017-06-30"),  $lt: ISODate("2017-07-01")}}
-```
-
-#### **mongo regexes**
-
-basic example
-```javascript
-{"channel": /^DISC/i}
-```
-where /<regex>/ is the regex
-^ is start 
-$ is end
-i is case insensitive
-
-
-#### **search for a single field in multiple values**
-
-```python
-q = {shortid: {$in: [282, 1229]}} 
-```
-
-## **Aggregate Queries**
-
-## **bugs**
-
-#### **data directory not found**
-
-fixed with 
-```bash
-mongodb --dbpath /usr/local/var/mongodbmongo
-```
-
-
-
-## accessing
-- - -
-
-# athena 
-- - - 
-
-examples of doing stuff in athena programatically in
-tvsquared/model.advancedtv L565 etc.
-
-#### **Setting up a new table/database**
-
-## Querying
-
-#### **regex shizzle**
-
-``` sql
-SELECT regexp_like(url, <regex> FROM <blah> 
-```
-
-```sql
-SELECT * FROM <foo> WHERE
-strpos(url, '<regex>')
-```
-
-```sql
-SELECT * FROM  <foo> WHERE
-url is like '%derp%'
-```
-
-
-#### **querying using the partion structure**
-
-```sql
-SELECT url FROM “collector_tng_pre_visit”.“data”
-WHERE site_id = ‘4432-1’
-AND yy=‘2019’
-AND mm=‘06’
-AND dd=‘26’
-AND hh=‘11’
-AND url like ‘%nvcc%’
-```
-WHERE site_id, yy, mm, dd, and hh are partitions
 

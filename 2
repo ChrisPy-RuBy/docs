@@ -1,13 +1,10 @@
 Title: UNIX
 summary: unix tools
 - - - 
-
 # bash
 [v.good guide to bash](https://www.tldp.org/LDP/abs/html/)
 [process management](https://mywiki.wooledge.org/ProcessManagement)
 Important point! Syntax for running stuff from the command line is v. different to running in script
-
-## basics 
 
 #### **define a functin on the command line**
 
@@ -22,7 +19,7 @@ site_collector_copy () {aws s3 cp s3://tvsquared-userdata/collector/$1/2019.08/ 
 ```
 
 
-#### **assign variables**
+#### **basics**
 
 ```bash
 Myvariable=Hello
@@ -116,14 +113,7 @@ do cp ${file} ~/dev/tvsquared-backend/data/testdata/assist/;
 done
 ```
 
-# ag
-v.fast alternative to grep
 
-#### basic use
-
-```bash
-ag <thing to find>
-```
 
 
 # awk
@@ -158,11 +148,6 @@ change permissions of files or folders
 |1|exec|--x|
 |0|none|---| 
 
-example 
-```bash
-chmod 0744
-```
-would grant the following permissions -rwxr—r—
 # cut
 
 #### **get specific column from csv**
@@ -213,20 +198,6 @@ date1=$(date +%Y-%m-%d)
 would assign todays date in the format 2019-07-27 to date1
 
 
-# du
-
-#### **get folder size**
-```bash
-du -sk ~/Downloads
-```
-## df
-
-#### ** get disk space**
-
-```bash
-df -H
-```
-
 
 # find
 
@@ -236,70 +207,8 @@ You can use the following to git init all your existing tvsquared local git repo
 find . -type d -name tvsquared-\* -exec git init \{\} \;
 ```
 
-# FZF
-
-super good fuzzyfinder, on commandline and in vim
 
 # grep
-
-## basics
-
--n: get line number of match
--E: use egrep i.e. regex pattern matching
--A: displays lines surrounding 
--v: inverse match
- 
-#### Display all uses of specific command or line
-
-```bash
-cd to desired drive
-grep –r request\.brand *    
-this returns all instances of request.brand that occur in that folder.
-```
-
-
-#### get all rows with certain patterns and outputs to different file
-
-This will match ‘2018-09-30’ in file and pipe to test.csv
-
-```bash
-grep 2018-09-30 appdl_UK-FR_Q3.csv > test.csv
-```
-
-#### used anywhere in a folder tree
-```bash
-grep –rl jqdb.channelmaps *
-```
-finds everywhere that this is used anywhere\
-
-
-#### everything on or near a line 
-
--A 0 means just get that line
--A 10 will get the subsequent 10 lines
-
-```bash
-cat test.txt | grep –A 0 word
-```
-
-#### line numbers of matched
-```bash
-grep -n e combined_Q3_7_app_FR_1.csv
-```
-
-#### complex string matching
-
-Get all lines that have any of certain specific characters
-```bash
-grep -E ‘a|e’ <filename.csv> <filenameto.csv>
-```
-
-Get all lines that 
-Get all lines that contain a character not of a specified type
-
-```bash
-grep -nE '^V[[:alpha:]]' combined_Q3_7_app_FR_1.csv
-```
 
 # head/tail
 
@@ -454,13 +363,6 @@ might want to check this
 ```bash
 exit
 ```
-
-# tar
-
-```bash
-tar -zcvf archive-name.tar.gz directory-name
-```
-
 # tee
 splits output to both stdout and to file. Get to see what you are getting and output to file.
 
