@@ -6,6 +6,7 @@ summary: Python notes.
 ## **"*args" and "**kwargs"**
 
 
+
 #### **zip star(*) idiom**
 
 
@@ -59,6 +60,7 @@ values = [
     ]
 ```
 
+
 ## **recursion**
 [stackover_flow link](https://stackoverflow.com/questions/30214531/basics-of-recursion-in-python)
 
@@ -110,6 +112,7 @@ patching can be used to replace whole objects with mock ones. This can be done w
 specific methods can be mocked out also if that is easier.
 
 
+
 # TODO give example of mocking a method
 
 
@@ -129,8 +132,6 @@ object.
 - - - 
 
 # builtins
-
-
 - - - - 
 
 ## **--file--**
@@ -205,9 +206,15 @@ default=json_util.default)
 
 ## **bytes / strings**
 - - - - 
+
+#### **join() vs +=**
+
+join is perferred as it is much faster
+
 #### **convert bytes to strings vice versa**
 
-```pythonj
+
+```python
 # generate string
 byte.decode('utf-8')
 # generate bytes
@@ -411,7 +418,8 @@ data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter':
 ```
 
 ## ipython
-- - -
+- -
+- -
 
 #### **enable autoreload**
 snip: autoreload
@@ -431,6 +439,12 @@ this will print to the console everything that has happened in an ipython sessio
 ```python
 %history
 ``` 
+#### **time a function**
+
+```python
+%timeit -n 10000 <your_crappy_function(stupid_params)>
+```
+
 
 #### **write history to a log file**
 ```python
@@ -611,10 +625,11 @@ Note: concurrent.futures can swap between threaded or multiprocess by changing t
 - - -
 
 ### **naming conventions**
+```python
 __<name>__ : reserved for builtins
 _<private>: private attribure for python, not really private
 __<name>: also kind of private but not quite used to avoid naming conflicts
-
+```
 
 #### **set attributes on a class**
 
@@ -709,9 +724,11 @@ https://docs.python.org/3/library/profile.html#instant-user-s-manual
 python3 -m cProfile -o /tmp/profile.stats tvsquared/jobqueue/importer/collectortng.py 1366 1 2019-06-06T00 2019-06-06T00
 ```
 It dumps some stats into the specified field directory.
-We can then analyse using pstats. ncalss and cumtime are perceived as the most```bash 
-python3 -m pstats profile.stats
+We can then analyse using pstats. ncalss and cumtime are perceived as the most
 
+```bash 
+python3 -m pstats profile.stats
+```
 
 ## pip
 
@@ -874,6 +891,7 @@ re.search(<compiled_regex>, <string>)
 will return aregex object of the matches
 
 #### **use matched regex**
+
 ```python
 match_date.group()
 ```
@@ -896,13 +914,28 @@ sys.getsizeof(<thin you want size of>)
 import sys
 for row in sys.stdin:
 print (row[0])
-
-
 ```
 from cmdline
 ```bash
 cat blrap.txt | python parse.py > text.txt
 ```
+## timeit
+
+useful lib for timing small pieces of code 
+
+```python
+import timeit
+def my_function():
+    y = 3.145
+    for x in range(100):
+        y = y ** 0.7
+    return y
+
+print(timeit.timeit(my_function, number=100000))i
+```
+Note: %timeit function in ipython is much easier to use
+:
+
 
 
 ## unittest
@@ -973,3 +1006,4 @@ moto[server]
 selenium
 termcolor
 ```
+
