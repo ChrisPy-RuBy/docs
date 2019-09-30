@@ -1,5 +1,5 @@
 ---
-title: PYTHON
+title: Python 
 summary: Python notes.
 ---
 
@@ -127,7 +127,6 @@ A spec makes this harder to do. As you limit what can exist on your mock
 object.
 # TODO  what is a mock spec and how to use it.
 
-
 # boto3
 - - - 
 
@@ -161,7 +160,7 @@ read first when a module is imported or run from the command line
 basic setup for tvs.
 ```python
 if __name__ == "__main__":
-setup().process(process)
+    setup().process(process)
 ```
 but can have any function in here. typically would be main or process etc
 
@@ -179,10 +178,10 @@ __str__ used for general use
 
 not quite sure what this does.
 
-## **bson**
+# bson
 --- 
 stuff that is bz2 or from mongo is closer to bson than json
-
+ 
 
 #### **parse things out of mongo i.e. piwik** 
 ```python
@@ -200,11 +199,11 @@ from bson import ObjectId
 ```python
 from bson import json_util
 json.dump(client_metadata,open(json_filename,'w'),
-indent=4, sort_keys=True, separators=(',', ': '),
-default=json_util.default)
+          indent=4, sort_keys=True, separators=(',', ': '),
+          default=json_util.default)
 ```
 
-## **bytes / strings**
+# bytes / strings
 - - - - 
 
 #### **join() vs +=**
@@ -221,26 +220,26 @@ byte.decode('utf-8')
 string.decode()
 ```
 
+#### **intermediate use  of format**
 
-#### **convert between binary / hex and dec**
+###convert between binary / hex and dec
 ```python
 # hex 
-"{0:x}".format(17)
+“{0:x}”.format(17)
 # bin
-"{0:b}".format(17)
+“{0:b}”.format(17)
 ```
 
 #### **split string on symbol**
 ```python
->>>"1234-1".partition("-")
-["1234", "-", "1"]
+>>>”1234-1”.partition(“-”)
+[“1234”, “-”, “1”]
 ```
 
 
-## **csv**
-- - - 
+# csv
 
-## **dateutils**
+# dateutils
 - - -
 
 #### **parse stupid timestamps**
@@ -251,25 +250,16 @@ dateutil.parser.parse("2015-10-19T00:00:00.000+0000")
 ```
 
 
-## **datetime**
-- - -
-
-
-####**string to datetime (strptime)** 
-```python
-datetime.datetime.strptime(<string to transform>, <pattern to match against>)
-```
-
-#### **datetime to string (strftime)**
-
+# datetime
+- - - 
 
 #### **genwerate all the times between two dates**     
 
 ```python
 def date_range_generator(now, then, delta):
-time_range = y - x
-for value in range(time_range.seconds):
-yield y + datetime.timedelta(seconds=value)
+    time_range = y - x
+    for value in range(time_range.seconds):
+        yield y + datetime.timedelta(seconds=value)
 ```
 
 
@@ -297,51 +287,26 @@ time zone info is optional
 datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ```
 
-## **dictionary**
+# dictionary
 - - - 
 
 #### **set default**
 ```python
 bigDict = {}
 for liverampID, details in default_rollup.items():
-test = bigDict.setdefault(details.get('segmentGroup'), [])
-test.append(details.get('epsilonValueName').split('=')[0])
+    test = bigDict.setdefault(details.get('segmentGroup'), [])
+    test.append(details.get('epsilonValueName').split('=')[0])
 
 for segmentGroup, epsilonValueList in bigDict.items():
-new = setDict.setdefault(segmentGroup, set(epsilonValueList)) 
+    new = setDict.setdefault(segmentGroup, set(epsilonValueList)) 
 ```
 Sorting the output to want you want
 ```python
 for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
-print("{}: {}").format(k, len(v))
+     print("{}: {}").format(k, len(v))
 ```
 [link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
 
-#### **defaultdict**
-
-super useful way to lazily generate keys in dicts
-
-```python
-from collections import defaultdict
-
-test = defaultdict(list)
-test['testkey'].append(123)
-{'testkey': [123]}
-```
-
-#### **merge values baed on key n dictionary**
-
-```python
-test_data_1 = {'a': [7, 5, 3], 'b': [6547]}
-test_data_2 = {'a': [9592, 453]}
-combined_dict = {}
-for k, v in test_data_1.items():
-combined_dict.setdefault(k, [])
-combined_dict[k] = combined_dict[k] + v
-# repeat for other dict
-{'a': [7, 5, 3, 9592, 453], 'b': [6547]}    
-
-```
 
 
 #### **merging dicts**
@@ -359,10 +324,10 @@ for k, v in dict.items(): print(k, v)
 from collections import Counter
 counter = Counter()
 for x, y in tiny_dict.items():
-counter[y] += 1
+    counter[y] += 1
 
 ```
-## **exceptions**
+# exceptions
 [link](https://stackoverflow.com/questions/5191830/how-do-i-log-a-python-error-with-debug-information)
 
 #### **useful stacktraces as exceptons messages**
@@ -370,35 +335,15 @@ counter[y] += 1
 ```python
 import logging
 def get_number():
-return int('foo')
+    return int('foo')
 try:
-x = get_number()
+    x = get_number()
 except Exception as ex:
-logging.exception('Caught an error')
+    logging.exception('Caught an error')
 ```
 
-
-
-## fabric
+# fabric
 - - -
-## functools
-
-function programming tools, map, filter and reduce
-
-#### **simple reduce example**
-
-```python
-reduce([1,2,3,4,5], lambda acc, val: acc + val, 0)
-```
-where values are data, func to apply and starter value
-
-#### **complex example with defaultdict**
-
-can use reduce to group items by value
-```python
-def reducer(acc, val):
-    acc[val['letter']].append(val['value'])
-    return acc
 
 results = defaultdict(list)
 data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter': 'b', 'value': 123}]
@@ -417,13 +362,11 @@ data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter':
 {item[0]: list(item[1]) for item in itertools.groupby(data)}
 ```
 
-## ipython
-- -
-- -
+# ipython
+- - -
 
 #### **enable autoreload**
-snip: autoreload
-
+snip: `autoreload 
 ```python
 %load_ext autoreload
 %autoreload 2
@@ -435,7 +378,6 @@ snip: autoreload
 ```
 
 #### **get history for ipython session**
-this will print to the console everything that has happened in an ipython session
 ```python
 %history
 ``` 
@@ -446,12 +388,7 @@ this will print to the console everything that has happened in an ipython sessio
 ```
 
 
-#### **write history to a log file**
-```python
-%history -f <path/filename>
-```
-
-## lambdas
+# lambdas
 - - - 
 
 [link](https://www.bogotobogo.com/python/python_functions_lambda.php)
@@ -485,20 +422,19 @@ x = list(map(lambda x: x+2, values))
 Again use list comprehension instead
 
 ```python
-from functools import reduce
 values = [1,2,3,4]
-reduce(lambda x, y: x+y)i, values
+x = list(reduce)
 10
 ```
 
-## list
+# list
 - - - 
 
 #### ** pythonic indexing,  enumerate** 
 
 ```python
 for i, v in enumerate(range(10)):
-print(i, v)
+    print(i, v)
 ```
 
 #### **fastest way to copy a list**
@@ -507,119 +443,19 @@ new_list = old_list[:]
 ```
 
 
-## json
+# json
 
 #### **parse a string to a dict**
 [link](https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary)
 ```python
-x = ' {"x": 1, "a": 3}'
-json.loads(x)
+>>> x = '{"x": 1, "a": 3}'
+>>> json.loads(x)
 {"x": 1, "a": 3}
 ```
 
 #### **parsing large files of json i.e. firehose data**
 not really josn as no wrapping []
 [link](https://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-with-multiple-json-objects-in-python)
-
-#### **reading horrible json files from action synth row by row**
-
-```python
-with open('./actions-4834-1-2019.06.29.json', 'r') as f:
-    x = f.read()
-    y = x.split('\n')[:-1]
-    results = []
-    counter = 0
-    for row in y:
-        counter += 1
-        try:
-            decode = json.loads(row)
-            results.append(decode)
-        except Exception as err:
-            print(decode, err, counter)
-    print(counter)
-```
-
-
-
-## **multiprocessing**
-
-Some background.... The cpython implementation of python as something called the GIL. global interpretation lock. 
-This limits the number of threads on a processor to 1. It does this to for safety reasons and it results in performance improvements for single threaded python programs but is bad if you want to multithread something.
-
-One alternative is multiprocessing. Python will spawn another interpreter on a different core to run parts of the program which can be run in parallel.
-
-This is advantagious if you ....
-1. have multiple cores 
-2. have some thing that is very computational heavy i.e, cpu bound.
-
-It is not that useful for problems that are IO bound i.e. waiting for a web response or database query result.
-
-Important. If you have written you code in a functional style it is v.easy to implement multiprocessing
-
-#### **simple multiprocess example**
-
-the data is here is faking an io bound process with sleep. 
-
-```python
-
-def transform(x):
-    print("process {ospid} processing record {name}".format(**{'name': x.name, 'ospid': os.getpid()}))
-    time.sleep(1)
-    result = {'name': x.name, 'age': 2019 - x.born}
-    print("processed record")
-    return result
-
-
-def with_multiprocess(func, data):
-    start = datetime.datetime.now()
-
-    # pool = multiprocessing.Pool()
-    # can specify the number of processes
-    pool = multiprocessing.Pool(processes=len(scientists))
-
-    result = pool.map(transform, scientists)
-
-    end = datetime.datetime.now()
-    print('Process took {}'.format(end - start))
-    pp.pprint(result)
-
-
-with_multiprocess(transform, scientists)
-```
-
-#### **multiproessing with concurrent.futures**
-
-```python
-def with_concurrent_futures(func, data):
-
-    start = datetime.datetime.now()
-    with concurrent.futures.ProcessPoolExecutor() as executor:
-    # can swap out the ProcessPool with a ThreadPoolExcutor and now it is threading rather than processes!
-        result = executor.map(func, data)
-
-    end = datetime.datetime.now()
-    print('Process took {}'.format(end - start))
-    pp.pprint(tuple(result))
-
-
-with_concurrent_futures(transform, scientists)
-```
-
-
-## **multithreading**
-
-Multithreading is a another approach to speed up programs that are single threaded, single cored.
-Multithreading allows bits of the program to be fired off and collected when they are done. Like aysyncrous javascript. 
-
-It is advantageous when...
-1. programs are doing alot of waiting for results from external sources (IO bound)
-2. Multiple requests are required
-
-It is not good when...
-1. Doing cpu bound processes as the GIL is still there. 
-
-Note: concurrent.futures can swap between threaded or multiprocess by changing the ProcessPoolExecutor to ThreadPoolExecutor
-
 
 ## object oriented programing
 - - -
@@ -635,12 +471,12 @@ __<name>: also kind of private but not quite used to avoid naming conflicts
 
 ```python
 for k, v in dict.items():
-setattr(self, k, v)
+    setattr(self, k, v)
 ```
 would bolt on all the attributes from the dictionary
 
 ### **properties**
-good way of setting more complicated attribute on class 
+    good way of setting more complicated attribute on class 
 
 ### **static methods**
 used to distinguish methods that don't require any knowledge of the state of the class.
@@ -649,7 +485,7 @@ It is more of a housekeeping thing than anything else
 ```python
 @staticmethof
 def you_shit_function():
-return "shit"
+    return "shit"
 ```
 
 ### **class methods**
@@ -658,26 +494,77 @@ the instance of the class
 
 ```python
 class Pizza:
-def __init__(self, ingredients):
-self.ingredients = ingredients
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
 
-def __repr__(self):
-return f'Pizza({self.ingredients!r})'
+    def __repr__(self):
+        return f'Pizza({self.ingredients!r})'
 
-@classmethod
-def margherita(cls):
-return cls(['mozzarella', 'tomatoes'])
+    @classmethod
+    def margherita(cls):
+        return cls(['mozzarella', 'tomatoes'])
 
-@classmethod
-def prosciutto(cls):
-return cls(['mozzarella', 'tomatoes', 'ham'])
+    @classmethod
+    def prosciutto(cls):
+        return cls(['mozzarella', 'tomatoes', 'ham'])
 
 
 >>>Pizza.margherita()
 Pizza(['mozzarella', 'tomatoes'])
 ```
 
+## optimising python code for speed
 
+#### tip 1, membership testing
+
+```python 
+good: will look up directly 
+for x in set([1,2,3,4,5])
+
+bad: will loop through, with every loop
+for x in list([1,2,3,4,5])
+```
+
+#### tip 2, string concat
+```python
+good: 
+"".join(["a", "b", "c"])
+bad:
+strng += "a"
+strng += "b"
+strng += "c"
+```
+
+#### tip 3:
+this one is interesting
+```python
+
+def func_1():
+    anotherlist = []
+    for x in somelist:
+        antherlist.append(x.upper())
+    return anotherlist
+
+the above function in slower than
+
+def func_2():
+    anotherlist = []
+    todo = x.upper
+    otherthingtotodo = anotherlist.append
+    for x in somelist:
+        otherthingtodo(todo())
+
+which is slower than 
+
+def func_3():
+    anotherlist = [x.upper() for x in somelist]
+
+which is slow than
+
+def func_4():
+    todo = x.upper
+    anotherlist = [todo() for x in somelist]
+```
 
 
 ## os
@@ -703,13 +590,6 @@ os.listdir(path)
 ```python
 os.makedirs(<path>)
 ```
-
-#### **recursilvely walk a file structure**
-
-```python
-os.walk(path)
-```
-returns a generator object of tuple of path and folder contents
 
 ## pandas
 - - - - 
@@ -791,13 +671,6 @@ pipdeptree -r -p more-itertools
 ## pdb / ipdb
 - - - 
 
-#### **escape pdb mapped keys**
-
-```python
-b = 5
-!b
-```
-
 [link](https://medium.com/instamojo-matters/become-a-pdb-power-user-e3fc4e2774b2)
 #### **basic debugger in code
 
@@ -807,11 +680,6 @@ import ipbd; ipdb.set_trace()
 now
 ```python
 breakpoint()
-```
-
-#### **add another bp while in pdb**
-```python
-bp <line number>
 ```
 
 #### **pdb out the code**
@@ -825,32 +693,6 @@ python -m pdb <scriptname>.py
 local()
 global()
 ```
-#### **next vs step**
-next (n) will remain within the local scope of the function in which is has been called
-step (s) will steop into different functions as and when they are called
-
-#### **continue vs until**
-
-continue (c) will allow code to flow to next bp
-until (u) will allow code to flow until the line number increase. Good for moving just past loops
-
-####  **'display'**
-
-Display is a useful alternative to print also.
-
-useful for debug loops as is until. 
-```python
-test_dict = {'a': 'abc'}
-for x in range(1000):
-    test_dict['b'] = test_dict['a'] 
-    test_dict['a'] = x
-```
-
-call to see how the value of a is changing per iteration of the loop.
-```python
-display test_dict['a'] 
-```
-
 ## pytest 
 more functionality that unittest
 needs tests to be called test_<blah>
@@ -870,7 +712,7 @@ can make writing tests quicker
 
 ## matplotlib
 - - -
-
+ 
 ## mock
 - - -
 
@@ -896,6 +738,7 @@ will return aregex object of the matches
 match_date.group()
 ```
 will return the matching string
+ 
 
 ## sys
 - - - 
@@ -950,17 +793,17 @@ import unittest
 
 class Test<class to be tested>(unittest.TestCase):
 
-def setUp(self):
-pass
+    def setUp(self):
+        pass
 
-def tearDown(self):
-pass
+    def tearDown(self):
+        pass
 
-def test_example_test(self):
-pass
+    def test_example_test(self):
+        pass
 
 if __name__ == '__main__':
-unittest.main()    
+    unittest.main()    
 ```
 
 run unittests from comdline
@@ -976,7 +819,7 @@ python -m  unittest test_<thing to be tested>.py
 python3 -mvenv testproject_env
 ```
 #### **Activate venv**
-```bash
+````bash
 source testproject_env/bin/activate
 ```
 
@@ -1006,4 +849,3 @@ moto[server]
 selenium
 termcolor
 ```
-

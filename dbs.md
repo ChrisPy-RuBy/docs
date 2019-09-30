@@ -1,4 +1,4 @@
-Title: Postgres/table 
+Title: Postgres
 summary: Everything concerning dbs
 # theory
 - - - 

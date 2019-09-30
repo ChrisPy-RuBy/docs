@@ -22,6 +22,14 @@ site_collector_copy () {aws s3 cp s3://tvsquared-userdata/collector/$1/2019.08/ 
 ```
 
 
+#### **running a python program from a bash script**
+
+super easy
+```bash
+python -m <script_name>
+```
+
+
 #### **assign variables**
 
 ```bash
@@ -47,8 +55,18 @@ var=$((var+1))
 ((var++))
 ```
 
-#### **basic if else statements**
+#### **basic conditionals**
 
+```bash
+[[ x -le y ]]
+[[ x -gt y ]]
+&& and
+|| or
+```
+
+#### **basic if else statements**
+[guide](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php
+)
 ```bash
 for tag in $(git tag); do
     if [[ $tag == *'tvs'* ]]; then
@@ -136,6 +154,17 @@ ls -l | awk '{print $5}'
 ```
 would get all the files for the contents of the current folder
 
+
+# aws
+
+#### **get sample of v.large files on s3**
+
+the  - arg pipes the output to stdout 
+```bash
+s3://tvsquared-userdata/3871/1/app-usersessions/1547468023214-combined_Q3_8_app_FR_1.csv.gz - | gzcat | head
+```
+
+
 # bc
 use bc for maths
 ```bash
@@ -163,7 +192,16 @@ example
 chmod 0744
 ```
 would grant the following permissions -rwxr—r—
+
+# cmp
+compare file to show they are the same.
+
+```bash
+cmp --silent '<filename_1>' '<filename_2>' && echo 'files are the same brah' || echo 'computer says no'
+```
+
 # cut
+
 
 #### **get specific column from csv**
 
@@ -212,6 +250,14 @@ date1=$(date +%Y-%m-%d)
 ```
 would assign todays date in the format 2019-07-27 to date1
 
+# diff
+
+row by row check to determine differences between 2 files.
+
+```bash
+diff <(cat <file_1> ) <(cat /tmp/<file_2>)
+```
+ 
 
 # du
 
@@ -219,9 +265,10 @@ would assign todays date in the format 2019-07-27 to date1
 ```bash
 du -sk ~/Downloads
 ```
-## df
 
-#### ** get disk space**
+# df
+
+#### **get disk space**
 
 ```bash
 df -H
@@ -234,6 +281,11 @@ df -H
 You can use the following to git init all your existing tvsquared local git repos:
 ```bash
 find . -type d -name tvsquared-\* -exec git init \{\} \;
+```
+
+#### **all files of a certain type**
+```bash
+find ./*.csv > filestocopy.txt
 ```
 
 # FZF
@@ -465,6 +517,38 @@ tar -zcvf archive-name.tar.gz directory-name
 splits output to both stdout and to file. Get to see what you are getting and output to file.
 
 # tmux
+[useful_guide](https://lukaszwrobel.pl/blog/tmux-tutorial-split-terminal-windows-easily/)
+[cheatsheet](https://gist.github.com/MohamedAlaa/2961058)
+
+#### **basic tmux**
+
+from commandline
+```bash
+# list all active tmux sessions
+tmux ls 
+# append to most recent session
+tmux a 
+# append to specified session
+tmux a -t <session_name>
+# list all tmux commands
+tmux lscm
+```
+
+from inside session
+```bash
+# kill window
+crtl-b - x
+# detach session
+crtl-b - d
+# split screen horizontal
+crtl-b - "
+# split screen vertical
+crtl-b - %
+# new window
+crtl-b - c
+# switch windows
+crtl-b - n
+```
 
 # tr
 used to trim data quickly
@@ -486,6 +570,14 @@ will display file structure down to level 4
 # xargs
 
 #### **loop through a list of files on s3 and grep them in parallel** 
+
+Write a list of files 
+Use Xargs. 
+Xrags -I % takes the value form the previous things and assigns to %
+-P 5 runs run parallel where 5 is the max number of processes.
+
+cat filestocheck.txt | xargs -I % -P 5 aws s3 cp "s3://tvsquared-elblogs-collector-eu-west-1/collectorf-prod/AWSLogs/457063536638/elasticloadbalancing/eu-west-1/2019/04/20/%" - | grep collector-228 >> test.txt
+
 ```bash
 xargs -I % -P 5
 ```
