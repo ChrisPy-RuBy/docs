@@ -3,11 +3,27 @@ title: Python
 summary: Python notes.
 ---
 
+
+## Pythonic Python
+
+#### ** shortcircuiting functions**
+
+[examples of shortcircuiting](https://www.geeksforgeeks.org/short-circuiting-techniques-python/)
+
+you can do this ....
+```python
+somefunction(row.get('value') or '')
+```
+if you want to guard against absent or invalid values going into a 
+function. if either the 'value' is none or absent, it will be 
+replaced with ''
+
 ## **"*args" and "**kwargs"**
 
 
 
-#### **zip star(*) idiom**
+#### **zip star(*) idioms**
+
 
 
 
@@ -24,6 +40,17 @@ for value in zip(*all_): print(value)
 list(zip(*all_))
 ```
 
+try this one on for size
+zip a list into pairs!
+
+```python
+test_list = ['a', 1, 'b', 2, 'c', 3, 'd', 4]
+pair_up = list(zip(*[iter(test_list)] * 2)
+```
+
+
+
+
 #### **extensible functions**
 
 ```python
@@ -33,6 +60,7 @@ def hyper_volumne(length, *lengths):
         V *= lengths
     return V 
 ```
+
 
 ## **comprehensions**
 
@@ -307,6 +335,14 @@ for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
 ```
 [link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
 
+#### **sorting dict by values**
+
+```python
+# generate a list of sorted keys
+sorted_keys = sorted(dict_to_sort, key=lambda k: dict_to_sort[key], reverse=True)
+# regenerate the dict or list using the sorted keys
+[(key, dict_to_sort[key]) for key in sorted_keys]
+```
 
 
 #### **merging dicts**

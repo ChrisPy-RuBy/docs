@@ -2,6 +2,11 @@ Title: Personal notes
 summary: A collections of personal notes
 - - - 
 
+# to Learn
+
+1. further spreadsheets -> conditional formating, vlookups, better pivots
+2. write up notes on urls
+
 # Sprint challenges
 
  Future Challenges

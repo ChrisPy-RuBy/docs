@@ -121,6 +121,13 @@ git branch -d <branch name>
 
 ## checkout
 - - - - -
+#### **create new branch**
+
+```bash
+get checkout -b <new-branch-name>
+```
+This will take all the changes across to the new branch
+
 #### **change branch**
 
 ```bash
@@ -137,6 +144,7 @@ git checkout -- <specific file path>
 ```bash
 git checkout .
 ```
+
 ## diff
 - - - - 
 #### **difference between two files**

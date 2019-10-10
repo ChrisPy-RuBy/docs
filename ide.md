@@ -7,7 +7,15 @@ summary: summary of useful stuff for writing code
 
 ## vim
 
-### **yank to clipboard please**
+#### **key configs*
+Add these to  your `~/.vimrc file 
+```
+:nmap <silent> <leader>d <Plug>DashSearch
+```
+in normal mode after pressing <leader> (normally\) then d 
+do DashSearch
+
+### **yank to system clipboard please**
 
 ```bash
 " select the thing you want.
@@ -65,10 +73,14 @@ vimdiff <file 1> <file 2 >
 
 ```bash
 :vsplit <filename>
+" or
+:vsp
 ```
 or 
 ```bash
 :hsplit <filename>
+" or 
+:sp
 ```
 
 #### **tagging out multiple lines**
@@ -79,7 +91,9 @@ or
 
 #### **set line numbers**
 ```bash
-:setnumbers
+:set numbers
+" or
+:set nonumbers
 ```
 ### **find, search,  replace**
 [link](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
@@ -94,6 +108,12 @@ this will generate human readable output from a console output.
 ```bash
 :%s/\\n/\r/g
 ```
+or remove all backslashes
+
+```bash
+:%s/\///g
+```
+
 can also do use jq and visualline
 ```bash
 # select relevant line in visual mode

@@ -1,5 +1,6 @@
 Title: Postgres
 summary: Everything concerning dbs
+
 # theory
 - - - 
 #### **Understanding Analze / Explain**
@@ -169,6 +170,17 @@ Also the delimiter stuff is an arse
 DELIMITER E'\t NULL'\\N'
 ```
 
+#### **psql: could not connect to server: No such fA ile or directory**
+
+Is the server running locally and accepting
+connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+
+server configuration file postgres does not know where to find the server configuration file. 
+You must specify the --config-file or -D invocation option or set the PGDATA environment variable.
+Delete postmaster.pid file in /usr/local/var/postgres
+
+
+
 - - -
 # inserting / updating
 - - -
@@ -297,6 +309,12 @@ LIMIT 4;
 [encrypting shizzle](https://www.dbrnd.com/2016/03/postgresql-best-way-for-password-encryption-using-pgcryptos-cryptographic-functions/
 )
 
+```sql
+COPY (SELECT ENCODE(DIGEST(userip::VARCHAR, 'sha1'), 'hex') 
+FROM <schema>.<table> WHERE brandid=1) to '<filelocation>' with CSV;
+create extension pgcrypto
+```
+
 #### **pulling stuff out of tags/hstore**
 
 ```sql
@@ -378,6 +396,24 @@ SELECT COUNT(DISTINCT CAST(datadatetime as Date))
 FROM adspots.data
 ```
 
+#### **get the whole row that is distinct by the value provided**
+This is good if you want to examine whole rows that have the same datetime, userip etc
+```sql
+SELECT distinct on (<col_1>, <col_2>) *
+FROM <schema>.<table>
+WHERE <blah>
+```
+
+#### **super smart way of getting largest / smallest value by another column**
+
+```
+SELECT DISTINCT ON (<col_1>) *
+FROM <schema>.<table>
+ORDER BY <col_2> -- This is the important part!!!!
+```
+This will de-dupe by col_1 but keep the first row from each distinct value
+So if you sort by size DESC then the row displayed will have the largest value of col_2
+
 #### **case statements**
 case statements can be used to do conditional shizzle
 ```sql
@@ -443,4 +479,37 @@ RIGHT OUTER JOIN (
 	AND action = 'tngviewusedvehiclepage') orig ON (orig.usersessionid = tng.usersessionid and orig.datadatetime = tng.datadatetime) 
 ```
 
+#### **temp tables examples**
 
+```sql
+WITH <tmp_table_name_1> 
+     AS (SELECT Max(userid) 
+         FROM   users.data 
+                LEFT JOIN demographics.data 
+                       ON users.data.cookiehash = demographics.data.sourceid 
+         WHERE  sourceid IS NOT NULL), 
+     <temp_table_2> 
+     AS (SELECT Max(userid) 
+         FROM   usersessions.data 
+         WHERE  brandid = 1 
+                AND datadatetime < '2018-02-24'), 
+
+     <temp_table_3> 
+     AS (SELECT Count(DISTINCT cookiehash) cookie 
+         FROM   users.data 
+         WHERE  userid BETWEEN (SELECT * 
+                                FROM temp_table_2) AND ( 
+                               SELECT * 
+                               FROM 
+                                       tmp_table_name_1) 
+                AND cookiehash IS NOT NULL), 
+
+     <temp_table_4> 
+     AS (SELECT Count(DISTINCT sourceid) epsilon 
+         FROM   demographics.data 
+         WHERE  sourceid IS NOT NULL)
+ 
+SELECT epsilon::float / temp_table_3::float 
+FROM   cookiecount, 
+       temp_table_4
+```

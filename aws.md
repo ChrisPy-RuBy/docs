@@ -47,6 +47,8 @@ WHERE site_id, yy, mm, dd, and hh are partitions
 - - -
 # EC2
 - - -
+
+[ec2 instance comparison tool](https://www.ec2instances.info/?filter=i3&cost_duration=monthly&selected=i3en.metal,i3en.large)
 Controls all th deployment of all the remote servers that we have!.
 Can get all the ip addresses for all servers here.
 Useful for debugging frontedn code.
