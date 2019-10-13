@@ -704,6 +704,17 @@ pipdeptree -r -p more-itertools
 
 ## psycopg2
 
+basic db setup
+[tutorial](http://www.postgresqltutorial.com/postgresql-python/create-tables/)
+```python
+import psycopg2
+conn = psycopg2.connect("dbname=test1 user=postgres password=postgres")
+cur = conn.cursor()
+cur.execute("CREATE TABLE boo (test VARCHAR, best INT)")
+cur.close()
+conn.commit()
+```
+
 ## pdb / ipdb
 - - - 
 

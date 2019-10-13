@@ -1,14 +1,13 @@
-
 Title: MongoDB
-summary: MongoDB shizzle
 - - - 
+
 ## Useful docs ##
 [mongo shell](https://docs.mongodb.com/manual/reference/mongo-shell/)
-
+[more mongo shell](https://docs.mongodb.com/manual/tutorial/write-scripts-for-the-mongo-shell/)
 [methods_collection_ref](https://docs.mongodb.com/manual/reference/method/js-collection/)
 
 
-## **Maintainence and Manangment**
+# **Maintainence and Manangment**
 
 #### **dealing with indexes**
 
@@ -52,6 +51,15 @@ db.getCollection("jobqueue").update(<query>, {'$set': {'fuck': 'shit'}}, multi=T
 
 #### **sorting with pymongo**
 [sorting](https://stackoverflow.com/questions/8109122/how-to-sort-mongodb-with-pymongo)
+
+## **terminal mongo**
+
+```javascript
+# Switching Mongo databases within a server
+db = db.getSiblingDB(‘<database name>’)
+# Querying specific collections
+db.getCollection(<collection name>).find(<query>)
+```
 
 ## **Basic Queries**
 
@@ -124,6 +132,68 @@ q = {shortid: {$in: [282, 1229]}}
 ```
 
 ## **Aggregate Queries**
+
+#### **basic agg queries**
+
+```javascript
+db.demographicmaps.aggregate(
+    [
+    { $project: {
+            'segmentID':1,
+            'segmentGroup': 1}
+    },
+    { 
+      $group:
+      { _id: "$segmentID", segmentGroupings: {$sum: 1}}
+    },
+    {
+      $sort: {segmentGroupings: 1}         }
+    
+        ]
+        )
+```
+
+maths on grouped by data
+
+```javascript
+DOING MATHS DATETIME MATHS:
+GROUPING DATA BY DATE
+
+
+db.getCollection("jobqueue").aggregate(
+
+    // Pipeline
+    [
+        // Stage 1
+        {
+            $match: {
+                'jobstatus': 'DONE',
+                'jobtype': 'LOAD.SESSIONSPIWIK'
+            }
+        },
+
+        // Stage 2
+        {
+            $project: {
+              'jobduration': {'$divide': [{$subtract: ['$jobfinished', '$jobstarted']},   1000]},  (doing maths here)
+              'jobfinished': "$jobfinished",
+              'count': {$literal: 1.0}.            (adds a specific number to the job )
+              }
+        },
+
+        // Stage 3
+        {
+            $group: {
+                 _id:  {$dayOfYear: "$jobfinished"},      (can group by dayOfYear)
+                       jobduration: {$sum: "$jobduration"},
+                       count: {$sum: "$count"} 
+            }
+        },
+
+    ]
+);
+```
+
 
 ## **bugs**
 

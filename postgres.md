@@ -70,6 +70,12 @@ psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis 
 - - -
 # admin
 - - -
+#### **uodate postgres locally**
+
+```bash
+brew postgresql-upgrade-database
+```
+
 
 #### **turning logging on / off**
 
@@ -184,6 +190,22 @@ Delete postmaster.pid file in /usr/local/var/postgres
 - - -
 # inserting / updating
 - - -
+
+#### **anti-sql injection techs**
+
+Use string formatting in params rather than in statement 
+
+```python
+params['interval'] = "{} days".format(5)
+```
+
+alternatively can use the AsIs module in psycopg2.extensions
+```python
+from psycopg2.extensions import AsIs
+params['interval'] = AsIs(5)
+# or some shit like that
+```       
+
 
 
 #### **table of fake data**
@@ -397,7 +419,9 @@ FROM adspots.data
 ```
 
 #### **get the whole row that is distinct by the value provided**
+[]
 This is good if you want to examine whole rows that have the same datetime, userip etc
+[good articles on distinct on](https://zaiste.net/postgresql_distinct_on/)
 ```sql
 SELECT distinct on (<col_1>, <col_2>) *
 FROM <schema>.<table>
@@ -513,3 +537,4 @@ SELECT epsilon::float / temp_table_3::float
 FROM   cookiecount, 
        temp_table_4
 ```
+
