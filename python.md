@@ -785,6 +785,24 @@ will return aregex object of the matches
 match_date.group()
 ```
 will return the matching string
+
+## re
+- - - 
+
+#### **pattern matching and grouping with ?P**
+
+```bash
+r'.+/group=(?P<yyyy>\d{4})_(?P<mm>\d{2})_(?P<dd>\d{2})_(?P<hh>\d{2})/(?P<file>.+parquet)'
+```
+
+lots going on here
+r' means that it is raw string so no escaping etc
+the regex is to match certain files names and ?P means that the 
+matches are assigned to the specfied group names
+i.e ?P<yyyy>\d{4}
+matches 4 digits and assigns them to the group yyyy
+
+
  
 
 ## sys

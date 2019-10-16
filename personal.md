@@ -6,15 +6,27 @@ summary: A collections of personal notes
 
 1. further spreadsheets -> conditional formating, vlookups, better pivots
 2. write up notes on urls
-3. advanced python
-[cpython source code tut](https://realpython.com/cpython-source-code-guide/)
-[gil tut](https://realpython.com/python-gil/)
-[memory-management](https://realpython.com/python-memory-management/)
-[buidling c-module](Building a Python C Extension Module)
-[standard-lib itertools](https://realpython.com/python-itertools/)
+3. advanced python 
 
+some things to try
+ 
+- [cpython source code tut](https://realpython.com/cpython-source-code-guide/)
+- [gil tut](https://realpython.com/python-gil/)
+- [memory-management](https://realpython.com/python-memory-management/)
+- [buidling c-module](Building a Python C Extension Module)
+- [standard-lib itertools](https://realpython.com/python-itertools/)
+  
 4. advanced pandas
 [idiomatic pandas](https://realpython.com/courses/idiomatic-pandas-tricks-features-you-may-not-know/)
+
+5. general programming.
+
+somethings to try 
+
+- one month destory all software
+- databases in 7 weeks
+
+
 
 # tvs knowledge to work on
 1. front end grid and infrastructure. how does it all fit together
