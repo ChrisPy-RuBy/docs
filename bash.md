@@ -426,6 +426,11 @@ example
 sed 's/"/""/g' extra.holidays.2018.csv> whatnewcsv.txt
 ```
 
+Delete blank lines
+```bash
+'s/^$/d'
+```
+
 #### **find and delete**
 https://stackoverflow.com/questions/5410757/delete-lines-in-a-text-file-that-contain-a-specific-string
 

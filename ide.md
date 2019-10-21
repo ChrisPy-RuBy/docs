@@ -101,6 +101,12 @@ or
 ### **find, search,  replace**
 [link](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
 
+### **find and delete**
+
+```bash
+:g/^$/d
+```
+
 #### **turn case sensitivity on / off**
 ```bash
 :set ignorecase
