@@ -1,4 +1,4 @@
-Title: Personal notes
+Title: personal notes
 summary: A collections of personal notes
 - - - 
 
@@ -26,7 +26,8 @@ somethings to try
 - one month destory all software
 - databases in 7 weeks
 
-
+6. better commandline shizzle
+[guide](http://conqueringthecommandline.com/book/ps)
 
 # tvs knowledge to work on
 1. front end grid and infrastructure. how does it all fit together

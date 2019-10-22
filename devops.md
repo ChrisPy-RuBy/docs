@@ -4,22 +4,6 @@ summary: devopsie shite!
 ---
 
 
-# aws
-- - - 
-
-cloud computing platform
-
-## Route53
-
-dns shizzle
-
-#### **check what collector a client is on**
-Go to Hosted Zones. Search for client collector URL
-i.e. collect-<clientid>
-
-it should then tell you the collector under the value field 
-
-
 
 
 # brew

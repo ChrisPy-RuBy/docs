@@ -1,3 +1,6 @@
+Title: datascience
+Summary: Notes on useful datascience libs
+
 # numpy
 
 #### **generate large arrays**
@@ -7,6 +10,8 @@ np.arange(10000)
 ```
 
 # matplotlib
+
+[cheat sheet](https://www.cheatography.com/gabriellerab/cheat-sheets/matplotlib-pyplot/)
 
 # pandas
 

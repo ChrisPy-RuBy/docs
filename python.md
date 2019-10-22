@@ -1,12 +1,26 @@
----
-title: Python 
+title: python 
 summary: Python notes.
----
 
 
-## Pythonic Python
+# Pythonic Python
 
-#### ** shortcircuiting functions**
+## Syntax
+
+### **single line if else statements**
+
+```
+y = 1
+x = 10 if y > 10 else None
+```
+
+### **!= vs is not**
+
+similar to = and is 
+=  is used to check if something is the same object
+is is used to check if something is the same type
+
+
+### ** shortcircuiting functions**
 
 [examples of shortcircuiting](https://www.geeksforgeeks.org/short-circuiting-techniques-python/)
 
@@ -18,14 +32,9 @@ if you want to guard against absent or invalid values going into a
 function. if either the 'value' is none or absent, it will be 
 replaced with ''
 
-## **"*args" and "**kwargs"**
+## *args" and "**kwargs"
 
-
-
-#### **zip star(*) idioms**
-
-
-
+### **zip star(*) idioms**
 
 transpose wide lists together into thin ones
 
@@ -48,10 +57,7 @@ test_list = ['a', 1, 'b', 2, 'c', 3, 'd', 4]
 pair_up = list(zip(*[iter(test_list)] * 2)
 ```
 
-
-
-
-#### **extensible functions**
+### **extensible functions**
 
 ```python
 def hyper_volumne(length, *lengths):
@@ -61,8 +67,71 @@ def hyper_volumne(length, *lengths):
     return V 
 ```
 
+## Builtins
+- - - - 
 
-## **comprehensions**
+### **--file--**
+where the module or whatever was imported from
+```python
+import pandas
+pandas.__file__
+'<some path to where it came from>some path to where it came from>.__init__.py'
+```
+
+### **--dict--**
+changes everything on a module into dict
+
+#### **display all functions etc on a module**
+
+```python 
+import datetime 
+datetime.__dict__.keys()
+```
+
+
+### **--import--**
+import something that isn't a module. Can use to avoid naming collisions
+
+### **--main--**
+read first when a module is imported or run from the command line
+basic setup for tvs.
+```python
+if __name__ == "__main__":
+    setup().process(process)
+```
+but can have any function in here. typically would be main or process etc
+
+```python
+target = __import__("my_script.py")
+sum = target.sum
+```
+
+### **--repr-- vs --str--** 
+
+__repr__ used to give dev representation of object
+__str__ used for general use
+
+### **vars**
+
+not quite sure what this does.
+
+
+## **Comprehensions**
+
+#### **dict comprehension**
+
+```python
+{k:v for k, v in dict.items()}
+```
+
+
+#### **conditional comprehensions**
+
+```python
+results = {k: dict() if x % 2 == 0 else 0.0 
+           for k in catergoies}
+```
+
 
 #### **nested comprehensions**
 
@@ -76,7 +145,18 @@ for x in range(10):
     inner = []
     for y in range(x):
         inner.append(y*3)
-    outer.append(inner)
+    outer.apped(inner)
+```
+#### **Flatten nest datastrunctures**
+
+nice if you know the depth
+
+```python
+[[[[for d in layer_4]
+    for c in layer_3]
+    for b in layer_2]
+    for a in layer_one]
+```
 ```
 #### **nested if statements**
 
@@ -88,15 +168,121 @@ values = [
     ]
 ```
 
+## Dictionary
+- - - 
 
-## **recursion**
+#### **set default**
+```python
+bigDict = {}
+for liverampID, details in default_rollup.items():
+    test = bigDict.setdefault(details.get('segmentGroup'), [])
+    test.append(details.get('epsilonValueName').split('=')[0])
+
+for segmentGroup, epsilonValueList in bigDict.items():
+    new = setDict.setdefault(segmentGroup, set(epsilonValueList)) 
+```
+Sorting the output to want you want
+```python
+for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
+     print("{}: {}").format(k, len(v))
+```
+[link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
+
+#### **sorting dict by values**
+
+```python
+# generate a list of sorted keys
+sorted_keys = sorted(dict_to_sort, key=lambda k: dict_to_sort[key], reverse=True)
+# regenerate the dict or list using the sorted keys
+[(key, dict_to_sort[key]) for key in sorted_keys]
+```
+
+
+#### **merging dicts**
+[link](https://treyhunner.com/2016/02/how-to-merge-dictionaries-in-python/)
+
+#### **iterate a dict**
+
+```python
+for k, v in dict.items(): print(k, v)
+```
+
+#### **counters**
+
+```python
+from collections import Counter
+counter = Counter()
+for x, y in tiny_dict.items():
+    counter[y] += 1
+
+```
+## Generators
+- - - 
+:
+
+## Lambdas
+- - - 
+
+[link](https://www.bogotobogo.com/python/python_functions_lambda.php)
+[link](http://p-nand-q.com/python/lambda.html)
+[link](https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/)
+[link](Conditional Statements in lambdas)
+
+#### **conditional lambdas**
+```python
+test = lambda x, y: x if x > y else y
+test(9, 2)
+```
+
+#### **basic lambda**
+
+```python
+x = lamba x: x + 2
+x(2)
+4
+```
+
+#### **lambda maps**
+In general just use a list compreshension instead
+```python
+values = [1,2,3,4]
+x = list(map(lambda x: x+2, values))
+[3,4,5,6]
+```
+
+#### **lambda reduce**
+Again use list comprehension instead
+
+```python
+values = [1,2,3,4]
+x = list(reduce)
+10
+```
+
+## List
+- - - 
+
+#### ** pythonic indexing,  enumerate** 
+
+```python
+for i, v in enumerate(range(10)):
+    print(i, v)
+```
+
+#### **fastest way to copy a list**
+```python
+new_list = old_list[:]
+```
+
+
+## **Recursion**
 [stackover_flow link](https://stackoverflow.com/questions/30214531/basics-of-recursion-in-python)
 
-## **testing**
+## **Testing**
 
 [mocking and testing spark](https://towardsdatascience.com/stop-mocking-me-unit-tests-in-pyspark-using-pythons-mock-library-a4b5cd019d7e)
 
-## **mocking**
+## **Mocking**
 
 #### **basic example of mocking using mock**
 
@@ -127,84 +313,29 @@ context of a unit test. Still working on this!
 patching can be used to replace whole objects with mock ones. This can be done with the
 @patch decorator or .patch()
 
-
-
-
-
-
-
-
-# TODO insert basic example of mocking an object here.
+##### TODO insert basic example of mocking an object here.
 
 
 specific methods can be mocked out also if that is easier.
 
 
 
-# TODO give example of mocking a method
+##### TODO give example of mocking a method
 
 
 patch as a content manager. 
 
 ### **mocking side effects**
 
-# TODO give example of patch as a context manager.
+##### TODO give example of patch as a context manager.
 ### **mock specifications**
 Because mock is v.lazy, it means that you can easily mock the wrong thing.
 A spec makes this harder to do. As you limit what can exist on your mock
 object.
-# TODO  what is a mock spec and how to use it.
+##### TODO  what is a mock spec and how to use it.
 
 # boto3
 - - - 
-
-# builtins
-- - - - 
-
-## **--file--**
-where the module or whatever was imported from
-```python
->>>import pandas
->>>pandas.__file__
-'<some path to where it came from>some path to where it came from>.__init__.py'
-```
-
-## **--dict--**
-changes everything on a module into dict
-
-#### **display all functions etc on a module**
-
-```python 
-import datetime 
-datetime.__dict__.keys()
-```
-
-
-## **--import--**
-import something that isn't a module. Can use to avoid naming collisions
-
-## **--main--**
-read first when a module is imported or run from the command line
-basic setup for tvs.
-```python
-if __name__ == "__main__":
-    setup().process(process)
-```
-but can have any function in here. typically would be main or process etc
-
-```python
-target = __import__("my_script.py")
-sum = target.sum
-```
-
-### **--repr-- vs --str--** 
-
-__repr__ used to give dev representation of object
-__str__ used for general use
-
-## **vars**
-
-not quite sure what this does.
 
 # bson
 --- 
@@ -315,54 +446,6 @@ time zone info is optional
 datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ```
 
-# dictionary
-- - - 
-
-#### **set default**
-```python
-bigDict = {}
-for liverampID, details in default_rollup.items():
-    test = bigDict.setdefault(details.get('segmentGroup'), [])
-    test.append(details.get('epsilonValueName').split('=')[0])
-
-for segmentGroup, epsilonValueList in bigDict.items():
-    new = setDict.setdefault(segmentGroup, set(epsilonValueList)) 
-```
-Sorting the output to want you want
-```python
-for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
-     print("{}: {}").format(k, len(v))
-```
-[link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
-
-#### **sorting dict by values**
-
-```python
-# generate a list of sorted keys
-sorted_keys = sorted(dict_to_sort, key=lambda k: dict_to_sort[key], reverse=True)
-# regenerate the dict or list using the sorted keys
-[(key, dict_to_sort[key]) for key in sorted_keys]
-```
-
-
-#### **merging dicts**
-[link](https://treyhunner.com/2016/02/how-to-merge-dictionaries-in-python/)
-
-#### **iterate a dict**
-
-```python
-for k, v in dict.items(): print(k, v)
-```
-
-#### **counters**
-
-```python
-from collections import Counter
-counter = Counter()
-for x, y in tiny_dict.items():
-    counter[y] += 1
-
-```
 # exceptions
 [link](https://stackoverflow.com/questions/5191830/how-do-i-log-a-python-error-with-debug-information)
 
@@ -423,60 +506,6 @@ snip: `autoreload
 %timeit -n 10000 <your_crappy_function(stupid_params)>
 ```
 
-
-# lambdas
-- - - 
-
-[link](https://www.bogotobogo.com/python/python_functions_lambda.php)
-[link](http://p-nand-q.com/python/lambda.html)
-[link](https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/)
-[link](Conditional Statements in lambdas)
-
-#### **conditional lambdas**
-```python
-test = lambda x, y: x if x > y else y
-test(9, 2)
-```
-
-#### **basic lambda**
-
-```python
-x = lamba x: x + 2
-x(2)
-4
-```
-
-#### **lambda maps**
-In general just use a list compreshension instead
-```python
-values = [1,2,3,4]
-x = list(map(lambda x: x+2, values))
-[3,4,5,6]
-```
-
-#### **lambda reduce**
-Again use list comprehension instead
-
-```python
-values = [1,2,3,4]
-x = list(reduce)
-10
-```
-
-# list
-- - - 
-
-#### ** pythonic indexing,  enumerate** 
-
-```python
-for i, v in enumerate(range(10)):
-    print(i, v)
-```
-
-#### **fastest way to copy a list**
-```python
-new_list = old_list[:]
-```
 
 
 # json

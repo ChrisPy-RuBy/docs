@@ -1,6 +1,5 @@
-title: GIT
+title: git
 summary: everything to do with git.
-* * * * *
 
 # useful resources
 - - - - - - 

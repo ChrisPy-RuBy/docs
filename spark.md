@@ -1,8 +1,29 @@
----
-title: Spark
+title: spark
 summary: Notes on spark
----
 
+# basics
+
+#### **access the shell**
+
+```python
+pyspark
+```
+ 
+#### **spark in browser debug**
+[here](http://localhost:4040/jobs/job/?id=0)
+
+#### **basic code debug**
+```python
+wholeRDD = [x for x in RDD.collect()]
+# get whole rdd as a list
+partRDD = [x for x in RDD.take(10)]
+``` 
+
+#### **basic redeading and writing from s3**
+Outside of the backend
+
+[read this](https://medium.com/@bogdan.cojocar/how-to-read-json-files-from-s3-using-pyspark-and-the-jupyter-notebook-275dcb27e124
+)
 
 # core spark
 
@@ -39,6 +60,90 @@ def partitionDebug(self, sc, RDD, glom=False):
 
 
 # sql spark
+
+##### **RDD to DF**
+
+```python
+derp = sc.parallelize(<yourshittydata>)
+SQLCtx = SQLContent(sc)
+df = SQLCtx.createDataFrame(derp)
+df.show()
+```
+
+#### **querying dataframes**
+
+[good guide](https://www.analyticsvidhya.com/blog/2016/10/spark-dataframe-and-operations/)
+
+
+#### **Getting up and running**
+
+```python
+# get SparkSQL context,  and row
+from pyspark.sql import SQLContext, Row
+
+# get context
+sqlCtx = SQLContext(sc)
+Inputfile = ‘<pathto  jsonfile>’
+
+#load some datas
+input = sqlCtx.read.json(inputfile)
+
+# view data
+input.show()
+
+# Create queryable table 
+input.registerTempTable('clickpiss')
+
+# query data
+records = sqlCtx.sql("""SELECT * FROM clickpiss WHERE last_visit_timestamp == 1548091943""")
+
+Ran pyspark like this 
+$~ pyspark --driver-class-path Downloads/postgresql-42.1.1.jar --jars Downloads/postgresql-42.1.1.jar
+
+Then connected to databases like this.
+
+ x = spark.read.format("jdbc").option("url", "jdbc:postgresql://localhost:5432/c103746_spaindemo").option("driver", "org.postgresql.Driver").option("dbtable", "adspots.data").option("user", "postgres").option("password", "postgres").load()
+
+# show your table.
+>>>x.show()
+
+Then I downloaded the jar from
+http://central.maven.org/maven2/org/postgresql/postgresql/
+and added it to my ~/spark/jar folder
+
+
+Alternative to the above syntax
+>>> y = sqlCtx.read.jdbc("jdbc:postgresql://localhost:5432/c103746_spaindemo", "adspots.data", properties={"user": "postgres", "password": "postres"})
+```
+
+
+
+##### **reading/ writing files**
+
+
+WRITE PARQUET FILES
+
+I want to be able to write a parquet file per day
+from pyspark.sql.functions import to_date
+dt = df.select('*', (to_date(df.datadatetime).alias('date')))
+df.write.format("parquet").partitionBy("date").save('/tmp/clickpiss4.parquet/')
+
+READ PARQUET FILES
+
+de = sqlCtx.read.parquet("/tmp/clickpiss4.parquet")
+
+This creates a parquet thing that we can now query
+
+de.filter("datadatetime <= '2018-10-11' and datadatetime > '2018-10-10'").show()
+
+
+WRITE TO A POSTGRES TABLE
+
+newstuff.write.jdbc("jdbc:postgresql://localhost:5432/sandbox", "public.adspotsdata1", properties={"user": "postgres", "password": "postres"})
+
+This will create and insert the data into a postgres table in the sandbox database, in the public.adspotsdata1 table.
+
+wr
 
 # pyspark 
 

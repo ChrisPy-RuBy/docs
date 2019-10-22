@@ -1,4 +1,4 @@
-Title: AWS
+Title: aws 
 summary: All things aws
 - - -
 
@@ -64,6 +64,18 @@ https://eu-west-1.console.aws.amazon.com/ec2/autoscaling/home?region=eu-west-1#A
 - - - 
 
 dns director thing
+
+
+
+dns shizzle
+
+#### **check what collector a client is on**
+Go to Hosted Zones. Search for client collector URL
+i.e. collect-<clientid>
+
+it should then tell you the collector under the value field 
+
+
 
 - - - 
 # S3
