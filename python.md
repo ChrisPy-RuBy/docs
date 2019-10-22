@@ -115,6 +115,39 @@ __str__ used for general use
 
 not quite sure what this does.
 
+## Bytes / Strings
+- - - - 
+
+#### **join() vs +=**
+
+join is perferred as it is much faster
+
+#### **convert bytes to strings vice versa**
+
+
+```python
+# generate string
+byte.decode('utf-8')
+# generate bytes
+string.decode()
+```
+
+#### **intermediate use  of format**
+
+###convert between binary / hex and dec
+```python
+# hex 
+“{0:x}”.format(17)
+# bin
+“{0:b}”.format(17)
+```
+
+#### **split string on symbol**
+```python
+>>>”1234-1”.partition(“-”)
+[“1234”, “-”, “1”]
+```
+
 
 ## **Comprehensions**
 
@@ -216,9 +249,26 @@ for x, y in tiny_dict.items():
     counter[y] += 1
 
 ```
+
+## Exceptions
+[link](https://stackoverflow.com/questions/5191830/how-do-i-log-a-python-error-with-debug-information)
+
+#### **useful stacktraces as exceptons messages**
+
+```python
+import logging
+def get_number():
+    return int('foo')
+try:
+    x = get_number()
+except Exception as ex:
+    logging.exception('Caught an error')
+```
+
+
 ## Generators
 - - - 
-:
+
 
 ## Lambdas
 - - - 
@@ -273,6 +323,120 @@ for i, v in enumerate(range(10)):
 ```python
 new_list = old_list[:]
 ```
+
+
+## OOP
+- - -
+
+### **naming conventions**
+```python
+__<name>__ : reserved for builtins
+_<private>: private attribure for python, not really private
+__<name>: also kind of private but not quite used to avoid naming conflicts
+```
+
+#### **set attributes on a class**
+
+```python
+for k, v in dict.items():
+    setattr(self, k, v)
+```
+would bolt on all the attributes from the dictionary
+
+### **properties**
+    good way of setting more complicated attribute on class 
+
+### **static methods**
+used to distinguish methods that don't require any knowledge of the state of the class.
+It is more of a housekeeping thing than anything else
+[link](https://stackoverflow.com/questions/15017734/using-static-methods-in-python-best-practice)
+```python
+@staticmethof
+def you_shit_function():
+    return "shit"
+```
+
+### **class methods**
+similar to static methods but definately relavant to class but still don't require state of 
+the instance of the class
+
+```python
+class Pizza:
+    def __init__(self, ingredients):
+        self.ingredients = ingredients
+
+    def __repr__(self):
+        return f'Pizza({self.ingredients!r})'
+
+    @classmethod
+    def margherita(cls):
+        return cls(['mozzarella', 'tomatoes'])
+
+    @classmethod
+    def prosciutto(cls):
+        return cls(['mozzarella', 'tomatoes', 'ham'])
+
+
+>>>Pizza.margherita()
+Pizza(['mozzarella', 'tomatoes'])
+```
+
+
+
+## Optimisation
+
+#### tip 1, membership testing
+
+```python 
+good: will look up directly 
+for x in set([1,2,3,4,5])
+
+bad: will loop through, with every loop
+for x in list([1,2,3,4,5])
+```
+
+#### tip 2, string concat
+```python
+good: 
+"".join(["a", "b", "c"])
+bad:
+strng += "a"
+strng += "b"
+strng += "c"
+```
+
+#### tip 3:
+this one is interesting
+```python
+
+def func_1():
+    anotherlist = []
+    for x in somelist:
+        antherlist.append(x.upper())
+    return anotherlist
+
+the above function in slower than
+
+def func_2():
+    anotherlist = []
+    todo = x.upper
+    otherthingtotodo = anotherlist.append
+    for x in somelist:
+        otherthingtodo(todo())
+
+which is slower than 
+
+def func_3():
+    anotherlist = [x.upper() for x in somelist]
+
+which is slow than
+
+def func_4():
+    todo = x.upper
+    anotherlist = [todo() for x in somelist]
+```
+
+
 
 
 ## **Recursion**
@@ -334,10 +498,13 @@ A spec makes this harder to do. As you limit what can exist on your mock
 object.
 ##### TODO  what is a mock spec and how to use it.
 
-# boto3
+## Libraries
+- - -
+
+### boto3
 - - - 
 
-# bson
+### bson
 --- 
 stuff that is bz2 or from mongo is closer to bson than json
  
@@ -362,43 +529,11 @@ json.dump(client_metadata,open(json_filename,'w'),
           default=json_util.default)
 ```
 
-# bytes / strings
-- - - - 
 
-#### **join() vs +=**
+### csv
+- - -
 
-join is perferred as it is much faster
-
-#### **convert bytes to strings vice versa**
-
-
-```python
-# generate string
-byte.decode('utf-8')
-# generate bytes
-string.decode()
-```
-
-#### **intermediate use  of format**
-
-###convert between binary / hex and dec
-```python
-# hex 
-“{0:x}”.format(17)
-# bin
-“{0:b}”.format(17)
-```
-
-#### **split string on symbol**
-```python
->>>”1234-1”.partition(“-”)
-[“1234”, “-”, “1”]
-```
-
-
-# csv
-
-# dateutils
+### dateutils
 - - -
 
 #### **parse stupid timestamps**
@@ -409,7 +544,7 @@ dateutil.parser.parse("2015-10-19T00:00:00.000+0000")
 ```
 
 
-# datetime
+### datetime
 - - - 
 
 #### **genwerate all the times between two dates**     
@@ -446,22 +581,7 @@ time zone info is optional
 datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ```
 
-# exceptions
-[link](https://stackoverflow.com/questions/5191830/how-do-i-log-a-python-error-with-debug-information)
-
-#### **useful stacktraces as exceptons messages**
-
-```python
-import logging
-def get_number():
-    return int('foo')
-try:
-    x = get_number()
-except Exception as ex:
-    logging.exception('Caught an error')
-```
-
-# fabric
+### fabric
 - - -
 
 results = defaultdict(list)
@@ -470,7 +590,7 @@ reduce(data, reducer, results)
 
 ```
 
-## itertools
+### ** itertools **
 
 #### **groupby**
 
@@ -481,7 +601,7 @@ data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter':
 {item[0]: list(item[1]) for item in itertools.groupby(data)}
 ```
 
-# ipython
+### ipython
 - - -
 
 #### **enable autoreload**
@@ -508,7 +628,7 @@ snip: `autoreload
 
 
 
-# json
+### json
 
 #### **parse a string to a dict**
 [link](https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary)
@@ -521,116 +641,6 @@ snip: `autoreload
 #### **parsing large files of json i.e. firehose data**
 not really josn as no wrapping []
 [link](https://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-with-multiple-json-objects-in-python)
-
-## object oriented programing
-- - -
-
-### **naming conventions**
-```python
-__<name>__ : reserved for builtins
-_<private>: private attribure for python, not really private
-__<name>: also kind of private but not quite used to avoid naming conflicts
-```
-
-#### **set attributes on a class**
-
-```python
-for k, v in dict.items():
-    setattr(self, k, v)
-```
-would bolt on all the attributes from the dictionary
-
-### **properties**
-    good way of setting more complicated attribute on class 
-
-### **static methods**
-used to distinguish methods that don't require any knowledge of the state of the class.
-It is more of a housekeeping thing than anything else
-[link](https://stackoverflow.com/questions/15017734/using-static-methods-in-python-best-practice)
-```python
-@staticmethof
-def you_shit_function():
-    return "shit"
-```
-
-### **class methods**
-similar to static methods but definately relavant to class but still don't require state of 
-the instance of the class
-
-```python
-class Pizza:
-    def __init__(self, ingredients):
-        self.ingredients = ingredients
-
-    def __repr__(self):
-        return f'Pizza({self.ingredients!r})'
-
-    @classmethod
-    def margherita(cls):
-        return cls(['mozzarella', 'tomatoes'])
-
-    @classmethod
-    def prosciutto(cls):
-        return cls(['mozzarella', 'tomatoes', 'ham'])
-
-
->>>Pizza.margherita()
-Pizza(['mozzarella', 'tomatoes'])
-```
-
-## optimising python code for speed
-
-#### tip 1, membership testing
-
-```python 
-good: will look up directly 
-for x in set([1,2,3,4,5])
-
-bad: will loop through, with every loop
-for x in list([1,2,3,4,5])
-```
-
-#### tip 2, string concat
-```python
-good: 
-"".join(["a", "b", "c"])
-bad:
-strng += "a"
-strng += "b"
-strng += "c"
-```
-
-#### tip 3:
-this one is interesting
-```python
-
-def func_1():
-    anotherlist = []
-    for x in somelist:
-        antherlist.append(x.upper())
-    return anotherlist
-
-the above function in slower than
-
-def func_2():
-    anotherlist = []
-    todo = x.upper
-    otherthingtotodo = anotherlist.append
-    for x in somelist:
-        otherthingtodo(todo())
-
-which is slower than 
-
-def func_3():
-    anotherlist = [x.upper() for x in somelist]
-
-which is slow than
-
-def func_4():
-    todo = x.upper
-    anotherlist = [todo() for x in somelist]
-```
-
 
 ## os
 - - - 
