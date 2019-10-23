@@ -127,6 +127,12 @@ replace all instances in whole file
 %s/old/new/g
 ```
 
+#### **math and remove evrything to the end of line**
+
+```bash
+:s%/stringtomatch.*$//
+```
+
 ### **copy and paste**
 
 #### **delete line, copy and paste**
