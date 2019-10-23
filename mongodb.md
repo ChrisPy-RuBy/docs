@@ -194,6 +194,36 @@ db.getCollection("jobqueue").aggregate(
 );
 ```
 
+#### **collection lookups**
+
+If you want to join docs from multiple collections use a lookup
+```javascript
+// to mungo client and brand docs together
+db.getCollection("clients").aggregate([
+	{
+	  $match: {'title': /booking/i}
+	},
+	{
+	  $lookup:
+	  {
+	    from: "brands",
+	   	localField: "shortid",
+	   	foreignField: "clientshortid",
+	   	as: "brandoc"
+	   	}
+	},
+	{
+		$unwind: "$brandoc"
+	},
+	{
+	  $project: {"brandoc.clientshortid": 1,
+	  			 "brandoc.country": 1}
+	},
+	]
+	)
+```
+
+
 
 ## **bugs**
 

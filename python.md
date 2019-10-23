@@ -687,6 +687,14 @@ python3 -m pstats profile.stats
 
 ## pip
 
+#### **When checking for packages check casse insensitive**
+
+often the package that you are looking 
+
+```
+pip3 freeze | grep -i django 
+```
+
 #### **set up a package mirror**
 
 Go to

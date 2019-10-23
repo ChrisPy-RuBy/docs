@@ -1,13 +1,13 @@
 Title: bash
 summary: Notes on bash scripting
-- - - 
 
 [awesome general guide to multiple cmmdline tools](http://conqueringthecommandline.com/book/ps)
 
 # bash
-[v.good guide to bash](https://www.tldp.org/LDP/abs/html/)
-[process management](https://mywiki.wooledge.org/ProcessManagement)
-Important point! Syntax for running stuff from the command line is v. different to running in script
+[amazing bash cheat sheet](https://devhints.io/bash)   
+[v.good guide to bash](https://www.tldp.org/LDP/abs/html/)   
+[process management](https://mywiki.wooledge.org/ProcessManagement)   
+Important point! Syntax for running stuff from the command line is v. different to running in script  
 
 ## basics 
 
