@@ -630,6 +630,47 @@ snip: `autoreload
 
 ### json
 
+#### **dealing with mongo queries as json**
+
+Export your query as standard json (not the fancy Mongo Shiz). Either write to file or
+to clipboard.
+
+Read from clipboard
+
+```python
+import pyperclip
+import json
+data = pyperclip.paste()
+datalist = data.split['\n']
+# parse data
+parseddata = [json.loads(row) for row in datalist] 
+# you now have the data as a list of dicts
+```
+
+Read from file
+
+```python
+with open(<path>, 'r') as f:
+     list_of_rows = f.readlines()
+
+parserows = [json.loads(row) for row in list_of_rows]
+```
+
+Pipe in from stdin
+
+```
+import sys
+import json
+
+parsed_rows = []
+for row in sys.stdin:
+    try:
+        parsed_rows.append(json.loads(row))
+    except:
+        pass
+```
+
+
 #### **parse a string to a dict**
 [link](https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary)
 ```python
@@ -780,6 +821,13 @@ breakpoint()
 
 ```bash
 python -m pdb <scriptname>.py
+```
+
+#### **open nested python console within a pdb sesisons**
+
+
+```python
+!import code; code.interact(local=vars())
 ```
 
 ##### **display all local or global variables in debugger**
