@@ -11,6 +11,15 @@ Important point! Syntax for running stuff from the command line is v. different 
 
 ## basics 
 
+#### **string comparisions**
+
+`` bash
+if [[ $var == "test" ]]
+
+not 
+if [[ $var -eq "test"]]
+```
+
 #### **define a functin on the command line**
 
 ```bash

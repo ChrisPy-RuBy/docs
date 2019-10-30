@@ -2,6 +2,10 @@ Title: personal notes
 summary: A collections of personal notes
 - - - 
 
+# useful resoures
+[great collection of cheatsheets](https://devhints.io/go)
+
+
 # to Learn
 
 1. further spreadsheets -> conditional formating, vlookups, better pivots
@@ -28,10 +32,16 @@ somethings to try
 
 6. better commandline shizzle
 [guide](http://conqueringthecommandline.com/book/ps)
+[learn x in y mins](https://learnxinyminutes.com/docs/erlang/)
+
+7. bash
+
+- understand date tool
+- understand read command.
 
 # tvs knowledge to work on
 1. front end grid and infrastructure. how does it all fit together
- 
+2. topics for sigga. Devops training!2. topics for sigga. Devops training! 
 
 # Sprint challenges
 
@@ -66,4 +76,5 @@ Done ….
 DOWNTIME PROJECTS :
 Contribute to an open source project
 Set up a personal website 
+
 
