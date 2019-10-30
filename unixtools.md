@@ -98,6 +98,25 @@ crontab ~/.crontab.crontab
 # date
 tool for converting times etc
 
+```bash
+start_date=$(date --date "4 day ago" '+%Y%m%d')
+end_date=$(date +%m-%d-%Y -d "$start_date + 130 day")
+
+```
+
+```
+get_date () {
+    date +%Y-%m-%d --date "$1"
+}
+then=$(get_date "4 days ago")
+now=$(get_date "today")
+
+while [[ $then != $now ]]; do
+  then=$(get_date "$then + 1 day")
+  echo "$then"
+done
+```
+
 #### **convert timestamps**
 ```bash
 date -r 1555718402
