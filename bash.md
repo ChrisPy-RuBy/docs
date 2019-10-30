@@ -4,6 +4,7 @@ summary: Notes on bash scripting
 [awesome general guide to multiple cmmdline tools](http://conqueringthecommandline.com/book/ps)
 
 # bash
+
 [amazing bash cheat sheet](https://devhints.io/bash)   
 [v.good guide to bash](https://www.tldp.org/LDP/abs/html/)   
 [process management](https://mywiki.wooledge.org/ProcessManagement)   
@@ -51,10 +52,15 @@ sample/etc
 ls $sample
 ```
 
-#### **basic data types**
+#### **basic data types/structures**
 
 ```bash
 names=("chris" "dan" "alex")
+```
+
+```bash
+declare -A b
+b=([hello]=world ["a b"]="c d")
 ```
 
 #### **ways to increment variables**
@@ -80,13 +86,13 @@ var=$((var+1))
 )
 ```bash
 for tag in $(git tag); do
-    if [[ $tag == *'tvs'* ]]; then
-        echo $tag
- §   elif [[ <do something else> ]]; then
-        echo do something else""
-    else
-        echo "Unknown parameter"
-    fi
+if [[ $tag == *'tvs'* ]]; then
+echo $tag
+§   elif [[ <do something else> ]]; then
+echo do something else""
+else
+echo "Unknown parameter"
+fi
 done
 ```
 
@@ -107,16 +113,24 @@ basic loop
 ```bash
 names=("chris" "dan" "alex")
 for name in $names;do 
-    echo $name
+echo $name
 done
+```
+
+c style loop
+```bash
+for((i=0; i<${#thingtoloopover}; i++)); do
+    echo "do something"
+    echo "${thingtoloopover:$i:1}"
+done 
 ```
 
 basic while loop
 ```bash
 counter=1
 while [[ $counter -le 10 ]]; do 
-    echo $counter
-    ((counter++))
+echo $counter
+((counter++))
 done
 ```
 
@@ -124,8 +138,8 @@ basic until loop
 ```bash
 counter=1 
 until [[ $counter -gt 10 ]]; do 
-    echo $counter 
-    ((counter++))
+echo $counter 
+((counter++))
 done
 ```
 
@@ -133,7 +147,7 @@ done
 loop through all files in a folder
 ```bash
 for file in ./*.log; do 
-    echo $file; <do something>; 
+echo $file; <do something>; 
 done
 ```
 

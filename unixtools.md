@@ -13,6 +13,7 @@ ag <thing to find>
 
 # awk
 https://www.tutorialspoint.com/awk/awk_basic_examples.htm
+(good 3 part tutorial to the basics)[https://blog.jpalardy.com/posts/why-learn-awk/]
 
 ## **cut sections from strings**
 similar to cut at a basic level, but much more powerful and esoteric.
