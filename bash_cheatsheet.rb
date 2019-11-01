@@ -234,8 +234,217 @@ echo ${STR^^}  #=> "HELLO WORLD!" (all uppercase)
 	END
     end
 end
+category do
+	id 'Loop'
+    entry do
+	  name 'basic'
+	  notes <<-'END'
+```bash
+for i in /etc/rc.*; do
+  echo $i
+done
+```
+	  END
+    end
+    entry do
+	  name 'c-loops'
+	  notes <<-'END'
+```bash
+for ((i = 0 ; i < 100 ; i++)); do
+  echo $i
+done
+```
+	  END
+   end
+    entry do
+	  name 'ranges'
+	  notes <<-'END'
+```bash
+for i in {1..5}; do
+    echo "Welcome $i"
+done
+
+With step size
+
+for i in {5..50..5}; do
+    echo "Welcome $i"
+done
+```
+	  END
+    end
+    entry do
+	  name 'read lines'
+	  notes <<-'END'
+```bash
+< file.txt | while read line; do
+  echo $line
+done
+```
+	  END
+    end
+end
+
+category do
+	id 'Functions'
+    entry do
+	  name 'Basic'
+	  notes <<-'END'
+```bash
+myfunc() {
+    echo "hello $1"
+}
+
+# Same as above (alternate syntax)
+function myfunc() {
+    echo "hello $1"
+}
+
+myfunc "John"
+```
+      END
+    end
+    entry do
+	  name 'Input'
+	  notes <<-'END'
+```bash
+$# 	Number of arguments
+$* 	All arguments
+$@ 	All arguments, starting from first
+$1 	First argument
+```
+	  END
+    end
+end
+
+category do
+	id 'Data Structures'
+
+    entry do
+	  name 'Array'
+	  notes <<-'END'
+```bash
+Fruits=('Apple' 'Banana' 'Orange')
+
+Fruits[0]="Apple"
+Fruits[1]="Banana"
+Fruits[2]="Orange"
+```
+      END
+    end
+    entry do
+	  name 'Array functions'
+	  notes <<-'END'
+```bash
+Fruits=("${Fruits[@]}" "Watermelon")    # Push
+Fruits+=('Watermelon')                  # Also Push
+Fruits=( ${Fruits[@]/Ap*/} )            # Remove by regex match
+unset Fruits[2]                         # Remove one item
+Fruits=("${Fruits[@]}")                 # Duplicate
+Fruits=("${Fruits[@]}" "${Veggies[@]}") # Concatenate
+lines=(`cat "logfile"`)                 # Read from file
+```
+	  END
+    end
+    entry do
+	  name 'Array access'
+	  notes <<-'END'
+```bash
+echo ${Fruits[0]}           # Element #0
+echo ${Fruits[@]}           # All elements, space-separated
+echo ${#Fruits[@]}          # Number of elements
+echo ${#Fruits}             # String length of the 1st element
+echo ${#Fruits[3]}          # String length of the Nth element
+echo ${Fruits[@]:3:2}       # Range (from position 3, length 2)
+```
+	  END
+    end
+    entry do
+	  name 'Iterate array'
+	  notes <<-'END'
+```bash
+for i in "${arrayName[@]}"; do
+  echo $i
+done
+```
+	  END
+    end
+    entry do
+	  name 'Dictionaries'
+	  notes <<-'END'
+```bash
+declare -A sounds
+
+sounds[dog]="bark"
+sounds[cow]="moo"
+sounds[bird]="tweet"
+sounds[wolf]="howl"
+```
+	  END
+    end
+    entry do
+	  name 'Dict access'
+	  notes <<-'END'
+```bash
+echo ${sounds[dog]} # Dog's sound
+echo ${sounds[@]}   # All values
+echo ${!sounds[@]}  # All keys
+echo ${#sounds[@]}  # Number of elements
+unset sounds[dog]   # Delete dog
+```
+	  END
+    end
+    entry do
+	  name '<name>'
+	  notes <<-'END'
+```bash
+for val in "${sounds[@]}"; do
+  echo $val
+done
+
+Iterate over keys
+
+for key in "${!sounds[@]}"; do
+  echo $key
+done
+```
+	  END
+    end
+  end
+
+category do
+	id 'Misc'
+    entry do
+  	  name 'casse'
+	  notes <<-'END'
+```bash
+case "$1" in
+start | up)
+  vagrant up
+  ;;
+  *)
+  echo "Usage: $0 {start|stop|ssh}"
+    ;;
+esac
+```
+      END
+    end
+    entry do
+	  name 'Print'
+	  notes <<-'END'
+```bash
+printf "Hello %s, I'm %s" Sven Olga
+#=> "Hello Sven, I'm Olga
+
+printf "1 + 1 = %d" 2
+#=> "1 + 1 = 2"
+
+printf "This is how you print a float: %f" 2
+#=> "This is how you print a float: 2.000000"
+```
+	END
+ end
+end
+end
 	
 
-
-
-  end
+	
