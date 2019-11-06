@@ -36,12 +36,18 @@ somethings to try
 
 7. bash
 
-- understand date tool
+- understand date tool (a bash timer and stopwatch would a good way to do this)
 - understand read command.
+- write bash function that names my tmux sessions
+
+8.Unix
+- learn wherer evrything is and what everything does on a mac and raspberry pi.
 
 # tvs knowledge to work on
 1. front end grid and infrastructure. how does it all fit together
 2. topics for sigga. Devops training!2. topics for sigga. Devops training! 
+
+
 
 # Sprint challenges
 

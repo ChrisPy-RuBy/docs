@@ -146,6 +146,14 @@ git checkout .
 
 ## diff
 - - - - 
+
+#### **files with differences between two branches**
+
+```bash
+git diff --name-only <branch1> <branch2>
+```
+
+
 #### **difference between two files**
 
 ```bash

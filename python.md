@@ -201,6 +201,26 @@ values = [
     ]
 ```
 
+
+## Concurrency
+
+#### **multithread**
+for I/O bound
+
+```python
+import concurrent.futures
+with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+    # where ready func is the function to map over your datasets. Must be iterable!. 
+    batch = executor.map(ready_func, site_ids)
+    for b in batch:
+        results.append(b)
+    return results
+```
+
+
+#### **multiprocess**
+for CPU bound
+
 ## Dictionary
 - - - 
 
@@ -500,6 +520,27 @@ object.
 
 ## Libraries
 - - -
+
+
+### functools
+- - - 
+
+#### partial functinos 
+useful when doing stuff on parallel or in spark.
+Can create a partial complete function before handing it to the thing that will parallelise it
+
+```python
+from functools import partial
+
+def my_fuction(param1, param2, data)
+    print(param1, param2)
+    yield data
+
+part_func = partial(my_function, param1, param2)
+executor.map(part_func, [<data>])
+```
+
+
 
 ### boto3
 - - - 

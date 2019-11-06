@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Bash</title>
+<link href='style.css' rel='stylesheet'>
+<link href='//dash_ref/Category/Basics/1'>
+<link href='//dash_ref_Basics/Entry/Example/0'>
+<link href='//dash_ref_Basics/Entry/Variables/0'>
+<link href='//dash_ref_Basics/Entry/String Quotes/0'>
+<link href='//dash_ref_Basics/Entry/Conditional exe/0'>
+<link href='//dash_ref_Basics/Entry/Functions/0'>
+<link href='//dash_ref_Basics/Entry/Shell execution/0'>
+<link href='//dash_ref_Basics/Entry/Conditionals/0'>
+<link href='//dash_ref_Basics/Entry/Brace expansion/0'>
+<link href='//dash_ref_Basics/Entry/Useful modes/0'>
+<link href='//dash_ref/Category/Param Expansion/1'>
+<link href='//dash_ref_Param Expansion/Entry/Slicing/0'>
+<link href='//dash_ref_Param Expansion/Entry/Extension/0'>
+<link href='//dash_ref_Param Expansion/Entry/Substitution/0'>
+<link href='//dash_ref_Param Expansion/Entry/Comments/0'>
+<link href='//dash_ref_Param Expansion/Entry/Length/0'>
+<link href='//dash_ref_Param Expansion/Entry/Default values/0'>
+<link href='//dash_ref_Param Expansion/Entry/Substrings/0'>
+<link href='//dash_ref_Param Expansion/Entry/Manipulation/0'>
+<link href='//dash_ref/Category/Loop/1'>
+<link href='//dash_ref_Loop/Entry/basic/0'>
+<link href='//dash_ref_Loop/Entry/c-loops/0'>
+<link href='//dash_ref_Loop/Entry/ranges/0'>
+<link href='//dash_ref_Loop/Entry/read lines/0'>
+<link href='//dash_ref/Category/Functions/1'>
+<link href='//dash_ref_Functions/Entry/Basic/0'>
+<link href='//dash_ref_Functions/Entry/Input/0'>
+<link href='//dash_ref/Category/Data Structures/1'>
+<link href='//dash_ref_Data Structures/Entry/Array/0'>
+<link href='//dash_ref_Data Structures/Entry/Array functions/0'>
+<link href='//dash_ref_Data Structures/Entry/Array access/0'>
+<link href='//dash_ref_Data Structures/Entry/Iterate array/0'>
+<link href='//dash_ref_Data Structures/Entry/Dictionaries/0'>
+<link href='//dash_ref_Data Structures/Entry/Dict access/0'>
+<link href='//dash_ref_Data Structures/Entry//0'>
+<link href='//dash_ref/Category/Misc/1'>
+<link href='//dash_ref_Misc/Entry/casse/0'>
+<link href='//dash_ref_Misc/Entry/Print/0'>
+</head>
+<body>
+<header>
+<h1>Bash</h1>
+</header>
+<article>
+<p><p>My <em>awesome</em> cheat sheet</p>
+</p>
+<section class='category'>
+<h2 id='//dash_ref/Category/Basics/1'>
+Basics
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Basics/Entry/Example/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Example</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="c">#!/usr/bin/env bash</span>&#x000A;<span class="nv">NAME</span><span class="o">=</span><span class="s2">"John"</span>&#x000A;<span class="nb">echo</span> <span class="s2">"Hello </span><span class="nv">$NAME</span><span class="s2">!"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Variables/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Variables</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">NAME</span><span class="o">=</span><span class="s2">"John"</span>&#x000A;<span class="nb">echo</span> <span class="nv">$NAME</span>&#x000A;<span class="nb">echo</span> <span class="s2">"</span><span class="nv">$NAME</span><span class="s2">"</span>&#x000A;<span class="nb">echo</span> <span class="s2">"</span><span class="k">${</span><span class="nv">NAME</span><span class="k">}</span><span class="s2">!"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/String Quotes/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>String Quotes</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">NAME</span><span class="o">=</span><span class="s2">"John"</span>&#x000A;<span class="nb">echo</span> <span class="s2">"Hi </span><span class="nv">$NAME</span><span class="s2">"</span>  <span class="c">#=&gt; Hi John</span>&#x000A;<span class="nb">echo</span> <span class="s1">'Hi $NAME'</span>  <span class="c">#=&gt; Hi $NAME</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Conditional exe/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Conditional exe</p>
+</div>
+<div class='notes'><pre class="highlight shell">git commit <span class="o">&amp;&amp;</span> git push&#x000A;git commit <span class="o">||</span> <span class="nb">echo</span> <span class="s2">"Commit failed"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Functions/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Functions</p>
+</div>
+<div class='notes'><pre class="highlight shell">get_name<span class="o">()</span> <span class="o">{</span>&#x000A;  <span class="nb">echo</span> <span class="s2">"John"</span>&#x000A;<span class="o">}</span>&#x000A;<span class="nb">echo</span> <span class="s2">"You are </span><span class="si">$(</span>get_name<span class="si">)</span><span class="s2">"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Shell execution/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Shell execution</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">echo</span> <span class="s2">"I'm in </span><span class="si">$(</span><span class="nb">pwd</span><span class="si">)</span><span class="s2">"</span>&#x000A;<span class="nb">echo</span> <span class="s2">"I'm in </span><span class="sb">`</span><span class="nb">pwd</span><span class="sb">`</span><span class="s2">"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Conditionals/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Conditionals</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">if</span> <span class="o">[[</span> <span class="nt">-z</span> <span class="s2">"</span><span class="nv">$string</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then&#x000A;  </span><span class="nb">echo</span> <span class="s2">"String is empty"</span>&#x000A;<span class="k">elif</span> <span class="o">[[</span> <span class="nt">-n</span> <span class="s2">"</span><span class="nv">$string</span><span class="s2">"</span> <span class="o">]]</span><span class="p">;</span> <span class="k">then&#x000A;  </span><span class="nb">echo</span> <span class="s2">"String is not empty"</span>&#x000A;<span class="k">fi</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Brace expansion/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Brace expansion</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">echo</span> <span class="o">{</span>A,B<span class="o">}</span>.js&#x000A;<span class="o">{</span>A,B<span class="o">}</span>   Same as A B&#x000A;<span class="o">{</span>A,B<span class="o">}</span>.js    Same as A.js B.js&#x000A;<span class="o">{</span>1..5<span class="o">}</span>  Same as 1 2 3 4 5</pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Useful modes/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Useful modes</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">set</span> <span class="nt">-euo</span> pipefail&#x000A;<span class="nv">IFS</span><span class="o">=</span><span class="s1">$'</span><span class="se">\n\t</span><span class="s1">'</span>&#x000A;<span class="nb">set</span> <span class="nt">-x</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Param Expansion/1'>
+Param Expansion
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Param Expansion/Entry/Slicing/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Slicing</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">name</span><span class="o">=</span><span class="s2">"John"</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="k">}</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span><span class="p">/J/j</span><span class="k">}</span>    <span class="c">#=&gt; "john" (substitution)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span>:0:2<span class="k">}</span>    <span class="c">#=&gt; "Jo" (slicing)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span>::2<span class="k">}</span>     <span class="c">#=&gt; "Jo" (slicing)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span>::-1<span class="k">}</span>    <span class="c">#=&gt; "Joh" (slicing)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span>:<span class="p">(-1)</span><span class="k">}</span>   <span class="c">#=&gt; "n" (slicing from right)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span>:<span class="p">(-2)</span>:1<span class="k">}</span> <span class="c">#=&gt; "h" (slicing from right)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">food</span><span class="k">:-</span><span class="nv">Cake</span><span class="k">}</span>  <span class="c">#=&gt; $food or "Cake"</span>&#x000A;<span class="nv">length</span><span class="o">=</span>2&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">name</span>:0:length<span class="k">}</span>  <span class="c">#=&gt; "Jo"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Extension/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Extension</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">STR</span><span class="o">=</span><span class="s2">"/path/to/foo.cpp"</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">%.cpp</span><span class="k">}</span>    <span class="c"># /path/to/foo</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">%.cpp</span><span class="k">}</span>.o  <span class="c"># /path/to/foo.o</span>&#x000A;&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">##*.</span><span class="k">}</span>     <span class="c"># cpp (extension)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">##*/</span><span class="k">}</span>     <span class="c"># foo.cpp (basepath)</span>&#x000A;&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">#*/</span><span class="k">}</span>      <span class="c"># path/to/foo.cpp</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">##*/</span><span class="k">}</span>     <span class="c"># foo.cpp</span>&#x000A;&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">/foo/bar</span><span class="k">}</span> <span class="c"># /path/to/bar.cpp</span>&#x000A;&#x000A;<span class="nv">STR</span><span class="o">=</span><span class="s2">"Hello world"</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span>:6:5<span class="k">}</span>   <span class="c"># "world"</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="k">:-</span><span class="nv">5</span>:5<span class="k">}</span>  <span class="c"># "world"</span>&#x000A;&#x000A;<span class="nv">SRC</span><span class="o">=</span><span class="s2">"/path/to/foo.cpp"</span>&#x000A;<span class="nv">BASE</span><span class="o">=</span><span class="k">${</span><span class="nv">SRC</span><span class="p">##*/</span><span class="k">}</span>   <span class="c">#=&gt; "foo.cpp" (basepath)</span>&#x000A;<span class="nv">DIR</span><span class="o">=</span><span class="k">${</span><span class="nv">SRC</span><span class="p">%</span><span class="nv">$BASE</span><span class="k">}</span>  <span class="c">#=&gt; "/path/to/" (dirpath)</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Substitution/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Substitution</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">${</span><span class="nv">FOO</span><span class="p">%suffix</span><span class="k">}</span>   Remove suffix&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">#prefix</span><span class="k">}</span>   Remove prefix&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">%%suffix</span><span class="k">}</span>  Remove long suffix&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">##prefix</span><span class="k">}</span>  Remove long prefix&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">/from/to</span><span class="k">}</span>  Replace first match&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">//from/to</span><span class="k">}</span>     Replace all&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">/%from/to</span><span class="k">}</span>     Replace suffix&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="p">/#from/to</span><span class="k">}</span>     Replace prefix</pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Comments/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Comments</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="c"># Single line comment</span>&#x000A;: <span class="s1">'&#x000A;This is a&#x000A;multi line&#x000A;comment&#x000A;'</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Length/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Length</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">${#</span><span class="nv">FOO</span><span class="k">}</span>     Length of <span class="nv">$FOO</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Default values/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Default values</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">${</span><span class="nv">FOO</span><span class="k">:-</span><span class="nv">val</span><span class="k">}</span>     <span class="nv">$FOO</span>, or val <span class="k">if </span>not <span class="nb">set</span>&#x000A;<span class="k">${</span><span class="nv">FOO</span>:<span class="p">=val</span><span class="k">}</span>     Set <span class="nv">$FOO</span> to val <span class="k">if </span>not <span class="nb">set</span>&#x000A;<span class="k">${</span><span class="nv">FOO</span>:+val<span class="k">}</span>     val <span class="k">if</span> <span class="nv">$FOO</span> is <span class="nb">set</span>&#x000A;<span class="k">${</span><span class="nv">FOO</span>:?message<span class="k">}</span>     Show error message and <span class="nb">exit </span><span class="k">if</span> <span class="nv">$FOO</span> is not <span class="nb">set</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Substrings/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Substrings</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">${</span><span class="nv">FOO</span>:0:3<span class="k">}</span>  Substring <span class="o">(</span>position, length<span class="o">)</span>&#x000A;<span class="k">${</span><span class="nv">FOO</span><span class="k">:-</span><span class="nv">3</span>:3<span class="k">}</span>     Substring from the right</pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Param Expansion/Entry/Manipulation/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Manipulation</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">STR</span><span class="o">=</span><span class="s2">"HELLO WORLD!"</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">,</span><span class="k">}</span>   <span class="c">#=&gt; "hELLO WORLD!" (lowercase 1st letter)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">,,</span><span class="k">}</span>  <span class="c">#=&gt; "hello world!" (all lowercase)</span>&#x000A;&#x000A;<span class="nv">STR</span><span class="o">=</span><span class="s2">"hello world!"</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">^</span><span class="k">}</span>   <span class="c">#=&gt; "Hello world!" (uppercase 1st letter)</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">STR</span><span class="p">^^</span><span class="k">}</span>  <span class="c">#=&gt; "HELLO WORLD!" (all uppercase)</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Loop/1'>
+Loop
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Loop/Entry/basic/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>basic</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">for </span>i <span class="k">in</span> /etc/rc.<span class="k">*</span><span class="p">;</span> <span class="k">do&#x000A;  </span><span class="nb">echo</span> <span class="nv">$i</span>&#x000A;<span class="k">done</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Loop/Entry/c-loops/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>c-loops</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">for</span> <span class="o">((</span>i <span class="o">=</span> 0 <span class="p">;</span> i &lt; 100 <span class="p">;</span> i++<span class="o">))</span><span class="p">;</span> <span class="k">do&#x000A;  </span><span class="nb">echo</span> <span class="nv">$i</span>&#x000A;<span class="k">done</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Loop/Entry/ranges/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>ranges</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">for </span>i <span class="k">in</span> <span class="o">{</span>1..5<span class="o">}</span><span class="p">;</span> <span class="k">do&#x000A;    </span><span class="nb">echo</span> <span class="s2">"Welcome </span><span class="nv">$i</span><span class="s2">"</span>&#x000A;<span class="k">done&#x000A;&#x000A;</span>With step size&#x000A;&#x000A;<span class="k">for </span>i <span class="k">in</span> <span class="o">{</span>5..50..5<span class="o">}</span><span class="p">;</span> <span class="k">do&#x000A;    </span><span class="nb">echo</span> <span class="s2">"Welcome </span><span class="nv">$i</span><span class="s2">"</span>&#x000A;<span class="k">done</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Loop/Entry/read lines/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>read lines</p>
+</div>
+<div class='notes'><pre class="highlight shell">&lt; file.txt | <span class="k">while </span><span class="nb">read </span>line<span class="p">;</span> <span class="k">do&#x000A;  </span><span class="nb">echo</span> <span class="nv">$line</span>&#x000A;<span class="k">done</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Functions/1'>
+Functions
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Functions/Entry/Basic/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Basic</p>
+</div>
+<div class='notes'><pre class="highlight shell">myfunc<span class="o">()</span> <span class="o">{</span>&#x000A;    <span class="nb">echo</span> <span class="s2">"hello </span><span class="nv">$1</span><span class="s2">"</span>&#x000A;<span class="o">}</span>&#x000A;&#x000A;<span class="c"># Same as above (alternate syntax)</span>&#x000A;<span class="k">function </span>myfunc<span class="o">()</span> <span class="o">{</span>&#x000A;    <span class="nb">echo</span> <span class="s2">"hello </span><span class="nv">$1</span><span class="s2">"</span>&#x000A;<span class="o">}</span>&#x000A;&#x000A;myfunc <span class="s2">"John"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Functions/Entry/Input/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Input</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">$# </span> Number of arguments&#x000A;<span class="nv">$*</span>  All arguments&#x000A;<span class="nv">$@</span>  All arguments, starting from first&#x000A;<span class="nv">$1</span>  First argument</pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Data Structures/1'>
+Data Structures
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Data Structures/Entry/Array/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Array</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">Fruits</span><span class="o">=(</span><span class="s1">'Apple'</span> <span class="s1">'Banana'</span> <span class="s1">'Orange'</span><span class="o">)</span>&#x000A;&#x000A;Fruits[0]<span class="o">=</span><span class="s2">"Apple"</span>&#x000A;Fruits[1]<span class="o">=</span><span class="s2">"Banana"</span>&#x000A;Fruits[2]<span class="o">=</span><span class="s2">"Orange"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Data Structures/Entry/Array functions/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Array functions</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nv">Fruits</span><span class="o">=(</span><span class="s2">"</span><span class="k">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"Watermelon"</span><span class="o">)</span>    <span class="c"># Push</span>&#x000A;Fruits+<span class="o">=(</span><span class="s1">'Watermelon'</span><span class="o">)</span>                  <span class="c"># Also Push</span>&#x000A;<span class="nv">Fruits</span><span class="o">=(</span> <span class="k">${</span><span class="nv">Fruits</span><span class="p">[@]/Ap*/</span><span class="k">}</span> <span class="o">)</span>            <span class="c"># Remove by regex match</span>&#x000A;<span class="nb">unset </span>Fruits[2]                         <span class="c"># Remove one item</span>&#x000A;<span class="nv">Fruits</span><span class="o">=(</span><span class="s2">"</span><span class="k">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="o">)</span>                 <span class="c"># Duplicate</span>&#x000A;<span class="nv">Fruits</span><span class="o">=(</span><span class="s2">"</span><span class="k">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span> <span class="s2">"</span><span class="k">${</span><span class="nv">Veggies</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="o">)</span> <span class="c"># Concatenate</span>&#x000A;<span class="nv">lines</span><span class="o">=(</span><span class="sb">`</span><span class="nb">cat</span> <span class="s2">"logfile"</span><span class="sb">`</span><span class="o">)</span>                 <span class="c"># Read from file</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Data Structures/Entry/Array access/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Array access</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">echo</span> <span class="k">${</span><span class="nv">Fruits</span><span class="p">[0]</span><span class="k">}</span>           <span class="c"># Element #0</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="k">}</span>           <span class="c"># All elements, space-separated</span>&#x000A;<span class="nb">echo</span> <span class="k">${#</span><span class="nv">Fruits</span><span class="p">[@]</span><span class="k">}</span>          <span class="c"># Number of elements</span>&#x000A;<span class="nb">echo</span> <span class="k">${#</span><span class="nv">Fruits</span><span class="k">}</span>             <span class="c"># String length of the 1st element</span>&#x000A;<span class="nb">echo</span> <span class="k">${#</span><span class="nv">Fruits</span><span class="p">[3]</span><span class="k">}</span>          <span class="c"># String length of the Nth element</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">Fruits</span><span class="p">[@]</span>:3:2<span class="k">}</span>       <span class="c"># Range (from position 3, length 2)</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Data Structures/Entry/Iterate array/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Iterate array</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">for </span>i <span class="k">in</span> <span class="s2">"</span><span class="k">${</span><span class="nv">arrayName</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">do&#x000A;  </span><span class="nb">echo</span> <span class="nv">$i</span>&#x000A;<span class="k">done</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Data Structures/Entry/Dictionaries/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Dictionaries</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">declare</span> <span class="nt">-A</span> sounds&#x000A;&#x000A;sounds[dog]<span class="o">=</span><span class="s2">"bark"</span>&#x000A;sounds[cow]<span class="o">=</span><span class="s2">"moo"</span>&#x000A;sounds[bird]<span class="o">=</span><span class="s2">"tweet"</span>&#x000A;sounds[wolf]<span class="o">=</span><span class="s2">"howl"</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Data Structures/Entry/Dict access/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Dict access</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">echo</span> <span class="k">${</span><span class="nv">sounds</span><span class="p">[dog]</span><span class="k">}</span> <span class="c"># Dog's sound</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="nv">sounds</span><span class="p">[@]</span><span class="k">}</span>   <span class="c"># All values</span>&#x000A;<span class="nb">echo</span> <span class="k">${</span><span class="p">!sounds[@]</span><span class="k">}</span>  <span class="c"># All keys</span>&#x000A;<span class="nb">echo</span> <span class="k">${#</span><span class="nv">sounds</span><span class="p">[@]</span><span class="k">}</span>  <span class="c"># Number of elements</span>&#x000A;<span class="nb">unset </span>sounds[dog]   <span class="c"># Delete dog</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Data Structures/Entry//0'>
+<td class='description' colspan='2'>
+<div class='name'><p><name></p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">for </span>val <span class="k">in</span> <span class="s2">"</span><span class="k">${</span><span class="nv">sounds</span><span class="p">[@]</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">do&#x000A;  </span><span class="nb">echo</span> <span class="nv">$val</span>&#x000A;<span class="k">done&#x000A;&#x000A;</span>Iterate over keys&#x000A;&#x000A;<span class="k">for </span>key <span class="k">in</span> <span class="s2">"</span><span class="k">${</span><span class="p">!sounds[@]</span><span class="k">}</span><span class="s2">"</span><span class="p">;</span> <span class="k">do&#x000A;  </span><span class="nb">echo</span> <span class="nv">$key</span>&#x000A;<span class="k">done</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Misc/1'>
+Misc
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Misc/Entry/casse/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>casse</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="k">case</span> <span class="s2">"</span><span class="nv">$1</span><span class="s2">"</span> <span class="k">in&#x000A;</span>start <span class="p">|</span> up<span class="p">)</span>&#x000A;  vagrant up&#x000A;  <span class="p">;;</span>&#x000A;  <span class="k">*</span><span class="p">)</span>&#x000A;  <span class="nb">echo</span> <span class="s2">"Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|ssh}"</span>&#x000A;    <span class="p">;;</span>&#x000A;<span class="k">esac</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Misc/Entry/Print/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Print</p>
+</div>
+<div class='notes'><pre class="highlight shell"><span class="nb">printf</span> <span class="s2">"Hello %s, I'm %s"</span> Sven Olga&#x000A;<span class="c">#=&gt; "Hello Sven, I'm Olga</span>&#x000A;&#x000A;<span class="nb">printf</span> <span class="s2">"1 + 1 = %d"</span> 2&#x000A;<span class="c">#=&gt; "1 + 1 = 2"</span>&#x000A;&#x000A;<span class="nb">printf</span> <span class="s2">"This is how you print a float: %f"</span> 2&#x000A;<span class="c">#=&gt; "This is how you print a float: 2.000000"</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+</article>
+<footer>
+Generated with <a onclick="window.dash.openExternal_(this.href); return false;" href='https://github.com/Kapeli/cheatset#readme'>cheatset</a>
+</footer>
+</body>
+</html>
