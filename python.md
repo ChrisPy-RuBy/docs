@@ -690,6 +690,69 @@ datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ### ** itertools **
 
 [Removing duplicates from a list of lists](https://stackoverflow.com/questions/2213923/removing-duplicates-from-a-list-of-lists)
+[good intro](https://pymotw.com/3/itertools/index.html)
+
+#### **chain**
+link several iterables together without having to make one giant fisrt
+
+#### **tee**
+
+returns several independant iteratoor from original instead of 1
+
+```python
+test = list(range(10000))
+y = tee(test, 10)
+# y is now a list of 10 iterators from the split test data. 
+# note that this doesn't split the original data, only duplicates it.
+```
+
+#### **starmap**
+
+splits up input data into individual bits
+
+```python
+values = [(1, 2), (3, 4), (5, 6)]
+for i in starmap(lambda x, y: (x, y, x*y), values):
+    print("{} x {} = {}".formt(*i))
+```
+
+#### **count**
+
+counts incrementally indefinately, in a step size defined by you.
+
+#### **cycle**
+
+create an iterable that is looped through indefinatly
+
+#### **repeat**
+
+create a iterable that repeats the same single value again and again until death.
+
+#### **accumulates**
+
+accumulate products of functions as iterated across and out puts that instead. can be though of as a 
+cumulative sum.
+
+```python 
+list(accumulate(range(5)))
+# [0, 1, 3, 6, 10]
+```
+
+can accumulate using other functions also
+
+#### **permutations / products**
+
+good for determining all the possible outcomes i.e. bruteforce approach to various problems.
+```python
+x = ['a', 'b', 'c']
+y = [1, 2, 3]
+
+# get all the possible orders of x
+[a for a in permutations(x)]
+
+# get all the possible combinations of x and y
+[a for a in product(x, y)]
+```
 
 #### **reduce**
 
