@@ -9,6 +9,10 @@ Title: mongoDB
 
 # **Maintainence and Manangment**
 
+#### **performance profiling etc**
+
+[tipson performance profiling](https://studio3t.com/knowledge-base/articles/mongodb-query-performance/)
+
 #### **dealing with indexes**
 
 An index looks like this

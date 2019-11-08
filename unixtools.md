@@ -158,8 +158,10 @@ du -sk ~/Downloads
 #### **get disk space**
 
 ```bash
-df -H
-```
+
+# dstats
+
+good tool for monitoring database servers
 
 
 # find

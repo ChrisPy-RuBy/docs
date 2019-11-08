@@ -4,6 +4,23 @@ summary: Python notes.
 
 # Pythonic Python
 
+## Do's and Don'ts 
+
+### **Write functions that do one thing**
+
+### **Maintain variable types**
+do not mix types under the same variable
+
+### **Define Exceptions correctly**
+
+```python
+try:
+    do somting
+except ValueError as e:
+    log e
+except Exceptions as e
+
+
 ## Syntax
 
 ### **single line if else statements**
@@ -65,6 +82,19 @@ def hyper_volumne(length, *lengths):
     for length in lengths:
         V *= lengths
     return V 
+```
+
+## Asserts
+
+Can use asserts for security. But don't really on them.
+```python
+Assert(x > 0 ) "This is the assert message"
+```
+
+Warning do not do this
+
+```python
+assert(x > 0, "This is dumb and always true")
 ```
 
 ## Builtins
@@ -132,7 +162,6 @@ byte.decode('utf-8')
 string.decode()
 ```
 
-#### **intermediate use  of format**
 
 ###convert between binary / hex and dec
 ```python
@@ -150,6 +179,19 @@ string.decode()
 
 
 ## **Comprehensions**
+
+#### **Generating random data**
+
+```python
+flarp  = ["a", "b", "c", "d" ]
+darp = ["test", "dest"]
+test_dict = {k: { y: random.randint(0,100) for y in darp  } for k in flarp}
+```
+
+another
+```python
+x = {k: random.randint(1, 1000) for k in range(1,100) }
+```
 
 #### **dict comprehension**
 
@@ -251,6 +293,12 @@ sorted_keys = sorted(dict_to_sort, key=lambda k: dict_to_sort[key], reverse=True
 ```
 
 
+#### **Sort dict by highest key int**
+
+```python
+sorted(test_dict.items(), key=lambda k, v: v['dest'])
+```
+
 #### **merging dicts**
 [link](https://treyhunner.com/2016/02/how-to-merge-dictionaries-in-python/)
 
@@ -288,6 +336,12 @@ except Exception as ex:
 
 ## Generators
 - - - 
+
+Nice to use "any" instead of looping over the whole lot.
+
+```python
+return any('action' in visit for visit in self.visits)
+```
 
 
 ## Lambdas
@@ -427,8 +481,8 @@ strng += "c"
 
 #### tip 3:
 this one is interesting
-```python
 
+```python
 def func_1():
     anotherlist = []
     for x in somelist:
@@ -461,6 +515,14 @@ def func_4():
 
 ## **Recursion**
 [stackover_flow link](https://stackoverflow.com/questions/30214531/basics-of-recursion-in-python)
+
+#### **general recursion over a dict**
+
+```python
+if type(d) is dict:
+    for k, v in d.items():
+        d[k] = 
+```
 
 ## **Testing**
 
@@ -625,13 +687,17 @@ datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ### fabric
 - - -
 
+### ** itertools **
+
+[Removing duplicates from a list of lists](https://stackoverflow.com/questions/2213923/removing-duplicates-from-a-list-of-lists)
+
+#### **reduce**
+
+```python
 results = defaultdict(list)
 data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter': 'b', 'value': 123}]
 reduce(data, reducer, results)
-
 ```
-
-### ** itertools **
 
 #### **groupby**
 
