@@ -1,6 +1,11 @@
 Title: datascience
 Summary: Notes on useful datascience libs
 
+# Useful datascience notes
+
+[machine learning](https://ml-cheatsheet.readthedocs.io/en/latest/)
+ 
+
 # numpy
 
 #### **generate large arrays**

@@ -336,6 +336,19 @@ except Exception as ex:
 
 ## Generators
 - - - 
+#### **basic generator**
+
+```python
+gen1 = (x for x in [1, 2, 3])
+
+def gen():
+    for x in [1,2, 3]
+        yield x
+gen2 = gen()
+
+next(gen1)
+next(gen2)
+```
 
 Nice to use "any" instead of looping over the whole lot.
 
@@ -384,9 +397,37 @@ x = list(reduce)
 ```
 
 ## List
-- - - 
+- - -
+
+#### **for else loops**
+
+This is useful if you want to do something when you make it all the way to the end of 
+an iterable
+
+```python
+# a stupid example
+data = [1,2,3,4, 5]
+
+results = []
+for x in date:
+    print(x)
+else: 
+    results = data
+# results is now data
+
+for x in data:
+    if x == 4:
+        break
+else:
+    results = data
+# results is still []
+```
+
+
 
 #### ** pythonic indexing,  enumerate** 
+
+
 
 ```python
 for i, v in enumerate(range(10)):
@@ -895,6 +936,13 @@ We can then analyse using pstats. ncalss and cumtime are perceived as the most
 ```bash 
 python3 -m pstats profile.stats
 ```
+
+#### **profiling in code**
+
+```python
+import cProfile
+cProfile.run('sum([i * 2 for i in range(10000)])')
+cProfile.run('sum((i * 2 for i in range(10000)))')
 
 ## pip
 

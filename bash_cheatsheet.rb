@@ -243,6 +243,9 @@ category do
 for i in /etc/rc.*; do
   echo $i
 done
+
+# on the commandline 
+fir i in ./*; do echo $1; done
 ```
 	  END
     end
