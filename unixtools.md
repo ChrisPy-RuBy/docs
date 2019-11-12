@@ -166,6 +166,35 @@ good tool for monitoring database servers
 
 # find
 
+#### **find a file with specific name**
+
+where . is the directory to search.
+```bash
+find . -name <filename>.<file ending> -print
+# can also use regex
+find . -name '[a-zA-Z]*.sh' -print
+```
+#### **find specific file types**
+
+use types.
+
+```bash
+# get all the directories
+find . -types d -print
+# get all the symlinks
+find . -types l -print
+# get only files
+find . -types f -print
+```
+
+#### **find specific  files in specific paths**
+
+```bash
+# will return everything that has /session/ in the path
+find . -path \*session\*
+```
+
+
 #### **find all existing repos** 
 You can use the following to git init all your existing tvsquared local git repos:
 ```bash
