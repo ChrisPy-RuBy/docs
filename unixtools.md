@@ -88,9 +88,18 @@ vim crontab -e
 *****
 min, hour, day of month, month, day_of_week
 
-#### **add a new crontab**
+#####
+
 ```bash
-crontab ~/.crontab.crontab
+SHELL=/bin/sh
+
+# Useful debugging the crontab. i.e. delet the file and when it is back you know it ran.
+#* * * * * cd /Users/chriswoodall/dev/tvsquared-backend; touch crontest.txt
+
+* 13 * * 1 date | mail –s monday chris.woodall@tvsquared.com
+
+# how to run a bash script and pipe the output to cron.log
+#* * * * * cd ~/ && ./test.sh >> ~/cron.log 2>&1
 ```
 
 # curl

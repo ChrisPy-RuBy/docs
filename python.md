@@ -691,6 +691,12 @@ dateutil.parser.parse("2015-10-19T00:00:00.000+0000")
 ### datetime
 - - - 
 
+#### **generate a max and min datetime from a date**
+
+```python
+datetime.combine(date(date.today().year, date.today().month, 1), datetime.min.time())
+```
+
 #### **genwerate all the times between two dates**     
 
 ```python
