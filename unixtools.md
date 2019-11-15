@@ -203,6 +203,46 @@ find . -types f -print
 find . -path \*session\*
 ```
 
+#### **find and or things**
+
+```bash
+# can just combine things in. so find all files with mem in the 
+# name and session in the path
+find . -path \*session\* -type f -name \*mem\*
+```
+now ors
+
+```bash
+# find files with .gemspec in the name or .jpg that are files
+find . \(-name \*.gemspec -or -name \*.jpg \) -type f
+```
+#### **negative searches -not**
+
+```bash
+# find all files
+find . -not -path \*t\* -type f
+# can also use \! 
+find . \! -path \*git\* -type f
+```
+
+#### **find last modified**
+
+```bash
+find . -mtime -l
+```
+
+#### **deleting files with find**
+
+```bash
+# find all yml files, print and delete
+find . -type f -name \*.yml -print -delete
+```
+
+#### **find all directories of something and do something**
+``` 
+# -exec can be used execute some other shizzle.
+find . -type d -name tvsquared-\* -exec git init \{\} \;
+```
 
 #### **find all existing repos** 
 You can use the following to git init all your existing tvsquared local git repos:
