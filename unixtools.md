@@ -443,6 +443,12 @@ might want to check this
 ```bash
 exit
 ```
+# time
+
+useful for benchmarking code in unix
+```
+time -f "Memory used (kB): %M\nUser time (seconds): %U" python3 naive.py
+```
 
 # tar
 
