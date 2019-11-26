@@ -22,6 +22,14 @@ ls -l | awk '{print $5}'
 ```
 would get all the files for the contents of the current folder
 
+## sum all the values in a column
+
+
+```bash
+ls -l | awk '{sum += $5} END {print sum}'
+```
+
+
 
 # aws
 

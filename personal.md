@@ -38,7 +38,6 @@ somethings to try
 
 - understand date tool (a bash timer and stopwatch would a good way to do this)
 - understand read command.
-- write bash function that names my tmux sessions
 
 8.Unix
 - learn wherer evrything is and what everything does on a mac and raspberry pi.
@@ -53,7 +52,6 @@ somethings to try
 
  Future Challenges
 
-- Use only vim for 1 sprint.
 - Use only pycharm for 1 sprint
 - Give up pycharm for 1 sprint 
 - Give up notebook for 1 sprint.
@@ -61,12 +59,13 @@ somethings to try
 - Give up multiscreens for 1 sprint
 - Give up debugger for 1 sprint
 - Use vagrant 1 sprint
+- Move labbook to server (122, 123, 124)
+- write 4 anki cars per day about python
 
 
 
 Doing
-
-- Move labbook to server (122, 123, 124)
+- Use only vim for 1 sprint (129)
 
 Done ….
 

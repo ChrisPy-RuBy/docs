@@ -1084,14 +1084,29 @@ can make writing tests quicker
 
 
 ## re
-- - - 
+- - -
+Two main use types. Match and Search.
+Search finds the regex within the string
+Match matches from the start.
+
+#### **find version number in string**
+
+```python
+string = "pg_restore (PostgreSQL) 12.1"
+regex = re.compile(r'\d+\.\d+')
+matches = regex.search(string)
+# if the match is not None
+version = matches.group()
+```
+
 #### **compile a regex for use**
 ```python
 regex_pattern_date = r'yy=\d{4}/mm=\d{2}/dd=\d{2}/hh=\d{2}'
 compiled = re.compile(regex_pattern_date)
 ```
 
-#### **serach for on compiled regex**
+#### **search for on compiled regex**
+
 
 ```python
 re.search(<compiled_regex>, <string>)
