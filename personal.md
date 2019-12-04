@@ -36,7 +36,6 @@ somethings to try
 
 7. bash
 
-- understand date tool (a bash timer and stopwatch would a good way to do this)
 - understand read command.
 
 8.Unix

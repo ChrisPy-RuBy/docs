@@ -125,7 +125,6 @@ would return all rows that contain this or that
 
 #### **match all word beginning with specific letter**
 
-
 ```python
 \bt\w+\b
 ```
@@ -136,4 +135,10 @@ would return all words that begin with t
 ```python
 \d{9}
 ```
+
+#### **matching ip addresses**
+```bash
+\b([0-9]{1,3}\.){3}[0-9]{1,3}\b
+```
+
 

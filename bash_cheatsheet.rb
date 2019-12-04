@@ -320,6 +320,25 @@ $1 	First argument
 end
 
 category do
+  id 'Data Input'
+
+  entry do
+	name 'From CSV'
+	notes <<-'END'
+	```bash
+# from cmdline
+cat test.csv | bash my_bash_script.csv
+
+# in script
+while IFS=, read -r field1 field2
+do 
+  echo "$field1 $field2"
+```
+	END
+  end
+end
+
+category do
 	id 'Data Structures'
 
     entry do

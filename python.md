@@ -4,6 +4,11 @@ summary: Python notes.
 
 # Pythonic Python
 
+Things to anki
+- sorted() functions 
+- various lambdas
+
+
 ## Do's and Don'ts 
 
 ### **Write functions that do one thing**

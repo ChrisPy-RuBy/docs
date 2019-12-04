@@ -95,6 +95,12 @@ or
 ### **find, search,  replace**
 [link](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
 
+#### **delete blank lines**
+
+```bash
+:g/^$/d
+```
+
 #### **turn case sensitivity on / off**
 ```bash
 :set ignorecase

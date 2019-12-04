@@ -1,5 +1,12 @@
 # excel
 
+#### **Useful resources**
+[good basic introductions to various topics](https://chandoo.org/wp/welcome/)
+[nice general tools](https://edu.gcfglobal.org/en/excel2016/)
+
+
+
+
 #### **add double quotes to a complete column**
 
 got this -> purplegobbleer
@@ -9,7 +16,43 @@ need this -> "purplegobbleer"
 
 ## vlookup
 
-need to investigate these more
+## Match
+
+If you want to show everything for one cell that appears in a column
+
+## count
+
+count the number of times som
+
+## Index/Match
+
+alternative to vlookup. It is a combination of the index and match command. 
+It is for solving the problem where you want to add a value to a column based on the value in a different 
+column. you need a lookup table somewhere.
+
+Example. I have a list of collector siteids and the colletor cluster that they are on (My lookup).
+I have a list of clientids with the collector_siteid that they are on. I want to know what collector cluster 
+each clientid is on. I can do this by using a index, match
+
+not 100 % sure on what the truthy values are doing at the end.
+```
+=index(<lookup value>, match(<datavalue to check>, <lookup key>, 0), 1)
+# specific example
+=index(L:L, match(D3, K:K, 0), 1)
+would use the lookup table L:K and return a value based on D3
+```
+
+
+
+
+
+
+
+#### **basics of a vlookup**
+
+
+
+
 
 ## conditional formatting
 [derp](https://stackoverflow.com/questions/11399111/how-to-replace-text-of-a-cell-based-on-condition-in-excel

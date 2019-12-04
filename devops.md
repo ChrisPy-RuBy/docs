@@ -52,6 +52,10 @@ brew services stop mongodb
 brew services start mongodb
 ```
 
+#### **please use brew to update and upgrade your databases**
+
+```
+
 #### *:*link packages together**
 ```bash
 brew link <blah>

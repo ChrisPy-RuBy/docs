@@ -239,6 +239,11 @@ super good fuzzyfinder, on commandline and in vim
 -E: use egrep i.e. regex pattern matching
 -A: displays lines surrounding 
 -v: inverse match
+-o: match only
+
+## **useful combinations **
+-oE: only return things that match the regex
+
  
 #### Display all uses of specific command or line
 
@@ -501,7 +506,16 @@ crtl-b - c
 crtl-b - n
 ```
 
-# tr
+#### **get terminal output from a tmux**
+
+enter tmux section
+# press space to enter highlight mode
+crtl-b [
+# scoll the text you want
+# press enter to copy to buffer
+# open vim and save it
+
+
 used to trim data quickly
 
 #### **remove characters from a csv v.quickly**

@@ -33,6 +33,27 @@ a useful example
 site_collector_copy () {aws s3 cp s3://tvsquared-userdata/collector/$1/2019.08/ s3://tvsquared-userdata-preprod/collector/$1/2019.08/ --recursive}
 ```
 
+## data input
+
+#### using read for fun and profit
+
+read a csv 
+```bash 
+# on the cmdline
+cat <your>.csv | bash <your script>.sh
+```
+
+in the script
+```bash
+while IFS=, read -r field1 field2
+do
+    <do the thing>
+done
+```
+
+IFS specifies the delimiter and parses it into the mulitple fiel 
+
+
 
 #### **running a python program from a bash script**
 
