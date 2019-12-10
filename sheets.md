@@ -1,3 +1,25 @@
+
+# General
+
+
+#### **Useful shortcuts**
+
+Useful shortcuts
+
+```
+cmd-up/down - first / last row
+cmd-left/right - first / last column
+
+cmd-shift-up/down - highlight first / last row
+cmd-shift-left/right - highlight first / last column
+
+cmd-pgup / pgdown - flip worksheets # excel;
+alt-up/down - flip worksheets # google
+
+
+```
+
+
 # excel
 
 #### **Useful resources**
