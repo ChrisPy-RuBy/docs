@@ -109,6 +109,21 @@ SHELL=/bin/sh
 # how to run a bash script and pipe the output to cron.log
 #* * * * * cd ~/ && ./test.sh >> ~/cron.log 2>&1
 ```
+# Running bash scripts with other commandline tools.
+
+```
+# cron
+1 * * * * /Users/chriswoodall/speedtest.sh >> cron.log 2>&1 
+
+# in script
+#!/bin/bash
+PATH="/usr/local/bin:/usr/bin:/bin" 
+$(speedtest --csv >> ~/Scratch/network_speed.csv)
+```
+
+# calc
+
+Better calculator than bc
 
 # curl
 
@@ -231,6 +246,10 @@ find ./*.csv > filestocopy.txt
 
 super good fuzzyfinder, on commandline and in vim
 
+# tig
+
+commandline git repo browsing tool
+ 
 # grep
 
 ## basics
@@ -532,6 +551,10 @@ tree -L 4
 ```
 will display file structure down to level 4
 
+# vimpager
+
+good alternative to less
+ 
 # xargs
 
 #### **loop through a list of files on s3 and grep them in parallel** 
