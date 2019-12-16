@@ -5,6 +5,10 @@ summary: A collections of personal notes
 # useful resoures
 [great collection of cheatsheets](https://devhints.io/go)
 
+# To Anki
+
+# To cheatsheet
+1. google sheets shortcuts
 
 # to Learn
 
@@ -37,6 +41,7 @@ somethings to try
 7. bash
 
 - understand read command.
+- learn parallel command
 
 8.Unix
 - learn wherer evrything is and what everything does on a mac and raspberry pi.
