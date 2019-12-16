@@ -48,6 +48,13 @@ example
 psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis postgres
 ```
 
+#### **execute a sql query from the command line like a ninja**
+this would copy everything to the sys clipboard
+```bash
+psql -d <database name> -A --csv -c "SELECT * FROM <schema>.<table>" | pbcopy
+```
+
+
 #### **leave server**
 ```bash
 \q
@@ -174,6 +181,22 @@ Also the delimiter stuff is an arse
 ```sql
 \Copy <csv name> from <datelocation> CSV 
 DELIMITER E'\t NULL'\\N'
+```
+
+A different way to do it that seems to work better is
+```sql
+# CREATE table first
+CREATE TABLE schema.table (
+    id serial NOT NULL,
+    siteid TEXT,
+    path TEXT,
+    collector_name TEXT,
+    volume TEXT,
+    markeddeleted BOOL
+)
+# insert data
+COPY collectorc(siteid, path, collector_name, volume, markeddeleted)
+FROM '/tmp/collector_c_logs_complete' DELIMITER ',' CSV HEADER
 ```
 
 #### **psql: could not connect to server: No such fA ile or directory**

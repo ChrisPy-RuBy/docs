@@ -227,7 +227,54 @@ db.getCollection("clients").aggregate([
 	)
 ```
 
-
+```
+// Requires official MongoShell 3.6+
+use bcustomers;
+db.getCollection("brands").aggregate(
+    [
+        { 
+            "$match" : {
+                "collector_siteid" : {
+                    "$in" : [
+                        "1624-1", 
+                        "5791-1", 
+                        "5252-1", 
+                        "5774-1", 
+                    ]
+                }
+            }
+        }, 
+        { 
+            "$lookup" : {
+                "from" : "clients", 
+                "localField" : "clientshortid", 
+                "foreignField" : "shortid", 
+                "as" : "clientdoc"
+            }
+        }, 
+        { 
+            "$unwind" : {
+                "path" : "$clientdoc"
+            }
+        }, 
+        { 
+            "$project" : {
+                "clientdoc.partnershortid" : 1.0, 
+                "clientdoc.title" : 1.0, 
+                "collector_siteid" : 1.0
+            }
+        }, 
+        { 
+            "$match" : {
+                "clientdoc.partnershortid" : 372.0
+            }
+        }
+    ], 
+    { 
+        "allowDiskUse" : false
+    }
+);
+```
 
 ## **bugs**
 

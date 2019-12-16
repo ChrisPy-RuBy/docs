@@ -127,6 +127,21 @@ Better calculator than bc
 
 # curl
 
+# csvtools
+ 
+ nice tool package for dealing with csv files
+
+#### ** dealing with excel files from cmdline **
+```bash 
+# get the sheet names
+in2csv -n sheetname.xlsx 
+# load specific sheet
+in2csv --sheet <sheetname> <spreadsheet>.xlsx
+```
+
+
+
+
 # date
 important: If you want to do anything remotely useful using bash and dates
 the get gdate bu brew installing coreutils
