@@ -274,6 +274,63 @@ db.getCollection("brands").aggregate(
         "allowDiskUse" : false
     }
 );
+
+```
+query to work out which site ids have everyone deleted.
+
+
+```bash
+use bcustomers;
+db.getCollection("brands").aggregate(
+    [
+        { 
+            "$match" : {
+                "collector_siteid" : {
+                    "$in" : [
+                        "154-1", 
+                        "634-1", 
+                        "543-1", 
+                        "5029-1", 
+                        "156-1", 
+                        "160-1", 
+                        "214-1"
+                    ]
+                }
+            }
+        }, 
+        { 
+            "$lookup" : {
+                "from" : "clients", 
+                "localField" : "clientshortid", 
+                "foreignField" : "shortid", 
+                "as" : "clientdoc"
+            }
+        }, 
+        { 
+            "$unwind" : {
+                "path" : "$clientdoc"
+            }
+        }, 
+        { 
+            "$match" : {
+                "clientdoc.deleted" : false
+            }
+        }, 
+        { 
+            "$project" : {
+                "clientdoc.shortid" : 1.0, 
+                "clientdoc.partnershortid" : 1.0, 
+                "collector_siteid" : 1.0
+            }
+        }
+    ], 
+    { 
+        "allowDiskUse" : false
+    }
+);
+
+```
+
 ```
 
 ## **bugs**

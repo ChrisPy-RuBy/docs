@@ -7,6 +7,7 @@ summary: Python notes.
 Things to anki
 - sorted() functions 
 - various lambdas
+- string formating
 
 
 ## Do's and Don'ts 
@@ -175,6 +176,17 @@ string.decode()
 # bin
 “{0:b}”.format(17)
 ```
+###  ** useful string formating **
+[useful article](https://mkaz.blog/code/python-string-format-cookbook/)
+```python
+for 3.1415926
+{:.2f} -> 3.14 2 dp
+{:+.2f} -> +3.14 
+{:.0f} -> 3 no dp
+{:0>2d} -> 03.
+
+```
+
 
 #### **split string on symbol**
 ```python
