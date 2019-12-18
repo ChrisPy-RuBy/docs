@@ -966,6 +966,29 @@ python3 -m pstats profile.stats
 import cProfile
 cProfile.run('sum([i * 2 for i in range(10000)])')
 cProfile.run('sum((i * 2 for i in range(10000)))')
+```
+
+#### **useful profiling tricks**
+
+Use profile hooks to work out what individual functions are doing
+
+```python
+# a decorator that works out how long a function takes.
+from profilehooks import timecall, profile
+
+@timecall
+def my_test_func():
+    return "derp"
+
+# a decorator that profiles the function
+@profile
+def my_other_test_func():
+    return "herp"
+
+```
+
+
+
 
 ## pip
 
