@@ -1,6 +1,9 @@
 Title: unixtools
 Summary: Notes on Useful unix tools
 
+```
+```
+
 # ag
 v.fast alternative to grep
 
@@ -351,6 +354,15 @@ https://peteris.rocks/blog/htop/
 monitors system performance
 ```bash
 htop
+```
+
+# jq
+
+Tools for doing stuff with json.
+
+```bash
+# find everything where visit_vars is not null and pipe through
+jq 'select(.visit_vars != null) | .visit_vars'
 ```
 
 # kill

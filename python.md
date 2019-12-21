@@ -660,6 +660,15 @@ part_func = partial(my_function, param1, param2)
 executor.map(part_func, [<data>])
 ```
 
+another alternative to this is to use a lambda
+```python
+def test_func(iterable, constant):
+   for value in iterable:
+       yield "{}{}".format(value, constant)
+
+f = lambda x: test_func(x, 'constant')
+```
+
 
 
 ### boto3
@@ -1070,7 +1079,13 @@ conn.commit()
 ## pdb / ipdb
 - - - 
 
+
+
 [link](https://medium.com/instamojo-matters/become-a-pdb-power-user-e3fc4e2774b2)
+#### Useful debug:
+
+
+
 #### **basic debugger in code
 
 ```python
