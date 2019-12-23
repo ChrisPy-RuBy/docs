@@ -160,6 +160,11 @@ df.a # returns a series with values in column a
 
 [guide to write / read modes](https://stackoverflow.com/questions/16208206/confused-by-python-file-mode-w)
 
+## **excel sheets in pandas**
+[guide](https://chrisalbon.com/python/data_wrangling/pandas_dataframe_load_xls/)
+
+
+
 ## **appending to a csv**
 
 [append](https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file)
