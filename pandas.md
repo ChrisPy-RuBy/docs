@@ -158,6 +158,19 @@ df.a # returns a series with values in column a
 
 # Import / Export
 
+[guide to write / read modes](https://stackoverflow.com/questions/16208206/confused-by-python-file-mode-w)
+
+## **appending to a csv**
+
+[append](https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file)
+
+## **read from clipboard**
+
+```python
+df = pd.read_clipboard(',', parse_dates=['jobstarted', 'jobfinished'])
+```
+
+
 # Plotting
 
 # Timeseries
