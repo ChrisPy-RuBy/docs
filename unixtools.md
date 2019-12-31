@@ -1,9 +1,6 @@
 Title: unixtools
 Summary: Notes on Useful unix tools
 
-```
-```
-
 # ag
 v.fast alternative to grep
 
@@ -15,8 +12,94 @@ ag <thing to find>
 
 
 # awk
+
+
+a useful mini language for processing text on the commandline.
 https://www.tutorialspoint.com/awk/awk_basic_examples.htm
 (good 3 part tutorial to the basics)[https://blog.jpalardy.com/posts/why-learn-awk/]
+
+## useful cmdline options
+
+```bash
+awk -F , 'do something' # specify file seperator
+awk -v var=1 'do something' # set variables from outside the script
+```
+
+## basics of awk
+an awk command is understandable as follows.
+It works with rows and columns.
+$0 refers to the whole row
+$1 refers to a specfic column.
+
+
+```bash
+some-condition {one or more statements}
+# i.e if (something then) {}
+# example, can be understood as if value in column 1 is greater than value in column 2 then 
+# then print column 3
+awk '$1>$2 {print $3}'
+# whereas, would print the whole row where the condition was met.
+awk '$1>$2'
+# and, would just print then specified column.
+awk '{print $1}'
+```
+## dealing with different seperated files
+
+awk defaults to tabs and spaces
+can specify differnt types with the -F flag
+```bash
+awk -F , '{print}'
+```
+
+## basic operators, comparision and logic
+
+```bash
+$2 == 124.47   # equality
+$2 != 124.47   # inequality
+$2 > 124.47    # greater than
+$2 >= 124.47   # greater than or equal
+$2 < 124.47    # smaller than
+$2 <= 124.47   # smaller than or equal
+$2 ~ /^10.$/   # regex match
+$2 !~ /^10.$/  # regex negated match  -- this one might be new
+#and logical operators:
+$1 ~ /^2015/ && $6 > 20000000  # and -- high volume in 2015
+$6 < 1000000 || $6 > 20000000  # or  -- low or high volume
+! /^2015/                      # not -- not in 2015
+```
+
+## nice formatting of output
+
+This can be achieved with the printf command.
+```bash
+# would nicely format the output and re-arrange the colume order.
+awk '{printf "%s %15s %.1f\n", $1, $6, $5}
+```
+
+
+## **conditional table processing**
+
+```bash
+# would print all rows  where column 1 is greater than 100
+awk '$1 < 100 {print $0}'
+# can also generate variables. Would print the row but also add the colume diff to the end.
+awk 'diff=$1-$2 {print $0, diff}'
+```
+
+## **regex matching on specific columns**
+
+```bash
+# would match all the rows where column one matches that regex 
+awk '$1 ~ /-01$/'
+# would do the same but only return column 1 and 3
+awk '$1 ~ /-01$/ {print $1, $3}'
+```
+
+## **apply a regex to contents of a folder**
+
+```bash 
+awk '/l.c/{print}' /etc/hosts 
+```
 
 ## **cut sections from strings**
 similar to cut at a basic level, but much more powerful and esoteric.
@@ -25,13 +108,59 @@ ls -l | awk '{print $5}'
 ```
 would get all the files for the contents of the current folder
 
-## sum all the values in a column
+alternatively
 
+```bash
+echo  "This is a text file with some boring text in it. Blrap." | awk '{print $1, $2, $3}' -
+```
+
+another way is 
+
+```bash
+awk -v col=5 '{print $col}'
+```
+
+## sum all the values in a column
 
 ```bash
 ls -l | awk '{sum += $5} END {print sum}'
 ```
+## built-in variables
+[summary of builtins](https://www.math.utah.edu/docs/info/gawk_11.html)
 
+```bash
+NR: the number of records (lines) processed since AWK started
+NF: the number of fields (columns) on the current line
+FNR: like NR, but resets to 1 when it begins processing a new file
+FILENAME: the name of the file being currently processed
+```
+an example.
+```bash
+# print a total row count for a file. 
+cat somefile.file | awk 'END {print NR}'
+```
+## Using BEGIN and END
+
+BEGIN: things here get executed before the first row is processed. Use to set things up.
+END: thing here get executed after the rows have been executed. Used to generate nice reports after processing.
+
+## muiltple conditions
+
+chain multiple conditions but be careful as will match more than once.
+```bash
+awk '/^2016-03-24/ {print; next} $4 == 97.07 {print}'
+```
+
+## useful awk
+```bash
+# generate an average for all values in col 1 that match regex
+cat ~/Downloads/netflix.tsv | awk '$1 ~ /^2016-03/ {sum_close += $5; count++} END {print sum_close/count}'
+```
+
+## arrays
+```
+awk -F'[,-]' '{volume[$1] += $8} END { for(year in volume) print year, volume[year]}'
+```
 
 
 # aws
@@ -42,6 +171,8 @@ the  - arg pipes the output to stdout
 ```bash
 s3://tvsquared-userdata/3871/1/app-usersessions/1547468023214-combined_Q3_8_app_FR_1.csv.gz - | gzcat | head
 ```
+
+
 
 
 # bc
@@ -131,8 +262,8 @@ Better calculator than bc
 # curl
 
 # csvtools
- 
- nice tool package for dealing with csv files
+
+nice tool package for dealing with csv files
 
 #### ** dealing with excel files from cmdline **
 ```bash 
@@ -160,14 +291,14 @@ end_date=$(date +%m-%d-%Y -d "$start_date + 130 day")
 
 ```
 get_date () {
-    date +%Y-%m-%d --date "$1"
+date +%Y-%m-%d --date "$1"
 }
 then=$(get_date "4 days ago")
 now=$(get_date "today")
 
 while [[ $then != $now ]]; do
-  then=$(get_date "$then + 1 day")
-  echo "$then"
+then=$(get_date "$then + 1 day")
+echo "$then"
 done
 ```
 
@@ -198,7 +329,7 @@ row by row check to determine differences between 2 files.
 ```bash
 diff <(cat <file_1> ) <(cat /tmp/<file_2>)
 ```
- 
+
 
 # du
 
@@ -267,7 +398,7 @@ super good fuzzyfinder, on commandline and in vim
 # tig
 
 commandline git repo browsing tool
- 
+
 # grep
 
 ## basics
@@ -281,7 +412,7 @@ commandline git repo browsing tool
 ## **useful combinations **
 -oE: only return things that match the regex
 
- 
+
 #### Display all uses of specific command or line
 
 ```bash
@@ -376,7 +507,7 @@ kill -9 <PID>
 makes streamed output managable
 
 ```bash
- ps -ef | less
+ps -ef | less
 ```
 would give you all the processes running, one page at a time
 # ls
@@ -494,7 +625,7 @@ splits file into smaller chunks.
 #### **generate ssh key**
 might want to check this
 ```bash
- echo '$(cat ~/.ssh/id_rsa.pub)'
+echo '$(cat ~/.ssh/id_rsa.pub)'
 ```
 
 
@@ -581,7 +712,7 @@ will display file structure down to level 4
 # vimpager
 
 good alternative to less
- 
+
 # xargs
 
 #### **loop through a list of files on s3 and grep them in parallel** 
