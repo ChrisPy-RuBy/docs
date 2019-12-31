@@ -9,15 +9,28 @@ v.fast alternative to grep
 ```bash
 ag <thing to find>
 ```
-
-
 # awk
-
 
 a useful mini language for processing text on the commandline.
 https://www.tutorialspoint.com/awk/awk_basic_examples.htm
 (good 3 part tutorial to the basics)[https://blog.jpalardy.com/posts/why-learn-awk/]
+## incorporating awk into bash example
 
+```bash
+#!/bin/bash
+
+cat "$@" | awk -F'[,-]' '
+
+{volume[$1] += $8}
+
+END {
+  for(year in volume) {
+    print year, volume[year]
+  }
+}
+
+'
+```
 ## useful cmdline options
 
 ```bash
