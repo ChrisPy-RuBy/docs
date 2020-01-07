@@ -356,6 +356,7 @@ du -sk ~/Downloads
 #### **get disk space**
 
 ```bash
+```
 
 # dstats
 
@@ -638,6 +639,21 @@ sftp groupon_test_1@upload-3840.tvsquared.com
 # split
 
 splits file into smaller chunks.
+
+# sort 
+
+v.useful
+
+#### **sort a dict scrapped from a terminal**
+
+```bash
+" example data
+"2011":1234
+"1001":4321
+
+Here the -t is the delimiter, -k means 2nd column, -n means numeric
+| sort -t : -k2n 
+```
 
 # ssh
 
