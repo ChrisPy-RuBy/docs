@@ -21,6 +21,15 @@ do DashSearch
 " yank to the clipboard
 ```
 
+### **Piping to external programs**
+
+super useful
+
+```bash
+" this would select everything from the current line to 3 lines below, and pipe through to sort.
+:.,+3!sort
+```
+
 
 ### **basic key mappings**
 ```bash
@@ -34,6 +43,9 @@ ctrl-w, ctrl-w -> switch screens
 i.e.
 42G
 ```
+
+### **dealing with ranges**
+(ranges)[https://vim.fandom.com/wiki/Ranges]
 
 ### **config**
 
@@ -64,6 +76,14 @@ https://stackoverflow.com/questions/1265410/is-there-a-way-to-configure-vimdiff-
 
 ```bash 
 vimdiff <file 1> <file 2 >
+```
+
+#### **diff files open in split windows**
+
+With the windows open.
+Wtf is 'windo'
+```
+:windo diffthis
 ```
 
 #### **split screen vertical / horizontal**

@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset='utf-8'>
+<title>Go</title>
+<link href='style.css' rel='stylesheet'>
+<link href='//dash_ref/Category/Basics/1'>
+<link href='//dash_ref_Basics/Entry/Example/0'>
+<link href='//dash_ref_Basics/Entry/Comments/0'>
+<link href='//dash_ref_Basics/Entry/Variables/0'>
+<link href='//dash_ref/Category/Types/1'>
+<link href='//dash_ref_Types/Entry/Strings/0'>
+<link href='//dash_ref_Types/Entry/Numbers/0'>
+<link href='//dash_ref_Types/Entry/Arrays/0'>
+<link href='//dash_ref_Types/Entry/Slices/0'>
+<link href='//dash_ref_Types/Entry/Type conversion/0'>
+<link href='//dash_ref_Types/Entry/Pointers/0'>
+<link href='//dash_ref/Category/Control flow/1'>
+<link href='//dash_ref_Control flow/Entry/if else/0'>
+<link href='//dash_ref_Control flow/Entry/statements in ifs/0'>
+<link href='//dash_ref_Control flow/Entry/Switch/0'>
+<link href='//dash_ref_Control flow/Entry/For loop/0'>
+<link href='//dash_ref_Control flow/Entry/For Range loop/0'>
+<link href='//dash_ref/Category/Functions/1'>
+<link href='//dash_ref_Functions/Entry/Lambdas/0'>
+<link href='//dash_ref_Functions/Entry/Multiple Return Types/0'>
+<link href='//dash_ref_Functions/Entry/Named Return values/0'>
+<link href='//dash_ref/Category/Packages/1'>
+<link href='//dash_ref_Packages/Entry/Imports/0'>
+<link href='//dash_ref_Packages/Entry/Aliases/0'>
+<link href='//dash_ref_Packages/Entry/Packages/0'>
+<link href='//dash_ref_Packages/Entry/Exporting Names/0'>
+<link href='//dash_ref/Category/Concurrency/1'>
+<link href='//dash_ref_Concurrency/Entry/Goroutines/0'>
+<link href='//dash_ref_Concurrency/Entry/Buffered channels/0'>
+<link href='//dash_ref_Concurrency/Entry/Closing channels/0'>
+<link href='//dash_ref/Category/Error Handling/1'>
+<link href='//dash_ref_Error Handling/Entry/Defering/0'>
+<link href='//dash_ref_Error Handling/Entry/Defering functions/0'>
+<link href='//dash_ref/Category/Struct/1'>
+<link href='//dash_ref_Struct/Entry/Defining/0'>
+<link href='//dash_ref_Struct/Entry/Literals/0'>
+<link href='//dash_ref_Struct/Entry/Pointers to structs/0'>
+<link href='//dash_ref/Category/Methods/1'>
+<link href='//dash_ref_Methods/Entry/Receivers/0'>
+<link href='//dash_ref_Methods/Entry/Mutation/0'>
+</head>
+<body>
+<header>
+<h1>Go</h1>
+</header>
+<article>
+<p><p>shamelessly stolen from devhints.io</p>
+</p>
+<section class='category'>
+<h2 id='//dash_ref/Category/Basics/1'>
+Basics
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Basics/Entry/Example/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Example</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">package</span> <span class="n">main</span>&#x000A;&#x000A;<span class="k">import</span> <span class="s">"fmt"</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="n">message</span> <span class="o">:=</span> <span class="n">greetMe</span><span class="p">(</span><span class="s">"world"</span><span class="p">)</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">message</span><span class="p">)</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">greetMe</span><span class="p">(</span><span class="n">name</span> <span class="kt">string</span><span class="p">)</span> <span class="kt">string</span> <span class="p">{</span>&#x000A;  <span class="k">return</span> <span class="s">"Hello, "</span> <span class="o">+</span> <span class="n">name</span> <span class="o">+</span> <span class="s">"!"</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Comments/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Comments</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// single line comment</span>&#x000A;<span class="c">/*&#x000A;multiline comments&#x000A;*/</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Basics/Entry/Variables/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Variables</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">var</span> <span class="n">msg</span> <span class="kt">string</span>&#x000A;<span class="n">msg</span> <span class="o">=</span> <span class="s">"Hello"</span>&#x000A;&#x000A;<span class="c">// Shortcut of above (Infers type)</span>&#x000A;<span class="n">msg</span> <span class="o">:=</span> <span class="s">"Hello"</span>&#x000A;&#x000A;<span class="c">// Constants</span>&#x000A;<span class="k">const</span> <span class="n">Phi</span> <span class="o">=</span> <span class="m">1.618</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Types/1'>
+Types
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Types/Entry/Strings/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Strings</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">str</span> <span class="o">:=</span> <span class="s">"Hello"</span>&#x000A;&#x000A;<span class="n">str</span> <span class="o">:=</span> <span class="s">`Multiline&#x000A;string`</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Types/Entry/Numbers/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Numbers</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">num</span> <span class="o">:=</span> <span class="m">3</span>          <span class="c">// int</span>&#x000A;<span class="n">num</span> <span class="o">:=</span> <span class="m">3.</span>         <span class="c">// float64</span>&#x000A;<span class="n">num</span> <span class="o">:=</span> <span class="m">3</span> <span class="o">+</span> <span class="m">4i</span>     <span class="c">// complex128</span>&#x000A;<span class="n">num</span> <span class="o">:=</span> <span class="kt">byte</span><span class="p">(</span><span class="sc">'a'</span><span class="p">)</span>  <span class="c">// byte (alias for uint8)</span>&#x000A;&#x000A;<span class="n">Other</span> <span class="n">types</span>&#x000A;&#x000A;<span class="k">var</span> <span class="n">u</span> <span class="kt">uint</span> <span class="o">=</span> <span class="m">7</span>        <span class="c">// uint (unsigned)</span>&#x000A;<span class="k">var</span> <span class="n">p</span> <span class="kt">float32</span> <span class="o">=</span> <span class="m">22.7</span>  <span class="c">// 32-bit float</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Types/Entry/Arrays/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Arrays</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// Arrays have a fixed size.</span>&#x000A;<span class="c">// var numbers [5]int</span>&#x000A;<span class="n">numbers</span> <span class="o">:=</span> <span class="p">[</span><span class="o">...</span><span class="p">]</span><span class="kt">int</span><span class="p">{</span><span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">,</span> <span class="m">0</span><span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Types/Entry/Slices/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Slices</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// Slices have a dynamic size, unlike arrays.</span>&#x000A;<span class="n">slice</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">int</span><span class="p">{</span><span class="m">2</span><span class="p">,</span> <span class="m">3</span><span class="p">,</span> <span class="m">4</span><span class="p">}</span>&#x000A;<span class="n">slice</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">byte</span><span class="p">(</span><span class="s">"Hello"</span><span class="p">)</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Types/Entry/Type conversion/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Type conversion</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">i</span> <span class="o">:=</span> <span class="m">2</span>&#x000A;<span class="n">f</span> <span class="o">:=</span> <span class="kt">float64</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>&#x000A;<span class="n">u</span> <span class="o">:=</span> <span class="kt">uint</span><span class="p">(</span><span class="n">i</span><span class="p">)</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Types/Entry/Pointers/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Pointers</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">func</span> <span class="n">main</span> <span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="n">b</span> <span class="o">:=</span> <span class="o">*</span><span class="n">getPointer</span><span class="p">()</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Value is"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">getPointer</span> <span class="p">()</span> <span class="p">(</span><span class="n">myPointer</span> <span class="o">*</span><span class="kt">int</span><span class="p">)</span> <span class="p">{</span>&#x000A;  <span class="n">a</span> <span class="o">:=</span> <span class="m">234</span>&#x000A;  <span class="k">return</span> <span class="o">&amp;</span><span class="n">a</span>&#x000A;<span class="p">}</span>&#x000A;<span class="n">Pointers</span> <span class="n">point</span> <span class="n">to</span> <span class="n">a</span> <span class="n">memory</span> <span class="n">location</span> <span class="n">of</span> <span class="n">a</span> <span class="n">variable</span><span class="o">.</span> <span class="n">Go</span> <span class="n">is</span> <span class="n">fully</span> <span class="n">garbage</span><span class="o">-</span><span class="n">collected</span><span class="o">.</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Control flow/1'>
+Control flow
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Control flow/Entry/if else/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>if else</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">if</span> <span class="n">day</span> <span class="o">==</span> <span class="s">"sunday"</span> <span class="o">||</span> <span class="n">day</span> <span class="o">==</span> <span class="s">"saturday"</span> <span class="p">{</span>&#x000A;  <span class="n">rest</span><span class="p">()</span>&#x000A;<span class="p">}</span> <span class="k">else</span> <span class="k">if</span> <span class="n">day</span> <span class="o">==</span> <span class="s">"monday"</span> <span class="o">&amp;&amp;</span> <span class="n">isTired</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="n">groan</span><span class="p">()</span>&#x000A;<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>&#x000A;  <span class="n">work</span><span class="p">()</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Control flow/Entry/statements in ifs/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>statements in ifs</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// a condition in an if statement can be preceded with a statement before a.</span>&#x000A;<span class="k">if</span> <span class="n">_</span><span class="p">,</span> <span class="n">err</span> <span class="o">:=</span> <span class="n">getResult</span><span class="p">();</span> <span class="n">err</span> <span class="o">!=</span> <span class="no">nil</span> <span class="p">{</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Uh oh"</span><span class="p">)</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Control flow/Entry/Switch/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Switch</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">switch</span> <span class="n">day</span> <span class="p">{</span>&#x000A;  <span class="k">case</span> <span class="s">"sunday"</span><span class="o">:</span>&#x000A;    <span class="c">// cases don't "fall through" by default!</span>&#x000A;    <span class="k">fallthrough</span>&#x000A;&#x000A;  <span class="k">case</span> <span class="s">"saturday"</span><span class="o">:</span>&#x000A;    <span class="n">rest</span><span class="p">()</span>&#x000A;&#x000A;  <span class="k">default</span><span class="o">:</span>&#x000A;    <span class="n">work</span><span class="p">()</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Control flow/Entry/For loop/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>For loop</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">for</span> <span class="n">count</span> <span class="o">:=</span> <span class="m">0</span><span class="p">;</span> <span class="n">count</span> <span class="o">&lt;=</span> <span class="m">10</span><span class="p">;</span> <span class="n">count</span><span class="o">++</span> <span class="p">{</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"My counter is at"</span><span class="p">,</span> <span class="n">count</span><span class="p">)</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Control flow/Entry/For Range loop/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>For Range loop</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">entry</span> <span class="o">:=</span> <span class="p">[]</span><span class="kt">string</span><span class="p">{</span><span class="s">"Jack"</span><span class="p">,</span><span class="s">"John"</span><span class="p">,</span><span class="s">"Jones"</span><span class="p">}</span>&#x000A;<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">entry</span> <span class="p">{</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"At position %d, the character %s is present</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="n">i</span><span class="p">,</span> <span class="n">val</span><span class="p">)</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Functions/1'>
+Functions
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Functions/Entry/Lambdas/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Lambdas</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// Functions are first class objects.</span>&#x000A;&#x000A;<span class="n">myfunc</span> <span class="o">:=</span> <span class="k">func</span><span class="p">()</span> <span class="kt">bool</span> <span class="p">{</span>&#x000A;  <span class="k">return</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="m">10000</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Functions/Entry/Multiple Return Types/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Multiple Return Types</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">:=</span> <span class="n">getMessage</span><span class="p">()</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">getMessage</span><span class="p">()</span> <span class="p">(</span><span class="n">a</span> <span class="kt">string</span><span class="p">,</span> <span class="n">b</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>&#x000A;  <span class="k">return</span> <span class="s">"Hello"</span><span class="p">,</span> <span class="s">"World"</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Functions/Entry/Named Return values/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Named Return values</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// By defining the return value names in the signature, a return (no args) will return variables with those names</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">split</span><span class="p">(</span><span class="n">sum</span> <span class="kt">int</span><span class="p">)</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="kt">int</span><span class="p">)</span> <span class="p">{</span>&#x000A;  <span class="n">x</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">*</span> <span class="m">4</span> <span class="o">/</span> <span class="m">9</span>&#x000A;  <span class="n">y</span> <span class="o">=</span> <span class="n">sum</span> <span class="o">-</span> <span class="n">x</span>&#x000A;  <span class="k">return</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Packages/1'>
+Packages
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Packages/Entry/Imports/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Imports</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">import</span> <span class="s">"fmt"</span>&#x000A;<span class="k">import</span> <span class="s">"math/rand"</span>&#x000A;&#x000A;<span class="k">import</span> <span class="p">(</span>&#x000A;  <span class="s">"fmt"</span>        <span class="c">// gives fmt.Println</span>&#x000A;  <span class="s">"math/rand"</span>  <span class="c">// gives rand.Intn</span>&#x000A;<span class="p">)</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Packages/Entry/Aliases/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Aliases</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">import</span> <span class="n">r</span> <span class="s">"math/rand"</span>&#x000A;&#x000A;<span class="n">r</span><span class="o">.</span><span class="n">Intn</span><span class="p">()</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Packages/Entry/Packages/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Packages</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">package</span> <span class="n">hello</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Packages/Entry/Exporting Names/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Exporting Names</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// Exported names begin with capital letters.</span>&#x000A;<span class="k">func</span> <span class="n">Hello</span> <span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="o">&lt;</span><span class="n">do</span> <span class="n">something</span><span class="o">&gt;</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Concurrency/1'>
+Concurrency
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Concurrency/Entry/Goroutines/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Goroutines</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="c">// A "channel"</span>&#x000A;  <span class="n">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">chan</span> <span class="kt">string</span><span class="p">)</span>&#x000A;&#x000A;  <span class="c">// Start concurrent routines</span>&#x000A;  <span class="k">go</span> <span class="n">push</span><span class="p">(</span><span class="s">"Moe"</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>&#x000A;  <span class="k">go</span> <span class="n">push</span><span class="p">(</span><span class="s">"Larry"</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>&#x000A;  <span class="k">go</span> <span class="n">push</span><span class="p">(</span><span class="s">"Curly"</span><span class="p">,</span> <span class="n">ch</span><span class="p">)</span>&#x000A;&#x000A;  <span class="c">// Read 3 results</span>&#x000A;  <span class="c">// (Since our goroutines are concurrent,</span>&#x000A;  <span class="c">// the order isn't guaranteed!)</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="o">&lt;-</span><span class="n">ch</span><span class="p">,</span> <span class="o">&lt;-</span><span class="n">ch</span><span class="p">,</span> <span class="o">&lt;-</span><span class="n">ch</span><span class="p">)</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">push</span><span class="p">(</span><span class="n">name</span> <span class="kt">string</span><span class="p">,</span> <span class="n">ch</span> <span class="k">chan</span> <span class="kt">string</span><span class="p">)</span> <span class="p">{</span>&#x000A;  <span class="n">msg</span> <span class="o">:=</span> <span class="s">"Hey, "</span> <span class="o">+</span> <span class="n">name</span>&#x000A;  <span class="n">ch</span> <span class="o">&lt;-</span> <span class="n">msg</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="c">// Channels are concurrency-safe communication objects, used in goroutines.</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Concurrency/Entry/Buffered channels/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Buffered channels</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">ch</span> <span class="o">:=</span> <span class="nb">make</span><span class="p">(</span><span class="k">chan</span> <span class="kt">int</span><span class="p">,</span> <span class="m">2</span><span class="p">)</span>&#x000A;<span class="n">ch</span> <span class="o">&lt;-</span> <span class="m">1</span>&#x000A;<span class="n">ch</span> <span class="o">&lt;-</span> <span class="m">2</span>&#x000A;<span class="n">ch</span> <span class="o">&lt;-</span> <span class="m">3</span>&#x000A;<span class="c">// fatal error:</span>&#x000A;<span class="c">// all goroutines are asleep - deadlock!</span>&#x000A;<span class="c">// Buffered channels limit the amount of messages it can keep.</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Concurrency/Entry/Closing channels/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Closing channels</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">ch</span> <span class="o">&lt;-</span> <span class="m">1</span>&#x000A;<span class="n">ch</span> <span class="o">&lt;-</span> <span class="m">2</span>&#x000A;<span class="n">ch</span> <span class="o">&lt;-</span> <span class="m">3</span>&#x000A;<span class="nb">close</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span>&#x000A;&#x000A;<span class="n">Iterates</span> <span class="n">across</span> <span class="n">a</span> <span class="n">channel</span> <span class="n">until</span> <span class="n">its</span> <span class="n">closed</span>&#x000A;&#x000A;<span class="k">for</span> <span class="n">i</span> <span class="o">:=</span> <span class="k">range</span> <span class="n">ch</span> <span class="p">{</span>&#x000A;  <span class="err">···</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="n">Closed</span> <span class="k">if</span> <span class="n">ok</span> <span class="o">==</span> <span class="no">false</span>&#x000A;&#x000A;<span class="n">v</span><span class="p">,</span> <span class="n">ok</span> <span class="o">:=</span> <span class="o">&lt;-</span> <span class="n">ch</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Error Handling/1'>
+Error Handling
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Error Handling/Entry/Defering/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Defering</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="k">defer</span> <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Working..."</span><span class="p">)</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Error Handling/Entry/Defering functions/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Defering functions</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="k">defer</span> <span class="k">func</span><span class="p">()</span> <span class="p">{</span>&#x000A;    <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Done"</span><span class="p">)</span>&#x000A;  <span class="p">}()</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="s">"Working..."</span><span class="p">)</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="c">// Lambdas are better suited for defer blocks.</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="k">var</span> <span class="n">d</span> <span class="o">=</span> <span class="kt">int64</span><span class="p">(</span><span class="m">0</span><span class="p">)</span>&#x000A;  <span class="k">defer</span> <span class="k">func</span><span class="p">(</span><span class="n">d</span> <span class="o">*</span><span class="kt">int64</span><span class="p">)</span> <span class="p">{</span>&#x000A;    <span class="n">fmt</span><span class="o">.</span><span class="n">Printf</span><span class="p">(</span><span class="s">"&amp; %v Unix Sec</span><span class="se">\n</span><span class="s">"</span><span class="p">,</span> <span class="o">*</span><span class="n">d</span><span class="p">)</span>&#x000A;  <span class="p">}(</span><span class="o">&amp;</span><span class="n">d</span><span class="p">)</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Print</span><span class="p">(</span><span class="s">"Done "</span><span class="p">)</span>&#x000A;  <span class="n">d</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">Now</span><span class="p">()</span><span class="o">.</span><span class="n">Unix</span><span class="p">()</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="c">// The defer func uses current value of d, unless we use a pointer to get final value at end of main.</span>&#x000A;</pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Struct/1'>
+Struct
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Struct/Entry/Defining/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Defining</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="k">type</span> <span class="n">Vertex</span> <span class="k">struct</span> <span class="p">{</span>&#x000A;  <span class="n">X</span> <span class="kt">int</span>&#x000A;  <span class="n">Y</span> <span class="kt">int</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="k">func</span> <span class="n">main</span><span class="p">()</span> <span class="p">{</span>&#x000A;  <span class="n">v</span> <span class="o">:=</span> <span class="n">Vertex</span><span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">}</span>&#x000A;  <span class="n">v</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="m">4</span>&#x000A;  <span class="n">fmt</span><span class="o">.</span><span class="n">Println</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">X</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span>&#x000A;<span class="p">}</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Struct/Entry/Literals/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Literals</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="n">v</span> <span class="o">:=</span> <span class="n">Vertex</span><span class="p">{</span><span class="n">X</span><span class="o">:</span> <span class="m">1</span><span class="p">,</span> <span class="n">Y</span><span class="o">:</span> <span class="m">2</span><span class="p">}</span>&#x000A;&#x000A;<span class="c">// Field names can be omitted</span>&#x000A;<span class="n">v</span> <span class="o">:=</span> <span class="n">Vertex</span><span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">}</span>&#x000A;&#x000A;<span class="c">// Y is implicit</span>&#x000A;<span class="n">v</span> <span class="o">:=</span> <span class="n">Vertex</span><span class="p">{</span><span class="n">X</span><span class="o">:</span> <span class="m">1</span><span class="p">}</span>&#x000A;&#x000A;<span class="n">You</span> <span class="n">can</span> <span class="n">also</span> <span class="n">put</span> <span class="n">field</span> <span class="n">names</span><span class="o">.</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Struct/Entry/Pointers to structs/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Pointers to structs</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// Doing v.X is the same as doing (*v).X, when v is a pointer.</span>&#x000A;&#x000A;<span class="n">v</span> <span class="o">:=</span> <span class="o">&amp;</span><span class="n">Vertex</span><span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">}</span>&#x000A;<span class="n">v</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="m">2</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+<section class='category'>
+<h2 id='//dash_ref/Category/Methods/1'>
+Methods
+</h2>
+<div class='scrollable'>
+<table>
+<tr id='//dash_ref_Methods/Entry/Receivers/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Receivers</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// There are no classes, but you can define functions with receivers.</span>&#x000A;<span class="k">type</span> <span class="n">Vertex</span> <span class="k">struct</span> <span class="p">{</span>&#x000A;  <span class="n">X</span><span class="p">,</span> <span class="n">Y</span> <span class="kt">float64</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="k">func</span> <span class="p">(</span><span class="n">v</span> <span class="n">Vertex</span><span class="p">)</span> <span class="n">Abs</span><span class="p">()</span> <span class="kt">float64</span> <span class="p">{</span>&#x000A;  <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">Sqrt</span><span class="p">(</span><span class="n">v</span><span class="o">.</span><span class="n">X</span> <span class="o">*</span> <span class="n">v</span><span class="o">.</span><span class="n">X</span> <span class="o">+</span> <span class="n">v</span><span class="o">.</span><span class="n">Y</span> <span class="o">*</span> <span class="n">v</span><span class="o">.</span><span class="n">Y</span><span class="p">)</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="n">v</span><span class="o">:</span> <span class="o">=</span> <span class="n">Vertex</span><span class="p">{</span><span class="m">1</span><span class="p">,</span> <span class="m">2</span><span class="p">}</span>&#x000A;<span class="n">v</span><span class="o">.</span><span class="n">Abs</span><span class="p">()</span></pre></div>
+</td>
+</tr>
+<tr id='//dash_ref_Methods/Entry/Mutation/0'>
+<td class='description' colspan='2'>
+<div class='name'><p>Mutation</p>
+</div>
+<div class='notes'><pre class="highlight go"><span class="c">// By defining your receiver as a pointer (*Vertex), you can do mutations.</span>&#x000A;<span class="k">func</span> <span class="p">(</span><span class="n">v</span> <span class="o">*</span><span class="n">Vertex</span><span class="p">)</span> <span class="n">Scale</span><span class="p">(</span><span class="n">f</span> <span class="kt">float64</span><span class="p">)</span> <span class="p">{</span>&#x000A;  <span class="n">v</span><span class="o">.</span><span class="n">X</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">X</span> <span class="o">*</span> <span class="n">f</span>&#x000A;  <span class="n">v</span><span class="o">.</span><span class="n">Y</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">Y</span> <span class="o">*</span> <span class="n">f</span>&#x000A;<span class="p">}</span>&#x000A;&#x000A;<span class="n">v</span> <span class="o">:=</span> <span class="n">Vertex</span><span class="p">{</span><span class="m">6</span><span class="p">,</span> <span class="m">12</span><span class="p">}</span>&#x000A;<span class="n">v</span><span class="o">.</span><span class="n">Scale</span><span class="p">(</span><span class="m">0.5</span><span class="p">)</span>&#x000A;<span class="c">// `v` is updated</span></pre></div>
+</td>
+</tr>
+</table>
+</div>
+</section>
+</article>
+<footer>
+Generated with <a onclick="window.dash.openExternal_(this.href); return false;" href='https://github.com/Kapeli/cheatset#readme'>cheatset</a>
+</footer>
+</body>
+</html>

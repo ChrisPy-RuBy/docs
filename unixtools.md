@@ -593,6 +593,12 @@ told you it was esoteric!
 sed -n '6643913,6643920p;6643921q' split_data.csv > dodgy.txt
 ```
 
+#### **delete header from file**
+
+```bash
+sed -e '1d' <from> <to>
+```
+
 # scp
 
 #### **glomming / globbing scp**
