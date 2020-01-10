@@ -80,6 +80,19 @@ test_list = ['a', 1, 'b', 2, 'c', 3, 'd', 4]
 pair_up = list(zip(*[iter(test_list)] * 2)
 ```
 
+### **split list of tups into two lists**
+
+v.useful for plotting data as most graphs preferx, y
+
+```python
+data = [(1,2), (2,3), (3, 4)]
+x, y = zip(*data)
+# x is now [1,2,3]
+# y is now [2, 3, 4]
+```
+
+
+
 ### **extensible functions**
 
 ```python

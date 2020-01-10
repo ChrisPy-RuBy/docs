@@ -44,6 +44,35 @@ AND url like ‘%nvcc%’
 ```
 WHERE site_id, yy, mm, dd, and hh are partitions
 
+#### **useful setup queries**
+
+collector_tng specific. To generate an actions athena table.
+```
+CREATE EXTERNAL TABLE `actions_2`(
+  `_id` string, 
+  `k5` string, 
+  `time` int, 
+  `v5` map<string,string>, 
+  `visit` string, 
+  `visitor` string)
+PARTITIONED BY ( 
+  `yy` string, 
+  `mm` string, 
+  `dd` string, 
+  `hh` string)
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://tvsquared-userdata/collector-tng/915-1/actions'
+TBLPROPERTIES (
+  'has_encrypted_data'='false', 
+  'transient_lastDdlTime'='1578648309')
+```
+
 - - -
 # EC2
 - - -
