@@ -3,7 +3,40 @@ title: devops
 summary: devopsie shite!
 ---
 
+# useful devops debug strategies 
 
+### **One of my services i.e. a database doesn't work**
+
+1. Do you have a clean install? Y/N.
+Is there only one?
+Is the install the most recent?
+Check by find out versions being run etc.
+useful commands
+```
+brew list mongodb
+brew unstall mongodb 
+brew unstall mongodb -f # uninstalls all versions install on system. 
+```
+
+2. Does the install run Y/N
+shut down all other processes that might be running
+restart the service. Is it now running? Y/N
+Can you run it using brew / manually?
+Does running it give any useful info?
+```
+ps -ef | grep mongo # processes running
+tail -f <log file> # live debug of log files
+```
+
+3. Is it a dataissue Y/N
+If things run manually but not using the service then suggests that this might be the issue
+If you suspect Ydo the following.
+- find db files (/usr/local/var/mongodb for mongo)
+- remane the folder 
+- create a new folder with the name of the old one.
+
+
+4. Is there a config issue Y/N
 
 
 # brew
