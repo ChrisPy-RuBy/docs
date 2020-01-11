@@ -223,6 +223,7 @@ params['interval'] = "{} days".format(5)
 ```
 
 alternatively can use the AsIs module in psycopg2.extensions
+
 ```python
 from psycopg2.extensions import AsIs
 params['interval'] = AsIs(5)
