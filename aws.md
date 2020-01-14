@@ -73,6 +73,37 @@ TBLPROPERTIES (
   'transient_lastDdlTime'='1578648309')
 ```
 
+visits
+```
+CREATE EXTERNAL TABLE `visits`(
+  `_id` string, 
+  `cfgid` string, 
+  `ip` string, 
+  `k5` string, 
+  `time` int, 
+  `ua` string, 
+  `v5` map<string,string>, 
+  `visitor` string, 
+  `url` string, 
+  `refurl` string)
+PARTITIONED BY ( 
+  `yy` string, 
+  `mm` string, 
+  `dd` string, 
+  `hh` string)
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.ql.io.parquet.serde.ParquetHiveSerDe' 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://tvsquared-userdata/collector-tng/915-1/visits'
+TBLPROPERTIES (
+  'has_encrypted_data'='false', 
+  'transient_lastDdlTime'='1578675852')
+```
+
 - - -
 # EC2
 - - -
