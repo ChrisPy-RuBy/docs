@@ -164,7 +164,7 @@ __str__ used for general use
 
 not quite sure what this does.
 
-## Bytes / Strings
+## Bytes / Strings / Format
 - - - - 
 
 #### **join() vs +=**
@@ -189,7 +189,7 @@ string.decode()
 # bin
 “{0:b}”.format(17)
 ```
-###  ** useful string formating **
+###  **useful string formating**
 [useful article](https://mkaz.blog/code/python-string-format-cookbook/)
 ```python
 for 3.1415926
@@ -198,6 +198,8 @@ for 3.1415926
 {:.0f} -> 3 no dp
 {:0>2d} -> 03.
 
+# useful 
+{d.hour:02}.format(d=datetme) -> 00, 01, 02 based on date etc
 ```
 
 
