@@ -5,6 +5,7 @@ summary: Notes on bash scripting
 
 # bash
 
+
 [amazing bash cheat sheet](https://devhints.io/bash)   
 [v.good guide to bash](https://www.tldp.org/LDP/abs/html/)   
 [process management](https://mywiki.wooledge.org/ProcessManagement)   
@@ -14,7 +15,7 @@ Important point! Syntax for running stuff from the command line is v. different 
 
 #### **string comparisions**
 
-`` bash
+```bash
 if [[ $var == "test" ]]
 
 not 
@@ -47,7 +48,7 @@ in the script
 ```bash
 while IFS=, read -r field1 field2
 do
-    <do the thing>
+<do the thing>
 done
 ```
 
@@ -82,6 +83,19 @@ names=("chris" "dan" "alex")
 ```bash
 declare -A b
 b=([hello]=world ["a b"]="c d")
+```
+
+#### **accessing key values in associative array**
+
+set key 
+```bash
+declare -A dict
+dict[a]=3
+```
+
+access key
+```bash
+echo ${dict[a]}
 ```
 
 #### **ways to increment variables**
@@ -141,8 +155,8 @@ done
 c style loop
 ```bash
 for((i=0; i<${#thingtoloopover}; i++)); do
-    echo "do something"
-    echo "${thingtoloopover:$i:1}"
+echo "do something"
+echo "${thingtoloopover:$i:1}"
 done 
 ```
 
@@ -180,3 +194,9 @@ do cp ${file} ~/dev/tvsquared-backend/data/testdata/assist/;
 done
 ```
 
+#### **string cleaning**
+
+```
+# would remove all non-alpha numberics and replace with space
+${1//[^[:alpha:]]/ }
+```
