@@ -153,6 +153,14 @@ col3 col3type
 )
 ```
 
+#### **Copy a table struture with no data**
+
+```sql
+SELECT INTO <new_table> 
+(SELECT * FROM <old_table> 
+WHERE 1 = 0 )
+```
+
 #### **copy data from db to disk**
 
 ```sql

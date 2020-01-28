@@ -30,6 +30,13 @@ super useful
 :.,+3!sort
 ```
 
+autoformat your code with black.
+This would format the whole doc
+```bash
+:0,$!black - -q
+```
+
+
 
 ### **basic key mappings**
 ```bash
@@ -66,6 +73,14 @@ select the lines that you want
 enter writing mode
 write the thing you want. Note nothing will appear on any other lines than the first
 press esc
+
+most useful for commenting 
+```
+crtl-v " select a bunch of rows
+shift-I " enter insert mode
+<enter the keys that we need> 
+esc " will now generate that across the whole range
+```
 
 
 
