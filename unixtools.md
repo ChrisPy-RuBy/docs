@@ -417,17 +417,19 @@ commandline git repo browsing tool
 
 ## basics
 
+-r: recursive folder search
 -n: get line number of match
 -E: use egrep i.e. regex pattern matching
 -A: displays lines surrounding 
 -v: inverse match
 -o: match only
+*: search all files
 
 ## **useful combinations **
 -oE: only return things that match the regex
 
 
-#### Display all uses of specific command or line
+#### Recursively search a folder for something
 
 ```bash
 cd to desired drive

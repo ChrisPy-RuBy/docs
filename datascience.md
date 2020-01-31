@@ -19,6 +19,32 @@ np.arange(10000)
 [cheat sheet](https://www.cheatography.com/gabriellerab/cheat-sheets/matplotlib-pyplot/)
 
 There are two main apis for matplotlib. The following info is for the pyplot api.
+pyplot plots can be thought of a axes and figures
+
+```python
+fig = plt.figure()
+ax = plt.axes()
+```
+
+## customisation
+
+```python
+import numpy as np
+plt.plot(x, np.sin(x - 0), color='blue', linestyle='dashed')
+plt.plot(x, np.sin(x -3), color='#FFDD44', linestyle='dashdot')
+plt.plot(x, np.sin(x -1), color='g', linestyle='dotted')
+```
+
+## multiplots
+
+using the pyplot api we can plot multiple graphs on a single plot
+
+```python
+import numpy as np
+plt.plot(x, np.sin(x - 0), color='blue')
+plt.plot(x, np.sin(x -3), color='#FFDD44')
+plt.plot(x, np.sin(x -1), color='g')
+```
 
 ## plot types
 
@@ -31,6 +57,39 @@ plt.scatter(x, y) # for more detailed plots. Much slower for plots with large nu
 plt.show()
 ```
 
+### Basic histograms
+
+```python
+data = np.random.randn(1000)
+plt.hist(data)
+# alter the binning
+plt.hist(data, bins=100)
+# normalise the data to 1 
+plt.hist(data, normed=True)
+```
+
+### Mulithistos
+
+```
+x1 = np.random.normal(0, 0.8, 1000),
+x2 = np.random.normal(-2, 1, 1000),
+kwargs = dict(histtype=stepfilled, alpha=0.3, normed=True, bins=40)",
+plt.hist(x1, **kwargs),
+plt.hist(x2, **kwargs),
+plt.show()
+```
+
+## legends
+
+Can pass in a legend param into the plt.plot 
+
+```python
+plt.plot(x, np.sin(x), color='green', label='sin(x)')
+plt.plot(x, np.cos(x), color='red', label='cos(x)')
+plt.axis('tight')
+plt.legend()
+```
+
 ## axes
 
 [tick details](https://jakevdp.github.io/PythonDataScienceHandbook/04.10-customizing-ticks.html)
@@ -39,6 +98,23 @@ other things must be done to the underlying ax object
 
 ```python
 ax = plt.axes()
+```
+
+### Set length
+
+set axes length or limits
+```python
+plt.xlim(-1, 11)
+plt.ylim(-1.5, 1.5)
+```
+
+alternatively 
+
+```
+# can just feed all the params straight in.
+plt.axis([-1, 11, -1.5, 1.5])
+# alternatively just set to tight
+plt.axis('tight')
 ```
 
 ### Add labels
@@ -73,8 +149,20 @@ ax.xaxis.set_major_locator(plt.MaxNLocator(3))
 ax.yaxis.set_major_formatter(plt.MaxNLocator(3))
 ```
 
+## Error bars
 
+```python
+x = np.linspace(0, 10, 50)
+dy = 0.8
+y = np.sin(x) + dy * np.random.rand(50)
 
+plt.errorbar(x, y, yerr=dy, fmt='.k')
+```
+
+## Continuous Errors
+
+[see here](https://jakevdp.github.io/PythonDataScienceHandbook/04.10-customizing-ticks.html)
+)
 
 Basic
 
