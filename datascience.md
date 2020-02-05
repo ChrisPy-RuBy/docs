@@ -162,7 +162,24 @@ plt.errorbar(x, y, yerr=dy, fmt='.k')
 ## Continuous Errors
 
 [see here](https://jakevdp.github.io/PythonDataScienceHandbook/04.10-customizing-ticks.html)
-)
+
+## Annotations
+
+
+
+
+## For fun
+
+### xkcd plot 
+
+wrap in 
+
+```
+with plt.xkcd():
+    <make plot>
+
+plt.show()
+```
 
 Basic
 

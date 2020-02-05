@@ -223,7 +223,13 @@ parse parquet from cmdline
 #### **encrypt machine**
 [guide to encrypting mac](https://www.mactrast.com/2013/07/how-to-public-how-to-encrypt-time-machine-backups-with-os-x)
 
-
+#### **machine keeps rename itself**
+[this is annoying](https://apple.stackexchange.com/questions/55416/my-mac-minis-computer-name-keeps-changing-when-it-resumes-from-sleep)
+```bash
+sudo scutil --set HostName <new_hostname>
+sudo scutil --set LocalHostName <new_hostname>
+sudo scutil --set ComputerName <new_hostname>
+```
 
 
 # teamcity

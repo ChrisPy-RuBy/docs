@@ -130,6 +130,19 @@ or
 ### **find, search,  replace**
 [link](https://www.linux.com/learn/vim-tips-basics-search-and-replace)
 
+#### **wrap text or digits in quotes**
+
+This is black magic
+```bash
+" 6091-1
+:%s/\([0-9\-]*)/"\1",/g
+" "6091-1",
+
+```
+
+
+
+
 #### **delete blank lines**
 
 ```bash
