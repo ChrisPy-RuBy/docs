@@ -36,6 +36,12 @@ This would format the whole doc
 :0,$!black - -q
 ```
 
+make a json file readable
+```
+:%!jq .
+```
+
+
 
 
 ### **basic key mappings**
