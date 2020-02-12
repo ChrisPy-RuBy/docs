@@ -11,6 +11,19 @@ summary: everything to do with git.
 
 ## **setup**
 - - - - - 
+
+#### **gitignore files**
+
+create a gitignore whitelist
+```bash
+*
+!*/
+!/<whitelist_item>/**
+```
+
+#### **setup pre-commit checks**
+
+
 #### **setuping up git hooks**
 
 ```bash 
