@@ -21,6 +21,7 @@ np.arange(10000)
 There are two main apis for matplotlib. The following info is for the pyplot api.
 pyplot plots can be thought of a axes and figures
 
+[find the chart you want here](https://matplotlib.org/gallery/)
 ```python
 fig = plt.figure()
 ax = plt.axes()
