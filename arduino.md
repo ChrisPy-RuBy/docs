@@ -27,6 +27,17 @@ brew install arduino-cli
 # upload
 - arduino-cli upload -p <PORT> --fqbn <FQBN> MyFirstSketch
 
+## installing packages
+
+find the package that you want.
+check it exisits
+```
+# checks index for package name
+arduino-cli lib search RTClib
+# install
+arduino-cli lib install RTClib
+```
+
 
 ## basic blink
 
