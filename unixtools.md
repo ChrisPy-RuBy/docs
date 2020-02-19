@@ -4,6 +4,11 @@ Summary: Notes on Useful unix tools
 # ag
 v.fast alternative to grep
 
+find file with filename
+```
+ag -g part-00001-b3570e2d-1639-495a-bcb1-b3931164b25d-c000.snappy.parquet
+```
+
 ## basic use
 
 ```bash
@@ -531,6 +536,17 @@ would give you all the processes running, one page at a time
 #### **list all files of certain type in folder**
 ```bash
 ls *.csv
+```
+
+# pobbler
+[useful](https://support.foxtrotalliance.com/hc/en-us/articles/360025802252-How-To-Work-With-Poppler-Utility-Library-PDF-Tool-)
+a pdf processing tool on the commandline
+
+## convert pdf to text
+generates a txt file of data
+
+```bash
+pdftotext <filetoscrap> 
 ```
 
 # pbcopy / pbpaste
