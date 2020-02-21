@@ -15,6 +15,7 @@ summary: A collections of personal notes
 1. further spreadsheets -> conditional formating, vlookups, better pivots
 2. write up notes on urls
 3. advanced python 
+4. query google calender api with python
 
 some things to try
  

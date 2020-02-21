@@ -68,8 +68,19 @@ not 100 % sure on what the truthy values are doing at the end.
 would use the lookup table L:K and return a value based on D3
 ```
 
+## Plotting 
 
+#### Plotting multi cluster scatter plots
 
+v.annoying
+
+combine the data for the x axis into one column.
+seperate the data for the y axis into two seperate column
+
+| x | y1 | y2 |
+| - | - | - |
+| 1 | null | 2 | 
+| 2 | 4 | null | 
 
 
 
