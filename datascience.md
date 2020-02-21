@@ -91,6 +91,17 @@ plt.axis('tight')
 plt.legend()
 ```
 
+alternatively
+```python
+ def plotter(x, y, name):
+     plt.ylim(0, 60)
+     plt.xlim(0, 60)
+     plt.plot(x, y, label=name)
+     plt.legend() 
+
+```
+
+
 ## axes
 
 [tick details](https://jakevdp.github.io/PythonDataScienceHandbook/04.10-customizing-ticks.html)
