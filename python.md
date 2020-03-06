@@ -308,11 +308,25 @@ for liverampID, details in default_rollup.items():
 for segmentGroup, epsilonValueList in bigDict.items():
     new = setDict.setdefault(segmentGroup, set(epsilonValueList)) 
 ```
+
+#### **set default accumulating nested dicts**
+
+```
+for clientbrand, details in value2.items():
+    for actionname, timestamp in details.items():
+        try:
+            value1[clientbrand][actionname] = min(value1[clientbrand][actionname], timestamp)
+        except Exception:
+            value1.setdefault(clientbrand, {}).setdefault(actionname, timestamp)
+return value1
+```
+
 Sorting the output to want you want
 ```python
 for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
      print("{}: {}").format(k, len(v))
 ```
+
 [link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
 
 #### **sorting dict by values**

@@ -493,6 +493,11 @@ grep -nE '^V[[:alpha:]]' combined_Q3_7_app_FR_1.csv
 tail -10000 <filename.csv> | head
 ```
 
+#### **cut top 5 rows form file**
+```bash
+tail -n +5 filename.csv
+```
+
 
 #### **strip header from csv** 
 

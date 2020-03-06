@@ -40,6 +40,11 @@ need this -> "purplegobbleer"
 [go here](https://lenashore.com/2012/04/how-to-add-quotes-to-your-cells-in-excel-automatically/)
 
 
+## check if one cell exists in another
+
+[guide](https://www.got-it.ai/solutions/excel-chat/excel-tutorial/match/check-if-one-value-exists-in-a-column)
+use match or vlookup
+
 ## vlookup
 
 ## Match

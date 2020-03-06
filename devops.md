@@ -195,6 +195,13 @@ where . is
   "k5": "tngviewnewvehiclepage"
 }
 ```
+
+#### filter json by nested key value and get the count
+
+```
+bzcat actions-3390-1-2020.03.02.json.bz2 | jq -c 'select(.v5.medium == "app")' | wc -l
+```
+
 ### **pyenv**
 Have multiple python versions on your machine
 

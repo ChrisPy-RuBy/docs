@@ -104,6 +104,24 @@ TBLPROPERTIES (
   'transient_lastDdlTime'='1578675852')
 ```
 
+## Cross table joins
+
+```
+SELECT vis.refurl, count(*)   
+   FROM "c3390_carriage_ae_bh_kw_qa_sa_prod"."actions" as acts
+LEFT JOIN ( SELECT * 
+           FROM "c3390_carriage_ae_bh_kw_qa_sa_prod"."visits") 
+           as vis
+ON acts.visit = vis._id
+WHERE acts.yy = '2020'
+   AND acts.mm = '03'
+   AND acts.dd = '02'
+   AND acts.v5['medium'] is null
+   AND acts.k5 = 'order' 
+GROUP BY 1
+ORDER BY 2
+```
+
 - - -
 # EC2
 - - -
