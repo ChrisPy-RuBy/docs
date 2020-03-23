@@ -1,6 +1,6 @@
 Title: unixtools
 Summary: Notes on Useful unix tools
-
+- - - 
 # ag
 v.fast alternative to grep
 
@@ -611,7 +611,7 @@ range of lines
 sed -e ‘1000,10003d;56788d’ <filename from> <filename to>
 ```
 
-#### **display specific rows**
+#### **display specific rows**:wq:w
 told you it was esoteric!
 ```bash
 sed -n '6643913,6643920p;6643921q' split_data.csv > dodgy.txt
@@ -621,6 +621,15 @@ sed -n '6643913,6643920p;6643921q' split_data.csv > dodgy.txt
 
 ```bash
 sed -e '1d' <from> <to>
+```
+
+# scutil
+
+useful hostname shite
+```bash
+scutil --get HostName
+scutil --get LocalHostName
+scutil --set HostName "YOUR LOCAL HOST NAME"
 ```
 
 # scp
@@ -745,16 +754,17 @@ crtl-b - c
 crtl-b - n
 ```
 
-#### **get terminal output from a tmux**
+## **get terminal output from a tmux**
 
-enter tmux section
-# press space to enter highlight mode
-crtl-b [
-# scoll the text you want
-# press enter to copy to buffer
-# open vim and save it
+- enter tmux section
+- press space to enter highlight mode
+- crtl-b [
+- scoll the text you want
+- press enter to copy to buffer
+- open vim and save it
 
 
+# tr
 used to trim data quickly
 
 #### **remove characters from a csv v.quickly**

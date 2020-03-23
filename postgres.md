@@ -652,3 +652,9 @@ FROM   cookiecount,
 |VALUES	|Specifies the values of an INSERT INTO statement|
 |VIEW	|Creates, updates, or deletes a view|
 |WHERE	|Filters a result set to include only records that fulfill a specified conditiona|
+
+
+### new  nbote
+
+
+

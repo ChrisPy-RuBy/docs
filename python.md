@@ -845,6 +845,7 @@ can accumulate using other functions also
 #### **permutations / products**
 
 good for determining all the possible outcomes i.e. bruteforce approach to various problems.
+
 ```python
 x = ['a', 'b', 'c']
 y = [1, 2, 3]
@@ -877,7 +878,6 @@ data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter':
 - - -
 
 #### **enable autoreload**
-snip: `autoreload 
 ```python
 %load_ext autoreload
 %autoreload 2
@@ -930,7 +930,7 @@ parserows = [json.loads(row) for row in list_of_rows]
 
 Pipe in from stdin
 
-```
+```python
 import sys
 import json
 
@@ -1025,8 +1025,15 @@ def my_other_test_func():
 
 ```
 
+## tempfile
 
-
+keep only writing blank files
+need to flush
+```python
+with temp.NamedTempFile(mode='w') as f:
+        f.write(data)
+        f.flush()
+```
 
 ## pip
 

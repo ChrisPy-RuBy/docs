@@ -366,21 +366,15 @@ db.getCollection("brands").aggregate(
 
 agg flags across brands
 ```javascript
-// Requires official MongoShell 3.6+
-use bcustomers;
+`use bcustomers;
 db.getCollection("brands").aggregate(
     [
         { 
             "$match" : {
                 "collector_siteid" : {
                     "$in" : [
-                        "6357-1", 
-                        "6358-1", 
-                        "6240-1", 
-                        "6328-1", 
-                        "6372-1", 
-                        "6171-1", 
-  V                      "6286-1"
+"1008-1",
+        
                     ]
                 }
             }
@@ -401,17 +395,17 @@ db.getCollection("brands").aggregate(
                     "$push" : "$enable_collector_tng"
                 }
             }
+        },
+        {
+          	"$sort": {
+          	  	"all_enabled": -1
+          	}
         }
     ], 
     { 
         "allowDiskUse" : false
     }
-);
-```
-
-
-
-```
+);``
 
 ## **bugs**
 
