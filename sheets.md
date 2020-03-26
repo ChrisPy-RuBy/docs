@@ -96,7 +96,7 @@ seperate the data for the y axis into two seperate column
 
 
 
-## conditional formatting
+## conditionals 
 [derp](https://stackoverflow.com/questions/11399111/how-to-replace-text-of-a-cell-based-on-condition-in-excel
 =IF(L27=TRUE, 1,0)
 )
@@ -105,3 +105,16 @@ seperate the data for the y axis into two seperate column
 ```
 
 # google docs
+
+## conditional formatting
+
+#### using conditional formating to mathc values against a couple of note
+
+[example](https://docs.google.com/spreadsheets/d/1SmRcdcRtEWB5ENYfD1upo-8cUWK92LssVB9od0jcKpg/edit?usp=sharing)
+
+```
+# conditional one, colour contents of D2 if it is present in B$
+=MATCH(D2, B$2:B$10, 0)
+# done the oppsite
+=ISNA(MATCH(D2, B$2:B$10, 0))
+```
