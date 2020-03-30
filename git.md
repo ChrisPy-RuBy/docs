@@ -204,6 +204,15 @@ will rebase in inteactive mode with some instructures. I might want to investiga
 
 ## reset
 - - - -
+
+#### **reset a local branch to be the same a remote**
+
+do this when you get a horrible merge mess locally. 
+```
+git reset --hard origin/tvsdev.133
+```
+
+
 #### **unstage specific files** 
 ```bash
 git reset HEAD <filename.py> 

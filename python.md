@@ -546,6 +546,13 @@ Pizza(['mozzarella', 'tomatoes'])
 
 ## Optimisation
 
+#### tip blah: natively compiled libs
+these can be much faster
+```python
+import ujson as json
+import re2 as re
+```
+
 #### tip 1, membership testing
 
 ```python 

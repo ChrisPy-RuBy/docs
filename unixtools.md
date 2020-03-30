@@ -378,6 +378,13 @@ find . -name <filename>.<file ending> -print
 # can also use regex
 find . -name '[a-zA-Z]*.sh' -print
 ```
+
+#### **find file and open in vim**
+
+```bash
+find . -name yarn-site.xml -type f -exec nvim \{\} \;
+```
+
 #### **find specific file types**
 
 use types.
