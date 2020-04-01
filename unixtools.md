@@ -9,6 +9,11 @@ find file with filename
 ag -g part-00001-b3570e2d-1639-495a-bcb1-b3931164b25d-c000.snappy.parquet
 ```
 
+v.fast labbook search
+```
+ag --nobreak --nonumbers --noheading . | fzf
+```
+
 ## basic use
 
 ```bash

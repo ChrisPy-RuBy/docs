@@ -1,6 +1,6 @@
 title: python 
 summary: Python notes.
-
+- - - 
 
 # Pythonic Python
 
@@ -11,6 +11,11 @@ Things to anki
 
 
 ## Do's and Don'ts 
+
+### **header in file**
+```
+#!/usr/bin/env python3
+```
 
 ### **Write functions that do one thing**
 

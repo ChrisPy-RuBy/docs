@@ -187,7 +187,7 @@ be aware there are issues between \copy and copy.
 Also the delimiter stuff is an arse
 
 ```sql
-\Copy <csv name> from <datelocation> CSV 
+\Copy <csv name> from <datalocation> CSV 
 DELIMITER E'\t NULL'\\N'
 ```
 

@@ -1,4 +1,4 @@
-Title: Arduino
+Title: arduino
 summary: place for stuff regarding getting ardiuno to do stuff
 - - - 
 
