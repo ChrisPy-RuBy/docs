@@ -200,3 +200,10 @@ done
 # would remove all non-alpha numberics and replace with space
 ${1//[^[:alpha:]]/ }
 ```
+
+#### getops
+
+a way of dealing with commandline arguements 
+still not that straight forward.
+ 
+[see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)

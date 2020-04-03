@@ -43,6 +43,14 @@ Domain Name [IP Address]: The domain name, if available, can often help you see 
 
 # nslookup
 
+# dig
+
+similar to nslookup. gives a bunch of info about dnserver etc
+
+```bash
+dig collector-1.tvsquared.com
+```
+
 # whois
 
 # finger
