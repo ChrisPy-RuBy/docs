@@ -1,6 +1,12 @@
 Title: Raspberry Pi 
 - - - 
 
+# give a pi a static address on a network
+
+[read this](https://pimylifeup.com/raspberry-pi-static-ip-address/)
+
+
+
 
 # GPIO PORT
 
