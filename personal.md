@@ -9,43 +9,55 @@ summary: A collections of personal notes
 
 # To cheatsheet
 1. google sheets shortcuts
+2. spark
+
 
 # to Learn
 
-1. further spreadsheets -> conditional formating, vlookups, better pivots
-2. write up notes on urls
-3. advanced python 
-4. query google calender api with python
 
-some things to try
- 
+## Python 
+- make notes on the main function
+- make a pip package
+- query google calender api with python
 - [cpython source code tut](https://realpython.com/cpython-source-code-guide/)
 - [gil tut](https://realpython.com/python-gil/)
 - [memory-management](https://realpython.com/python-memory-management/)
 - [buidling c-module](Building a Python C Extension Module)
 - [standard-lib itertools](https://realpython.com/python-itertools/)
-  
-4. advanced pandas
+- advanced pandas
 [idiomatic pandas](https://realpython.com/courses/idiomatic-pandas-tricks-features-you-may-not-know/)
 
-5. general programming.
+## bash  
+- better commandline shizzle
+[guide](http://conqueringthecommandline.com/book/ps)
+[learn x in y mins](https://learnxinyminutes.com/docs/erlang/)
+- understand read command.
+- learn parallel command
+- make a date calculator. i.e what is this date +30 days etc
+
+## data
+
+- further spreadsheets -> conditional formating, vlookups, better pivots
+- write up notes on urls
+
+## general programming.
+- write up notes on general functional programming principles
+
+## computer science
+- guide to urls
+- guide to sockets and ports
+- guide to unix operating system 
+- learn wherer evrything is and what everything does on a mac and raspberry pi.
+
 
 somethings to try 
 
 - one month destory all software
 - databases in 7 weeks
 
-6. better commandline shizzle
-[guide](http://conqueringthecommandline.com/book/ps)
-[learn x in y mins](https://learnxinyminutes.com/docs/erlang/)
-
 7. bash
 
-- understand read command.
-- learn parallel command
-
 8.Unix
-- learn wherer evrything is and what everything does on a mac and raspberry pi.
 
 # tvs knowledge to work on
 1. front end grid and infrastructure. how does it all fit together

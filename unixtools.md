@@ -518,6 +518,8 @@ tail -n +2 <filename>.csv | head
 ```
 
 
+
+
 # htop
 https://peteris.rocks/blog/htop/
 monitors system performance
@@ -548,12 +550,22 @@ makes streamed output managable
 ps -ef | less
 ```
 would give you all the processes running, one page at a time
+
 # ls
 
 #### **list all files of certain type in folder**
 ```bash
 ls *.csv
 ```
+
+#### Useful display everything command
+
+```bash
+ls -larth
+```
+
+gives you permissions, something, owner, something, size, date and name 
+
 
 # pobbler
 [useful](https://support.foxtrotalliance.com/hc/en-us/articles/360025802252-How-To-Work-With-Poppler-Utility-Library-PDF-Tool-)
