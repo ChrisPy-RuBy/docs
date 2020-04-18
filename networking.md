@@ -15,6 +15,14 @@ would return something if you are hitting that website.
 
 # ipconfig
 
+# arp 
+
+gives all the devices on a local network.
+
+```bash 
+arp -a 
+```
+
 easiest way to get an ip address that you are ssh into 
 
 ```
