@@ -1,6 +1,20 @@
 Title: unixtools
 Summary: Notes on Useful unix tools
 - - - 
+
+# pipe and re-directs
+```
+cat <testfile>
+and
+cat < <testfile>
+```
+do the same thing. 
+but for different reasons
+one provides the file as an arguement to cat
+the other directly the file as stdin to cat.
+
+
+
 # ag
 v.fast alternative to grep
 
