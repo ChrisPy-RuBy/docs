@@ -4,8 +4,6 @@ summary: Notes on bash scripting
 [awesome general guide to multiple cmmdline tools](http://conqueringthecommandline.com/book/ps)
 
 # bash
-
-
 [amazing bash cheat sheet](https://devhints.io/bash)   
 [v.good guide to bash](https://www.tldp.org/LDP/abs/html/)   
 [process management](https://mywiki.wooledge.org/ProcessManagement)   
@@ -205,5 +203,15 @@ ${1//[^[:alpha:]]/ }
 
 a way of dealing with commandline arguements 
 still not that straight forward.
- 
-[see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
+ [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
+
+# to learn
+
+- better commandline shizzle ``to_learn
+[guide](http://conqueringthecommandline.com/book/ps) ``to_learn
+[learn x in y mins](https://learnxinyminutes.com/docs/erlang/) ``to_learn
+- understand read command. ``to_learn
+- learn parallel command ``to_learn
+- make a date calculator. i.e what is this date +30 days etc ``to_learn
+
+
