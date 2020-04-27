@@ -1,5 +1,8 @@
 Title: vim
 summary: summary of useful stuff for writing code in vim
+- - - 
+# to learn
+- vim macros **to_learn
 
 [guides](https://www.ubuntupit.com/100-useful-vim-commands-that-youll-need-every-day/)
 [guides_2](https://hackernoon.com/useful-vim-tricks-for-2019-e7c1db7a18d6)
@@ -145,6 +148,13 @@ This is black magic
 " "6091-1",
 
 ```
+
+#### **strip leading whitespacee**
+
+```
+:%s/^[ \t]*//g
+```
+
 
 
 
@@ -394,3 +404,5 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
 
 ## sublime
+
+

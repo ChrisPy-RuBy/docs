@@ -1289,7 +1289,6 @@ Note: %timeit function in ipython is much easier to use
 
 create a file named test_<thing to be tested>.py
 
-snip:`unittestclass
 ```python
 import unittest
 
@@ -1321,7 +1320,7 @@ python -m  unittest test_<thing to be tested>.py
 python3 -mvenv testproject_env
 ```
 #### **Activate venv**
-````bash
+```bash
 source testproject_env/bin/activate
 ```
 
@@ -1351,3 +1350,17 @@ moto[server]
 selenium
 termcolor
 ```
+
+# to learn
+
+- make notes on the main function ``to_learn
+- make a pip package ``to_learn
+- query google calender api with python ``to_learn
+- [cpython source code tut](https://realpython.com/cpython-source-code-guide/) ``to_learn
+- [gil tut](https://realpython.com/python-gil/) ``to_learn
+- [memory-management](https://realpython.com/python-memory-management/) ``to_learn
+- [buidling c-module](Building a Python C Extension Module) ``to_learn
+- [standard-lib itertools](https://realpython.com/python-itertools/) ``to_learn
+- advanced pandas ``to_learn
+[idiomatic pandas](https://realpython.com/courses/idiomatic-pandas-tricks-features-you-may-not-know/) ``to_learn
+

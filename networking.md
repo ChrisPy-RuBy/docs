@@ -64,3 +64,9 @@ dig collector-1.tvsquared.com
 # finger
 
 # nmap
+
+# to learn
+- wireshark ``to_learn
+what vpns and networks do to your public ip addess
+- what vpns and networks do to your public ip addess ``to_learn
+- what vpns and networks do to your public ip addess xxto_learn
