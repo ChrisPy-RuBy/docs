@@ -215,8 +215,39 @@ You will need to install all the relevant pip packages into the correct python f
 
 
 
+# Virtual Machines
 
+## setting up macos in a virtual box
 
+for catalina. This was an absolute pain.
+run on virtual box 6.2 on mac os with catalina. meta I know.
+
+Steps
+- create a catalina iso
+    - download catalina installer from the apps store. you want to turn off all the autoinstalling stuff
+    - run this script to generate the iso.
+        ```bash
+hdiutil create -o /tmp/Catalina.cdr -size 5200m -layout SPUD -fs HFS+J
+hdiutil attach /tmp/Catalina.cdr.dmg -noverify -mountpoint /Volumes/install_build
+sudo /Applications/Install\ macOS\ Catalina.app/Contents/Resources/createinstallmedia --volume /Volumes/install_build
+mv /tmp/Catalina.cdr.dmg ~/Desktop/InstallSystem.dmg
+hdiutil detach /Volumes/Install\ macOS\ Catalina
+hdiutil convert ~/Desktop/InstallSystem.dmg -format UDTO -o ~/Desktop/Catalina.iso
+        ```
+    - if the iso fails to create with a error(22, 0) message. close everything try again. still issue then restart.
+
+- install virtual box and extensions
+    - some problems getting it the correct access on mac that I haven't managed to resolve on ubuntu
+
+- create the box
+    - make sure you have enough space on the machine (catalina requires at least 25 GB!)
+    - follow the setup steps from other articles
+    if you get stuff at a weird shell
+        - re-create the iso
+    if the install sticks while loading at the 14 min mark
+        - set system processors to more than 1.
+    if the keyboard doesn't recognise
+        - pause and un-pause the machine
 
 ### **parquet-tools** 
 - - - 
@@ -237,6 +268,11 @@ sudo scutil --set HostName <new_hostname>
 sudo scutil --set LocalHostName <new_hostname>
 sudo scutil --set ComputerName <new_hostname>
 ```
+
+##  Too large for the volume's format?
+
+re-format the drive
+[here](https://discussions.apple.com/thread/4263857)
 
 
 # teamcity
