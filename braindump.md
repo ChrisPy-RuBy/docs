@@ -4,4 +4,13 @@ Feel free to tags with **
 **to_learn -> things to learn
 **to_add -> things to add
 **to_do -> things to do
+**to_make -> project ideas
 
+testtest
+git squash merge **to_learn
+get better at using branches **to_learn
+is it prime tool **to_make
+create basic project skeleton **to_make
+how does the __init__work in python **to_learn
+build a sound visualisation dashboard **to_make
+update githook **to_do
