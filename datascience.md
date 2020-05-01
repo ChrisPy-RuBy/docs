@@ -4,6 +4,30 @@ Summary: Notes on useful datascience libs
 # Useful datascience notes
 
 [machine learning](https://ml-cheatsheet.readthedocs.io/en/latest/)
+
+
+# pandas
+
+## conditionally generate a columns values 
+
+if you want to dynamically generate the values for a column based on 
+the rest of the row.
+
+```
+       a     b      c     d     z
+0   10.0  14.0  145.0   NaN   NaN
+1  654.0  99.0    NaN  13.0   NaN
+2    NaN  12.0    NaN  14.0   NaN
+3    NaN   NaN    NaN   NaN  10.0
+
+def filterfun(row):
+    if row['a'] == 10.0:
+        return "x"
+    else:
+        return "y"
+
+df['new_col'] = df.apply(lambda row: filterfun(row), axis=1)
+```
  
 
 # numpy
