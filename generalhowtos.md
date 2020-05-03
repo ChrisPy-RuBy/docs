@@ -10,4 +10,6 @@ Summary: How to do something that is not language or system specific.
 [] put $HOME/bin on path
 [] move or link the script to $HOME/bin
 
-
+# create filter deck by tag in anki
+in the filtered view field 
+tags:"<desired tag>"

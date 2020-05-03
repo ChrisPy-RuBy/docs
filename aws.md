@@ -31,7 +31,7 @@ url is like '%derp%'
 ```
 
 
-#### **querying using the partion structure**
+#### **querying using the partition structure**
 
 ```sql
 SELECT url FROM “collector_tng_pre_visit”.“data”
@@ -127,9 +127,9 @@ ORDER BY 2
 - - -
 
 [ec2 instance comparison tool](https://www.ec2instances.info/?filter=i3&cost_duration=monthly&selected=i3en.metal,i3en.large)
-Controls all th deployment of all the remote servers that we have!.
+Controls all the deployment of all the remote servers that we have!.
 Can get all the ip addresses for all servers here.
-Useful for debugging frontedn code.
+Useful for debugging frontend code.
 Get the ip address and log into the specific server.
 
 #### **load balancers**

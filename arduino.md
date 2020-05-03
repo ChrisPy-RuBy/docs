@@ -8,11 +8,11 @@ summary: place for stuff regarding getting ardiuno to do stuff
 
 Download from arduino website
 - create a new sketch with new
-- write somecode 
+- write some code 
 - check it with verify button
 - push to arduino with upload button. Simplez
 
-## Running from eommandline
+## Running from commandline
 
 brew install arduino-cli
 
@@ -30,7 +30,7 @@ brew install arduino-cli
 ## installing packages
 
 find the package that you want.
-check it exisits
+check it exists
 ```
 # checks index for package name
 arduino-cli lib search RTClib
