@@ -13,3 +13,6 @@ Summary: How to do something that is not language or system specific.
 # create filter deck by tag in anki
 in the filtered view field 
 tags:"<desired tag>"
+
+# Deploy a static website to s3
+

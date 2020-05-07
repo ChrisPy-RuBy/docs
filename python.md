@@ -12,9 +12,10 @@ Things to anki
 
 ## Do's and Don'ts 
 
-### **header in file**
+### **header in file aka shebangline**
 ```
-#!/usr/bin/env python3
+#!/usr/bin/env python3  or
+#!/usr/bin/python3
 ```
 
 ### **Write functions that do one thing**

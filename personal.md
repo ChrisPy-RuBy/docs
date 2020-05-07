@@ -14,8 +14,15 @@ summary: A collections of personal notes
 ## bash  
 ## data
 
+<<<<<<< Updated upstream
 - further spreadsheets -> conditional formating, vlookups, better pivots
 - write up notes on urls
+=======
+1. further spreadsheets -> conditional formating, vlookups, better pivots
+2. write up notes on urls
+3. advanced python 
+4. query google calender api with python
+5. Understanding serial ports and ports in general
 
 ## general programming.
 - write up notes on general functional programming principles
@@ -67,9 +74,16 @@ Done ….
 
 
 DOWNTIME PROJECTS :
-Join a hackthon ``to_do
-Contribute to an open source project ``to_do
-Set up a personal website ``to_do
+Join a hackthon **to_do
+Contribute to an open source project **to_do
+Set up a personal website **to_do
+
+GENERAL TODOS
+- buy "the last lecture" and "the lean start-up"
+- setup personal repo for life docs
+
+Contribute to an open source project
+Set up a personal website 
 
 
 commandline timestamp converter
