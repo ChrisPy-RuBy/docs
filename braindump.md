@@ -14,3 +14,7 @@ create basic project skeleton **to_make
 how does the __init__work in python **to_learn
 build a sound visualisation dashboard **to_make
 update githook **to_do
+vim pane management **to_learn
+tquickly generated filtered decks based on tags in anki **to_learn
+apply formula to rows in sheets **to_learn
+more cards about vim folding **to_add
