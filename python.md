@@ -448,6 +448,8 @@ x = list(reduce)
 10
 ```
 
+
+
 ## List
 - - -
 
@@ -876,6 +878,18 @@ y = [1, 2, 3]
 results = defaultdict(list)
 data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter': 'b', 'value': 123}]
 reduce(data, reducer, results)
+```
+
+reduce two dicts and sum values
+
+```python
+def reducer(acc, elem):
+    for k, v in elem.items():
+        acc[k] = acc.get(k, 0) + v
+    return acc
+
+reduce(reducer, [{'a':2, "b":3, "s":10},{"a":2}], dict())
+
 ```
 
 #### **groupby**
