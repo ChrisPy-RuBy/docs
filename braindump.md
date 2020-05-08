@@ -18,3 +18,8 @@ vim pane management **to_learn
 tquickly generated filtered decks based on tags in anki **to_learn
 apply formula to rows in sheets **to_learn
 more cards about vim folding **to_add
+get better at flake8 and blacking code **to_do
+create a pandas anki set **to_learn
+move final parts of word doc labook into docs *to_do
+move final parts of word doc labook into docs **to_do
+change qa to rem numbers when updating speel check**to_do
