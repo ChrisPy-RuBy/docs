@@ -140,6 +140,12 @@ aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
 ### **jq**
 - - - 
 
+## xtract nested key from json
+
+```
+jq '.topkey.middlekey.bottomkey'
+```
+
 jq is a super useful tool for processing json from cmdline  
 Can easily pipe results to other comdline tools.
 [docs](https://stedolan.github.io/jq/manual/)  
