@@ -249,6 +249,27 @@ hdiutil convert ~/Desktop/InstallSystem.dmg -format UDTO -o ~/Desktop/Catalina.i
     if the keyboard doesn't recognise
         - pause and un-pause the machine
 
+## setting up an SD card as VM disk
+
+format SD card. for mac make sure it is Mac OS extended Journal, with GUID partitioning. 
+Need to format before you start from the ROOT in diskultily
+
+```
+# find disk name
+diskutil list
+# unmount disk
+diskutil unmountDisk /dev/disk2
+# grant access
+sudo chown $USER /dev/disk2*
+# create link.vmdk
+VBoxManage internalcommands createrawvmdk -filename /Users/chriswoodall/VirtualBox\ VMs/link.vmdk -rawdisk /dev/disk2
+# create disk in VB using gui and .vmdk 
+open -a VirtualBox
+# might need to unmount again to get it to work
+diskutil unmountDisk /dev/disk2
+# on restart will need to grant access to disk again
+sudo chown $USER /dev/disk2*
+```
 ### **parquet-tools** 
 - - - 
 parse parquet from cmdline
