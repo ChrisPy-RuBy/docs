@@ -480,6 +480,22 @@ FROM alphonso_raw_impressions
 GROUP BY deviceid;
 ```
 
+#### agg stats with case statements
+
+```sql
+SELECT dd, count(*) total_server_track,
+   sum(
+       CASE
+       WHEN visitor_id is null then 1 else 0
+       END
+     ) total_server_track_no_vis_id,
+FROM "c6208_peloton_uk_prod"."userdata_collector_tng_pre_visit"
+WHERE mm = '04'
+AND server_track = true
+GROUP BY 1
+ORDER BY 1, 2
+```
+
 
 #### **basic joins**
 

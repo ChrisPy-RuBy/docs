@@ -12,9 +12,10 @@ Things to anki
 
 ## Do's and Don'ts 
 
-### **header in file**
+### **header in file aka shebangline**
 ```
-#!/usr/bin/env python3
+#!/usr/bin/env python3  or
+#!/usr/bin/python3
 ```
 
 ### **Write functions that do one thing**
@@ -447,6 +448,8 @@ x = list(reduce)
 10
 ```
 
+
+
 ## List
 - - -
 
@@ -875,6 +878,18 @@ y = [1, 2, 3]
 results = defaultdict(list)
 data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter': 'b', 'value': 123}]
 reduce(data, reducer, results)
+```
+
+reduce two dicts and sum values
+
+```python
+def reducer(acc, elem):
+    for k, v in elem.items():
+        acc[k] = acc.get(k, 0) + v
+    return acc
+
+reduce(reducer, [{'a':2, "b":3, "s":10},{"a":2}], dict())
+
 ```
 
 #### **groupby**
