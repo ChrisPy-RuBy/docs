@@ -7,6 +7,17 @@ summary: summary of useful stuff for writing code in vim
 [guides](https://www.ubuntupit.com/100-useful-vim-commands-that-youll-need-every-day/)
 [guides_2](https://hackernoon.com/useful-vim-tricks-for-2019-e7c1db7a18d6)
 
+# ALE
+## check the status of a linter
+
+type in the file you are interested in to get an overview of what is happening
+```
+:ALEInfo
+```
+need to have the configured linter install i.e.
+sudp apt-get install shellcheck
+
+
 #### **key configs*
 Add these to  your `~/.vimrc file 
 ```
@@ -149,7 +160,7 @@ This is black magic
 
 ```
 
-#### **strip leading whitespacee**
+#### **strip leading whitespace**
 
 ```
 :%s/^[ \t]*//g
@@ -170,7 +181,7 @@ This is black magic
 :set ignorecase
 :set noignorecase
 ```
-#### **process teamcity console outoput and make human readable**
+#### **process teamcity console output and make human readable**
 this will generate human readable output from a console output.
 ```bash
 :%s/\\n/\r/g

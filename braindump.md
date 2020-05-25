@@ -23,3 +23,4 @@ create a pandas anki set **to_learn
 move final parts of word doc labook into docs *to_do
 move final parts of word doc labook into docs **to_do
 change qa to rem numbers when updating speel check**to_do
+notes on runinng child processes with subprocess to anki **to_add
