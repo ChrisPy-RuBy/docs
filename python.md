@@ -1,8 +1,9 @@
 title: python 
 summary: Python notes.
 - - - 
+# Python 
 
-# Pythonic Python
+## Pythonic Python
 
 Things to anki
 - sorted() functions 
@@ -10,20 +11,20 @@ Things to anki
 - string formating
 
 
-## Do's and Don'ts 
+### Do's and Don'ts 
 
-### **header in file aka shebangline**
+#### **header in file aka shebangline**
 ```
 #!/usr/bin/env python3  or
 #!/usr/bin/python3
 ```
 
-### **Write functions that do one thing**
+#### **Write functions that do one thing**
 
-### **Maintain variable types**
+#### **Maintain variable types**
 do not mix types under the same variable
 
-### **Define Exceptions correctly**
+#### **Define Exceptions correctly**
 
 ``` python
 try:
@@ -33,23 +34,23 @@ except ValueError as e:
 except Exceptions as e
 ```
 
-## Syntax
+### Syntax
 
-### **single line if else statements**
+#### **single line if else statements**
 
 ``` python
 y = 1
 x = 10 if y > 10 else None
 ```
 
-### **!= vs is not**
+#### **!= vs is not**
 
 similar to = and is 
 =  is used to check if something is the same object
 is is used to check if something is the same type
 
 
-### ** shortcircuiting functions**
+#### ** shortcircuiting functions**
 
 [examples of shortcircuiting](https://www.geeksforgeeks.org/short-circuiting-techniques-python/)
 
@@ -61,9 +62,9 @@ if you want to guard against absent or invalid values going into a
 function. if either the 'value' is none or absent, it will be 
 replaced with ''
 
-## *args" and "**kwargs"
+### *args" and "**kwargs"
 
-### **zip star(*) idioms**
+#### **zip star(*) idioms**
 
 transpose wide lists together into thin ones
 
@@ -86,7 +87,7 @@ test_list = ['a', 1, 'b', 2, 'c', 3, 'd', 4]
 pair_up = list(zip(*[iter(test_list)] * 2)
 ```
 
-### **split list of tups into two lists**
+#### **split list of tups into two lists**
 
 v.useful for plotting data as most graphs preferx, y
 
@@ -99,7 +100,7 @@ x, y = zip(*data)
 
 
 
-### **extensible functions**
+#### **extensible functions**
 
 ```python
 def hyper_volumne(length, *lengths):
