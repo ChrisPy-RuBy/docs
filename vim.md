@@ -55,7 +55,19 @@ make a json file readable
 :%!jq .
 ```
 
+### visual block mode
+ctrl-v
 
+#### insert something
+select block
+shift-I
+esc esc
+
+#### find and replace in block
+select block
+```
+:s/\%V<old>/<new>g
+```
 
 
 ### **basic key mappings**

@@ -118,3 +118,15 @@ seperate the data for the y axis into two seperate column
 # done the oppsite
 =ISNA(MATCH(D2, B$2:B$10, 0))
 ```
+
+## pivots
+
+[good guide](https://www.benlcollins.com/spreadsheets/pivot-tables-google-sheets/)
+
+### count number in column 
+
+rows:set to thing you are interested in 
+values: set to same thing as the rows, then summarize with a COUNTA
+
+sort using the rows, asc, desc
+

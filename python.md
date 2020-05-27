@@ -25,19 +25,19 @@ do not mix types under the same variable
 
 ### **Define Exceptions correctly**
 
-```python
+``` python
 try:
     do somting
 except ValueError as e:
     log e
 except Exceptions as e
-
+```
 
 ## Syntax
 
 ### **single line if else statements**
 
-```
+``` python
 y = 1
 x = 10 if y > 10 else None
 ```

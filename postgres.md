@@ -115,6 +115,22 @@ ux_<index name>
   (hasheduserip COLLATE pg_catalog."default", datadatetime);
 ```
 
+#### **Display all indexes for a schema**
+
+```sql
+SELECT
+    tablename,
+    indexname,
+    indexdef
+FROM
+    pg_indexes
+WHERE
+	schemaname = 'users'
+ORDER BY
+    tablename,
+    indexname;
+```
+
 #### **foreign keys**
 
 ```sql

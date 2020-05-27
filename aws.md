@@ -47,7 +47,7 @@ WHERE site_id, yy, mm, dd, and hh are partitions
 #### **useful setup queries**
 
 collector_tng specific. To generate an actions athena table.
-```
+```sql
 CREATE EXTERNAL TABLE `actions_2`(
   `_id` string, 
   `k5` string, 
@@ -74,7 +74,7 @@ TBLPROPERTIES (
 ```
 
 visits
-```
+```sql
 CREATE EXTERNAL TABLE `visits`(
   `_id` string, 
   `cfgid` string, 
@@ -106,7 +106,7 @@ TBLPROPERTIES (
 
 ## Cross table joins
 
-```
+```sql
 SELECT vis.refurl, count(*)   
    FROM "c3390_carriage_ae_bh_kw_qa_sa_prod"."actions" as acts
 LEFT JOIN ( SELECT * 
@@ -120,6 +120,14 @@ WHERE acts.yy = '2020'
    AND acts.k5 = 'order' 
 GROUP BY 1
 ORDER BY 2
+```
+
+## timestamp convesion 
+
+```sql
+SELECT date_format(from_unixtime(timestamp/1000),'%Y-%m-%dT%H:%i:%sZ') FROM "c1567_talkspace_1_prod"."userdata_collector_tng_pre_visit"
+WHERE mm = '05'
+LIMIT 5;
 ```
 
 - - -
