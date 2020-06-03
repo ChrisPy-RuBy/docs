@@ -1,7 +1,9 @@
 Title: unixtools
 Summary: Notes on Useful unix tools
 - - - 
+
 # unixtools
+
 ## pipe and re-directs
 ```
 cat <testfile>
@@ -10,21 +12,22 @@ cat < <testfile>
 ```
 do the same thing. 
 but for different reasons
-one provides the file as an arguement to cat
+one provides the file as an argument to cat
 the other directly the file as stdin to cat.
 
-
-
 ## ag
+
 v.fast alternative to grep
 
-find file with filename
-```
+### find file with filename
+
+```bash
 ag -g part-00001-b3570e2d-1639-495a-bcb1-b3931164b25d-c000.snappy.parquet
 ```
 
-v.fast labbook search
-```
+### v.fast labbook search
+
+```bash
 ag --nobreak --nonumbers --noheading . | fzf
 ```
 
@@ -71,13 +74,13 @@ $1 refers to a specfic column.
 
 ```bash
 some-condition {one or more statements}
-# i.e if (something then) {}
-# example, can be understood as if value in column 1 is greater than value in column 2 then 
-# then print column 3
+\# i.e if (something then) {}
+\# example, can be understood as if value in column 1 is greater than value in column 2 then 
+\# then print column 3
 awk '$1>$2 {print $3}'
-# whereas, would print the whole row where the condition was met.
+\# whereas, would print the whole row where the condition was met.
 awk '$1>$2'
-# and, would just print then specified column.
+\# and, would just print then specified column.
 awk '{print $1}'
 ```
 ### dealing with different seperated files
@@ -210,10 +213,8 @@ the  - arg pipes the output to stdout
 s3://tvsquared-userdata/3871/1/app-usersessions/1547468023214-combined_Q3_8_app_FR_1.csv.gz - | gzcat | head
 ```
 
-
-
-
 ## bc
+
 use bc for maths
 ```bash
 echo "2+2" | bc

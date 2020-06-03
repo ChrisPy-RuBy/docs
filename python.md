@@ -174,6 +174,41 @@ not quite sure what this does.
 ## Bytes / Strings / Format
 - - - - 
 
+#### Bytes verses strings
+
+what is a string... human readable tests.
+underneath a sequence of unicode code points.
+i.e. "Hello" -> 0x48, 0x65, 0x6c, 0x6c, 0x6f
+
+What is a byte....Not human readable number from 0-255
+must be translated to be red.
+
+#### python 2 vs python 3 reminder
+
+python 2
+str and unicode
+
+python3 
+bytes and str
+
+str became bytes
+unicode became str
+
+#### useful types
+
+```
+r'raw' # means raw. No sequence escaping is used
+b'bytes' # means the string is bytes
+u''  # not sure. Think means unicode
+```
+
+####   what is this character
+```
+x = '\xc1'
+print(x)
+```
+x here is printed as unicode. 
+
 #### **join() vs +=**
 
 join is perferred as it is much faster

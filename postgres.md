@@ -367,6 +367,15 @@ where userip << '2001:0db8::/32'::cidr
 limit 10
 ```
 
+#### **generate unixtimestamp from timestmap**
+
+```sql
+SELECT EXTRACT(EPOCH FROM datadatetime) * 1000 FROM 
+usersessions.data 
+WHERE brandid = 1
+AND usersessionid = 472809579
+```
+
 #### **hashing ips**
 
 ```sql
