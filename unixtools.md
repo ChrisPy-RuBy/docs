@@ -310,7 +310,7 @@ Better calculator than bc
 
 nice tool package for dealing with csv files
 
-### ** dealing with excel files from cmdline **
+### **dealing with excel files from cmdline**
 ```bash 
 # get the sheet names
 in2csv -n sheetname.xlsx 
