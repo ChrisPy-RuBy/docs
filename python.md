@@ -179,9 +179,38 @@ not quite sure what this does.
 what is a string... human readable tests.
 underneath a sequence of unicode code points.
 i.e. "Hello" -> 0x48, 0x65, 0x6c, 0x6c, 0x6f
+strings in python are all unicode.
+so can add either the unicode symbol or the hex encoding 
+```
+print(å) == print(\xe5)
+```
 
 What is a byte....Not human readable number from 0-255
-must be translated to be red.
+must be translated to be read.
+can't display unicode characters.
+
+#### converting bytes and strings
+
+interesting string 
+```python
+# this obviously contains a lot of unicode specific characters
+norsk = "Jeg begynte å fortære en sandwich mens jeg kjørte taxi på vei til quiz"
+norsk.encode("uft-8")
+print(norsk)
+```
+results in. you can see that the unicode characters are now converted to their hex version. 
+```python
+b'Jeg begynte \xc3\xa5 fort\xc3\xa6re en sandwich mens jeg kj\xc3\xb8rte taxi p\xc3\xa5 v\ ei til quiz'
+```
+
+#### string literal encodings
+
+```python
+0b11  # binary literal
+0o11  # octal literal 
+0x11  # hex literal
+```
+
 
 #### python 2 vs python 3 reminder
 
@@ -222,6 +251,22 @@ byte.decode('utf-8')
 # generate bytes
 string.decode()
 ```
+
+a better example
+
+```python
+s = "résumé"
+s.encode("utf-8")
+# encode converts the unicode to bytes using utf-8 
+# b'r\xc3\xa9sum\xc3\xa9'
+
+b = b'r\xc3\xa9sum\xc3\xa9'
+b.decode("utf-8")
+# decode converts the bytes string to a unicode string with utf-8
+# "résumé"
+```
+
+
 
 
 ###convert between binary / hex and dec

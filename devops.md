@@ -209,7 +209,17 @@ bzcat actions-3390-1-2020.03.02.json.bz2 | jq -c 'select(.v5.medium == "app")' |
 ```
 
 ### **pyenv**
+
 Have multiple python versions on your machine
+
+
+#### **issues installing pyenv due to openssl**
+
+```bash
+brew uninstall --force --ignore-dependencies openssl@1.1
+brew install -v 3.5.2
+brew install openssl@1.1
+```
 
 #### **switch py3.5 to py3.7 and back**
 ```bash
@@ -219,7 +229,10 @@ pyenv global system
 ```
 You will need to install all the relevant pip packages into the correct python folder
 
-
+#### **get what pyenv version is currently being used**
+```
+pyenv versions
+```
 
 # Virtual Machines
 

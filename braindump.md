@@ -27,3 +27,4 @@ notes on running child processes with subprocess to anki **to_add
 cardinaliity ordinality in cs **to_add
 add simiple rules for permutations and combinations **to_add
 fixed pyenv with brew uninstall --force --ignore-dependencies openssl@1.1;pyenv install -v 3.5.2;brew install openssl@1.1
+uft-8, unicode etc in python, see real python tutorial **to_learn
