@@ -558,6 +558,24 @@ with temp as (
 [guide to window functions](http://www.postgresqltutorial.com/postgresql-window-function/
 )
 
+#### **userschema bug query**
+```sql
+WITH roothashes AS (
+	SELECT rootuserid, count(*), array_agg(distinct cookiehash) cookiehashes
+	FROM users.data 
+	GROUP BY 1
+)
+
+SELECT usd.cookiehash, usd.usersessionid, usd.userid, rh.rootuserid, rh.cookiehashes, ARRAY_LENGTH(rh.cookiehashes, 1) ch_length  FROM usersessions.data usd
+JOIN roothashes rh ON rh.rootuserid = usd.userid
+WHERE brandid = 1 
+AND datadatetime BETWEEN '2020-03-29'
+AND '2020-03-30' 
+AND usd.cookiehash <> all(rh.cookiehashes)
+ORDER BY ch_length DESC
+
+```
+
 #### **scratch**
 ```sql
 -- query to try and work out which sessions are matched with original vs regex shizzle

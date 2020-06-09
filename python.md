@@ -176,9 +176,9 @@ not quite sure what this does.
 
 #### Bytes verses strings
 
-what is a string... human readable tests.
+what is a string... human readable tests.  
 underneath a sequence of unicode code points.
-i.e. "Hello" -> 0x48, 0x65, 0x6c, 0x6c, 0x6f
+i.e. "Hello" -> 0x48, 0x65, 0x6c, 0x6c, 0x6f  
 strings in python are all unicode.
 so can add either the unicode symbol or the hex encoding 
 ```
