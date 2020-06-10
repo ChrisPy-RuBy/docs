@@ -90,3 +90,20 @@ sizeof # size of a type or variable
 ||   # or
 ?:   # ternary operators
 ```
+
+## for loop
+
+```c
+for (i = 0; i < argc; i++) {
+	printf("arg %d: %s\n", i, argv[i]);
+}
+```
+
+## while loop
+
+```c
+while(i > 0) {
+	i--
+}
+```
+
