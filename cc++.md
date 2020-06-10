@@ -31,3 +31,62 @@ int main(int argc, char *argv[]) {
 make myscript.c
 valgrind ./myscript
 ```
+
+## **defining variables**
+
+variable in c must be defined before they are used.
+
+```c
+# numbers are relatively easy.
+int number;
+number = 8;
+
+# strings are more complex as they are arrays of characters and 
+# can be done in a variety of ways
+
+# create an array with 100 spaces and fill in one by one.
+char name[100];
+name[0]="A";
+
+# alternatively
+char name[] = "John Smith";
+
+# alternatively use a pointer
+char * name = "John Smith";
+
+# array of numbers
+int array[5] = {1, 2, 3, 4, 5};
+
+```
+
+## **useful string functions**
+
+```c
+# get length of string
+char * name = "John";
+printf("%d\n", strlen(name))
+
+# string comparison where 4 is the max string comparision length.
+strncmp(name, "John", 4);
+```
+
+
+## **accessing data**
+
+```c
+->  # structure point access
+.   # structure value access
+[]  # array index
+sizeof # size of a type or variable
+&   # address of
+*   # value of
+```
+
+## **boolean operators**
+
+```c
+!    # not
+&&   # and
+||   # or
+?:   # ternary operators
+```
