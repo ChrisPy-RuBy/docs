@@ -211,6 +211,12 @@ diskutil unmountDisk /dev/disk2
 # on restart will need to grant access to disk again
 sudo chown $USER /dev/disk2*
 ```
+
+## **VERROR read permissions**
+
+ restart laptop and run restart script on restart
+
+
 ### **parquet-tools** 
 - - - 
 parse parquet from cmdline

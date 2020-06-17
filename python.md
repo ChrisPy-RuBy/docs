@@ -385,7 +385,35 @@ for CPU bound
 ## Dictionary
 - - - 
 
-#### **set default**
+### **default dict**
+
+import collections.defaultdict
+
+similar to setdefault
+sets a default value for when a key in not present
+
+#### **use default dict for counting values**
+
+```python
+results = defaultdict(int)  # default here for int is 0
+for x, v in somedata:
+	results[x] += v
+```
+
+#### **use default dict for grouping values by key**
+
+```python
+results = defaultdict(list)
+for x, v in somedata:
+	results[x].append(v)
+```
+
+### **set default**
+
+IMPORTANT: SETDEFAULT does just what it says. 
+for a dictionary if a key is present fine, but if not provide the value to use as default.
+
+
 ```python
 bigDict = {}
 for liverampID, details in default_rollup.items():
@@ -416,7 +444,32 @@ for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
 
 [link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
 
+### **sorted**
+
 #### **sorting dict by values**
+
+the sorted fuction returns a list of tuples. so you need to work out the function from there.
+A good tip is not to use lambas and write the function 
+
+an example
+```python 
+# some data
+data = {'1': {'b': 1, 'c': 2}, '2': {'b': 2, 'c': 1}, '3': {'b': 100, 'c': 100}}
+sorted(data) # this returns a sorted list of the keys for the top level dict
+sorted(data.items())   # this returns a list of tuples sorted by keys
+
+[('1', {'b': 1, 'c': 2}), ('2', {'b': 2, 'c': 1}), ('3', {'b': 100, 'c': 100})]
+
+# if you want to sort by a value for a sub key. Then you need to pass in a function to do so
+sorted(data, key=lambda x: x)   # would do the same as above
+
+def sorter(x):
+	return x[1]['b']
+sorted(data.items(), key=sorter)   # would sort the list by the value in the subdict of 'b'
+
+ 
+```
+
 
 ```python
 # generate a list of sorted keys
