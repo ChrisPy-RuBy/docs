@@ -107,3 +107,81 @@ while(i > 0) {
 }
 ```
 
+## static variables
+
+static variables allow the variable to be accessed outside 
+its local scope
+
+global variables are available outside of the file.
+```c
+#include<stdio.h>
+
+int runner()
+{
+	int count = 0;
+	count++;
+	return count;
+}
+
+int static_runner()
+{
+    static int count = 0;
+    count++;
+    return count;
+}
+
+int main()
+{
+	printf("%d ", runner());    # print 1
+	printf("%d ", runner());    # print 1
+    printf("%d ", static_runner());  # print 1
+    printf("%d ", static_runner());  # print 2
+    return 0;
+}
+```
+## pointers and addresses
+
+```c
+int a = 1;
+# this is a pointer that points to the thing at the address of a
+int * pointer_to_a = &a;
+
+# we can interact directly with a by using the pointer
+# this would increment both the value of a and 
+# the value of pointer_to_a
+*pointer_to_a += 1;
+```
+
+## datastructures
+
+defining a structure
+```c
+struct point {
+    int x;
+    int y;
+};
+
+# can use typedefs to define custom points 
+# like this.
+typedef struct {
+    int x;
+    int y;
+} point;
+
+point p;
+```
+
+can also use pointers in structures
+
+```c
+typedef struct {
+    char * brand;
+    int model;
+} vehicle;
+
+vehicle mycar;
+mycar.brand = "Ford";
+mycar.model = 2007;
+```
+
+
