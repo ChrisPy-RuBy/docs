@@ -1,6 +1,6 @@
 Title: postgres
 summary: Everything concerning dbs
-
+- - - 
 # theory
 - - - 
 #### **Understanding Analze / Explain**
@@ -627,6 +627,22 @@ WITH <tmp_table_name_1>
 SELECT epsilon::float / temp_table_3::float 
 FROM   cookiecount, 
        temp_table_4
+```
+
+
+#### **Useful: aggregate query results where the dates with missing data have values filled in**
+
+```sql
+with CTE as (
+	SELECT t.day::date 
+	FROM  generate_series(timestamp '2020-05-01', timestamp '2020-07-10', interval  '1 day') AS t(day)
+),
+	grouped_users as (
+		SELECT date_trunc('day', datadatetime) as day, count(*) FROM usersessions.data
+		GROUP BY 1
+)
+SELECT CTE.day, COALESCE(grouped_users.count, 0) FROM CTE
+LEFT JOIN grouped_users ON CTE.day = grouped_users.day
 ```
 
 
