@@ -1,9 +1,11 @@
 ---
 title: devops
 summary: devopsie shite!
----
+- - -
+#DEVOPS
 
-# useful devops debug strategies 
+## troubleshooting strategies  
+
 
 ### **One of my services i.e. a database doesn't work**
 
@@ -39,14 +41,14 @@ If you suspect Ydo the following.
 4. Is there a config issue Y/N
 
 
-# brew
+## brew
 - - - 
 package manager, puts everything in
 ```bash
 /usr/local/Cellar/<package>
 ```
 
-## brew stuff
+### brew stuff
 - - - 
 #### **get brew to update its package list**
 ```bash
@@ -100,11 +102,11 @@ brew link <blah>
 brew update; brew upgrade; brew switch python 3.6.4_4; brew install python@2; brew unlink python; brew link python@2 --force; ln -s /usr/local/bin/python2 /usr/local/opt/python/bin/python2.7
 ```
 
-## brew tools
-- - - 
-### **aws**
+## **aws**
 - - - 
 do aws stuff from cmdline
+
+### s3
 
 #### **view sample of files**
 can pipe stuff to stdout using -
@@ -128,87 +130,7 @@ aws s3 cp s3://tvsquared-userdata/collector/282-1/2018.01/ s3://tvsquared-userda
 aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
 ```
 
-### **bash-completion**
-
-
-### **fuzzy finder (fzf)**
-[intro_docs](https://github.com/junegunn/fzf)
-[basic use cases](https://sourabhbajaj.com/mac-setup/iTerm/fzf.html<Paste>)
-
-
-
-### **jq**
-- - - 
-
-## xtract nested key from json
-
-```
-jq '.topkey.middlekey.bottomkey'
-```
-
-jq is a super useful tool for processing json from cmdline  
-Can easily pipe results to other comdline tools.
-[docs](https://stedolan.github.io/jq/manual/)  
-[useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
-
-#### **pipecomplressed files to jq**
-```bash
-bzcat <filename>.json.bz2 | jq '.' - | sort | less
-```
-
-#### **pretty print json on cmdline**
-```bash
-jq '.' <filename>.json
-```
-
-#### **extract info from json**
-```bash
-jq'.['pizz', 'shiz']' <yout shitty filename>.json
-# alternative 
-jq '. | {url, k5}' actions-4834-1-2019.06.29.json
-```
-
-#### **selective extraction from json**
-```bash
-jq '. | select(.k5 == "viewnewvehiclepage") | {url}' actions-4834-1-2019.06.29.json 
-```
-
-can also do this
-```bash
-bzcat actions-4837-1-2019.06.22.json.bz2 | jq '. | select(.k5 | contains("viewusedvehiclepage")) | {url}' | wc -l
-```
-using regex here.
-Can pip has many filters together as you want as long as it stays within the ''
-
-
-where . is
-```bash
-{
-  "cfgid": {
-    "$oid": "0000000042903b7c3e"
-  },
-  "v5": null,
-  "time": {
-    "$date": "2019-06-29T16:14:46+00:00"
-  },
-  "visit": {
-    "$oid": "5d178dd5394058b467f"
-  },
-  "visitor": {
-    "$oid": "0000000080b2e7c8db"
-  },
-  "url": "https://www.<derp>.com/all-inventory/index.htm?compositeType=new&make=Ford&model=Mustang",
-  "k5": "tngviewnewvehiclepage"
-}
-```
-
-#### filter json by nested key value and get the count
-
-```
-bzcat actions-3390-1-2020.03.02.json.bz2 | jq -c 'select(.v5.medium == "app")' | wc -l
-```
-
-### **pyenv**
+## **pyenv**
 
 Have multiple python versions on your machine
 
@@ -234,9 +156,9 @@ You will need to install all the relevant pip packages into the correct python f
 pyenv versions
 ```
 
-# Virtual Machines
+## Virtual Machines
 
-## setting up macos in a virtual box
+### setting up macos in a virtual box
 
 for catalina. This was an absolute pain.
 run on virtual box 6.2 on mac os with catalina. meta I know.
@@ -268,7 +190,7 @@ hdiutil convert ~/Desktop/InstallSystem.dmg -format UDTO -o ~/Desktop/Catalina.i
     if the keyboard doesn't recognise
         - pause and un-pause the machine
 
-## setting up an SD card as VM disk
+### setting up an SD card as VM disk
 
 format SD card. for mac make sure it is Mac OS extended Journal, with GUID partitioning. 
 Need to format before you start from the ROOT in diskultily
@@ -296,12 +218,12 @@ parse parquet from cmdline
 
 
 
-# Macs
+## Macs
 
-#### **encrypt machine**
+### **encrypt machine**
 [guide to encrypting mac](https://www.mactrast.com/2013/07/how-to-public-how-to-encrypt-time-machine-backups-with-os-x)
 
-#### **machine keeps rename itself**
+### **machine keeps rename itself**
 [this is annoying](https://apple.stackexchange.com/questions/55416/my-mac-minis-computer-name-keeps-changing-when-it-resumes-from-sleep)
 ```bash
 sudo scutil --set HostName <new_hostname>
@@ -309,17 +231,17 @@ sudo scutil --set LocalHostName <new_hostname>
 sudo scutil --set ComputerName <new_hostname>
 ```
 
-##  Too large for the volume's format?
+###  Too large for the volume's format?
 
 re-format the drive
 [here](https://discussions.apple.com/thread/4263857)
 
 
-# teamcity
+## teamcity
 
 Go to [teamcity](http://teamcity.tvsquared.private:8111/) and run whatever you need to
 
-#### **deploy**
+### **deploy**
  
 Deploys code to remote environment. Blats everything there
 This restarts the whole environment so if new code has been incorportated then. I don’t know if it will update the psql databases.

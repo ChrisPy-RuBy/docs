@@ -398,6 +398,14 @@ good tool for monitoring database servers
 
 ## find
 
+
+### **flatten a file structure recursively into a new folder**
+
+```bash
+mkdir flat;
+find . -type f -name \*.parquet -print -exec cp {} ./flat/ \
+```
+
 ### **find a file with specific name**
 
 where . is the directory to search.
@@ -446,6 +454,10 @@ find ./*.csv > filestocopy.txt
 ```
 
 ## FZF
+[intro_docs](https://github.com/junegunn/fzf)
+[basic use cases](https://sourabhbajaj.com/mac-setup/iTerm/fzf.html<Paste>)
+
+a
 
 super good fuzzyfinder, on commandline and in vim
 
@@ -553,6 +565,85 @@ htop
 ## jq
 
 Tools for doing stuff with json.
+
+
+### **fuzzy finder (fzf)**
+[intro_docs](https://github.com/junegunn/fzf)
+[basic use cases](https://sourabhbajaj.com/mac-setup/iTerm/fzf.html<Paste>)
+
+
+
+### **jq**
+- - - 
+
+#### xtract nested key from json
+
+```
+jq '.topkey.middlekey.bottomkey'
+```
+
+jq is a super useful tool for processing json from cmdline  
+Can easily pipe results to other comdline tools.
+[docs](https://stedolan.github.io/jq/manual/)  
+[useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
+
+#### **pipecomplressed files to jq**
+```bash
+bzcat <filename>.json.bz2 | jq '.' - | sort | less
+```
+
+#### **pretty print json on cmdline**
+```bash
+jq '.' <filename>.json
+```
+
+#### **extract info from json**
+```bash
+jq'.['pizz', 'shiz']' <yout shitty filename>.json
+# alternative 
+jq '. | {url, k5}' actions-4834-1-2019.06.29.json
+```
+
+#### **selective extraction from json**
+```bash
+jq '. | select(.k5 == "viewnewvehiclepage") | {url}' actions-4834-1-2019.06.29.json 
+```
+
+can also do this
+```bash
+bzcat actions-4837-1-2019.06.22.json.bz2 | jq '. | select(.k5 | contains("viewusedvehiclepage")) | {url}' | wc -l
+```
+using regex here.
+Can pip has many filters together as you want as long as it stays within the ''
+
+
+where . is
+```bash
+{
+  "cfgid": {
+    "$oid": "0000000042903b7c3e"
+  },
+  "v5": null,
+  "time": {
+    "$date": "2019-06-29T16:14:46+00:00"
+  },
+  "visit": {
+    "$oid": "5d178dd5394058b467f"
+  },
+  "visitor": {
+    "$oid": "0000000080b2e7c8db"
+  },
+  "url": "https://www.<derp>.com/all-inventory/index.htm?compositeType=new&make=Ford&model=Mustang",
+  "k5": "tngviewnewvehiclepage"
+}
+```
+
+#### filter json by nested key value and get the count
+
+```
+bzcat actions-3390-1-2020.03.02.json.bz2 | jq -c 'select(.v5.medium == "app")' | wc -l
+```
+
 
 ```bash
 # find everything where visit_vars is not null and pipe through
@@ -876,7 +967,7 @@ crtl-b - c
 crtl-b - n
 ```
 
-## **get terminal output from a tmux**
+### **get terminal output from a tmux**
 
 - enter tmux section
 - press space to enter highlight mode

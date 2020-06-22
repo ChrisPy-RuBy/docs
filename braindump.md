@@ -28,3 +28,8 @@ cardinaliity ordinality in cs **to_add
 add simiple rules for permutations and combinations **to_add
 fixed pyenv with brew uninstall --force --ignore-dependencies openssl@1.1;pyenv install -v 3.5.2;brew install openssl@1.1
 uft-8, unicode etc in python, see real python tutorial **to_learn
+sorted and setdefault in python
+sorted and setdefault in python to_learn
+learn to use classes instead of dicts for data processing to_learn
+what is unicode **to_learn
+commandline search and pretty printer for labbook **to_make

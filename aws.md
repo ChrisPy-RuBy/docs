@@ -46,6 +46,13 @@ WHERE site_id, yy, mm, dd, and hh are partitions
 
 #### **useful setup queries**
 
+load data elblog partition
+```sql
+ALTER TABLE raw_collector_logs_eu_west1 ADD 
+    PARTITION (collector='collectorf-prod', year='2020', month='06', day='14') 
+    location "s3://tvsquared-elblogs-collector-eu-west-1/collectorf-prod/AWSLogs/457063536638/elasticloadbalancing/eu-west-1/2020/06/14/"
+```
+
 collector_tng specific. To generate an actions athena table.
 ```sql
 CREATE EXTERNAL TABLE `actions_2`(
