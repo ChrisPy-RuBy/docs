@@ -3,46 +3,16 @@ summary: All things aws
 - - -
 
 - - - 
-# athena 
+# aws 
 - - - 
+
+## athena
 Live query of data in s3 stored in the parquet format
 
 examples of doing stuff in athena programatically in
 tvsquared/model.advancedtv L565 etc.
 
-#### **Setting up a new table/database**
-
-## Querying
-
-#### **regex shizzle**
-
-``` sql
-SELECT regexp_like(url, <regex> FROM <blah> 
-```
-
-```sql
-SELECT * FROM <foo> WHERE
-strpos(url, '<regex>')
-```
-
-```sql
-SELECT * FROM  <foo> WHERE
-url is like '%derp%'
-```
-
-
-#### **querying using the partition structure**
-
-```sql
-SELECT url FROM “collector_tng_pre_visit”.“data”
-WHERE site_id = ‘4432-1’
-AND yy=‘2019’
-AND mm=‘06’
-AND dd=‘26’
-AND hh=‘11’
-AND url like ‘%nvcc%’
-```
-WHERE site_id, yy, mm, dd, and hh are partitions
+### **Table management**
 
 #### **useful setup queries**
 
@@ -111,7 +81,38 @@ TBLPROPERTIES (
   'transient_lastDdlTime'='1578675852')
 ```
 
-## Cross table joins
+### Querying
+
+#### **regex shizzle**
+
+``` sql
+SELECT regexp_like(url, <regex> FROM <blah> 
+```
+
+```sql
+SELECT * FROM <foo> WHERE
+strpos(url, '<regex>')
+```
+
+```sql
+SELECT * FROM  <foo> WHERE
+url is like '%derp%'
+```
+
+#### **querying using the partition structure**
+
+```sql
+SELECT url FROM “collector_tng_pre_visit”.“data”
+WHERE site_id = ‘4432-1’
+AND yy=‘2019’
+AND mm=‘06’
+AND dd=‘26’
+AND hh=‘11’
+AND url like ‘%nvcc%’
+```
+WHERE site_id, yy, mm, dd, and hh are partitions
+
+#### Cross table joins
 
 ```sql
 SELECT vis.refurl, count(*)   
@@ -129,7 +130,33 @@ GROUP BY 1
 ORDER BY 2
 ```
 
-## timestamp convesion 
+#### **grabbing stuff out of nested json**
+
+
+```sql
+SELECT dd,   json_extract_scalar(visit_vars, '$.5[0]'), sum(cast(json_extract_scalar(json_extract_scalar(visit_vars, '$.5[1]'), '$.rev') as real))
+FROM "c1594_godaddy_usa_prod"."userdata_collector_tng_pre_visit" 
+where visit_vars is not null
+and yy = '2020'
+and mm = '05'
+and dd in ('05','12')
+and length(json_extract_scalar(json_extract_scalar(visit_vars, '$.5[1]'), '$.rev'))>0
+```
+
+
+#### **dealing with maptypes**
+
+```sql
+SELECT count(*) FROM "c4648_doordash_ca_prod"."visits"
+WHERE mm  = '06'
+AND dd = '19'
+AND v5['medium'] = 'app'
+AND refurl is not null
+
+
+```
+
+#### timestamp convesion 
 
 ```sql
 SELECT date_format(from_unixtime(timestamp/1000),'%Y-%m-%dT%H:%i:%sZ') FROM "c1567_talkspace_1_prod"."userdata_collector_tng_pre_visit"
@@ -138,7 +165,7 @@ LIMIT 5;
 ```
 
 - - -
-# EC2
+## EC2
 - - -
 
 [ec2 instance comparison tool](https://www.ec2instances.info/?filter=i3&cost_duration=monthly&selected=i3en.metal,i3en.large)
@@ -153,7 +180,7 @@ can view some diagnostic info [here](
 https://eu-west-1.console.aws.amazon.com/ec2/autoscaling/home?region=eu-west-1#AutoScalingGroups:id=collectorf-worker-blue-prod;filter=collectorf;view=monitoring)
 
 - - - 
-# route53
+## route53
 - - - 
 
 dns director thing
@@ -171,7 +198,7 @@ it should then tell you the collector under the value field
 
 
 - - - 
-# S3
+## S3
 - - - 
 
 flat file storage infrastructure

@@ -562,9 +562,6 @@ monitors system performance
 htop
 ```
 
-## jq
-
-Tools for doing stuff with json.
 
 
 ### **fuzzy finder (fzf)**
@@ -573,10 +570,17 @@ Tools for doing stuff with json.
 
 
 
-### **jq**
+## **jq**
 - - - 
 
-#### xtract nested key from json
+Tools for doing stuff with json.
+jq is a super useful tool for processing json from cmdline  
+Can easily pipe results to other cmdline tools.
+[docs](https://stedolan.github.io/jq/manual/)  
+[useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
+
+
+### extract nested key from json
 
 ```
 jq '.topkey.middlekey.bottomkey'
@@ -587,24 +591,24 @@ Can easily pipe results to other comdline tools.
 [docs](https://stedolan.github.io/jq/manual/)  
 [useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
 
-#### **pipecomplressed files to jq**
+### **pipecomplressed files to jq**
 ```bash
 bzcat <filename>.json.bz2 | jq '.' - | sort | less
 ```
 
-#### **pretty print json on cmdline**
+### **pretty print json on cmdline**
 ```bash
 jq '.' <filename>.json
 ```
 
-#### **extract info from json**
+### **extract info from json**
 ```bash
 jq'.['pizz', 'shiz']' <yout shitty filename>.json
 # alternative 
 jq '. | {url, k5}' actions-4834-1-2019.06.29.json
 ```
 
-#### **selective extraction from json**
+### **selective extraction from json**
 ```bash
 jq '. | select(.k5 == "viewnewvehiclepage") | {url}' actions-4834-1-2019.06.29.json 
 ```
@@ -638,7 +642,7 @@ where . is
 }
 ```
 
-#### filter json by nested key value and get the count
+### filter json by nested key value and get the count
 
 ```
 bzcat actions-3390-1-2020.03.02.json.bz2 | jq -c 'select(.v5.medium == "app")' | wc -l
@@ -656,10 +660,10 @@ jq 'select(.visit_vars != null) | .visit_vars'
 jq '.topkey.middlekey.bottomkey'
 ```
 
-jq is a super useful tool for processing json from cmdline  
-Can easily pipe results to other cmdline tools.
-[docs](https://stedolan.github.io/jq/manual/)  
-[useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
+an alternative is. Note the ['$oid'] notation
+```bash
+bzcat visits-4648-1-2020.06.19.json.bz2 | jq '.visitor['$oid']' | sort | uniq -c
+```
 
 ### **pipe compressed files to jq**
 ```bash
