@@ -33,3 +33,6 @@ sorted and setdefault in python to_learn
 learn to use classes instead of dicts for data processing to_learn
 what is unicode **to_learn
 commandline search and pretty printer for labbook **to_make
+bits, bytes, hex etc **to_add
+bits, bytes, hex etc **to_learn
+what is a bitmask **to_learn
