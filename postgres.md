@@ -1,27 +1,30 @@
 Title: postgres
 summary: Everything concerning dbs
 - - - 
-# theory
+
+# postgres
+
+## theory
 - - - 
-#### **Understanding Analze / Explain**
+### **Understanding Analze / Explain**
 
 Basic rules  
 1. Lower width = better  
 2. Examine the query for disk read / writes. These are slow  
 
-#### **set working mem to be larger**
+### **set working mem to be larger**
 ```sql
 SET work_mem TO '200MB'
 RESET work_mem
 ```
 
-##### **join nodes**
+#### **join nodes**
 
 1. **nested loops**: good for small tables
 2. **merge joins**: sort then merge, index required. Fastest on large datasets
 3. **hash joins**: only on equality joins. Mem dependent.
 
-#### **major scan nodes**
+### **major scan nodes**
 
 1. **seq scan**: Read all the table in order
 2. **index scan**: Read index to filter on the where clause
@@ -30,15 +33,15 @@ RESET work_mem
 
 
 - - -
-# accessing postgres
+## accessing postgres
 - - - 
-#### **access local postgres db**
+### **access local postgres db**
 
 ```bash
 psql
 ```
 
-#### **access remote postgres dbs**
+### **access remote postgres dbs**
 
 ```bash
 psql -h <hostname> -U <user> postgres
@@ -48,24 +51,24 @@ example
 psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis postgres
 ```
 
-#### **execute a sql query from the command line like a ninja**
+### **execute a sql query from the command line like a ninja**
 this would copy everything to the sys clipboard
 ```bash
 psql -d <database name> -A --csv -c "SELECT * FROM <schema>.<table>" | pbcopy
 ```
 
 
-#### **leave server**
+### **leave server**
 ```bash
 \q
 ```
 
-#### **list databases**
+### **list databases**
 ```bash
 \l
 ```
 
-#### **display all data metadata**
+### **display all data metadata**
 
 ```
 \d+
@@ -75,38 +78,38 @@ psql -d <database name> -A --csv -c "SELECT * FROM <schema>.<table>" | pbcopy
 \d+ *.*
 ```
 - - -
-# admin
+## admin
 - - -
-#### **uodate postgres locally**
+### **uodate postgres locally**
 
 ```bash
 brew postgresql-upgrade-database
 ```
 
 
-#### **turning logging on / off**
+### **turning logging on / off**
 
 [guide to logging](https://tableplus.io/blog/2018/10/how-to-show-queries-log-in-postgresql.html)
 
-#### **dump database**
+### **dump database**
 
 ```sql
 pg_dump -s c1129_australiademo > /tmp/schema.sql
 ```
   
-#### **dump schema**
+### **dump schema**
 
 ```sql
 pg_dump -s c1129_australiademo -n usersessions > /tmp/usersessions.sql
 ```
 
-#### **restore database**
+### **restore database**
 
 ```sql
 psql testdata < schema.sql
 ```
 
-#### **creating indexes**
+### **creating indexes**
 
 ```sql
 ux_<index name>
@@ -115,7 +118,7 @@ ux_<index name>
   (hasheduserip COLLATE pg_catalog."default", datadatetime);
 ```
 
-#### **Display all indexes for a schema**
+### **Display all indexes for a schema**
 
 ```sql
 SELECT
@@ -131,14 +134,14 @@ ORDER BY
     indexname;
 ```
 
-#### **foreign keys**
+### **foreign keys**
 
 ```sql
 ALTER TABLE adspotvalues.data 
     DROP CONSTRAINT fk_adspotvalues_data_adspotid
 ```
 
-#### **transactions**
+### **transactions**
 
 ```sql
 begin; 
@@ -152,14 +155,14 @@ commit;
 -- if you do want your changes
 ```
 
-#### **grant premissions and access**
+### **grant premissions and access**
 
 ```sql
 GRANT ALL ON TABLE <schema>.<table> TO <profile>;
 GRANT SELECT ON TABLE <schema>.<table> TO <profile>;
 ```
 
-#### **create a table**
+### **create a table**
 
 ```sql
 CREATE TABLE IF NOT EXISTS <schema. table> (
@@ -169,7 +172,7 @@ col3 col3type
 )
 ```
 
-#### **Copy a table struture with no data**
+### **Copy a table struture with no data**
 
 ```sql
 SELECT INTO <new_table> 
@@ -177,7 +180,7 @@ SELECT INTO <new_table>
 WHERE 1 = 0 )
 ```
 
-#### **copy data from db to disk**
+### **copy data from db to disk**
 
 ```sql
 COPY (SELECT * FROM <schema>.<table> 
@@ -197,7 +200,7 @@ COPY (SELECT * FROM <schema>.<table>
         to '/<filelocation>' with CSV HEADER;
 ```
 
-#### **copy data from csv to db**
+### **copy data from csv to db**
 
 be aware there are issues between \copy and copy.
 Also the delimiter stuff is an arse
@@ -223,7 +226,7 @@ COPY collectorc(siteid, path, collector_name, volume, markeddeleted)
 FROM '/tmp/collector_c_logs_complete' DELIMITER ',' CSV HEADER
 ```
 
-#### **psql: could not connect to server: No such fA ile or directory**
+### **psql: could not connect to server: No such fA ile or directory**
 
 Is the server running locally and accepting
 connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
@@ -235,10 +238,10 @@ Delete postmaster.pid file in /usr/local/var/postgres
 
 
 - - -
-# inserting / updating
+## inserting / updating
 - - -
 
-#### **anti-sql injection techs**
+### **anti-sql injection techs**
 
 Use string formatting in params rather than in statement 
 
@@ -264,10 +267,10 @@ INSERT INTO foo (SELECT i, md5(random()::text), i/10
         FROM generate_series(1, 1000000) AS i);
 ```
 
-#### **add a column**
+### **add a column**
 
 
-#### **basic update **
+### **basic update **
 
 updates current data
 
@@ -276,7 +279,7 @@ UPDATE  <schema>.<table>
 SET datadatetime = datedatetime + INTERVAL "1 days"
 ```
 
-#### **basic insert**
+### **basic insert**
 
 ```sql
 INSERT into <table> ( col1, col2, col3)
@@ -285,7 +288,7 @@ FROM <table>
 WHERE col1 = 3
 ```
 
-#### **insert scratch**
+### **insert scratch**
 
 ```sql
 INSERT INTO usersessions.data (include,
@@ -333,17 +336,17 @@ FROM randomtable WHERE id = 4;
 
 
 - - - 
-# querying
+## querying
 - - - 
 
-#### **basic operators**
+### **basic operators**
 
 ```sql
  <thing> <> 6
  -- not equal to
 ```
 
-#### **basic in clause**
+### **basic in clause**
 
 ```sql
 SELECT * FROM <blah> 
@@ -358,7 +361,7 @@ WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
 AND tags::TEXT LIKE '%cost%'
 ```
 
-#### **querying ips**
+### **querying ips**
 
 ```sql
 select *
@@ -367,7 +370,7 @@ where userip << '2001:0db8::/32'::cidr
 limit 10
 ```
 
-#### **generate unixtimestamp from timestmap**
+### **generate unixtimestamp from timestmap**
 
 ```sql
 SELECT EXTRACT(EPOCH FROM datadatetime) * 1000 FROM 
@@ -376,7 +379,7 @@ WHERE brandid = 1
 AND usersessionid = 472809579
 ```
 
-#### **hashing ips**
+### **hashing ips**
 
 ```sql
 SELECT ENCODE(DIGEST('120.145.43.100', 'sha1'), 'hex')
@@ -394,7 +397,7 @@ FROM <schema>.<table> WHERE brandid=1) to '<filelocation>' with CSV;
 create extension pgcrypto
 ```
 
-#### **pulling stuff out of tags/hstore**
+### **pulling stuff out of tags/hstore**
 
 ```sql
 SELECT D.tags, D.channelid, channel,
@@ -408,7 +411,7 @@ D.tags -> ‘sh’    will create a column with the values of the ‘sh’ tag
 D.tags ? ‘prog’  will create a column of Boolean masks that determine weather prog is present in the table or not.   
 
 
-#### **hstore scratch**
+### **hstore scratch**
  
 selecting shizzle 
 ```sql
@@ -442,7 +445,7 @@ where tags?'_supplieddatetime'
 ;
 ```
 
-#### **average tables**
+### **average tables**
 
 ```sql
 with day_count as(
@@ -452,13 +455,13 @@ with day_count as(
 )
 ```
 
-#### **check something exists v.fast**
+### **check something exists v.fast**
 good for v.large datasets. Will exist as soon as it finds something. 
 ```sql
 SELECT exists(SELECT 1 FROM <schema>.<table> WHERE <condition to check> LIMIT 1)
 ```
 
-#### **group by datetimes**
+### **group by datetimes**
 [v.useful groupby datetime](http://ben.goodacre.name/tech/Group_by_day,_week_or_month_%28PostgreSQL%29)
 ```sql
 SELECt date_trunc('day', datadatetime), count(*) FROM <schema>.<table>
@@ -475,7 +478,7 @@ SELECT COUNT(DISTINCT CAST(datadatetime as Date))
 FROM adspots.data
 ```
 
-#### **get the whole row that is distinct by the value provided**
+### **get the whole row that is distinct by the value provided**
 []
 This is good if you want to examine whole rows that have the same datetime, userip etc
 [good articles on distinct on](https://zaiste.net/postgresql_distinct_on/)
@@ -485,7 +488,7 @@ FROM <schema>.<table>
 WHERE <blah>
 ```
 
-#### **super smart way of getting largest / smallest value by another column**
+### **super smart way of getting largest / smallest value by another column**
 
 ```
 SELECT DISTINCT ON (<col_1>) *
@@ -495,7 +498,7 @@ ORDER BY <col_2> -- This is the important part!!!!
 This will de-dupe by col_1 but keep the first row from each distinct value
 So if you sort by size DESC then the row displayed will have the largest value of col_2
 
-#### **case statements**
+### **case statements**
 case statements can be used to do conditional shizzle
 ```sql
 SELECT deviceid,
@@ -505,7 +508,7 @@ FROM alphonso_raw_impressions
 GROUP BY deviceid;
 ```
 
-#### agg stats with case statements
+### agg stats with case statements
 
 ```sql
 SELECT dd, count(*) total_server_track,
@@ -522,7 +525,7 @@ ORDER BY 1, 2
 ```
 
 
-#### **basic joins**
+### **basic joins**
 
 
 [guide to joins](http://www.postgresqltutorial.com/postgresql-joins/)
@@ -542,7 +545,7 @@ WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
 AND tags::TEXT LIKE '%cost%'
 ```
 
-#### **with temp tables**
+### **with temp tables**
 
 ```sql
 with temp as (
@@ -553,12 +556,12 @@ with temp as (
 ) 
 ```
 
-#### **window functions**
+### **window functions**
 
 [guide to window functions](http://www.postgresqltutorial.com/postgresql-window-function/
 )
 
-#### **userschema bug query**
+### **userschema bug query**
 ```sql
 WITH roothashes AS (
 	SELECT rootuserid, count(*), array_agg(distinct cookiehash) cookiehashes
@@ -576,7 +579,7 @@ ORDER BY ch_length DESC
 
 ```
 
-#### **scratch**
+### **scratch**
 ```sql
 -- query to try and work out which sessions are matched with original vs regex shizzle
 SELECT count(*) FROM (
@@ -594,7 +597,7 @@ RIGHT OUTER JOIN (
 	AND action = 'tngviewusedvehiclepage') orig ON (orig.usersessionid = tng.usersessionid and orig.datadatetime = tng.datadatetime) 
 ```
 
-#### **temp tables examples**
+### **temp tables examples**
 
 ```sql
 WITH <tmp_table_name_1> 
@@ -630,7 +633,7 @@ FROM   cookiecount,
 ```
 
 
-#### **Useful: aggregate query results where the dates with missing data have values filled in**
+### **Useful: aggregate query results where the dates with missing data have values filled in**
 
 ```sql
 with CTE as (
