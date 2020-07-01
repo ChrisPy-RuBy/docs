@@ -938,6 +938,26 @@ datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ### fabric
 - - -
 
+### **iter protocal**
+
+requires a __iter__ and a next
+```
+class IterPrimes(object):
+    def __init__(self,n=1):
+        self.n=n
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        n = self.n
+        while not test_prime(n):
+            n += 1
+        self.n = n+1
+        return n
+```
+
+
 ### ** itertools **
 
 [Removing duplicates from a list of lists](https://stackoverflow.com/questions/2213923/removing-duplicates-from-a-list-of-lists)
