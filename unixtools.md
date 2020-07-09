@@ -395,6 +395,9 @@ du -sk ~/Downloads
 
 good tool for monitoring database servers
 
+## file
+
+tell you what a file contains and or how its compressed
 
 ## find
 
@@ -905,6 +908,18 @@ Here the -t is the delimiter, -k means 2nd column, -n means numeric
 ```
 
 ## ssh
+
+### login to server with private key
+
+```bash
+ssh -i ~/privatekey name@server
+```
+
+### login in the machine you are currently on
+
+```bash
+ssh user@localhost
+```
 
 ### **generate ssh key**
 might want to check this
