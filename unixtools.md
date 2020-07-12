@@ -909,16 +909,16 @@ Here the -t is the delimiter, -k means 2nd column, -n means numeric
 
 ## ssh
 
-### login to server with private key
+### **login into server using private key**
 
-```bash
-ssh -i ~/privatekey name@server
+```
+ssh -i <private_key> hostname
 ```
 
-### login in the machine you are currently on
+### **run commands on remote server without shell**
 
-```bash
-ssh user@localhost
+```
+ssh hostname 'ls etc'
 ```
 
 ### **generate ssh key**

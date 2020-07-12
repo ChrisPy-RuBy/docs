@@ -12,6 +12,10 @@ ping www.bbc.co.uk
 would return something if you are hitting that website.
 
 # ifconfig
+**get ip address on mac**
+```
+ifconfig | grep "inet" | grep -v 127.0.0.1
+```
 
 # ipconfig
 
@@ -45,6 +49,17 @@ Hop: Whenever a packet is passed between a router, this is referred to as a “h
 RTT1, RTT2, RTT3: This is the round-trip time that it takes for a packet to get to a hop and back to your computer (in milliseconds). This is often referred to as latency, and is the same number you see when using ping. Traceroute sends three packets to each hop and displays each time, so you have some idea of how consistent (or inconsistent) the latency is. If you see a * in some columns, you didn’t receive a response – which could indicate packet loss.
 Domain Name [IP Address]: The domain name, if available, can often help you see the location of a router. If this isn’t available, only the IP address of the router is displayed.
 
+# netcat
+
+**smaller server to send and recieve**
+
+```
+# now listening on 4444
+nc -d 4444 -l
+
+# connect other side
+nc localhost 4444
+```
 
 
 # netstat
@@ -64,6 +79,28 @@ dig collector-1.tvsquared.com
 # finger
 
 # nmap
+
+super power but incomprehensible
+
+### **scan all ports within range**
+
+```
+nmap localhost -p 31000-32000 -A
+```
+
+
+# nc
+
+netcat: useful tool for debuging network connections
+
+example
+```
+# listen on a port
+nc - l 2003
+
+# send something to the port
+echo "test" | nc localhost 2003
+```
 
 # to learn
 - wireshark ``to_learn
