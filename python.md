@@ -1083,6 +1083,13 @@ data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter':
 
 ### json
 
+#### **parse json straight into an object**
+
+this also just works for dicts
+```
+ball = type('D', (object,), json.loads(temp))()
+```
+
 #### **dealing with mongo queries as json**
 
 Export your query as standard json (not the fancy Mongo Shiz). Either write to file or
