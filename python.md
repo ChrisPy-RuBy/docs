@@ -34,6 +34,15 @@ except ValueError as e:
 except Exceptions as e
 ```
 
+#### **passing config around**
+
+for config
+```
+tuple < dict < namedtuple < class
+```
+please dont use tuples again ever.
+
+
 ### Syntax
 
 #### **single line if else statements**
