@@ -73,6 +73,44 @@ replaced with ''
 
 ### *args" and "**kwargs"
 
+#### understanding * 
+
+the star operator is syntactic short hand for unpacking an iterable into something else
+it is used both in function definitions and in function calls
+i.e.
+```python
+def herp_derp(*args):
+	for a in args:
+		print(a)
+# and 
+herp_derp(*[1,2,3]])
+```
+
+for the definition of herp derp both the following are valid
+```python
+herp_derp([1,2,3])
+# and 
+herp_derp(*[1,2,3])
+```
+but the first treats the list as the first variable 
+and would print the following
+```python
+herp_derp([1,2,3])
+>>>[1,2,3] # print only 1 arg
+```
+while the second is the syntactic equivalent to this
+and would print the following
+```python
+herp_derp(1,2,3)
+>>>1
+>>>2
+>>>3
+```
+
+NOTE: without the star in the function definition you cannot use the splat in the function call
+as (*args) indicates an unspecified number of args. Common functions that use this are print() and format
+as they can take an unlimited number of arguements.
+
 #### **zip star(*) idioms**
 
 transpose wide lists together into thin ones
