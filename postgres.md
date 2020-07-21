@@ -6,6 +6,11 @@ summary: Everything concerning dbs
 
 ## theory
 - - - 
+
+### **index types**
+
+sparse index:- only has values in the index that are populated
+
 ### **Understanding Analze / Explain**
 
 Basic rules  
@@ -647,6 +652,22 @@ with CTE as (
 SELECT CTE.day, COALESCE(grouped_users.count, 0) FROM CTE
 LEFT JOIN grouped_users ON CTE.day = grouped_users.day
 ```
+
+### **quick way to get row count**
+
+```sql
+      SELECT 
+        c.oid,nspname AS table_schema, 
+        relname AS table_name,
+         c.reltuples AS row_estimate
+       FROM pg_class c
+       LEFT JOIN pg_namespace n ON n.oid = c.relnamespace
+       WHERE relkind = 'r'
+       and relname='data'
+       and nspname='usersessions'
+```
+
+
 
 
 |Keywords | What it does |
