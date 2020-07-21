@@ -184,4 +184,35 @@ mycar.brand = "Ford";
 mycar.model = 2007;
 ```
 
+## **heap vs stack memory**
 
+[see](https://www.geeksforgeeks.org/stack-vs-heap-memory-allocation/)
+
+two different types of memory allocation in c
+
+### **stack allocation**
+
+size of memory required is known to the compiler
+whenever a function is called, the memory for the variables is deallocated
+
+```c
+int main
+	// all these variables get memory allocated on the stack
+	int a;
+	int b[10];
+	int n = 20; 
+	int c[n];
+```
+
+### **heap allocation**
+
+a pile of memory space is available to allocate / deallocate
+
+```c
+int main()
+{
+	// this memory for 10 ints
+	// is allocated on heap
+	int *ptr = new int[10];
+}
+```

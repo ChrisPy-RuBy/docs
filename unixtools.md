@@ -538,6 +538,12 @@ grep -nE '^V[[:alpha:]]' combined_Q3_7_app_FR_1.csv
 
 ## head/tail
 
+### **subsection of file**
+
+```bash
+head -n 1000 file.csv | tail -n 500 > data
+```
+
 ### **get subset of data from csv**
 ```bash
 tail -10000 <filename.csv> | head
@@ -888,6 +894,16 @@ example
 sftp groupon_test_1@upload-3840.tvsquared.com
 ```
 
+## seq
+
+generate sequences of things
+
+### **0 padded numbers**
+
+```
+(seq -f "%04g" 0 9999)
+```
+
 ## split
 
 splits file into smaller chunks.
@@ -919,6 +935,12 @@ ssh -i <private_key> hostname
 
 ```
 ssh hostname 'ls etc'
+```
+
+### **view all failed login attempts**
+
+```
+grep "Failed password" /var/log/auth.log
 ```
 
 ### **generate ssh key**
@@ -994,6 +1016,17 @@ crtl-b - n
 - scoll the text you want
 - press enter to copy to buffer
 - open vim and save it
+
+### **pipe terminal output to a log file**
+
+```
+tmux new -d \; pipe-pane 'cat > /tmp/log'
+```
+
+### **send commands to tmux session**
+```
+tmux send-keys 'UoMYTrfrBFHyQXmg6gzctqAwOmw1IohZ 0000' Enter
+```
 
 
 ## tr
