@@ -164,6 +164,16 @@ WHERE mm = '05'
 LIMIT 5;
 ```
 
+#### casting with shitty things i.e.mixed types etc
+
+```
+SELECT mm, dd, sum(try_cast(v5['rev'] as real)) FROM "c3747_golo_1_prod"."actions"
+WHERE v5['rev'] is not null 
+AND mm in  ('08', '07')
+GROUP BY 1, 2
+ORDER BY 1, 2
+```
+
 - - -
 ## EC2
 - - -

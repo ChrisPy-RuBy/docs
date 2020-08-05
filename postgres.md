@@ -4,6 +4,29 @@ summary: Everything concerning dbs
 
 # postgres
 
+# WHERE 1 = 1
+
+
+```sql
+SELECT
+  date(datadatetime),
+--  DATE(datadatetime at time zone 'UTC' at time zone 'GMT') as impression_date_bst,
+  agency,
+  COUNT(*)
+FROM
+  c9058_k12_produsa.eventlog
+WHERE 1=1
+  AND yy = 2020 AND mm in (5,6,7)
+  AND event_class = 'impression'
+  AND event = 'vod'
+GROUP BY 1,2
+ORDER BY 1,2
+```
+
+used a syntactic sugar to make editing the query easier
+
+
+
 ## theory
 - - - 
 
