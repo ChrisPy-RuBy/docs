@@ -117,6 +117,12 @@ db.getCollection("piwik1410-1.sessions").find({$expr: {$gt: ["$lasttime", "$time
 q = { "datetime": { $gte: ISODate("2017-06-30"),  $lt: ISODate("2017-07-01")}}
 ```
 
+#### **check whether a array exists and its not empty**
+
+```
+db.getCollection("brands").find({'first_actions': {$exists: true, $ne: []}, 'first_all_response': true}, {'clientshortid': 1, 'shortid': 1})
+```
+
 #### **mongo regexes**
 
 basic example

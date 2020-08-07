@@ -948,11 +948,15 @@ might want to check this
 ```bash
 echo '$(cat ~/.ssh/id_rsa.pub)'
 ```
+
 ### **copy key to remote server so you don't have to keep ligging on**
 ```
 ssh-copy-id remote_username@server_ip_address
 ```
 
+### add new user to reomte machine 
+
+login and copy the key from ~/.ssh/authorized_keys add to the machine that you want.
 
 ### **exit a session**
 ```bash

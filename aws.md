@@ -206,6 +206,26 @@ i.e. collect-<clientid>
 it should then tell you the collector under the value field 
 
 
+- - - 
+## lambdas
+- - - 
+
+getting lambdas to work!
+
+- step 1 write a script that does the thing you want locally
+	- try to keep dependancies low
+	- lambdas typically take in json and spit out json
+
+- decide how you want your lambda to be triggered. lots of things can set them off. 
+Here is an example of one that is kicked off in the frontend code
+where the lambda being run is the 'visitlog'
+The event is the {}
+A logger is also passed here.
+```python
+result = awslambda.run('visitlog', {'site_id': site_id, 's3_bucket': s3_bucket}, log=request.log)
+```
+
+- give the script to an adult to upload and configure in AWS.
 
 - - - 
 ## S3

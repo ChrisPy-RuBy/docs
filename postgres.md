@@ -307,6 +307,46 @@ UPDATE  <schema>.<table>
 SET datadatetime = datedatetime + INTERVAL "1 days"
 ```
 
+#### **more complex updates**
+
+##### **updating from values**
+
+can provide a tmp table of values to use to update the table 
+
+```sql
+UPDATE usersessions.data us
+        SET  tags = tags || hstore('cuserref' , data.userref)
+        FROM (VALUES (1, 2),(2, 3), (3, 4))))) as data (usersessionid, userref)
+        WHERE data.usersessionid = us.usersessionid
+        AND us.brandid = %(brandid)s
+        AND coalesce(us.tags -> 'cuserref','') <> data.userref
+        AND datadatetime BETWEEN %(startdt)s AND %(enddt)s
+```
+here values create a tmp table called data that we can use!.
+
+it is a more concise way than doing this which i tried also
+
+```sql
+with sessionsToUpdate as (
+    SELECT usersessionid, tags->'userref' userref
+            FROM usersessionactions.data usa
+            WHERE usa.brandid=1
+            AND usa.tags?'userref'
+	 		AND usa.usersessionid in (29634, 29110, 26803, 28374)
+)
+UPDATE usersessions.data us
+SET  tags = tags || hstore('cuserref' , q.userref)
+FROM sessionstoupdate q
+WHERE q.usersessionid = us.usersessionid
+AND us.brandid=1
+AND coalesce(us.tags -> 'cuserref','') <> q.userref
+```
+
+
+
+
+
+
 ### **basic insert**
 
 ```sql

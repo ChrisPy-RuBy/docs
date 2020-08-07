@@ -899,6 +899,33 @@ f = lambda x: test_func(x, 'constant')
 ### boto3
 - - - 
 
+questions to answer what is the difference between client, bucket, resource, obj
+
+#### connect to a bucket and get a large list of files out
+
+```python
+s3 = boto3.client('s3')
+
+s3_paginator = boto3.client('s3').get_paginator('list_objects_v2')
+for page in s3_paginator.paginate(Bucket=bucket, Prefix=prefix):
+    if 'Contents' not in page:
+		continue
+    for obj in page['Contents']:
+		if not obj['Key'].endswith('parquet'):
+           continue
+    print(obj['Key'])
+```
+
+
+
+
+
+
+
+
+
+
+
 ### bson
 --- 
 stuff that is bz2 or from mongo is closer to bson than json
