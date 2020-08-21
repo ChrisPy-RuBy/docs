@@ -536,6 +536,14 @@ Get all lines that contain a character not of a specified type
 grep -nE '^V[[:alpha:]]' combined_Q3_7_app_FR_1.csv
 ```
 
+### check a bunch of files to see if they contain something or not.
+
+check all files leading with crontab to see if they contain python
+
+```bash
+grep python crontab*
+```
+
 ## head/tail
 
 ### **subsection of file**

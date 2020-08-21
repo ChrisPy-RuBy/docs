@@ -4,28 +4,24 @@ summary: Everything concerning dbs
 
 # postgres
 
-# WHERE 1 = 1
+## troubleshooting
 
+this error
 
-```sql
-SELECT
-  date(datadatetime),
---  DATE(datadatetime at time zone 'UTC' at time zone 'GMT') as impression_date_bst,
-  agency,
-  COUNT(*)
-FROM
-  c9058_k12_produsa.eventlog
-WHERE 1=1
-  AND yy = 2020 AND mm in (5,6,7)
-  AND event_class = 'impression'
-  AND event = 'vod'
-GROUP BY 1,2
-ORDER BY 1,2
+lock file "postmaster.pid" already exists
+
+likely due to stray lock I believe
+kill the lock and restart
+
 ```
+cat /usr/local/var/postgres/postmaster.pid
+kill PID    # taken from the first line
 
-used a syntactic sugar to make editing the query easier
+pg_ctl -D /usr/local/var/postgres start
+pg_ctl -D /usr/local/var/postgres stop
 
-
+brea services start postgresql
+```
 
 ## theory
 - - - 
@@ -555,6 +551,29 @@ SELECT distinct on (<col_1>, <col_2>) *
 FROM <schema>.<table>
 WHERE <blah>
 ```
+
+### where 1=1
+
+```sql
+SELECT
+  date(datadatetime),
+--  DATE(datadatetime at time zone 'UTC' at time zone 'GMT') as impression_date_bst,
+  agency,
+  COUNT(*)
+FROM
+  c9058_k12_produsa.eventlog
+WHERE 1=1
+  AND yy = 2020 AND mm in (5,6,7)
+  AND event_class = 'impression'
+  AND event = 'vod'
+GROUP BY 1,2
+ORDER BY 1,2
+```
+
+used a syntactic sugar to make editing the query easier
+
+
+
 
 ### **super smart way of getting largest / smallest value by another column**
 

@@ -112,6 +112,17 @@ AND url like ‘%nvcc%’
 ```
 WHERE site_id, yy, mm, dd, and hh are partitions
 
+#### **case statements and regex**
+
+```sql
+SELECT count(*) total,
+    sum(CASE WHEN regexp_like(visitor, '^0{8}[0-9a-f]{16}$') = false THEN 1 
+    ELSE 0 END) app, 
+    sum(CASE WHEN regexp_like(visitor, '^0{8}[0-9a-f]{16}$') = true THEN 1 
+    ELSE 0 END) web 
+FROM c1564_hulu_prod.visits_2020_08_08_16
+```
+
 #### Cross table joins
 
 ```sql
