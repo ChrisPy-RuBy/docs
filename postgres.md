@@ -26,6 +26,15 @@ brea services start postgresql
 ## theory
 - - - 
 
+### **types of deleting**
+
+- marking as deleted. The row is exists in table but is markied as deleted
+- autovacuumed. Row still exists
+- full vacuum.  table completely rebuilt from  scratch.
+
+
+
+
 ### **index types**
 
 sparse index:- only has values in the index that are populated
@@ -748,7 +757,16 @@ LEFT JOIN grouped_users ON CTE.day = grouped_users.day
        and relname='data'
        and nspname='usersessions'
 ```
+### **filtering a count * with having**
 
+```sql
+SELECT group, count(*)
+FROM blah
+WHERE blarpped
+GROUP BY 1
+HAVING count(*) > 2
+ORDER BY 1
+```
 
 
 

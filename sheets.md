@@ -19,8 +19,6 @@ cmd-shift-left/right - highlight first / last column
 
 cmd-pgup / pgdown - flip worksheets # excel;
 alt-up/down - flip worksheets # google
-
-
 ```
 
 
@@ -29,8 +27,6 @@ alt-up/down - flip worksheets # google
 #### **Useful resources**
 [good basic introductions to various topics](https://chandoo.org/wp/welcome/)
 [nice general tools](https://edu.gcfglobal.org/en/excel2016/)
-
-
 
 
 #### **add double quotes to a complete column**
@@ -46,6 +42,31 @@ need this -> "purplegobbleer"
 use match or vlookup
 
 ## vlookup
+
+fill in the values in row bases on values of another row.
+NOTE: Make sure that the data you are looking up from is sorted by the column you are interested in.
+
+```
+Example
+VLOOKUP(10003, A2:B26, 2, FALSE)
+
+About
+Vertical lookup. Searches down the first column of a range for a key and returns the value of a specified cell in the row found.
+search_key
+The value to search for. For example, '42', 'Cats' or 'I24'.
+range
+The range to consider for the search. The first column in the range is searched for the key specified in 'search_key'.
+index
+The column index of the value to be returned, where the first column in 'range' is numbered 1.
+is_sorted - [optional]
+Indicates whether the column to be searched (the first column of the specified range) is sorted, in which case the closest match for 'search_key' will be returned.
+```
+
+so for the top example
+- 10003 would be the value that you are looking to find 
+- A2:B26 would be the range of data that you are looking to investigate. Column A in this case is the data that you are looking up from. It is where you are expecting to find 10003
+- 2 is the index of the value you wish to return
+- False is whether the data you are looking at is sorted or not. in this case it is whether column A is sorted or not.
 
 ## Match
 
@@ -87,15 +108,6 @@ seperate the data for the y axis into two seperate column
 | 1 | null | 2 | 
 | 2 | 4 | null | 
 
-
-
-
-#### **basics of a vlookup**
-
-
-
-
-
 ## conditionals 
 [derp](https://stackoverflow.com/questions/11399111/how-to-replace-text-of-a-cell-based-on-condition-in-excel
 =IF(L27=TRUE, 1,0)
@@ -105,6 +117,13 @@ seperate the data for the y axis into two seperate column
 ```
 
 # google docs
+
+filters are like tables in excel. 
+Create a filter as soon as the spreadsheet is ready.
+
+## extrapolating formulas to large data ranges
+
+use paste formula if the little square button is not available.
 
 ## conditional formatting
 

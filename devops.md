@@ -260,6 +260,19 @@ TVSquared CORE -> DATA -> Deploy One Test Client Data
 Set parameters clientid, servername, new Client Id, new client name  
 NOTE: new client name shouldn’t have any spaces
 
+### **build list**
+
+can interact with items in the build queue here. can boost priority etc.
+
+![image](./img/buildlist.png)
+
+### **what scripts are being run**
+
+can see what scripts etc are being run here
+
+![image](./img/teamcity_scripts_1.png)
+![image](./img/teamcity_scripts_2.png)
+
 
 - - -
 ## anisble
