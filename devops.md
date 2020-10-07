@@ -134,6 +134,12 @@ aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
 
 Have multiple python versions on your machine
 
+#### **List all available versions**
+
+```
+pyenv install --list
+```
+
 
 #### **issues installing pyenv due to openssl**
 
@@ -144,12 +150,21 @@ brew install openssl@1.1
 ```
 
 #### **switch py3.5 to py3.7 and back**
+This should work for your whole system
 ```bash
 pyenv global 3.5.0
 or 
 pyenv global system
 ```
 You will need to install all the relevant pip packages into the correct python folder
+
+This should work for local specific projects.
+Note: your work machine is currently setup like a local not global
+```
+pyenv local 3.7.7
+pyenv local system
+```
+
 
 #### **get what pyenv version is currently being used**
 ```

@@ -3,6 +3,11 @@ summary: Notes on spark
 
 # basics
 
+## **profiling spark code**
+
+use the profiler
+[tit gay](https://spark.apache.org/docs/latest/api/python/pyspark.html?highlight=profiling#pyspark.Profiler)
+
 #### **access the shell**
 
 ```python

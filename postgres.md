@@ -4,6 +4,10 @@ summary: Everything concerning dbs
 
 # postgres
 
+## ** alan knowledge**
+
+never cast against column cast against values
+
 ## troubleshooting
 
 this error
@@ -20,8 +24,10 @@ kill PID    # taken from the first line
 pg_ctl -D /usr/local/var/postgres start
 pg_ctl -D /usr/local/var/postgres stop
 
-brea services start postgresql
+brew services start postgresql
 ```
+
+sometimes youjust need to delete the pid file.
 
 ## theory
 - - - 
