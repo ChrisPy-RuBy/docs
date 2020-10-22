@@ -173,6 +173,29 @@ assert(x > 0, "This is dumb and always true")
 ## Builtins
 - - - - 
 
+### **__doc__**
+
+
+```python
+"""This comment gets used when the module gets imported"""
+
+import datetime
+
+"""This is just a comment it doesn't get used as a docstring 
+anywhere
+"""
+
+class Class:
+
+	"""This gets used as the doc string for the class"""
+
+	def some_function():
+		"""This is the docstring for the function"""
+
+
+```
+
+
 ### **--file--**
 where the module or whatever was imported from
 ```python
@@ -916,6 +939,18 @@ for page in s3_paginator.paginate(Bucket=bucket, Prefix=prefix):
     print(obj['Key'])
 ```
 
+```python
+def size_paginator(params):
+    s3client = boto3.client('s3')
+    paginator = s3client.get_paginator('list_objects_v2')
+    site_id_total = 0
+    pages = paginator.paginate(Bucket=params['Bucket'], Prefix=params['Prefix'])
+    for page in pages:
+        if "Contents" in page:
+            page_total = sum([file['Size'] for file in page['Contents']])
+            site_id_total += int(page_total)
+    return (params['site_id'], site_id_total)
+```
 
 
 

@@ -331,6 +331,56 @@ db.getCollection("brands").aggregate(
 );
 ```
 
+```javascript
+db.getCollection("jobqueue").aggregate([
+{
+    $match: {"jobstatus": "FAILED"}
+},
+{
+    $group: {"_id": "$jobtype",
+             "failed": {
+                 $sum: 1.0
+             }           
+    }
+},
+{
+    $sort: {"failed": -1}
+}
+])
+
+```
+
+beast agg query for spots in regression
+pivot in sheets as normal
+
+```db.getCollection("ts").aggregate([
+{
+    $match: 
+        {"date": {$gte: ISODate('2020-08-10'), $lt: ISODate('2020-08-30')},
+         "group": "rtm",
+         "gran": "broadcastday",
+         } 
+},
+{
+    $project: 
+        {//"date": 1, 
+         //"group": 1,
+         "gran": 1,
+         "action": 1,
+         "medium": 1,
+         "baseline": 1,
+         "datestring":   {"$dateToString" : {format: "%Y-%m-%d",  date:"$date"}}, 
+         "env": "preold", 
+         "sumValues": {$multiply: [ {$sum: "$values"}, -1]}
+          }         
+},
+{
+    $sort: {"date": -1}
+}
+])
+```
+
+
 
 ## **bugs**
 

@@ -36,3 +36,7 @@ commandline search and pretty printer for labbook **to_make
 bits, bytes, hex etc **to_add
 bits, bytes, hex etc **to_learn
 what is a bitmask **to_learn
+make a map of all different attributes, methods etc and where they live on a class **learn
+not when each of these new things are instantiated
+not when each of these new things are instantiated **to_learn
+note when each of these new things i.e. class attributes etc  are instantiated **to_learn

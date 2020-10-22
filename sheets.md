@@ -125,6 +125,10 @@ Create a filter as soon as the spreadsheet is ready.
 
 use paste formula if the little square button is not available.
 
+## generating templates
+https://docs.google.com/spreadsheets/d/<spreadsheetID>/template/preview
+
+
 ## conditional formatting
 
 #### using conditional formating to mathc values against a couple of note

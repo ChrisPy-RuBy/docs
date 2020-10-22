@@ -141,4 +141,22 @@ would return all words that begin with t
 \b([0-9]{1,3}\.){3}[0-9]{1,3}\b
 ```
 
+#### **find and replace only selected parts of a string**
+
+```
+match this ->
+request.jqdb.clients.update({'tomfoolery': 'bawlbaggery'})
+not this ->
+x.update({}})
+
+in pycharm
+(equest.*)(update?)(\(\{.*\}\))
+$1$2_one$3 gives
+request.jqdb.clients.update_one({'tomfoolery': 'bawlbaggery'})
+
+# in vim
+%s/\(equest.*\)\(update\)\((.*\)/\1\2_one\3/g
+```
+
+
 
