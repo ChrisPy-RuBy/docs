@@ -1,5 +1,6 @@
 Title: mongoDB
 - - - 
+# mongoDB
 
 ## Useful docs ##
 [mongo shell](https://docs.mongodb.com/manual/reference/mongo-shell/)
@@ -7,20 +8,20 @@ Title: mongoDB
 [methods_collection_ref](https://docs.mongodb.com/manual/reference/method/js-collection/)
 
 
-# **Maintainence and Manangment**
+## **Maintainence and Manangment**
 
-#### **performance profiling etc**
+### **performance profiling etc**
 
 [tipson performance profiling](https://studio3t.com/knowledge-base/articles/mongodb-query-performance/)
 
-#### **dealing with indexes**
+### **dealing with indexes**
 
 An index looks like this
 brand_1_gran_1_group_1_metric_1_date_1_split_1_splitname_1_action_1
 The query will go through the index sequentially until it can’t do anymore. Always specify the exact value not a range if possible. 
 
 
-#### **setting up a raw db connection**
+### **setting up a raw db connection**
 
 ```python
 server_url =  mongodb://username:password@somewhere.mongolayer.com:10011/my_database
@@ -28,7 +29,7 @@ username = analysis
 password = <fuck shit bum>
 ```
 
-#### **fast server stuff**
+### **fast server stuff**
 
 ```python
 for db in request.backenddb.mongo.list_databases():
@@ -67,7 +68,7 @@ db.getCollection(<collection name>).find(<query>)
 
 ## **Basic Queries**
 
-#### **Search for value where value is not equal to another value**
+### **Search for value where value is not equal to another value**
 
 ```javascript
 {
@@ -93,7 +94,7 @@ db.demographics.distinct('<thing>')
 db.brands.find({}).count()
 ```
 
-#### **conditional querying of sub-docs**
+### **conditional querying of sub-docs**
 
 example
 ```jvascript
@@ -123,7 +124,7 @@ q = { "datetime": { $gte: ISODate("2017-06-30"),  $lt: ISODate("2017-07-01")}}
 db.getCollection("brands").find({'first_actions': {$exists: true, $ne: []}, 'first_all_response': true}, {'clientshortid': 1, 'shortid': 1})
 ```
 
-#### **mongo regexes**
+### **mongo regexes**
 
 basic example
 ```javascript
@@ -143,7 +144,7 @@ q = {shortid: {$in: [282, 1229]}}
 
 ## **Aggregate Queries**
 
-#### **basic agg queries**
+### **basic agg queries**
 
 ```javascript
 db.demographicmaps.aggregate(

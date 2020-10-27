@@ -1164,6 +1164,16 @@ data = [{'letter': 'a', 'value': 123}, {'letter': 'a', 'value': 789}, {'letter':
 {item[0]: list(item[1]) for item in itertools.groupby(data)}
 ```
 
+```python
+from itertools import groupby
+x = [1,2,3,4,5,6,6,6,1,1]
+results = []
+for k, grouped in groupby(x):
+	results.append(list(grouped))
+
+[[1,1,1], [2], [3], [4], [5], [6,6,6]]
+```
+
 ### ipython
 - - -
 

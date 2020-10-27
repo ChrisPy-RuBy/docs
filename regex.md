@@ -2,16 +2,18 @@ Title: regex
 Summary: Guide to regexes
 - - - 
 
+# regexes
+
 [link to regex 101](https://regex101.com/ see quick referenceA)
 
-# basics 
+## basics 
 
 ```python
 # match b not a
 b
 ```
 
-# useful escape characters
+### useful escape characters
 ```python
 \s # match whitespace
 \S # Don't match whitespce 
@@ -23,7 +25,7 @@ b
 \r # return  
 ```
 
-# magic characters
+### magic characters
 
 ```python
 ^ # beginning of a newline
@@ -34,7 +36,7 @@ $ # end of line or string
 \B # non word boundary
 ```
 
-# basic mulitpliers
+### basic mulitpliers
 
 ```python
 * any number of time
@@ -45,7 +47,7 @@ $ # end of line or string
 
 ```
 
-# squared brackets
+### squared brackets
 
 
 ```python
@@ -69,7 +71,7 @@ negation
 means not the values in the bracket
 ```
 
-# round brackets
+### round brackets
 mean capture everything. Order specfic
 
 ```python
@@ -89,7 +91,7 @@ would make cat and tac but not act
 would match cat or bat for example
 
 
-# curly brackets
+### curly brackets
 multipliers
 
 ```python
@@ -114,42 +116,42 @@ matches between 3  to 7 times
 ```
 would match any digit that was present more than once.
 
-# Useful regexes
+## Useful regexes
 
-#### **match whole line or row containing ...**
+### **match whole line or row containing ...**
 
 ```python
 ^.*(this|that).*$
 ```
 would return all rows that contain this or that
 
-#### **match all word beginning with specific letter**
+### **match all word beginning with specific letter**
 
 ```python
 \bt\w+\b
 ```
 would return all words that begin with t
 
-#### **matching all numbers of a specifc length**
+### **matching all numbers of a specifc length**
 
 ```python
 \d{9}
 ```
 
-#### **matching ip addresses**
+### **matching ip addresses**
 ```bash
 \b([0-9]{1,3}\.){3}[0-9]{1,3}\b
 ```
 
-#### **find and replace only selected parts of a string**
+### **find and replace only selected parts of a string**
 
 ```
-match this ->
+# match this ->
 request.jqdb.clients.update({'tomfoolery': 'bawlbaggery'})
-not this ->
+# not this ->
 x.update({}})
 
-in pycharm
+# in pycharm
 (equest.*)(update?)(\(\{.*\}\))
 $1$2_one$3 gives
 request.jqdb.clients.update_one({'tomfoolery': 'bawlbaggery'})

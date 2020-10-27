@@ -2,7 +2,9 @@ title: networking
 summary: a guide to the tools and concepts of how information is passed around the internet
 - - - 
 
-# ping
+# Networking Tools
+
+## ping
 
 useful for testing if you have any internet at all
 ```bash
@@ -11,29 +13,31 @@ ping www.bbc.co.uk
 
 would return something if you are hitting that website.
 
-# ifconfig
+## ifconfig
 **get ip address on mac**
 ```
 ifconfig | grep "inet" | grep -v 127.0.0.1
 ```
 
-# ipconfig
+## ipconfig
 
-# arp 
+## arp 
 
-gives all the devices on a local network.
+gives all the devices on a local network with their name, MAC address and IP.
+Basically gives you the lookup table for the local subnet.
 
 ```bash 
 arp -a 
 ```
-
 easiest way to get an ip address that you are ssh into 
+
+
 
 ```
 ipconfig getifaddr en0
 ```
 
-# traceroute
+## traceroute
 
 similar to ping but shows the route that your packet took along the way
 ```bash
@@ -49,9 +53,9 @@ Hop: Whenever a packet is passed between a router, this is referred to as a “h
 RTT1, RTT2, RTT3: This is the round-trip time that it takes for a packet to get to a hop and back to your computer (in milliseconds). This is often referred to as latency, and is the same number you see when using ping. Traceroute sends three packets to each hop and displays each time, so you have some idea of how consistent (or inconsistent) the latency is. If you see a * in some columns, you didn’t receive a response – which could indicate packet loss.
 Domain Name [IP Address]: The domain name, if available, can often help you see the location of a router. If this isn’t available, only the IP address of the router is displayed.
 
-# netcat
+## netcat
 
-**smaller server to send and recieve**
+***smaller server to send and recieve***
 
 ```
 # now listening on 4444
@@ -61,12 +65,30 @@ nc -d 4444 -l
 nc localhost 4444
 ```
 
+***can fire http requests straight to a port **
 
-# netstat
+```
+echo "GET / HTTP/1.1\r\nHost:example.com\r\n\r\n" | nc example.com 80
+```
+gives back the http request you sent.
 
-# nslookup
 
-# dig
+***send a file quickly over a local network
+on linux
+```bash 
+# on target
+hostname -I <some ip> 
+nc -l 9931 > bigfile
+
+# on source
+cat bigfile | nc <some ip>
+```
+
+## netstat
+
+## nslookup
+
+## dig
 
 similar to nslookup. gives a bunch of info about dnserver etc
 
@@ -74,11 +96,11 @@ similar to nslookup. gives a bunch of info about dnserver etc
 dig collector-1.tvsquared.com
 ```
 
-# whois
+## whois
 
-# finger
+## finger
 
-# nmap
+## nmap
 
 super power but incomprehensible
 
@@ -89,7 +111,7 @@ nmap localhost -p 31000-32000 -A
 ```
 
 
-# nc
+## nc
 
 netcat: useful tool for debuging network connections
 
@@ -101,6 +123,15 @@ nc - l 2003
 # send something to the port
 echo "test" | nc localhost 2003
 ```
+
+## tcpdump
+
+measures and outputs network traffic
+
+```
+sudo tcpdump -i any port 53
+```
+go to a website and then see all the network info
 
 # to learn
 - wireshark ``to_learn

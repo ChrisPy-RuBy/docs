@@ -258,6 +258,14 @@ re-format the drive
 [here](https://discussions.apple.com/thread/4263857)
 
 
+## heroku
+
+#### add ssh keys
+
+```
+heroku keys:add ~/.ssh/id_rsa.pub
+```
+
 ## teamcity
 
 Go to [teamcity](http://teamcity.tvsquared.private:8111/) and run whatever you need to
