@@ -575,6 +575,25 @@ for x, y in tiny_dict.items():
 ```
 
 ## Exceptions
+
+#### full try except tree
+
+```python
+try:
+	data[key] = 2	
+except KeyError:
+	print('missing key') # specific exception
+except Exception:
+	print('somethnig else') # general exception
+else:
+	print('this runs is there are no exceptions')
+finally:
+	print('this runs no matter what')
+
+
+```
+
+
 [link](https://stackoverflow.com/questions/5191830/how-do-i-log-a-python-error-with-debug-information)
 
 #### **useful stacktraces as exceptons messages**

@@ -748,6 +748,12 @@ kill a job or process. Get the pid from htop or ps aux
 kill -9 <PID>
 ```
 
+### send a specific signal to a process
+```
+kill -s USR1 3699
+# sends signal user1 to pid 3699
+```
+
 ## less
 makes streamed output managable
 
@@ -774,6 +780,22 @@ gives you permissions, something, owner, something, size, date and name
 ### **List all files ordered by size**
 ```bash
 ls -S 
+```
+
+## pgrep
+
+get the PID for a process
+super useful
+
+## ps 
+
+details about processes
+
+```
+ps -ef | grep python
+# get all processes that are python
+ps -ax --forest
+# displays the tree for the process
 ```
 
 
@@ -1057,6 +1079,17 @@ display file structure
 tree -L 4
 ```
 will display file structure down to level 4
+
+## trace
+
+bunch of programmes for investigating how your program interacts with the operating system and infrastructure
+
+```
+# system calls
+strace -p <pid>
+# library calls
+ltrace -p <pid>
+```
 
 ## vimpager
 
