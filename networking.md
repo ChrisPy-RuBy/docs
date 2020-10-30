@@ -2,7 +2,21 @@ title: networking
 summary: a guide to the tools and concepts of how information is passed around the internet
 - - - 
 
+- what is a firewall
+
 # Networking Tools
+
+## how browses and web-severs work
+
+- web servers run a tcp socket on a port
+- web browser specifies a url
+- wweb browser initiates TCP connection
+- DNS lookup for ip 
+- server ACKs browser connection
+- http request sent via network routers
+- server sends back response 
+
+
 
 ## ping
 
@@ -30,8 +44,6 @@ Basically gives you the lookup table for the local subnet.
 arp -a 
 ```
 easiest way to get an ip address that you are ssh into 
-
-
 
 ```
 ipconfig getifaddr en0
@@ -125,6 +137,29 @@ echo "test" | nc localhost 2003
 ```
 
 ## tcpdump
+
+** what dns queries is my laptop send **
+
+```
+tcpdump -i any port 53
+```
+
+** do I have any packets coming onto port 1337
+
+```
+tcpdump -i any port 1337
+```
+
+** what packets are coming onto my from a specific
+
+```
+tcpdump port 1337 and host <ip>
+```
+
+** see dns queries that fail **
+```
+tcpdump udp[11]&0xf==3
+```
 
 measures and outputs network traffic
 
