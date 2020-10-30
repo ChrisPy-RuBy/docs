@@ -3,6 +3,30 @@ summary: Notes on spark
 
 # basics
 
+## exception handling in spark 
+
+exceptions will not propagate up like they would in normal python code
+
+```python
+def layer_one():
+	raise ValueError
+
+def layer_two():
+	try:
+		layer_one()
+	except ValueError
+		raise  TypeError
+
+def layer_three():
+
+	try:
+		layer_two()
+	except TypeError:
+		print("from the value error in layer_one")
+layer_three()
+```
+
+
 ## **profiling spark code**
 
 use the profiler
