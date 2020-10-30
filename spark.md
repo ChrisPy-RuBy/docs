@@ -27,6 +27,34 @@ def layer_three():
 layer_three()
 ```
 
+```python
+data = [1, 3, 4, 5, 6]
+def fun_times_yield(request, x):
+
+	for a in x:
+		try:
+			if a == 3:
+				result = a / 0
+			else:
+				result = a * 2
+		except ZeroDivisionError as e:
+			request.log.exception(e) # this won't propagate up so need to do something else with it
+		else:
+			yield result
+
+sc = request.getSparkContext()
+super_fun_times = request.sparkWrap(fun_times)
+y = sc.parallelize(data).mapPartitions(super_fun_times).collect()
+```
+
+## **map vs map partitions** 
+
+```python
+
+
+```
+```
+
 
 
 
