@@ -5,7 +5,8 @@ summary: Notes on spark
 
 ## exception handling in spark 
 
-exceptions will not propagate up like they would in normal python code
+exceptions will not propagate up like they would in normal python code.
+they can't propagate onto the driver.
 
 ```python
 def layer_one():
@@ -25,6 +26,9 @@ def layer_three():
 		print("from the value error in layer_one")
 layer_three()
 ```
+
+
+
 
 
 ## **profiling spark code**
