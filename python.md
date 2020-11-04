@@ -1500,6 +1500,13 @@ more functionality that unittest
 needs tests to be called test_<blah>
 but doesn't require class
 
+#### **basic running of tests**
+
+to run the test class that you are interested in.
+```
+pytest -k 'SessionsTest' --disable-warnings --ignore=tvsquared/tmp/
+```
+
 #### **get unit test coverage**
 ```bash
 python -m pytest --cov
