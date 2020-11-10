@@ -955,6 +955,15 @@ Here the -t is the delimiter, -k means 2nd column, -n means numeric
 
 ## ssh
 
+### **what profile gets loaded on login**
+
+/etc/profile then /.bash_profile
+
+can run another profile within this profile by adding 
+```bash
+. $HOME/.bashrc
+```
+
 ### **login into server using private key**
 
 ```

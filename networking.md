@@ -16,6 +16,10 @@ summary: a guide to the tools and concepts of how information is passed around t
 - http request sent via network routers
 - server sends back response 
 
+## what is localhost?
+
+it is a loopback address for the current machine you are using.
+It typically starts with 127
 
 
 ## ping
@@ -115,6 +119,13 @@ dig collector-1.tvsquared.com
 ## nmap
 
 super power but incomprehensible
+
+### **get all hosts on a LAN**
+
+```
+nmap -sP <subnet cidr>
+nmap -sP 192.168.1.1/24
+```
 
 ### **scan all ports within range**
 
