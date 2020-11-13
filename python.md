@@ -1321,8 +1321,11 @@ os.listdir(path)
 
 #### **recursively make directory structure*
 ```python
-os.makedirs(<path>)
+os.makedirs(<path>, exists_ok=True)
+# don't recreate if if exists already'
 ```
+
+#### **only make the folders if**
 
 ## pandas
 - - - - 

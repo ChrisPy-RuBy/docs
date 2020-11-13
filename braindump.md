@@ -40,3 +40,8 @@ make a map of all different attributes, methods etc and where they live on a cla
 not when each of these new things are instantiated
 not when each of these new things are instantiated **to_learn
 note when each of these new things i.e. class attributes etc  are instantiated **to_learn
+vim mapping rules
+exceptions in loops
+boolean operators &= etcs
+pathlib python **to_learn
+what is CORS **to_learn

@@ -199,6 +199,13 @@ done
 ${1//[^[:alpha:]]/ }
 ```
 
+#### userinput
+
+```bash
+read -rp "Enter site ids you want to move . . .  " var1
+read -rp "Enter list of env's to move data to, i.e. preprev, preprod: " var2
+```
+
 #### getops
 
 a way of dealing with commandline arguements 
