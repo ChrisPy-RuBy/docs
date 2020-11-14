@@ -4,6 +4,13 @@ summary: devopsie shite!
 
 # devops
 
+## microsoft azure
+
+### using bings image search
+
+you need both the azure_search_api key as well as the cognitive_ something key
+you need both
+
 ## troubleshooting strategies  
 
 

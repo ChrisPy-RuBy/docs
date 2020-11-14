@@ -34,10 +34,10 @@ make a map of all different attributes, methods etc and where they live on a cla
 not when each of these new things are instantiated
 not when each of these new things are instantiated **to_learn
 note when each of these new things i.e. class attributes etc  are instantiated **to_learn
+<<<<<<< Updated upstream
 vim mapping rules
 boolean operators &= etcs
 pathlib python **to_learn
 what is CORS **to_learn
-what is swap **to_learn
 what is a proxy and how does it work **to_learn
 understanding disk managment on unix **to_learn

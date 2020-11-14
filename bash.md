@@ -212,6 +212,13 @@ a way of dealing with commandline arguements
 still not that straight forward.
  [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
 
+#### **defaults for variables**
+
+```bash
+NAME=${1?Error: no name given}
+```
+
+
 # to learn
 
 - better commandline shizzle ``to_learn
