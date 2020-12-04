@@ -20,6 +20,15 @@ summary: a guide to the tools and concepts of how information is passed around t
 
 it is a loopback address for the current machine you are using.
 It typically starts with 127
+=======
+## curl 
+
+tool for transfer data about the internet
+### basic website test
+
+```bash
+curl -v http://localhost:888
+```
 
 
 ## ping
@@ -87,6 +96,13 @@ nc localhost 4444
 echo "GET / HTTP/1.1\r\nHost:example.com\r\n\r\n" | nc example.com 80
 ```
 gives back the http request you sent.
+
+or 
+
+```
+nc localhost 8888 <<< GET /hello HTTP/1.1
+```
+
 
 
 ***send a file quickly over a local network

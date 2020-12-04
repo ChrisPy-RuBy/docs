@@ -1,5 +1,5 @@
 Title: unixtools
-Summary: Notes on Useful unix tools
+shummary: Notes on Useful unix tools
 - - - 
 
 # unixtools
@@ -974,6 +974,12 @@ ssh -i <private_key> hostname
 
 ```
 ssh hostname 'ls etc'
+```
+
+### **attach a tty shell and run vim**
+
+```
+ssh -t -i bandit26.sshkey bandit26@localhost -t vim
 ```
 
 ### **view all failed login attempts**

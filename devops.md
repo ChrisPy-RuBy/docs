@@ -298,5 +298,18 @@ can see what scripts etc are being run here
 
 
 - - -
+zsh
+- - -
+
+## **what gets loaded and when**
+| file | when its loaded | what to put in it |
+| :--- | :---: | ---: |
+| .zshenv | read every runtime | |
+|.zprofile| read at login||
+|.zshrc| read when iterative shell||
+|.zlogin| read at login||
+|.zlogout|read at login at log out||
+
+- - -
 ## anisble
 - - - 

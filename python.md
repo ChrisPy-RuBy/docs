@@ -111,6 +111,20 @@ NOTE: without the star in the function definition you cannot use the splat in th
 as (*args) indicates an unspecified number of args. Common functions that use this are print() and format
 as they can take an unlimited number of arguements.
 
+#### more * stuff
+
+```python
+data = [1,2,3,4,5]
+# what would this do
+a, *b, c = data
+```
+
+get the header from csv
+```python
+header, *rows = csvread
+```
+
+
 #### **zip star(*) idioms**
 
 transpose wide lists together into thin ones
@@ -721,13 +735,17 @@ else:
 
 
 
-#### ** pythonic indexing,  enumerate** 
-
-
+## ** pythonic indexing,  enumerate** 
 
 ```python
-for i, v in enumerate(range(10)):
-    print(i, v)
+# which is better
+data = [("a", 2), ("b", 2)]
+
+for i, values in enumerate(data):
+	print(f"index: {i+1}, letter: {values[0]}")
+
+for i, (key, value) for enumerate(data, 1):
+	print(f"index: {i}, letter: {key}")
 ```
 
 #### **fastest way to copy a list**
