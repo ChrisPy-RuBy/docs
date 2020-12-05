@@ -1,9 +1,12 @@
 title: git
 summary: everything to do with git.
 
+
+
 # useful resources
 - - - - - - 
 [oh shit git](https://ohshitgit.com/)
+[auto generate gitignore files](https://www.toptal.com/developers/gitignore)
 
 [git gix up](https://sethrobertson.github.io/GitFixUm/fixup.html#remove_deep)
 
