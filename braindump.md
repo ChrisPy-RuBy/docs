@@ -20,20 +20,14 @@ apply formula to rows in sheets **to_learn
 more cards about vim folding **to_add
 get better at flake8 and blacking code **to_do
 create a pandas anki set **to_learn
-move final parts of word doc labbook into docs *to_do
 move final parts of word doc labbook into docs **to_do
 change qa to rem numbers when updating spell check**to_do
 notes on running child processes with subprocess to anki **to_add
-cardinaliity ordinality in cs **to_add
 add simiple rules for permutations and combinations **to_add
-fixed pyenv with brew uninstall --force --ignore-dependencies openssl@1.1;pyenv install -v 3.5.2;brew install openssl@1.1
-uft-8, unicode etc in python, see real python tutorial **to_learn
 sorted and setdefault in python
 sorted and setdefault in python to_learn
 learn to use classes instead of dicts for data processing to_learn
-what is unicode **to_learn
 commandline search and pretty printer for labbook **to_make
-bits, bytes, hex etc **to_add
 bits, bytes, hex etc **to_learn
 what is a bitmask **to_learn
 make a map of all different attributes, methods etc and where they live on a class **learn
@@ -41,7 +35,9 @@ not when each of these new things are instantiated
 not when each of these new things are instantiated **to_learn
 note when each of these new things i.e. class attributes etc  are instantiated **to_learn
 vim mapping rules
-exceptions in loops
 boolean operators &= etcs
 pathlib python **to_learn
 what is CORS **to_learn
+what is swap **to_learn
+
+what is a proxy and how does it work **to_learn

@@ -209,3 +209,11 @@ wr
 # pyspark 
 
 # scala
+
+#### **spark history on local**
+
+```
+spark.history.fs.logDirectory file:///Users/michaelavanesveld/spark/eventlog
+inside my spark conf ~/spark/spark-latest/conf/spark-defaults.conf and then go to http://localhost:18080/
+oh and start the history server ./sbin/start-history-server.sh but yay!
+```

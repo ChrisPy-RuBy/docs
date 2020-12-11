@@ -13,6 +13,15 @@ Things to anki
 
 ### Do's and Don'ts 
 
+#### **python oddities**
+
+```python
+def mod(a, b):
+    return a % b
+mod(19, 5)
+mod("by%sde", "teco")
+```§
+
 #### **header in file aka shebangline**
 ```
 #!/usr/bin/env python3  or
@@ -496,6 +505,18 @@ for x, v in somedata:
 
 IMPORTANT: SETDEFAULT does just what it says. 
 for a dictionary if a key is present fine, but if not provide the value to use as default.
+
+#### **this is a bug!!**
+
+```python
+default = []
+
+results = {}
+for k, v in [('a', 12), ('b', 14), ('a', 23)]:
+	results.setdefault(k, default)
+	results[k].append(v)
+# >>> {'a': [12, 14, 23], 'b': [12, 14, 23]}
+```
 
 
 ```python
@@ -1678,7 +1699,7 @@ python -m  unittest test_<thing to be tested>.py
 
 #### **create a virtual environment**
 ```bash
-python3 -mvenv testproject_env
+python3 -m venv testproject_env
 ```
 #### **Activate venv**
 ```bash
