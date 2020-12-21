@@ -2,7 +2,7 @@
 place for things to go quickly but get kept. 
 Feel free to tags with **
 **to_learn -> things to learn
-**to_add -> things to add
+/>>>_add -> things to add
 **to_do -> things to do
 **to_make -> project ideas
 
@@ -39,5 +39,5 @@ boolean operators &= etcs
 pathlib python **to_learn
 what is CORS **to_learn
 what is swap **to_learn
-
 what is a proxy and how does it work **to_learn
+understanding disk managment on unix **to_learn

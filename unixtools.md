@@ -860,6 +860,10 @@ sed  ‘/patterntomatch/d’ <filename.csv> <newfile>
 ### **delete specific rows from file**
 single line
 ```bash
+sed -i '3d' <filename> # delete a single line from a file.
+
+sed -i '3,4d' <filename> # delete a range of lines
+
 sed -e ‘1000d’ <filename from> <filename to>
 ```
 range of lines
@@ -867,9 +871,12 @@ range of lines
 sed -e ‘1000,10003d;56788d’ <filename from> <filename to>
 ```
 
-### **display specific rows**:wq:w
+### **display specific rows**w
 told you it was esoteric!
 ```bash
+sed -n "7p" test.csv # would print only line 7
+sed -n "7,10p" test.csv # would print range 7-10
+
 sed -n '6643913,6643920p;6643921q' split_data.csv > dodgy.txt
 ```
 
