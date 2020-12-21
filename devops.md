@@ -296,6 +296,30 @@ can see what scripts etc are being run here
 ![image](./img/teamcity_scripts_1.png)
 ![image](./img/teamcity_scripts_2.png)
 
+### ** get actual teamcity output**
+before running the TC script
+
+```
+export TEAMCITY_VERSION=1
+```
+
+### **unexpected error during build**
+
+```
+Unexpected error during build messages processing in TeamCity 23:58:34
+Unexpected error occurred during build message processing in TeamCity, please contact your system administrator
+```
+
+### **making a test in teamcity**
+
+ - TVS Core -> Testing -> Single Tests -> New build configuration 
+
+![image](./img/new_build_config.png)
+![image](./img/new_build_config_2.png)
+![image](./img/new_build_config_3.png)
+![image](./img/new_build_config_4.png)
+
+
 
 - - -
 zsh

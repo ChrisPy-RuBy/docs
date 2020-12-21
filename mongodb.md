@@ -354,7 +354,8 @@ db.getCollection("jobqueue").aggregate([
 beast agg query for spots in regression
 pivot in sheets as normal
 
-```db.getCollection("ts").aggregate([
+```
+db.getCollection("ts").aggregate([
 {
     $match: 
         {"date": {$gte: ISODate('2020-08-10'), $lt: ISODate('2020-08-30')},
