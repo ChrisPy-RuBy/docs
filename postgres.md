@@ -29,6 +29,17 @@ brew services start postgresql
 
 sometimes youjust need to delete the pid file.
 
+### **psql: could not connect to server: No such fA ile or directory**
+```
+Is the server running locally and accepting
+connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
+```
+
+server configuration file postgres does not know where to find the server configuration file. 
+You must specify the --config-file or -D invocation option or set the PGDATA environment variable.
+Delete postmaster.pid file in /usr/local/var/postgres
+
+
 ## theory
 - - - 
 
@@ -264,16 +275,6 @@ CREATE TABLE schema.table (
 COPY collectorc(siteid, path, collector_name, volume, markeddeleted)
 FROM '/tmp/collector_c_logs_complete' DELIMITER ',' CSV HEADER
 ```
-
-### **psql: could not connect to server: No such fA ile or directory**
-
-Is the server running locally and accepting
-connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
-
-server configuration file postgres does not know where to find the server configuration file. 
-You must specify the --config-file or -D invocation option or set the PGDATA environment variable.
-Delete postmaster.pid file in /usr/local/var/postgres
-
 
 
 - - -
