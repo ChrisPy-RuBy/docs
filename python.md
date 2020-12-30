@@ -20,7 +20,7 @@ def mod(a, b):
     return a % b
 mod(19, 5)
 mod("by%sde", "teco")
-```§
+```
 
 #### **header in file aka shebangline**
 ```

@@ -1,8 +1,8 @@
----
 title: devops
 summary: devopsie shite!
 - - -
-#DEVOPS
+
+# devops
 
 ## troubleshooting strategies  
 
@@ -41,15 +41,16 @@ If you suspect Ydo the following.
 4. Is there a config issue Y/N
 
 
-## brew
+## package management 
 - - - 
-package manager, puts everything in
+
+### brew
+
+system wide package manager for macOS
 ```bash
 /usr/local/Cellar/<package>
 ```
 
-### brew stuff
-- - - 
 #### **get brew to update its package list**
 ```bash
 brew update
@@ -76,7 +77,7 @@ brew clean up
 brew info <package>
 ```
 
-#### ** start and stop specific services used with brew**
+#### **start and stop specific services used with brew**
 like postgres
 ```bash
 brew services stop <service>
@@ -85,22 +86,85 @@ brew services start <service>
 example
 brew services stop mongodb
 brew services start mongodb
+# alernatively 
+brew services restart postgresql
 ```
 
 #### **please use brew to update and upgrade your databases**
 
-```
-
-#### *:*link packages together**
+#### **link packages together**
 ```bash
 brew link <blah>
 ```
 
-#### **scratch**
+### python 
+
+package management in python is a nightmare
+
+#### venvs
+
+#### virtual-env
+
+#### pip
+
+#### pipx 
+
+A pip tool for installing stand alone CLI tools that are isolated in venvs
+I currently have csvkit and mkdocs installed using this but only
+as I can install additional dependencies using 
+
+```
+pipx runpip mkdocs install mkdocs-material-extensions
+```
+
+
+#### pyenv
+
+Have multiple python versions on your machine
+
+##### **List all available versions**
+
+```
+pyenv install --list
+```
+
+
+##### **issues installing pyenv due to openssl**
 
 ```bash
-brew update; brew upgrade; brew switch python 3.6.4_4; brew install python@2; brew unlink python; brew link python@2 --force; ln -s /usr/local/bin/python2 /usr/local/opt/python/bin/python2.7
+brew uninstall --force --ignore-dependencies openssl@1.1
+brew install -v 3.5.2
+brew install openssl@1.1
 ```
+
+##### **switch py3.5 to py3.7 and back**
+This should work for your whole system
+```bash
+pyenv global 3.5.0
+or 
+pyenv global system
+```
+You will need to install all the relevant pip packages into the correct python folder
+
+This should work for local specific projects.
+Note: your work machine is currently setup like a local not global
+```
+pyenv local 3.7.7
+pyenv local system
+```
+
+
+##### **get what pyenv version is currently being used**
+```
+pyenv versions
+```
+
+Install 
+
+#### poetry
+
+
+
 
 ## **aws**
 - - - 
@@ -128,47 +192,6 @@ aws s3 cp s3://tvsquared-userdata/collector/282-1/2018.01/ s3://tvsquared-userda
 #### **transfer folders from local to s3**
 ```bash
 aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
-```
-
-## **pyenv**
-
-Have multiple python versions on your machine
-
-#### **List all available versions**
-
-```
-pyenv install --list
-```
-
-
-#### **issues installing pyenv due to openssl**
-
-```bash
-brew uninstall --force --ignore-dependencies openssl@1.1
-brew install -v 3.5.2
-brew install openssl@1.1
-```
-
-#### **switch py3.5 to py3.7 and back**
-This should work for your whole system
-```bash
-pyenv global 3.5.0
-or 
-pyenv global system
-```
-You will need to install all the relevant pip packages into the correct python folder
-
-This should work for local specific projects.
-Note: your work machine is currently setup like a local not global
-```
-pyenv local 3.7.7
-pyenv local system
-```
-
-
-#### **get what pyenv version is currently being used**
-```
-pyenv versions
 ```
 
 ## Virtual Machines
@@ -319,6 +342,13 @@ Unexpected error occurred during build message processing in TeamCity, please co
 ![image](./img/new_build_config_3.png)
 ![image](./img/new_build_config_4.png)
 
+
+### **make a test that used multiple repos**
+
+- add all the repos in the VCS 
+![image](./img/multirepo_1.png)
+![image](./img/multirepo_2.png)
+![image](./img/multirepo_3.png)
 
 
 - - -
