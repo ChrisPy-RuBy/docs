@@ -348,7 +348,35 @@ db.getCollection("jobqueue").aggregate([
     $sort: {"failed": -1}
 }
 ])
+```
 
+same query with additional datatimne maths
+```javascript
+/* Set the number of days you want to check */
+var number_of_days_back = 10;
+var days_in_ms = number_of_days_back * 24 * 60 * 60 * 1000;
+var today = Date.now();
+var then = today - days_in_ms;
+var then_str = new Date(then).toISOString();
+print(then_str)
+
+db.getCollection("jobqueue").aggregate([
+{
+    $match: {"jobstatus": "FAILED", 
+               "jobstartat": {'$gt': ISODate(then_str)}
+               }
+},
+{
+    $group: {"_id": "$jobtype",
+             "failed": {
+                 $sum: 1.0
+             }           
+    }
+},
+{
+    $sort: {"failed": -1}
+}
+])
 ```
 
 beast agg query for spots in regression
