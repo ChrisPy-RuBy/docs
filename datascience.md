@@ -1,14 +1,15 @@
 Title: datascience
 Summary: Notes on useful datascience libs
+- - - 
 
-# Useful datascience notes
+# datascience notes
 
 [machine learning](https://ml-cheatsheet.readthedocs.io/en/latest/)
 
 
-# pandas
+## pandas
 
-## conditionally generate a columns values 
+### conditionally generate a columns values 
 
 if you want to dynamically generate the values for a column based on 
 the rest of the row.
@@ -30,15 +31,15 @@ df['new_col'] = df.apply(lambda row: filterfun(row), axis=1)
 ```
  
 
-# numpy
+## numpy
 
-#### **generate large arrays**
+### **generate large arrays**
 
 ```python
 np.arange(10000)
 ```
 
-# matplotlib
+## matplotlib
 
 [cheat sheet](https://www.cheatography.com/gabriellerab/cheat-sheets/matplotlib-pyplot/)
 
@@ -51,7 +52,7 @@ fig = plt.figure()
 ax = plt.axes()
 ```
 
-## customisation
+### customisation
 
 ```python
 import numpy as np
@@ -60,7 +61,7 @@ plt.plot(x, np.sin(x -3), color='#FFDD44', linestyle='dashdot')
 plt.plot(x, np.sin(x -1), color='g', linestyle='dotted')
 ```
 
-## multiplots
+### multiplots
 
 using the pyplot api we can plot multiple graphs on a single plot
 
@@ -71,9 +72,9 @@ plt.plot(x, np.sin(x -3), color='#FFDD44')
 plt.plot(x, np.sin(x -1), color='g')
 ```
 
-## plot types
+### plot types
 
-### Basic scatter plot
+#### Basic scatter plot
 
 Generate x and y as two lists. 
 ```python
@@ -82,7 +83,7 @@ plt.scatter(x, y) # for more detailed plots. Much slower for plots with large nu
 plt.show()
 ```
 
-### Basic histograms
+#### Basic histograms
 
 ```python
 data = np.random.randn(1000)
@@ -93,7 +94,7 @@ plt.hist(data, bins=100)
 plt.hist(data, normed=True)
 ```
 
-### Mulithistos
+#### Mulithistos
 
 ```
 x1 = np.random.normal(0, 0.8, 1000),
@@ -104,7 +105,7 @@ plt.hist(x2, **kwargs),
 plt.show()
 ```
 
-## legends
+### legends
 
 Can pass in a legend param into the plt.plot 
 
@@ -126,7 +127,7 @@ alternatively
 ```
 
 
-## axes
+### axes
 
 [tick details](https://jakevdp.github.io/PythonDataScienceHandbook/04.10-customizing-ticks.html)
 some axes stuff can be done directly to the plt object whereas
@@ -136,7 +137,7 @@ other things must be done to the underlying ax object
 ax = plt.axes()
 ```
 
-### Set length
+#### Set length
 
 set axes length or limits
 ```python
@@ -153,7 +154,7 @@ plt.axis([-1, 11, -1.5, 1.5])
 plt.axis('tight')
 ```
 
-### Add labels
+#### Add labels
 
 Basics
 ```python
@@ -162,7 +163,7 @@ plt.ylabel('total seconds')
 plt.xlabel('Date')
 ```
 
-### Ticks
+#### Ticks
 
 Basics
 ```python
@@ -185,7 +186,7 @@ ax.xaxis.set_major_locator(plt.MaxNLocator(3))
 ax.yaxis.set_major_formatter(plt.MaxNLocator(3))
 ```
 
-## Error bars
+### Error bars
 
 ```python
 x = np.linspace(0, 10, 50)
@@ -195,18 +196,18 @@ y = np.sin(x) + dy * np.random.rand(50)
 plt.errorbar(x, y, yerr=dy, fmt='.k')
 ```
 
-## Continuous Errors
+#### Continuous Errors
 
 [see here](https://jakevdp.github.io/PythonDataScienceHandbook/04.10-customizing-ticks.html)
 
-## Annotations
+### Annotations
 
 
 
 
-## For fun
+### For fun
 
-### xkcd plot 
+#### xkcd plot 
 
 wrap in 
 
@@ -217,7 +218,7 @@ with plt.xkcd():
 plt.show()
 ```
 
-## two x one y plot
+#### two x one y plot
 
 
 ```python
@@ -242,7 +243,7 @@ def doubleYSingleXPlot(x, y1, y2, xlabel, y1label, y2label):
 
 doubleYSingleXPlot(t, y1, y2, 'x', 'a', 'b')
 ```
-## multiplots shared x axis, stacked y
+#### multiplots shared x axis, stacked y
 
 ```python
 def doubleYPlotsSingleX(x, y1, y2):

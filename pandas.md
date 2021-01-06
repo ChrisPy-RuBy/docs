@@ -1,8 +1,9 @@
 Title: pandas 
 Summary: Notes on useful datascience libs
 - - - 
+# poopy butt pandas
 
-# Useful Info
+## Useful Info
 
 Dataframes can be easily understood as a list of dicts
 
@@ -25,7 +26,7 @@ x = {('a', 'b'): {('A','B'):1, ('A', 'C'):2},
 ```
 
 ![image](./img/pic1.png)
-# Useful basics 
+## Useful basics 
 
 row count
 ```python 
@@ -41,9 +42,9 @@ setcopy warning
 
 [articles on set copy warning](https://www.dataquest.io/blog/settingwithcopywarning/)
 
-# Selecting Data 
+## Selecting Data 
 
-## **The Index Operator**
+### **The Index Operator**
 
 using the index operator.
 Can be used in a variety of ways. Can pass in the following 
@@ -51,7 +52,7 @@ Can be used in a variety of ways. Can pass in the following
 - a list of strings
 - a list of booleans
 
-### a string
+#### a string
 
 will return a series  of that column
 
@@ -63,25 +64,28 @@ df[[columns u want]] # a df
 df[columns u want] # a series 
 ```
 
-### a list of strings
+#### a list of strings
 
 will return a df of all those columns
 
 ![string](./img/pic3.png)
 
-### a slice
+#### a slice
 
 will return a df for rows between the slice
 
 ![slice](./img/pic4.png)
 
-### a list of booleans
+#### a list of booleans
 
 will true a df where all values where true
 
 ![mask](./img/pic5.png)
 
-## **The loc Operator**
+### **The loc Operator**
+
+loc and iloc always return a subset of a dataframe
+loc is used for columns with labels 
 
 syntax is as follows
 
@@ -92,49 +96,74 @@ df.loc[<index row>,<index column>]
 df.loc[0, 'A'] # would return the contents for row 0, column 'A'
 ```
 
-### **select a specific cell value**
+#### **get a series for column label**
+
+```python
+df.loc['a']
+```
+
+#### **get a df for a column label**
+
+```python
+df.loc[['a']]
+```
+
+#### **select a specific cell value**
 
 ```python
 df.loc[0, 'A'] # would return the contents for row 0, column 'A'
 ```
 
-### **selecting rows**
+#### **selecting rows**
 
 ```python
 df.loc[[1,4]] # would return a df with the rows [1-4] 
 df.loc[1] # would return a series from that role. 
 ```
 
-### **selecting a column**
+#### **selecting a column**
 
 ```python
 df.loc[:, 5] # would return a series for all rows for column called 5
 df.loc[:,[1, 5]] # would return a df for all rows for columnd 1 and 5
 ```
 
-### **create a sub-frame**
+#### **create a sub-frame**
  
  use a sub-frame of a larger df
 ```
 df.loc[[<row indexes>],[<column index>]] # would return a df that that.
 ```
 
-### **create a subframe using slicing**
+#### **create a subframe using slicing**
 
 ```python
 df.loc[:3, 4:] # can pass in a slice or two. Although don't do this. It is impossible to read. 
 ```
 
-### **get all columns that  aren't**
+#### **get all columns that  aren't**
 
 ```python
 df.loc[:, df.columns != 'blarp'] # would return everything that isn't in column blarp 
 ```
 
-### **get the last row in a df**
+#### **get the last row in a df**
 ```python
 df.loc[df.index[-1], columns]
 ```
+
+### **iloc operators**
+
+filters frame based on column index ordinal rather that name
+
+#### **get series**
+
+```
+df.iloc[-1]
+```
+
+#### **get df**
+df.iloc[[0]]
 
 ### **dot notation**
 
@@ -142,45 +171,45 @@ df.loc[df.index[-1], columns]
 df.a # returns a series with values in column a 
 ```
 
-# Indexing 
+## Indexing 
 
-# Renaming
+## Renaming
 
-# Filtering
+## Filtering
 
-# Sorting
+## Sorting
 
-# Merging
+## Merging
 
-# Grouping
+## Grouping
 
-# Modelling
+## Modelling
 
-# Import / Export
+## Import / Export
 
 [guide to write / read modes](https://stackoverflow.com/questions/16208206/confused-by-python-file-mode-w)
 
-## **excel sheets in pandas**
+### **excel sheets in pandas**
 [guide](https://chrisalbon.com/python/data_wrangling/pandas_dataframe_load_xls/)
 
 
 
-## **appending to a csv**
+### **appending to a csv**
 
 [append](https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file)
 
-## **read from clipboard**
+### **read from clipboard**
 
 ```python
 df = pd.read_clipboard(',', parse_dates=['jobstarted', 'jobfinished'])
 ```
 
 
-# Plotting
+## Plotting
 
-# Timeseries
+## Timeseries
 Using timeseries shizzle in pandas
-## **Useful timeseries stuff** 
+### **Useful timeseries stuff** 
 [useful article](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html)
 
 ### **sampling a specific time**
