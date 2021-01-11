@@ -401,6 +401,12 @@ tell you what a file contains and or how its compressed
 
 ## find
 
+### **parallel processing with find**
+
+```bash
+find . -name "*.mpeg" | xargs -P 4 -I {} ffmpeg -i {} -o {}.mp4
+```
+
 
 ### **flatten a file structure recursively into a new folder**
 
