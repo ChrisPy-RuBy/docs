@@ -134,6 +134,14 @@ header, *rows = csvread
 ```
 
 
+=======
+* unpacks into positional arguements also know as the splat operator
+```python
+df test(*args):
+	for a in 
+```
+
+>>>>>>> Stashed changes
 #### **zip star(*) idioms**
 
 transpose wide lists together into thin ones
