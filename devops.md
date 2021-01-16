@@ -326,7 +326,7 @@ can see what scripts etc are being run here
 ![image](./img/teamcity_scripts_1.png)
 ![image](./img/teamcity_scripts_2.png)
 
-### ** get actual teamcity output**
+### **get actual teamcity output**
 before running the TC script
 
 ```

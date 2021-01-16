@@ -419,14 +419,16 @@ FROM randomtable WHERE id = 4;
 ## querying
 - - - 
 
-### **basic operators**
+### **basics**
+
+#### operators
 
 ```sql
  <thing> <> 6
  -- not equal to
 ```
 
-### **basic in clause**
+#### **basic in clause**
 
 ```sql
 SELECT * FROM <blah> 
@@ -441,7 +443,7 @@ WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
 AND tags::TEXT LIKE '%cost%'
 ```
 
-### **querying ips**
+#### **querying ips**
 
 ```sql
 select *
@@ -450,7 +452,7 @@ where userip << '2001:0db8::/32'::cidr
 limit 10
 ```
 
-### **generate unixtimestamp from timestmap**
+#### **generate unixtimestamp from timestmap**
 
 ```sql
 SELECT EXTRACT(EPOCH FROM datadatetime) * 1000 FROM 
@@ -459,7 +461,7 @@ WHERE brandid = 1
 AND usersessionid = 472809579
 ```
 
-### **hashing ips**
+#### **hashing ips**
 
 ```sql
 SELECT ENCODE(DIGEST('120.145.43.100', 'sha1'), 'hex')
@@ -477,7 +479,7 @@ FROM <schema>.<table> WHERE brandid=1) to '<filelocation>' with CSV;
 create extension pgcrypto
 ```
 
-### **pulling stuff out of tags/hstore**
+#### **pulling stuff out of tags/hstore**
 
 ```sql
 SELECT D.tags, D.channelid, channel,
@@ -491,7 +493,7 @@ D.tags -> ‘sh’    will create a column with the values of the ‘sh’ tag
 D.tags ? ‘prog’  will create a column of Boolean masks that determine weather prog is present in the table or not.   
 
 
-### **hstore scratch**
+#### **hstore scratch**
  
 selecting shizzle 
 ```sql
@@ -525,7 +527,39 @@ where tags?'_supplieddatetime'
 ;
 ```
 
-### **average tables**
+### subqueries 
+
+### joins
+
+### aggreate queries
+
+#### **case statements**
+case statements can be used to do conditional shizzle
+```sql
+SELECT deviceid,
+        sum(CASE WHEN brand='Booking.com' THEN 1 ELSE 0 END) as Booking,
+        sum(CASE WHEN brand='Expedia' THEN 1 ELSE 0 END) as Expedia_views
+FROM alphonso_raw_impressions
+GROUP BY deviceid;
+```
+
+#### agg stats with case statements
+
+```sql
+SELECT dd, count(*) total_server_track,
+   sum(
+       CASE
+       WHEN visitor_id is null then 1 else 0
+       END
+     ) total_server_track_no_vis_id,
+FROM "c6208_peloton_uk_prod"."userdata_collector_tng_pre_visit"
+WHERE mm = '04'
+AND server_track = true
+GROUP BY 1
+ORDER BY 1, 2
+```
+
+#### **average tables**
 
 ```sql
 with day_count as(
@@ -535,13 +569,7 @@ with day_count as(
 )
 ```
 
-### **check something exists v.fast**
-good for v.large datasets. Will exist as soon as it finds something. 
-```sql
-SELECT exists(SELECT 1 FROM <schema>.<table> WHERE <condition to check> LIMIT 1)
-```
-
-### **group by datetimes**
+#### **group by datetimes**
 [v.useful groupby datetime](http://ben.goodacre.name/tech/Group_by_day,_week_or_month_%28PostgreSQL%29)
 ```sql
 SELECt date_trunc('day', datadatetime), count(*) FROM <schema>.<table>
@@ -556,6 +584,12 @@ number of unique dates but not the count per day.
 ```sql
 SELECT COUNT(DISTINCT CAST(datadatetime as Date))
 FROM adspots.data
+```
+
+### **check something exists v.fast**
+good for v.large datasets. Will exist as soon as it finds something. 
+```sql
+SELECT exists(SELECT 1 FROM <schema>.<table> WHERE <condition to check> LIMIT 1)
 ```
 
 ### **get the whole row that is distinct by the value provided**
@@ -600,33 +634,6 @@ ORDER BY <col_2> -- This is the important part!!!!
 ```
 This will de-dupe by col_1 but keep the first row from each distinct value
 So if you sort by size DESC then the row displayed will have the largest value of col_2
-
-### **case statements**
-case statements can be used to do conditional shizzle
-```sql
-SELECT deviceid,
-        sum(CASE WHEN brand='Booking.com' THEN 1 ELSE 0 END) as Booking,
-        sum(CASE WHEN brand='Expedia' THEN 1 ELSE 0 END) as Expedia_views
-FROM alphonso_raw_impressions
-GROUP BY deviceid;
-```
-
-### agg stats with case statements
-
-```sql
-SELECT dd, count(*) total_server_track,
-   sum(
-       CASE
-       WHEN visitor_id is null then 1 else 0
-       END
-     ) total_server_track_no_vis_id,
-FROM "c6208_peloton_uk_prod"."userdata_collector_tng_pre_visit"
-WHERE mm = '04'
-AND server_track = true
-GROUP BY 1
-ORDER BY 1, 2
-```
-
 
 ### **basic joins**
 
