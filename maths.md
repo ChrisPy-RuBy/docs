@@ -3,18 +3,39 @@ title: maths
 summary: useful maths
 ---
 
-# algebra
+# maths
 
-#### **perfect square**
+## algebra
+
+### **perfect square**
 
 $$
 x^2 + 2bx + b^2 = (x+b)^2
 $$
 
-# probabilty
+
+## linear algebra
+
+## errors 
+
+### mean absolute error
+
+where y is your value and y_hat is the predicted value for your equation
+
+$$
+AME = \frac{1}{n}\sum_{i=0}^n|y- \hat y|
+$$
+
+### mean squared error
+
+$$
+MSE = \frac{1}{n}\sum_{i=0}^n(y - \hat y)^2
+$$
 
 
-#### **Rule of Completement**
+## probabilty
+
+### **Rule of Completement**
 
 
 $$
@@ -33,16 +54,10 @@ prob 1 dice not roll a 6 = 5/6
 3 dice (5/6)^3
 1 - (5/6)^3
 
-# functions
 
-## **adeffect**
+## graphs
 
-$$
-tv-factor = \frac{tv-coeff}{1-adstock}
-$$
-
-## logistic curve 
-
+### logistic curve 
 
 logistic s-shape curves
 
@@ -53,3 +68,14 @@ $$
 where L is the max in Y
 -k is the curve slop
 x0 is th curve midpoint
+
+
+
+# functions
+
+## **adeffect**
+
+$$
+tv-factor = \frac{tv-coeff}{1-adstock}
+$$
+

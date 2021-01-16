@@ -6,6 +6,75 @@ Summary: Notes on useful datascience libs
 
 [machine learning](https://ml-cheatsheet.readthedocs.io/en/latest/)
 
+## machine learning
+
+### basic linear regression
+
+```python
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+
+# Assign the dataframe to this variable.
+# TODO: Load the data
+bmi_life_data = pd.read_csv('./bmi_and_life_expectancy.csv')
+
+# Make and fit the linear regression model
+#TODO: Fit the model and Assign it to bmi_life_model
+model = LinearRegression()
+bmi_life_model = model.fit(bmi_life_data[['BMI']], bmi_life_data[['Life expectancy']])
+
+# Make a prediction using the model
+# TODO: Predict life expectancy for a BMI value of 21.07931
+laos_life_exp = model.predict([ [21.07931]])
+```
+
+### multiple linear regression
+
+```python
+from sklearn.linear_model import LinearRegression
+from sklearn.datasets import load_boston
+
+# Load the data from the boston house-prices dataset 
+boston_data = load_boston()
+x = boston_data['data']
+y = boston_data['target']
+
+# Make and fit the linear regression model
+# TODO: Fit the model and assign it to the model variable
+model = LinearRegression()
+test = model.fit(x, y)
+
+# Make a prediction using the model
+sample_house = [[2.29690000e-01, 0.00000000e+00, 1.05900000e+01, 0.00000000e+00, 4.89000000e-01,
+                6.32600000e+00, 5.25000000e+01, 4.35490000e+00, 4.00000000e+00, 2.77000000e+02,
+                1.86000000e+01, 3.94870000e+02, 1.09700000e+01]]
+# TODO: Predict housing price for the sample_house
+prediction = test.predict(sample_house)
+```
+
+## jupyter notebooks
+
+### using venvs with notebooks
+
+### useful magics
+
+time the function call
+```python
+%timeit func()
+```
+
+plot chart inline
+```python
+%matplotlib inline
+```
+
+### convert notebooks into different formats
+
+```python
+jupyter nbconvert --to FORMAT mynotebook.ipynb
+```
+
+
 
 ## pandas
 
