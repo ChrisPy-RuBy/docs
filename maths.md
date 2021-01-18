@@ -35,6 +35,27 @@ $$
 
 ## probabilty
 
+### entropy and probability
+
+to calculate the entropy of a system.
+if you have 10 balls 5 red and 5 blue. m = number of red, n = number of blue
+
+$$
+Entropy = -\frac{m}{n+m}log_2\frac{m}{n+m} - \frac{n}{n+m}log_2\frac{n}{n+m}
+$$
+
+### naive bayes
+
+prob of A given R
+for a situation where two people A and B. They both sometimes where a Red jumper.
+
+
+$$
+P(A|R) = \frac{P(A)P(R|A)}{P(A)P(R|A)+P(B)P(R|B)}
+$$
+
+
+
 ### **Rule of Completement**
 
 
