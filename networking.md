@@ -2,7 +2,41 @@ title: networking
 summary: a guide to the tools and concepts of how information is passed around the internet
 - - - 
 
+
 - what is a firewall
+# networking concepts
+
+## vpn
+
+## switch
+
+a switch con-ordinates communication around a local network, allowing devices to speak to one another.
+
+
+## router
+
+directions information within a local network and connects to a larger network
+hides the private network from the internet.
+
+
+## proxies
+
+works at the application layer at act as a man in the middle to redirect internet traffic on. 
+it accepts a request from a client, creates a connection to the destination returns the 
+response back to the client.
+
+### foward proxy
+
+machine that formward traffic to the internet on behalf f the browser.
+common in business where they want to monitor or restrict the websites or applications you use.
+
+### back proxy
+
+## firewalls
+
+## vpn
+
+vpn are used to login to a private network from outside. 
 
 # Networking Tools
 

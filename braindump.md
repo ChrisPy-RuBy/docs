@@ -42,3 +42,5 @@ what is CORS **to_learn
 what is a proxy and how does it work **to_learn
 understanding disk managment on unix **to_learn
 sql window functions
+how proxys work
+how vpns work

@@ -4,9 +4,10 @@ summary: Everything concerning dbs
 
 # postgres
 
-## ** alan knowledge**
+## tips / tricks
 
-never cast against column cast against values
+- never cast against column cast against values
+- always thing about what happens when you run an update / insert twice
 
 ## troubleshooting
 
@@ -48,9 +49,6 @@ Delete postmaster.pid file in /usr/local/var/postgres
 - marking as deleted. The row is exists in table but is markied as deleted
 - autovacuumed. Row still exists
 - full vacuum.  table completely rebuilt from  scratch.
-
-
-
 
 ### **index types**
 
@@ -310,7 +308,7 @@ INSERT INTO foo (SELECT i, md5(random()::text), i/10
 ### **add a column**
 
 
-### **basic update **
+### basic update
 
 updates current data
 
@@ -319,11 +317,28 @@ UPDATE  <schema>.<table>
 SET datadatetime = datedatetime + INTERVAL "1 days"
 ```
 
+### update where
+
+conditional updates
+```sql
+UPDATE <schema.table> 
+SET <column_name>
+WHERE cond_1 = blrap
+```
+
+### update from
+
+update with values provided in a list
+```sql
+UPDATE <schema.table>
+SET  some_value = data.new
+FROM (VALUES ("a", 2), ("b", 4)) as data (orig, new)
+WHERE data.orig = col_name 
+```
+
 #### **more complex updates**
 
-##### **updating from values**
-
-can provide a tmp table of values to use to update the table 
+##### **updating from values** can provide a tmp table of values to use to update the table 
 
 ```sql
 UPDATE usersessions.data us
@@ -531,6 +546,26 @@ where tags?'_supplieddatetime'
 
 ### joins
 
+#### **basic joins**
+
+
+[guide to joins](http://www.postgresqltutorial.com/postgresql-joins/)
+
+```sql
+-- generic
+SELECT shared_col, tab1.col_name 
+FROM schema1.tab1 A  
+JOIN schema2.tab1 B ON (A.colname = B.colname)
+WHERE ...
+
+-- example
+SELECT tags, D.channelid, channel
+FROM adspots.data as D
+JOIN adspots.channel ac ON (D.channelid = ac.channelid)
+WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
+AND tags::TEXT LIKE '%cost%'
+```
+
 ### aggreate queries
 
 #### **case statements**
@@ -585,15 +620,30 @@ number of unique dates but not the count per day.
 SELECT COUNT(DISTINCT CAST(datadatetime as Date))
 FROM adspots.data
 ```
+### tricks and tips
 
-### **check something exists v.fast**
+#### aggregate query results where the dates with missing data have values filled in
+
+```sql
+with CTE as (
+	SELECT t.day::date 
+	FROM  generate_series(timestamp '2020-05-01', timestamp '2020-07-10', interval  '1 day') AS t(day)
+),
+	grouped_users as (
+		SELECT date_trunc('day', datadatetime) as day, count(*) FROM usersessions.data
+		GROUP BY 1
+)
+SELECT CTE.day, COALESCE(grouped_users.count, 0) FROM CTE
+LEFT JOIN grouped_users ON CTE.day = grouped_users.day
+```
+
+#### **check something exists v.fast**
 good for v.large datasets. Will exist as soon as it finds something. 
 ```sql
 SELECT exists(SELECT 1 FROM <schema>.<table> WHERE <condition to check> LIMIT 1)
 ```
 
-### **get the whole row that is distinct by the value provided**
-[]
+#### **get the whole row that is distinct by the value provided**
 This is good if you want to examine whole rows that have the same datetime, userip etc
 [good articles on distinct on](https://zaiste.net/postgresql_distinct_on/)
 ```sql
@@ -602,7 +652,7 @@ FROM <schema>.<table>
 WHERE <blah>
 ```
 
-### where 1=1
+#### where 1=1
 
 ```sql
 SELECT
@@ -622,10 +672,7 @@ ORDER BY 1,2
 
 used a syntactic sugar to make editing the query easier
 
-
-
-
-### **super smart way of getting largest / smallest value by another column**
+#### **super smart way of getting largest / smallest value by another column**
 
 ```
 SELECT DISTINCT ON (<col_1>) *
@@ -635,25 +682,6 @@ ORDER BY <col_2> -- This is the important part!!!!
 This will de-dupe by col_1 but keep the first row from each distinct value
 So if you sort by size DESC then the row displayed will have the largest value of col_2
 
-### **basic joins**
-
-
-[guide to joins](http://www.postgresqltutorial.com/postgresql-joins/)
-
-```sql
--- generic
-SELECT shared_col, tab1.col_name 
-FROM schema1.tab1 A  
-JOIN schema2.tab1 B ON (A.colname = B.colname)
-WHERE ...
-
--- example
-SELECT tags, D.channelid, channel
-FROM adspots.data as D
-JOIN adspots.channel ac ON (D.channelid = ac.channelid)
-WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
-AND tags::TEXT LIKE '%cost%'
-```
 
 ### **with temp tables**
 
@@ -666,7 +694,11 @@ with temp as (
 ) 
 ```
 
-### **window functions**
+### **window functions
+window functions are similar to agg functions
+agg functions reduce the number of rows 
+window functions do not.
+
 
 [guide to window functions](http://www.postgresqltutorial.com/postgresql-window-function/
 )
@@ -742,21 +774,6 @@ FROM   cookiecount,
        temp_table_4
 ```
 
-
-### **Useful: aggregate query results where the dates with missing data have values filled in**
-
-```sql
-with CTE as (
-	SELECT t.day::date 
-	FROM  generate_series(timestamp '2020-05-01', timestamp '2020-07-10', interval  '1 day') AS t(day)
-),
-	grouped_users as (
-		SELECT date_trunc('day', datadatetime) as day, count(*) FROM usersessions.data
-		GROUP BY 1
-)
-SELECT CTE.day, COALESCE(grouped_users.count, 0) FROM CTE
-LEFT JOIN grouped_users ON CTE.day = grouped_users.day
-```
 
 ### **quick way to get row count**
 

@@ -204,6 +204,26 @@ assert(x > 0, "This is dumb and always true")
 ## Builtins
 - - - - 
 
+### __iter__  protocol
+
+requires a __iter__ and a next
+```
+class IterPrimes(object):
+    def __init__(self,n=1):
+        self.n=n
+
+    def __iter__(self):
+        return self
+
+    def next(self):
+        n = self.n
+        while not test_prime(n):
+            n += 1
+        self.n = n+1
+        return n
+```
+
+
 ### **__doc__**
 
 
@@ -1051,9 +1071,18 @@ def size_paginator(params):
 stuff that is bz2 or from mongo is closer to bson than json
  
 
-#### **parse things out of mongo i.e. piwik** 
+
+#### parse things out of mongo i.e. piwik* 
 ```python
-from bson import json_utils
+from bson.json_utils import loads, dumps
+
+# dump mongo doc to file 
+with open('<filepath>', 'w') as f:
+	f.write(dumps(mongodoc))
+
+with open('<filepath>', 'r') as L
+	data = f.readlines()[0]
+	data = data[0]
 ```
 this will deal with alot of the nonsense with time stamps etc
 
@@ -1132,24 +1161,6 @@ datetime.fromtimestamp(<int>, datetime.timezone.utc)
 ### fabric
 - - -
 
-### **iter protocal**
-
-requires a __iter__ and a next
-```
-class IterPrimes(object):
-    def __init__(self,n=1):
-        self.n=n
-
-    def __iter__(self):
-        return self
-
-    def next(self):
-        n = self.n
-        while not test_prime(n):
-            n += 1
-        self.n = n+1
-        return n
-```
 
 
 ### ** itertools **
@@ -1283,6 +1294,24 @@ for k, grouped in groupby(x):
 %timeit -n 10000 <your_crappy_function(stupid_params)>
 ```
 
+### pathlib
+
+#### where a script is run 
+```python
+cwd = pathlib.Path().cwd()
+```
+
+#### path to where a file is actually located
+
+```python
+rwd = pathlib.Path(__file__)
+```
+
+#### join file to path
+
+```python
+filepath = Path(filedir, filename)
+```
 
 
 ### json

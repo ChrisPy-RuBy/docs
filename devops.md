@@ -170,6 +170,12 @@ Install
 
 #### poetry
 
+##### add or update a package
+
+```
+poetry add mock=4.0.2
+```
+commit the lock and toml file once it goes through OK.
 
 
 

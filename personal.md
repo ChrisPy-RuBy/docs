@@ -1,25 +1,49 @@
 Title: personal notes
 summary: A collections of personal notes
 - - - 
-
 # useful resoures
 [great collection of cheatsheets](https://devhints.io/go)
 
-# To Anki
 
-# To cheatsheet
+## sprint challenges
+
+### Doing
+- block arrow keys on vim 147
+
+### Future Challenges
+
+- Give up debugger for 1 sprint 148
+- Use only pycharm for 1 sprint, use for everything. dbs, teamcit etc
+- Give up pycharm for 1 sprint 
+- Give up notebook for 1 sprint.
+- Use vagrant 1 sprint
+
+### completed
+
+- Give up multiscreens for 1 sprint
+- Use only vim for 1 sprint (129)
+- write 4 anki cars per day about python
+- Move labbook to server (122, 123, 124)
+- Give up vim for 1 sprint (sneaky, I'm using nvim! 123) 
+- Give up source tree for 1 sprint (Sprint 119)
+- Learn 3 more vim modes (120) (better search, better replace, )
+- Give up mouse for 1 hour per day per sprint (121)
+- Give up sourcetree for 1 sprint. (119 COMPLETE)
+- Give up sublime for 1 sprint (120)
+- Give up source tree for 1 sprint (Sprint 119)
+
+## To Anki
+
+## To cheatsheet
 1. google sheets shortcuts
 2. spark
+## to learn
 
-## bash  
-## data
 
-<<<<<<< Updated upstream
+
+
 - further spreadsheets -> conditional formating, vlookups, better pivots
 - write up notes on urls
-=======
-1. further spreadsheets -> conditional formating, vlookups, better pivots
-2. write up notes on urls
 3. advanced python 
 4. query google calender api with python
 5. Understanding serial ports and ports in general
@@ -44,33 +68,6 @@ somethings to try
 
 
 # Sprint challenges
-
- Future Challenges
-
-- Use only pycharm for 1 sprint
-- Give up pycharm for 1 sprint 
-- Give up notebook for 1 sprint.
-- Pep8 everything for 1 sprint (117) FAILED TO DO THIS
-- Give up debugger for 1 sprint
-- Use vagrant 1 sprint
-- write 4 anki cars per day about python
-
-
-
-Doing
-- Give up multiscreens for 1 sprint
-- Use only vim for 1 sprint (129)
-
-Done ….
-
-- Move labbook to server (122, 123, 124)
-- Give up vim for 1 sprint (sneaky, I'm using nvim! 123) 
-- Give up source tree for 1 sprint (Sprint 119)
-- Learn 3 more vim modes (120) (better search, better replace, )
-- Give up mouse for 1 hour per day per sprint (121)
-- Give up sourcetree for 1 sprint. (119 COMPLETE)
-- Give up sublime for 1 sprint (120)
-- Give up source tree for 1 sprint (Sprint 119)
 
 
 DOWNTIME PROJECTS :

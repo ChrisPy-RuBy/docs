@@ -153,3 +153,10 @@ values: set to same thing as the rows, then summarize with a COUNTA
 
 sort using the rows, asc, desc
 
+## functions
+
+### random selection from a specific column
+
+```
+=INDEX(A2:A, RANDBETWEEN(1, COUNTA(A2:A)))
+```
