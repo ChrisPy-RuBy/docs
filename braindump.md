@@ -44,3 +44,4 @@ understanding disk managment on unix **to_learn
 sql window functions
 how proxys work
 how vpns work
+what is SimpleNameSpace in python

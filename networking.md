@@ -170,6 +170,12 @@ dig collector-1.tvsquared.com
 
 super power but incomprehensible
 
+### check if a port is open
+
+```
+nmap -p 8080 backend.preprev.tvsquared.private
+```
+
 ### **get all hosts on a LAN**
 
 ```
