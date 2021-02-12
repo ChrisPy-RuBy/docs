@@ -363,6 +363,12 @@ x here is printed as unicode.
 
 join is perferred as it is much faster
 
+#### strip punctuation
+
+```python
+[i.translate(str.maketrans('', '', string.punctuation)) 
+                              for i in lower_case_documents]
+```
 #### **convert bytes to strings vice versa**
 
 
@@ -994,6 +1000,18 @@ object.
 ## Libraries
 - - -
 
+### psycopg2
+
+#### where <blank> in clause.
+
+```python
+sql = "SELECT * 
+       FROM blah
+       WHERE foo in %(herp)s
+       "
+pgcur.execute(sql, {"herp": tuple(data)})
+```
+
 
 ### functools
 - - - 
@@ -1074,7 +1092,7 @@ stuff that is bz2 or from mongo is closer to bson than json
 
 #### parse things out of mongo i.e. piwik* 
 ```python
-from bson.json_utils import loads, dumps
+from bson.json_util import loads, dumps
 
 # dump mongo doc to file 
 with open('<filepath>', 'w') as f:

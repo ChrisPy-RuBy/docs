@@ -78,6 +78,18 @@ prob 1 dice not roll a 6 = 5/6
 
 ## graphs
 
+### sigmoid curve
+
+$$
+f(x) = \frac{1}{1-e^-x}
+$$
+
+and its derivative
+
+$$
+f'(x) = (\frac{1}{1-e^{-x}})(1 - \frac{1}{1-e^{-x}})
+$$
+
 ### logistic curve 
 
 logistic s-shape curves
@@ -100,3 +112,11 @@ $$
 tv-factor = \frac{tv-coeff}{1-adstock}
 $$
 
+## machine learning 
+
+### cross entropy
+where i  and j are 2 categories. y is category values and p is the probabilty
+
+$$
+E = \sum_{i=1}^n\sum_{j=1}^my_{ij}ln(p_{ij})
+$$

@@ -8,6 +8,13 @@ Summary: Notes on useful datascience libs
 
 ## machine learning
 
+### cross-entropy
+
+```def cross_entropy(Y, P):
+    Y = np.float_(Y)
+    P = np.float_(P)
+    return -np.sum(Y * np.log(P) + (1 - Y) * np.log(1 - P))```
+
 ### basic linear regression
 
 ```python
