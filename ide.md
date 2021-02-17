@@ -5,6 +5,10 @@ summary: summary of useful stuff for writing code
 
 ## pycharm
 
+### setup database viewer to view athena
+
+[here](https://poplindata.com/infrastructure/setting-up-aws-athena-datasource-in-jetbrains-datagrip/)
+
 ## vim
 
 #### **my current nvim keymappings**

@@ -263,16 +263,9 @@ diskutil unmountDisk /dev/disk2
 sudo chown $USER /dev/disk2*
 ```
 
-## **VERROR read permissions**
+### **VERROR read permissions**
 
  restart laptop and run restart script on restart
-
-
-### **parquet-tools** 
-- - - 
-parse parquet from cmdline
-
-
 
 
 ## Macs
@@ -304,7 +297,14 @@ heroku keys:add ~/.ssh/id_rsa.pub
 
 ## teamcity
 
-Go to [teamcity](http://teamcity.tvsquared.private:8111/) and run whatever you need to
+Go to [teamcity](http://teamcity.tvsquared.private:8111/) and run whatever you need to  
+Doc of teamcity issues and how to fix [here](https://docs.google.com/document/d/1HtPSvqL4lJ_tgKksx_7lPk8uWU9Zph3329fcZbUZifM/edit?usp=sharing)
+
+
+### teamcity workers vs agents etc
+
+teamcity agents or workers run the relevant scripts to deploy code onto the templates
+the templates then copy the code onto the workers etc
 
 ### **deploy**
  

@@ -884,7 +884,59 @@ ORDER BY 1
 |WHERE	|Filters a result set to include only records that fulfill a specified conditiona|
 
 
-### new  nbote
+## wuseful work queries
 
+### cascade delete sessions 
 
+```sql
+with zapids as (
+    SELECT D.usersessionid
+    FROM usersessions.data D
+    where D.brandid = 1
+    and D.datadatetime >= '2020-12-20' 
+), zap1 as (
+    DELETE
+    from attributedsessions.data d
+    using zapids
+    where d.usersessionid = zapids.usersessionid
+    and D.brandid = 1
+    and D.datadatetime >= '2020-12-20'
+), zap2 as (
+    DELETE
+    from usersessionactions.data d
+    using zapids
+    where d.usersessionid = zapids.usersessionid
+    and D.brandid = 1
+    and D.datadatetime >= '2020-12-20'
+)
+DELETE
+from usersessions.data d
+    using zapids
+    where d.usersessionid = zapids.usersessionid
+    and D.brandid = 1
+    and D.datadatetime >= '2020-12-20'
+```
+
+### cascade delete adspots
+
+```sql
+with
+        recursive adsplots(adspotid,rootadspotid,level) as (
+            select adspotid,adspotid,1
+            from adspots.data
+            where (baseadspotid=adspotid
+            or baseadspotid is null)
+            and adspotid>0 and modelid in (select modelid from adspots.model where model like 'directload/tvsdefault')  and brandid = 1  and datadatetime >= '2020-10-18T00:00:00'::timestamp and datadatetime < '2020-10-19T00:00:00.000001'::timestamp
+        union all
+            select d.adspotid, adsplots.rootadspotid, adsplots.level+1
+            from adspots.data d
+            join adsplots on d.baseadspotid=adsplots.adspotid
+            and d.adspotid<>adsplots.adspotid
+			and d.baseadspotid is not null
+         and brandid = 1  ) , deleterange as (delete from adspotvalues.data d using adsplots
+    where d.adspotid=adsplots.adspotid
+    and d.brandid=1
+    and d.datadatetime >= '2020-10-13T00:00:00'::timestamp   returning d.datadatetime )
+    select min(datadatetime) mindatetime, max(datadatetime) maxdatetime
+        from deleterange```
 

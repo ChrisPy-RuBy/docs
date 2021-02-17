@@ -1181,7 +1181,18 @@ datetime.fromtimestamp(<int>, datetime.timezone.utc)
 
 
 
+### importlib
+
+dynamic imports
+```python
+import importlib
+
+module_name = input("Name of module? ")
+module = importlib.import_module(module_name)
+print(module.__doc__)```
+
 ### ** itertools **
+
 
 [Removing duplicates from a list of lists](https://stackoverflow.com/questions/2213923/removing-duplicates-from-a-list-of-lists)
 [good intro](https://pymotw.com/3/itertools/index.html)

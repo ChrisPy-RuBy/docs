@@ -59,6 +59,15 @@ It should automatically run git init and insert the hook when you do git clone t
 
 https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/
 
+
+## apply
+
+apply a git diff
+```bash
+git apply <path to diff>
+```
+
+
 ## cherry-pick
 - - - - - 
 
@@ -136,6 +145,13 @@ git branch -d <branch name>
 
 ## checkout
 - - - - -
+#### copy whole file to another branch
+
+in branch where you want the file
+```bash
+git checkout <branch from> <pathtofile>
+```
+
 #### **create new branch**
 
 ```bash
