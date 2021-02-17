@@ -2,24 +2,26 @@ title: networking
 summary: a guide to the tools and concepts of how information is passed around the internet
 - - - 
 
+# networking
 
-- what is a firewall
-# networking concepts
+## networking concepts
 
-## vpn
+### vpn
 
-## switch
+vpn are used to login to a private network from outside. 
+
+### switch
 
 a switch con-ordinates communication around a local network, allowing devices to speak to one another.
 
 
-## router
+### router
 
 directions information within a local network and connects to a larger network
 hides the private network from the internet.
 
 
-## proxies
+### proxies
 
 works at the application layer at act as a man in the middle to redirect internet traffic on. 
 it accepts a request from a client, creates a connection to the destination returns the 
@@ -32,15 +34,7 @@ common in business where they want to monitor or restrict the websites or applic
 
 ### back proxy
 
-## firewalls
-
-## vpn
-
-vpn are used to login to a private network from outside. 
-
-# Networking Tools
-
-## how browses and web-severs work
+### how browses and web-severs work
 
 - web servers run a tcp socket on a port
 - web browser specifies a url
@@ -50,22 +44,28 @@ vpn are used to login to a private network from outside.
 - http request sent via network routers
 - server sends back response 
 
-## what is localhost?
+### what is localhost?
 
 it is a loopback address for the current machine you are using.
 It typically starts with 127
-=======
-## curl 
+
+### firewalls
+
+
+
+## networking tools
+
+### curl 
 
 tool for transfer data about the internet
-### basic website test
+#### basic website test
 
 ```bash
 curl -v http://localhost:888
 ```
 
 
-## ping
+### ping
 
 useful for testing if you have any internet at all
 ```bash
@@ -74,15 +74,15 @@ ping www.bbc.co.uk
 
 would return something if you are hitting that website.
 
-## ifconfig
+### ifconfig
 **get ip address on mac**
 ```
 ifconfig | grep "inet" | grep -v 127.0.0.1
 ```
 
-## ipconfig
+### ipconfig
 
-## arp 
+### arp 
 
 gives all the devices on a local network with their name, MAC address and IP.
 Basically gives you the lookup table for the local subnet.
@@ -96,7 +96,7 @@ easiest way to get an ip address that you are ssh into
 ipconfig getifaddr en0
 ```
 
-## traceroute
+### traceroute
 
 similar to ping but shows the route that your packet took along the way
 ```bash
@@ -112,9 +112,9 @@ Hop: Whenever a packet is passed between a router, this is referred to as a “h
 RTT1, RTT2, RTT3: This is the round-trip time that it takes for a packet to get to a hop and back to your computer (in milliseconds). This is often referred to as latency, and is the same number you see when using ping. Traceroute sends three packets to each hop and displays each time, so you have some idea of how consistent (or inconsistent) the latency is. If you see a * in some columns, you didn’t receive a response – which could indicate packet loss.
 Domain Name [IP Address]: The domain name, if available, can often help you see the location of a router. If this isn’t available, only the IP address of the router is displayed.
 
-## netcat
+### netcat
 
-***smaller server to send and recieve***
+#### smaller server to send and recieve
 
 ```
 # now listening on 4444
@@ -124,7 +124,7 @@ nc -d 4444 -l
 nc localhost 4444
 ```
 
-***can fire http requests straight to a port **
+#### can fire http requests straight to a port
 
 ```
 echo "GET / HTTP/1.1\r\nHost:example.com\r\n\r\n" | nc example.com 80
@@ -139,7 +139,7 @@ nc localhost 8888 <<< GET /hello HTTP/1.1
 
 
 
-***send a file quickly over a local network
+#### send a file quickly over a local network
 on linux
 ```bash 
 # on target
@@ -150,11 +150,11 @@ nc -l 9931 > bigfile
 cat bigfile | nc <some ip>
 ```
 
-## netstat
+### netstat
 
-## nslookup
+### nslookup
 
-## dig
+### dig
 
 similar to nslookup. gives a bunch of info about dnserver etc
 
@@ -162,35 +162,35 @@ similar to nslookup. gives a bunch of info about dnserver etc
 dig collector-1.tvsquared.com
 ```
 
-## whois
+### whois
 
-## finger
+### finger
 
-## nmap
+### nmap
 
 super power but incomprehensible
 
-### check if a port is open
+#### check if a port is open
 
 ```
 nmap -p 8080 backend.preprev.tvsquared.private
 ```
 
-### **get all hosts on a LAN**
+#### **get all hosts on a LAN**
 
 ```
 nmap -sP <subnet cidr>
 nmap -sP 192.168.1.1/24
 ```
 
-### **scan all ports within range**
+#### **scan all ports within range**
 
 ```
 nmap localhost -p 31000-32000 -A
 ```
 
 
-## nc
+### nc
 
 netcat: useful tool for debuging network connections
 
@@ -203,27 +203,27 @@ nc - l 2003
 echo "test" | nc localhost 2003
 ```
 
-## tcpdump
+### tcpdump
 
-** what dns queries is my laptop send **
+#### what dns queries is my laptop send
 
 ```
 tcpdump -i any port 53
 ```
 
-** do I have any packets coming onto port 1337
+#### do I have any packets coming onto port 1337
 
 ```
 tcpdump -i any port 1337
 ```
 
-** what packets are coming onto my from a specific
+#### what packets are coming onto my from a specific
 
 ```
 tcpdump port 1337 and host <ip>
 ```
 
-** see dns queries that fail **
+#### see dns queries that fail
 ```
 tcpdump udp[11]&0xf==3
 ```

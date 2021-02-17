@@ -13,7 +13,7 @@ theme:
 
 
 
-site_name: My Docs
+site_name: My Labbook
 dev_addr: '127.0.0.1:9999'
 markdown_extensions:
   - admonition
@@ -38,5 +38,40 @@ extra_javascript:
   - 'javascripts/extra.js'
   - 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.0/MathJax.js?config=TeX-MML-AM_CHTML'
 
-
+nav:
+  - HOME: index.md
+  - DATABASES:
+      - postgres: postgres.md
+      - mongodb : mongodb.md
+  - DATASCIENCE:
+      - pandas: pandas.md
+      - datascience: datascience.md
+      - spark: spark.md
+      - sheets: sheets.md
+      - maths: maths.md
+  - DEVOPS:
+      - devops: devops.md
+      - networking: networking.md
+      - aws: aws.md
+      - networking: networking.md
+  - DEV:
+    - git: git.md
+    - vim: vim.md
+    - ide: ide.md
+    - unixtools: unixtools.md
+  - COMP_SCI:
+      - compsci: computer_science.md
+      - regex: regex.md
+      - unixtools: unixtools.md
+  - LANGUAGES:
+      - python: python.md
+      - bash: bash.md
+      - go: go.md
+      - c/c++ : cc++.md
+      - haskell: haskell.md
+  - HOBBIES:
+      - arduino: arduino.md
+      - pi: rasberrypi.md
+  - WORK:
+      - work: tvs.md
 

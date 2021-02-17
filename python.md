@@ -790,7 +790,7 @@ else:
 
 
 
-## ** pythonic indexing,  enumerate** 
+### pythonic indexing,  enumerate
 
 ```python
 # which is better
@@ -1670,9 +1670,6 @@ will return aregex object of the matches
 match_date.group()
 ```
 will return the matching string
-
-## re
-- - - 
 
 #### **pattern matching and grouping with ?P**
 

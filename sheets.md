@@ -6,7 +6,7 @@ summary: Stuff for excel type shenaningans!
 # General
 
 
-#### **Useful shortcuts**
+## Useful shortcuts
 
 Useful shortcuts
 
@@ -22,12 +22,13 @@ alt-up/down - flip worksheets # google
 ```
 
 
-# excel
+## excel
 
-#### **Useful resources**
+### **Useful resources**
 [good basic introductions to various topics](https://chandoo.org/wp/welcome/)
 [nice general tools](https://edu.gcfglobal.org/en/excel2016/)
 
+### how tos
 
 #### **add double quotes to a complete column**
 
@@ -36,12 +37,12 @@ need this -> "purplegobbleer"
 [go here](https://lenashore.com/2012/04/how-to-add-quotes-to-your-cells-in-excel-automatically/)
 
 
-## check if one cell exists in another
+#### check if one cell exists in another
 
 [guide](https://www.got-it.ai/solutions/excel-chat/excel-tutorial/match/check-if-one-value-exists-in-a-column)
 use match or vlookup
 
-## vlookup
+#### vlookup
 
 fill in the values in row bases on values of another row.
 NOTE: Make sure that the data you are looking up from is sorted by the column you are interested in.
@@ -68,15 +69,15 @@ so for the top example
 - 2 is the index of the value you wish to return
 - False is whether the data you are looking at is sorted or not. in this case it is whether column A is sorted or not.
 
-## Match
+#### Match
 
 If you want to show everything for one cell that appears in a column
 
-## count
+#### count
 
 count the number of times som
 
-## Index/Match
+#### Index/Match
 
 alternative to vlookup. It is a combination of the index and match command. 
 It is for solving the problem where you want to add a value to a column based on the value in a different 
@@ -94,7 +95,16 @@ not 100 % sure on what the truthy values are doing at the end.
 would use the lookup table L:K and return a value based on D3
 ```
 
-## Plotting 
+#### conditionals 
+[derp](https://stackoverflow.com/questions/11399111/how-to-replace-text-of-a-cell-based-on-condition-in-excel
+=IF(L27=TRUE, 1,0)
+)
+```
+=IF(L27=TRUE, 1,0)
+```
+
+
+### Plotting 
 
 #### Plotting multi cluster scatter plots
 
@@ -108,28 +118,20 @@ seperate the data for the y axis into two seperate column
 | 1 | null | 2 | 
 | 2 | 4 | null | 
 
-## conditionals 
-[derp](https://stackoverflow.com/questions/11399111/how-to-replace-text-of-a-cell-based-on-condition-in-excel
-=IF(L27=TRUE, 1,0)
-)
-```
-=IF(L27=TRUE, 1,0)
-```
-
-# google docs
+## google docs
 
 filters are like tables in excel. 
 Create a filter as soon as the spreadsheet is ready.
 
-## extrapolating formulas to large data ranges
+### extrapolating formulas to large data ranges
 
 use paste formula if the little square button is not available.
 
-## generating templates
+### generating templates
 https://docs.google.com/spreadsheets/d/<spreadsheetID>/template/preview
 
 
-## conditional formatting
+### conditional formatting
 
 #### using conditional formating to mathc values against a couple of note
 
@@ -142,20 +144,20 @@ https://docs.google.com/spreadsheets/d/<spreadsheetID>/template/preview
 =ISNA(MATCH(D2, B$2:B$10, 0))
 ```
 
-## pivots
+### pivots
 
 [good guide](https://www.benlcollins.com/spreadsheets/pivot-tables-google-sheets/)
 
-### count number in column 
+#### count number in column 
 
 rows:set to thing you are interested in 
 values: set to same thing as the rows, then summarize with a COUNTA
 
 sort using the rows, asc, desc
 
-## functions
+### functions
 
-### random selection from a specific column
+#### random selection from a specific column
 
 ```
 =INDEX(A2:A, RANDBETWEEN(1, COUNTA(A2:A)))

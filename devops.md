@@ -21,7 +21,7 @@ Is there only one?
 Is the install the most recent?
 Check by find out versions being run etc.
 useful commands
-```
+```CS
 brew list mongodb
 brew unstall mongodb 
 brew unstall mongodb -f # uninstalls all versions install on system. 
@@ -268,12 +268,35 @@ sudo chown $USER /dev/disk2*
  restart laptop and run restart script on restart
 
 
-## Macs
+## OS's
 
-### **encrypt machine**
+### Linux
+
+
+#### basics
+
+Become Root User
+>>> sudo su
+
+Stop being root User
+>>> exit
+
+Operating system type
+>>>cat /etc/os-release
+Login in root
+>>> sudo -s
+
+Generate ssh key  
+>>> xclip -sel clip < ~/.ssh/id_rsa.pub
+Show all modules used
+>>> lsmod
+
+### OsX
+
+#### **encrypt machine**
 [guide to encrypting mac](https://www.mactrast.com/2013/07/how-to-public-how-to-encrypt-time-machine-backups-with-os-x)
 
-### **machine keeps rename itself**
+#### **machine keeps rename itself**
 [this is annoying](https://apple.stackexchange.com/questions/55416/my-mac-minis-computer-name-keeps-changing-when-it-resumes-from-sleep)
 ```bash
 sudo scutil --set HostName <new_hostname>
@@ -281,7 +304,7 @@ sudo scutil --set LocalHostName <new_hostname>
 sudo scutil --set ComputerName <new_hostname>
 ```
 
-###  Too large for the volume's format?
+####  Too large for the volume's format?
 
 re-format the drive
 [here](https://discussions.apple.com/thread/4263857)
