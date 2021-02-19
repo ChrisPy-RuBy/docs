@@ -74,5 +74,15 @@ this is useful a each place is like multipling by 2
 [article on what is a url](https://developer.mozilla:.org/en-US/docs/Learn/Common_questions/What_is_a_URL)
 
 
-## cryptocurrency
+## cryptography
+
+### pgp
+
+### gpg
+
+# to_learn
+- guide to urls **to_learn
+- guide to sockets and ports **to_learn
+- guide to unix operating system **to_learn
+- learn wherer evrything is and what everyThing does on a mac and raspberry pi. **to_learn
 

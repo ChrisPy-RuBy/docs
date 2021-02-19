@@ -58,6 +58,15 @@ char * name = "John Smith";
 int array[5] = {1, 2, 3, 4, 5};
 
 ```
+## loops
+
+```c
+const char *strings[] = {"one","two","three"};
+int i; 
+for(i=0; i<2; i++) {
+	printf("%s", strings[i]);
+}
+```
 
 ## **useful string functions**
 

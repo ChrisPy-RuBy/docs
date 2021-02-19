@@ -277,6 +277,20 @@ sudo chown $USER /dev/disk2*
 
 Become Root User
 >>> sudo su
+=======
+## linux
+
+### cross system stuff
+
+#### using app images
+
+just download and grant exec privlegies
+```bash
+chmod +x <appimage>
+```
+
+### ubuntu
+>>>>>>> Stashed changes
 
 Stop being root User
 >>> exit

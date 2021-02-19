@@ -160,5 +160,9 @@ request.jqdb.clients.update_one({'tomfoolery': 'bawlbaggery'})
 %s/\(equest.*\)\(update\)\((.*\)/\1\2_one\3/g
 ```
 
+### wrap all lines in quotes in a file
 
+```
+:%s/^\(.*\)$/"\1"/
+```
 
