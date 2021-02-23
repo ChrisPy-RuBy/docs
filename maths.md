@@ -78,10 +78,18 @@ prob 1 dice not roll a 6 = 5/6
 
 ## graphs
 
+
+### hyperbolic tangent function
+
+$$
+f\left(x\right)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}
+f'\left(x\right)
+$$
+
 ### sigmoid curve
 
 $$
-f(x) = \frac{1}{1-e^-x}
+f(x) = \frac{1}{1+e^-x}
 $$
 
 and its derivative
@@ -113,6 +121,12 @@ tv-factor = \frac{tv-coeff}{1-adstock}
 $$
 
 ## machine learning 
+
+### perceptron error function
+
+$$
+\( E(w) = -\frac{1}{m}\sum_{i=1}^m {y_i}ln(\hat y_i) + (1 + y_i)ln(1 - \hat y_i) \)
+$$
 
 ### cross entropy
 where i  and j are 2 categories. y is category values and p is the probabilty
