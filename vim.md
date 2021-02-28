@@ -11,6 +11,14 @@ summary: summary of useful stuff for writing code in vim
 
 ## plugins
 
+### ctags
+
+#### setup
+install ctags
+make tag file 
+```ctags R .
+```
+
 ### ale
 
 #### check the status of a linter

@@ -178,7 +178,7 @@ x, y = zip(*data)
 
 
 
-#### **extensible functions**
+#### extensible functions
 
 ```python
 def hyper_volumne(length, *lengths):
@@ -224,7 +224,7 @@ class IterPrimes(object):
 ```
 
 
-### **__doc__**
+### __doc__
 
 
 ```python
@@ -247,7 +247,7 @@ class Class:
 ```
 
 
-### **--file--**
+### __file__
 where the module or whatever was imported from
 ```python
 import pandas
@@ -255,7 +255,7 @@ pandas.__file__
 '<some path to where it came from>some path to where it came from>.__init__.py'
 ```
 
-### **--dict--**
+### __dict__
 changes everything on a module into dict
 
 #### **display all functions etc on a module**
@@ -424,9 +424,9 @@ for 3.1415926
 ```
 
 
-## **Comprehensions**
+## Comprehensions
 
-#### **Generating random data**
+### **Generating random data**
 
 ```python
 flarp  = ["a", "b", "c", "d" ]
@@ -439,14 +439,14 @@ another
 x = {k: random.randint(1, 1000) for k in range(1,100) }
 ```
 
-#### **dict comprehension**
+### **dict comprehension**
 
 ```python
 {k:v for k, v in dict.items()}
 ```
 
 
-#### **conditional comprehensions**
+### **conditional comprehensions**
 
 ```python
 results = {k: dict() if x % 2 == 0 else 0.0 
@@ -454,7 +454,7 @@ results = {k: dict() if x % 2 == 0 else 0.0
 ```
 
 
-#### **nested comprehensions**
+### **nested comprehensions**
 
 
 ```python
@@ -468,7 +468,7 @@ for x in range(10):
         inner.append(y*3)
     outer.apped(inner)
 ```
-#### **Flatten nest datastrunctures**
+### **Flatten nest datastrunctures**
 
 nice if you know the depth
 
@@ -478,8 +478,7 @@ nice if you know the depth
     for b in layer_2]
     for a in layer_one]
 ```
-```
-#### **nested if statements**
+### **nested if statements**
 
 ```python
 values = [
@@ -492,7 +491,7 @@ values = [
 
 ## Concurrency
 
-#### **multithread**
+### **multithread**
 for I/O bound
 
 ```python
@@ -506,7 +505,7 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
 ```
 
 
-#### **multiprocess**
+### **multiprocess**
 for CPU bound
 
 ## Dictionary
