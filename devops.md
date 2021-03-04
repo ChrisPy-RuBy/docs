@@ -17,33 +17,32 @@ you need both
 ### **One of my services i.e. a database doesn't work**
 
 1. Do you have a clean install? Y/N.
-Is there only one?
-Is the install the most recent?
-Check by find out versions being run etc.
+Is there only one?  
+Is the install the most recent?  
+Check by find out versions being run etc.  
 useful commands
-```CS
+```bash
 brew list mongodb
 brew unstall mongodb 
 brew unstall mongodb -f # uninstalls all versions install on system. 
 ```
 
 2. Does the install run Y/N
-shut down all other processes that might be running
-restart the service. Is it now running? Y/N
-Can you run it using brew / manually?
-Does running it give any useful info?
-```
+shut down all other processes that might be running  
+restart the service. Is it now running? Y/N  
+Can you run it using brew / manually?  
+Does running it give any useful info?  
+```bash
 ps -ef | grep mongo # processes running
 tail -f <log file> # live debug of log files
 ```
 
-3. Is it a dataissue Y/N
-If things run manually but not using the service then suggests that this might be the issue
-If you suspect Ydo the following.
-- find db files (/usr/local/var/mongodb for mongo)
-- remane the folder 
-- create a new folder with the name of the old one.
-
+3. Is it a dataissue Y/N  
+If things run manually but not using the service then suggests that this might be the issue  
+If you suspect Ydo the following.  
+- find db files (/usr/local/var/mongodb for mongo)  
+- remane the folder  
+- create a new folder with the name of the old one.  
 
 4. Is there a config issue Y/N
 
@@ -170,12 +169,32 @@ Install
 
 #### poetry
 
+##### init a repo
+
+```bash
+poetry install
+```
+
 ##### add or update a package
 
 ```
 poetry add mock=4.0.2
 ```
 commit the lock and toml file once it goes through OK.
+
+##### troubleshooting
+
+good idea to setup pyenv with the python version you want to use before 
+you start.
+
+```
+The current supported Python versions are 2.7.10
+Because hug (2.4.1) requires Python >=3.4
+ and no versions of hug match >2.4.1,<3.0.0, hug is forbidden.
+So, because <...> depends on prodigy (1.6.1) which depends on hug (>=2.4.1,<3.0.0), version solving failed.
+```
+
+delete the venv if you already made one and do it again with correct python version
 
 
 
