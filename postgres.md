@@ -11,6 +11,13 @@ summary: Everything concerning dbs
 
 ## troubleshooting
 
+just do this straight away
+```bash
+tail -f /usr/local/var/log/postgres.log
+```
+
+### lockfile pid already exists
+
 this error
 
 lock file "postmaster.pid" already exists
@@ -30,7 +37,8 @@ brew services start postgresql
 
 sometimes youjust need to delete the pid file.
 
-### **psql: could not connect to server: No such fA ile or directory**
+### **psql: could not connect to server: No such file or directory**
+
 ```
 Is the server running locally and accepting
 connections on Unix domain socket "/tmp/.s.PGSQL.5432"?
@@ -40,6 +48,15 @@ server configuration file postgres does not know where to find the server config
 You must specify the --config-file or -D invocation option or set the PGDATA environment variable.
 Delete postmaster.pid file in /usr/local/var/postgres
 
+NOTE: frequently associated with failed update to a more recent version of postgrs
+
+```bash
+# back up db
+mv /usr/local/var/postgres/ /usr/local/var/postgres.test.backup/ 
+initdb --locale=C -E UTF-8 /usr/local/var/postgres
+createdb <dbname>
+psql # set up relevant postgres roles and permissions 
+```
 
 ## theory
 - - - 
@@ -128,14 +145,46 @@ psql -d <database name> -A --csv -c "SELECT * FROM <schema>.<table>" | pbcopy
 - - -
 ## admin
 - - -
-### **uodate postgres locally**
+### uodate postgres locally
 
 ```bash
 brew postgresql-upgrade-database
 ```
 
 
-### **turning logging on / off**
+### manual setup correct roles and permissions for tvs
+
+```sql
+CREATE DATABASE postgres;
+```
+
+```sql 
+CREATE EXTENSION hstore;
+```
+
+```sql
+CREATE ROLE postgres
+LOGIN 
+PASSWORD <password>;
+```
+
+```sql
+CREATE ROLE backend
+LOGIN 
+PASSWORD <password>;
+```
+
+```sql
+CREATE ROLE analysis
+LOGIN 
+PASSWORD <password>
+```
+
+```sql
+ALTER ROLE backend CREATEDB;
+```
+
+### turning logging on / off
 
 [guide to logging](https://tableplus.io/blog/2018/10/how-to-show-queries-log-in-postgresql.html)
 
@@ -203,7 +252,7 @@ commit;
 -- if you do want your changes
 ```
 
-### **grant premissions and access**
+### grant permissions and access
 
 ```sql
 GRANT ALL ON TABLE <schema>.<table> TO <profile>;

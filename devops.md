@@ -13,7 +13,6 @@ you need both
 
 ## troubleshooting strategies  
 
-
 ### **One of my services i.e. a database doesn't work**
 
 1. Do you have a clean install? Y/N.
@@ -169,7 +168,7 @@ Install
 
 #### poetry
 
-##### init a repo
+##### init a repo if you already have a toml and lock file
 
 ```bash
 poetry install
@@ -181,6 +180,12 @@ poetry install
 poetry add mock=4.0.2
 ```
 commit the lock and toml file once it goes through OK.
+
+##### add a team specific dependency to the .toml file. 
+
+```sh
+poetry add jupyterlab -E datascience
+```
 
 ##### troubleshooting
 
