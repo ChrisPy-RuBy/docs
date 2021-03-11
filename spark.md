@@ -1,6 +1,15 @@
 title: spark
 summary: Notes on spark
 
+## troubleshooting
+
+### java process hangs when creating a spark context 
+
+java out of date
+brew install new java
+and set alias in zshrc file.
+
+
 # basics
 
 ## exception handling in spark 

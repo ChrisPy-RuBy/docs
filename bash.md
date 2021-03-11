@@ -1,5 +1,6 @@
 Title: bash
 summary: Notes on bash scripting
+- - - 
 
 [awesome general guide to multiple cmmdline tools](http://conqueringthecommandline.com/book/ps)
 
@@ -11,16 +12,79 @@ Important point! Syntax for running stuff from the command line is v. different 
 
 ## basics 
 
-#### **string comparisions**
+### comparison operators
+
+#### basic string comparisons
 
 ```bash
 if [[ $var == "test" ]]
-
 not 
 if [[ $var -eq "test"]]
 ```
 
-#### **define a functin on the command line**
+#### basic numeric comaprisons
+
+fill in
+
+#### check for specific file extensions
+
+```bash
+if [[ $file =~ \.bz2$ ]]
+```
+
+#### check if <blah> exists
+[check file exists](https://linuxize.com/post/bash-check-if-file-exists/)
+
+##### files
+
+```bash
+if [[ -f "$FILE" ]]; then
+    echo "$FILE exists."
+fi
+```
+
+##### directory
+
+```bash
+if [[ -d "$DIRECTORY" ]]; then
+    echo "$DIRECTORY exists."
+fi
+```
+
+##### executable
+
+```bash
+if [[ -x "$FILE" ]]; then
+    echo "$FILE exists  and is executable."
+fi
+```
+
+
+#### negation
+
+write something
+
+### variables / assignment
+
+#### assign variables
+
+```bash
+Myvariable=Hello
+Anothervar=Fred
+echo $myvariable 
+sample/etc
+ls $sample
+```
+
+#### set defaults for variables
+
+```bash
+NAME=${1?Error: no name given}
+```
+
+### command execution
+
+####  on the command line**
 
 ```bash
 test_func () {<do something> $1}
@@ -29,10 +93,31 @@ test_func () {<do something> $1}
 a useful example 
 
 ```bash
-site_collector_copy () {aws s3 cp s3://tvsquared-userdata/collector/$1/2019.08/ s3://tvsquared-userdata-preprod/collector/$1/2019.08/ --recursive}
+site_collector_copy () {aws s3 cp s3://<something> s3://<something> --recursive}
 ```
 
-## data input
+#### **running a python program from a bash script**
+
+super easy
+```bash
+python -m <script_name>
+```
+
+
+### data input
+
+#### userinput
+
+```bash
+read -rp "Enter site ids you want to move . . .  " var1
+read -rp "Enter list of env's to move data to, i.e. x, y: " var2
+```
+
+#### getops
+
+a way of dealing with commandline arguements 
+still not that straight forward.
+ [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
 
 #### using read for fun and profit
 
@@ -53,37 +138,36 @@ done
 IFS specifies the delimiter and parses it into the mulitple fiel 
 
 
+### assignment
 
-#### **running a python program from a bash script**
+### datatypes / structures
 
-super easy
-```bash
-python -m <script_name>
+#### strings
+
+##### string cleaning
+
+```
+# would remove all non-alpha numberics and replace with space
+${1//[^[:alpha:]]/ }
 ```
 
+#### arrays
 
-#### **assign variables**
-
-```bash
-Myvariable=Hello
-Anothervar=Fred
-echo $myvariable 
-sample/etc
-ls $sample
-```
-
-#### **basic data types/structures**
+##### creation
 
 ```bash
 names=("chris" "dan" "alex")
 ```
 
+#### associative arrays
+
+##### creation
 ```bash
 declare -A b
 b=([hello]=world ["a b"]="c d")
 ```
 
-#### **accessing key values in associative array**
+##### key access 
 
 set key 
 ```bash
@@ -105,16 +189,17 @@ var=$((var+1))
 ((var++))
 ```
 
+### control flow
 #### **basic conditionals**
 
-```bash
+```bas
 [[ x -le y ]]
 [[ x -gt y ]]
 && and
 || or
 ```
 
-#### **basic if else statements**
+#### if else statements
 [guide](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php
 )
 ```bash
@@ -138,9 +223,11 @@ elif [[ $file =~ \.bz2$ ]]
 #### **check if file exists**
 [check file exists](https://linuxize.com/post/bash-check-if-file-exists/)
 
-#### **loops**
+### loops
 
 xarsg and parallel are alternatives to looping
+
+#### basic loop
 
 basic loop
 ```bash
@@ -150,6 +237,8 @@ echo $name
 done
 ```
 
+#### c style
+
 c style loop
 ```bash
 for((i=0; i<${#thingtoloopover}; i++)); do
@@ -157,6 +246,8 @@ echo "do something"
 echo "${thingtoloopover:$i:1}"
 done 
 ```
+
+#### while loop
 
 basic while loop
 ```bash
@@ -167,6 +258,7 @@ echo $counter
 done
 ```
 
+#### until loop
 basic until loop
 ```bash
 counter=1 
@@ -176,6 +268,7 @@ echo $counter
 done
 ```
 
+#### loop through folder
 
 loop through all files in a folder
 ```bash
@@ -184,39 +277,6 @@ echo $file; <do something>;
 done
 ```
 
-copy all files in a file list
-
-```bash
-for file in $(cat filestocopy.txt); 
-do cp ${file} ~/dev/tvsquared-backend/data/testdata/assist/; 
-done
-```
-
-#### **string cleaning**
-
-```
-# would remove all non-alpha numberics and replace with space
-${1//[^[:alpha:]]/ }
-```
-
-#### userinput
-
-```bash
-read -rp "Enter site ids you want to move . . .  " var1
-read -rp "Enter list of env's to move data to, i.e. preprev, preprod: " var2
-```
-
-#### getops
-
-a way of dealing with commandline arguements 
-still not that straight forward.
- [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
-
-#### **defaults for variables**
-
-```bash
-NAME=${1?Error: no name given}
-```
 
 
 # to learn
