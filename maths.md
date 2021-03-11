@@ -5,6 +5,31 @@ summary: useful maths
 
 # maths
 
+## mathjax guide
+
+$$
+\int f(x)dx  
+$$  
+
+$$
+distance = speed \cdot time
+$$
+
+$$
+\int_{i=0}^\infty i^2
+$$
+
+$$
+\mathbb R
+$$
+
+$$
+\infty
+$$
+
+$$
+\lim \limits_{x \to 1}
+$$
 ## algebra
 
 ### **perfect square**
@@ -83,7 +108,6 @@ prob 1 dice not roll a 6 = 5/6
 
 $$
 f\left(x\right)=\frac{e^{x}-e^{-x}}{e^{x}+e^{-x}}
-f'\left(x\right)
 $$
 
 ### sigmoid curve
@@ -112,9 +136,9 @@ x0 is th curve midpoint
 
 
 
-# functions
+## functions
 
-## **adeffect**
+### **adeffect**
 
 $$
 tv-factor = \frac{tv-coeff}{1-adstock}
@@ -125,7 +149,7 @@ $$
 ### perceptron error function
 
 $$
-\( E(w) = -\frac{1}{m}\sum_{i=1}^m {y_i}ln(\hat y_i) + (1 + y_i)ln(1 - \hat y_i) \)
+E(w) = -\frac{1}{m}\sum_{i=1}^m {y_i}ln(\hat y_i) + (1 + y_i)ln(1 - \hat y_i)
 $$
 
 ### cross entropy

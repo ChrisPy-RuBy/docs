@@ -9,14 +9,20 @@ summary: summary of useful stuff for writing code in vim
 [guides](https://www.ubuntupit.com/100-useful-vim-commands-that-youll-need-every-day/)
 [guides_2](https://hackernoon.com/useful-vim-tricks-for-2019-e7c1db7a18d6)
 
+## config
+
+### understanding keymappings
+
+[start_here](https://vim.fandom.com/wiki/Mapping_keys_in_Vim_-_Tutorial_(Part_1))
+
 ## plugins
 
 ### ctags
 
-#### setup
+### setup
 install ctags
 make tag file 
-```ctags R .
+```ctags -R .
 ```
 
 ### ale
