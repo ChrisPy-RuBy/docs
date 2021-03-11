@@ -59,6 +59,19 @@ if [[ -x "$FILE" ]]; then
 fi
 ```
 
+##### string empty / not empty
+
+```bash
+if [[ -z "$string"]]; then
+	echo "empty"
+fi
+```
+
+```bash
+if [[ -n "$string"]]; then
+	echo "not empty"
+fi
+```
 
 #### negation
 
@@ -190,6 +203,7 @@ var=$((var+1))
 ```
 
 ### control flow
+
 #### **basic conditionals**
 
 ```bas
@@ -198,6 +212,23 @@ var=$((var+1))
 && and
 || or
 ```
+
+#### case statement
+
+```bash
+case $thing in 
+a )
+	echo "a"
+	;;
+b )
+	echo "b"
+	;;
+* )
+	echo "catch at the end"
+	exit 1
+esac
+```
+
 
 #### if else statements
 [guide](https://ryanstutorials.net/bash-scripting-tutorial/bash-if-statements.php
