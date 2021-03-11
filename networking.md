@@ -68,17 +68,36 @@ curl -v http://localhost:888
 ### ping
 
 useful for testing if you have any internet at all
+
 ```bash
 ping www.bbc.co.uk
 ```
 
 would return something if you are hitting that website.
 
+####  get all the ips of all devices on a network
+
+get ip of current device
+i.e. 192.168.1.188
+take it to the end of the range
+i.e. 192.168.1.255
+this is the broadcast ip I think
+```bash
+ping 192.168.1.255
+```
+
 ### ifconfig
-**get ip address on mac**
+
+#### get ip address on mac
 ```
 ifconfig | grep "inet" | grep -v 127.0.0.1
 ```
+#### am I on the vpn 
+
+```bash
+ifconfig | grep -c 10.42.
+```
+
 
 ### ipconfig
 
