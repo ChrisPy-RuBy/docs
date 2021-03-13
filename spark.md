@@ -1,7 +1,7 @@
 title: spark
 summary: Notes on spark
 
-## troubleshooting
+## troubleshooting / config
 
 ### java process hangs when creating a spark context 
 
@@ -9,10 +9,19 @@ java out of date
 brew install new java
 and set alias in zshrc file.
 
+### important env vars
+
+```bash
+PYSPARK_PYTHON=<the python you want to use on the driver>
+JAVA_HOME=<where to look for java>
+PYTHONPATH=<need this to have to find pyspark>
+
 
 # basics
 
 ## exception handling in spark 
+
+NOTE: Not sure that this is correct! Need to double check.
 
 exceptions will not propagate up like they would in normal python code.
 they can't propagate onto the driver.

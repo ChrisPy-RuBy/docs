@@ -13,7 +13,7 @@ you need both
 
 ## troubleshooting strategies  
 
-### **One of my services i.e. a database doesn't work**
+### One of my services i.e. a database doesn't work
 
 1. Do you have a clean install? Y/N.
 Is there only one?  
@@ -45,6 +45,23 @@ If you suspect Ydo the following.
 
 4. Is there a config issue Y/N
 
+## deploy management 
+
+### ansible
+
+#### basic concepts
+
+**control node:** a machine with ansible installed
+**tasks:** unit of action i.e. do something
+**playbooks:** ordered lists of tasks and variables. Written in yaml.
+**hosts/managed nodes:** network devices that are controlled with the control node.
+**inventory:**all your mananged nodes.
+
+
+#### add roles to your path
+
+see tvs.md 
+
 
 ## package management 
 - - - 
@@ -56,33 +73,33 @@ system wide package manager for macOS
 /usr/local/Cellar/<package>
 ```
 
-#### **get brew to update its package list**
+#### get brew to update its package list
 ```bash
 brew update
 ```
 
-#### **update all packages installed**
+#### update all packages installed
 ```bash
 brew upgrade
 ```
 
-#### **switch to a different version of a keg**
+#### switch to a different version of a keg
 ```bash
 brew switch <different keg>
 ```
 
-#### **tidy up brew, generate free space**
+#### tidy up brew, generate free space
 
 ```bash
 brew clean up
 ```
 
-#### **get details about brew package**
+#### get details about brew package
 ```bash
 brew info <package>
 ```
 
-#### **start and stop specific services used with brew**
+#### start and stop specific services used with brew
 like postgres
 ```bash
 brew services stop <service>
@@ -91,11 +108,23 @@ brew services start <service>
 example
 brew services stop mongodb
 brew services start mongodb
-# alernatively 
+# alternatively 
 brew services restart postgresql
 ```
 
-#### **please use brew to update and upgrade your databases**
+#### please use brew to update and upgrade your databases
+
+```bash
+brew postgresql-upgrade-database
+```
+
+caveats: 
+- don't hop versions, only upgrade 1 version at a time.
+
+##### if that fails
+
+look into pg_upgrade
+run manually so you can see what is happening
 
 #### **link packages together**
 ```bash
@@ -122,19 +151,18 @@ as I can install additional dependencies using
 pipx runpip mkdocs install mkdocs-material-extensions
 ```
 
-
 #### pyenv
 
 Have multiple python versions on your machine
 
-##### **List all available versions**
+##### List all available versions
 
 ```
 pyenv install --list
 ```
 
 
-##### **issues installing pyenv due to openssl**
+##### issues installing pyenv due to openssl
 
 ```bash
 brew uninstall --force --ignore-dependencies openssl@1.1
@@ -142,7 +170,7 @@ brew install -v 3.5.2
 brew install openssl@1.1
 ```
 
-##### **switch py3.5 to py3.7 and back**
+##### switch py3.5 to py3.7 and back
 This should work for your whole system
 ```bash
 pyenv global 3.5.0
@@ -159,7 +187,7 @@ pyenv local system
 ```
 
 
-##### **get what pyenv version is currently being used**
+##### get what pyenv version is currently being used
 ```
 pyenv versions
 ```
@@ -201,32 +229,30 @@ So, because <...> depends on prodigy (1.6.1) which depends on hug (>=2.4.1,<3.0.
 
 delete the venv if you already made one and do it again with correct python version
 
-
-
-## **aws**
+## aws
 - - - 
 do aws stuff from cmdline
 
 ### s3
 
-#### **view sample of files**
+#### view sample of files
 can pipe stuff to stdout using -
 ```bash
 aws s3 cp s3://tvsquared-userdata/3871/1/app-usersessions/1547468023214-combined_Q3_8_app_FR_1.csv.gz - | gzcat | head
 ```
 
-#### **transfer from s3 to local**
+#### transfer from s3 to local
 ```bash
 aws s3 cp "s3://tvsquared-userdata/collector/282-1/2018.05/visits-282-1-2018.05.31.json.bz2" .
 ```
 
-#### **transfering folders between buckets**
+#### transfering folders between buckets
 s3 has a flat folder structure so need to use the --recursive flag
 ```bash
 aws s3 cp s3://tvsquared-userdata/collector/282-1/2018.01/ s3://tvsquared-userdata-preprod/collector/282-1/2018.01/ --recursive
 ```
 
-#### **transfer folders from local to s3**
+#### transfer folders from local to s3
 ```bash
 aws s3 cp --recursive . "s3://tvsquared-receivedata/tivo"
 ```

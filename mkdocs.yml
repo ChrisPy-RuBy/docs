@@ -51,7 +51,6 @@ nav:
       - maths: maths.md
   - DEVOPS:
       - devops: devops.md
-      - networking: networking.md
       - aws: aws.md
       - networking: networking.md
   - DEV:
