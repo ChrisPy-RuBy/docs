@@ -109,12 +109,22 @@ a useful example
 site_collector_copy () {aws s3 cp s3://<something> s3://<something> --recursive}
 ```
 
-#### **running a python program from a bash script**
+#### running a python program from a bash script
 
 super easy
 ```bash
 python -m <script_name>
 ```
+
+#### run command and catch output to a variable
+
+need to make sure that stdout and stderr go to the same place!
+
+```bash
+VAR=$(python --version 2>&1)
+```
+
+direct 2 i.e. stderr to the same place as 1 i.e. stdout
 
 
 ### data input
