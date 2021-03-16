@@ -13,7 +13,7 @@ Things to anki
 
 ### Do's and Don'ts 
 
-#### **python oddities**
+#### python oddities
 
 ```python
 def mod(a, b):
@@ -22,18 +22,18 @@ mod(19, 5)
 mod("by%sde", "teco")
 ```
 
-#### **header in file aka shebangline**
+#### header in file aka shebangline
 ```
 #!/usr/bin/env python3  or
 #!/usr/bin/python3
 ```
 
-#### **Write functions that do one thing**
+#### Write functions that do one thing
 
-#### **Maintain variable types**
+#### Maintain variable types
 do not mix types under the same variable
 
-#### **Define Exceptions correctly**
+#### Define Exceptions correctly
 
 ``` python
 try:
@@ -43,7 +43,7 @@ except ValueError as e:
 except Exceptions as e
 ```
 
-#### **passing config around**
+#### passing config around
 
 for config
 ```
@@ -54,21 +54,21 @@ please dont use tuples again ever.
 
 ### Syntax
 
-#### **single line if else statements**
+#### single line if else statements
 
 ``` python
 y = 1
 x = 10 if y > 10 else None
 ```
 
-#### **!= vs is not**
+#### != vs is not
 
 similar to = and is 
 =  is used to check if something is the same object
 is is used to check if something is the same type
 
 
-#### ** shortcircuiting functions**
+####  shortcircuiting functions
 
 [examples of shortcircuiting](https://www.geeksforgeeks.org/short-circuiting-techniques-python/)
 
@@ -80,7 +80,7 @@ if you want to guard against absent or invalid values going into a
 function. if either the 'value' is none or absent, it will be 
 replaced with ''
 
-### *args" and "**kwargs"
+### *args" and "kwargs"
 
 #### understanding * 
 
@@ -142,7 +142,7 @@ df test(*args):
 ```
 
 >>>>>>> Stashed changes
-#### **zip star(*) idioms**
+#### zip star(*) idioms
 
 transpose wide lists together into thin ones
 
@@ -165,7 +165,7 @@ test_list = ['a', 1, 'b', 2, 'c', 3, 'd', 4]
 pair_up = list(zip(*[iter(test_list)] * 2)
 ```
 
-#### **split list of tups into two lists**
+#### split list of tups into two lists
 
 v.useful for plotting data as most graphs preferx, y
 
@@ -258,7 +258,7 @@ pandas.__file__
 ### __dict__
 changes everything on a module into dict
 
-#### **display all functions etc on a module**
+#### display all functions etc on a module
 
 ```python 
 import datetime 
@@ -266,10 +266,10 @@ datetime.__dict__.keys()
 ```
 
 
-### **--import--**
+### --import--
 import something that isn't a module. Can use to avoid naming collisions
 
-### **--main--**
+### --main--
 read first when a module is imported or run from the command line
 basic setup for tvs.
 ```python
@@ -283,12 +283,12 @@ target = __import__("my_script.py")
 sum = target.sum
 ```
 
-### **--repr-- vs --str--** 
+### --repr-- vs --str-- 
 
 __repr__ used to give dev representation of object
 __str__ used for general use
 
-### **vars**
+### vars
 
 not quite sure what this does.
 
@@ -359,7 +359,7 @@ print(x)
 ```
 x here is printed as unicode. 
 
-#### **join() vs +=**
+#### join() vs +=
 
 join is perferred as it is much faster
 
@@ -369,7 +369,7 @@ join is perferred as it is much faster
 [i.translate(str.maketrans('', '', string.punctuation)) 
                               for i in lower_case_documents]
 ```
-#### **convert bytes to strings vice versa**
+#### convert bytes to strings vice versa
 
 
 ```python
@@ -403,7 +403,7 @@ b.decode("utf-8")
 # bin
 “{0:b}”.format(17)
 ```
-###  **useful string formating**
+###  useful string formating
 [useful article](https://mkaz.blog/code/python-string-format-cookbook/)
 ```python
 for 3.1415926
@@ -417,7 +417,7 @@ for 3.1415926
 ```
 
 
-#### **split string on symbol**
+#### split string on symbol
 ```python
 >>>”1234-1”.partition(“-”)
 [“1234”, “-”, “1”]
@@ -426,7 +426,7 @@ for 3.1415926
 
 ## Comprehensions
 
-### **Generating random data**
+### Generating random data
 
 ```python
 flarp  = ["a", "b", "c", "d" ]
@@ -439,14 +439,14 @@ another
 x = {k: random.randint(1, 1000) for k in range(1,100) }
 ```
 
-### **dict comprehension**
+### dict comprehension
 
 ```python
 {k:v for k, v in dict.items()}
 ```
 
 
-### **conditional comprehensions**
+### conditional comprehensions
 
 ```python
 results = {k: dict() if x % 2 == 0 else 0.0 
@@ -454,7 +454,7 @@ results = {k: dict() if x % 2 == 0 else 0.0
 ```
 
 
-### **nested comprehensions**
+### nested comprehensions
 
 
 ```python
@@ -468,7 +468,7 @@ for x in range(10):
         inner.append(y*3)
     outer.apped(inner)
 ```
-### **Flatten nest datastrunctures**
+### Flatten nest datastrunctures
 
 nice if you know the depth
 
@@ -478,7 +478,7 @@ nice if you know the depth
     for b in layer_2]
     for a in layer_one]
 ```
-### **nested if statements**
+### nested if statements
 
 ```python
 values = [
@@ -491,7 +491,7 @@ values = [
 
 ## Concurrency
 
-### **multithread**
+### multithread
 for I/O bound
 
 ```python
@@ -505,20 +505,20 @@ with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
 ```
 
 
-### **multiprocess**
+### multiprocess
 for CPU bound
 
 ## Dictionary
 - - - 
 
-### **default dict**
+### default dict
 
 import collections.defaultdict
 
 similar to setdefault
 sets a default value for when a key in not present
 
-#### **use default dict for counting values**
+#### use default dict for counting values
 
 ```python
 results = defaultdict(int)  # default here for int is 0
@@ -526,7 +526,7 @@ for x, v in somedata:
 	results[x] += v
 ```
 
-#### **use default dict for grouping values by key**
+#### use default dict for grouping values by key
 
 ```python
 results = defaultdict(list)
@@ -534,12 +534,12 @@ for x, v in somedata:
 	results[x].append(v)
 ```
 
-### **set default**
+### set default
 
 IMPORTANT: SETDEFAULT does just what it says. 
 for a dictionary if a key is present fine, but if not provide the value to use as default.
 
-#### **this is a bug!!**
+#### this is a bug!!
 
 ```python
 default = []
@@ -562,7 +562,7 @@ for segmentGroup, epsilonValueList in bigDict.items():
     new = setDict.setdefault(segmentGroup, set(epsilonValueList)) 
 ```
 
-#### **set default accumulating nested dicts**
+#### set default accumulating nested dicts
 
 ```
 for clientbrand, details in value2.items():
@@ -582,9 +582,9 @@ for k, v in sorted(setDict.iteritems(), key=lambda (k,v): len(v)):
 
 [link](https://www.saltycrane.com/blog/2007/09/how-to-sort-python-dictionary-by-keys/)
 
-### **sorted**
+### sorted
 
-#### **sorting dict by values**
+#### sorting dict by values
 
 the sorted fuction returns a list of tuples. so you need to work out the function from there.
 A good tip is not to use lambas and write the function 
@@ -617,22 +617,22 @@ sorted_keys = sorted(dict_to_sort, key=lambda k: dict_to_sort[key], reverse=True
 ```
 
 
-#### **Sort dict by highest key int**
+#### Sort dict by highest key int
 
 ```python
 sorted(test_dict.items(), key=lambda k, v: v['dest'])
 ```
 
-#### **merging dicts**
+#### merging dicts
 [link](https://treyhunner.com/2016/02/how-to-merge-dictionaries-in-python/)
 
-#### **iterate a dict**
+#### iterate a dict
 
 ```python
 for k, v in dict.items(): print(k, v)
 ```
 
-#### **counters**
+#### counters
 
 ```python
 from collections import Counter
@@ -683,7 +683,7 @@ def layer_three():
 
 [link](https://stackoverflow.com/questions/5191830/how-do-i-log-a-python-error-with-debug-information)
 
-#### **useful stacktraces as exceptons messages**
+#### useful stacktraces as exceptons messages
 
 ```python
 import logging
@@ -698,7 +698,7 @@ except Exception as ex:
 
 ## Generators
 - - - 
-#### **basic generator**
+#### basic generator
 
 ```python
 gen1 = (x for x in [1, 2, 3])
@@ -727,13 +727,13 @@ return any('action' in visit for visit in self.visits)
 [link](https://pythonconquerstheuniverse.wordpress.com/2011/08/29/lambda_tutorial/)
 [link](Conditional Statements in lambdas)
 
-#### **conditional lambdas**
+#### conditional lambdas
 ```python
 test = lambda x, y: x if x > y else y
 test(9, 2)
 ```
 
-#### **basic lambda**
+#### basic lambda
 
 ```python
 x = lamba x: x + 2
@@ -741,7 +741,7 @@ x(2)
 4
 ```
 
-#### **lambda maps**
+#### lambda maps
 In general just use a list compreshension instead
 ```python
 values = [1,2,3,4]
@@ -749,7 +749,7 @@ x = list(map(lambda x: x+2, values))
 [3,4,5,6]
 ```
 
-#### **lambda reduce**
+#### lambda reduce
 Again use list comprehension instead
 
 ```python
@@ -763,7 +763,7 @@ x = list(reduce)
 ## List
 - - -
 
-#### **for else loops**
+#### for else loops
 
 This is useful if you want to do something when you make it all the way to the end of 
 an iterable
@@ -802,7 +802,7 @@ for i, (key, value) for enumerate(data, 1):
 	print(f"index: {i}, letter: {key}")
 ```
 
-#### **fastest way to copy a list**
+#### fastest way to copy a list
 ```python
 new_list = old_list[:]
 ```
@@ -811,14 +811,14 @@ new_list = old_list[:]
 ## OOP
 - - -
 
-### **naming conventions**
+### naming conventions
 ```python
 __<name>__ : reserved for builtins
 _<private>: private attribure for python, not really private
 __<name>: also kind of private but not quite used to avoid naming conflicts
 ```
 
-#### **set attributes on a class**
+#### set attributes on a class
 
 ```python
 for k, v in dict.items():
@@ -826,10 +826,10 @@ for k, v in dict.items():
 ```
 would bolt on all the attributes from the dictionary
 
-### **properties**
+### properties
     good way of setting more complicated attribute on class 
 
-### **static methods**
+### static methods
 used to distinguish methods that don't require any knowledge of the state of the class.
 It is more of a housekeeping thing than anything else
 [link](https://stackoverflow.com/questions/15017734/using-static-methods-in-python-best-practice)
@@ -839,7 +839,7 @@ def you_shit_function():
     return "shit"
 ```
 
-### **class methods**
+### class methods
 similar to static methods but definately relavant to class but still don't require state of 
 the instance of the class
 
@@ -929,10 +929,10 @@ def func_4():
 
 
 
-## **Recursion**
+## Recursion
 [stackover_flow link](https://stackoverflow.com/questions/30214531/basics-of-recursion-in-python)
 
-#### **general recursion over a dict**
+#### general recursion over a dict
 
 ```python
 if type(d) is dict:
@@ -940,13 +940,13 @@ if type(d) is dict:
         d[k] = 
 ```
 
-## **Testing**
+## Testing
 
 [mocking and testing spark](https://towardsdatascience.com/stop-mocking-me-unit-tests-in-pyspark-using-pythons-mock-library-a4b5cd019d7e)
 
-## **Mocking**
+## Mocking
 
-#### **basic example of mocking using mock**
+#### basic example of mocking using mock
 
 ```python
 import datetime
@@ -963,14 +963,14 @@ datetime.datetime.today()
 # will return the value for testdate here not now()
 ```
 
-#### **mocking side effects**
+#### mocking side effects
 you might want to do this if you want to confirm that logging is 
 working correctly.
 
 This isn't that straight forward and it seems to need to be done with the
 context of a unit test. Still working on this!
 
-### **patching**
+### patching
 
 patching can be used to replace whole objects with mock ones. This can be done with the
 @patch decorator or .patch()
@@ -987,10 +987,10 @@ specific methods can be mocked out also if that is easier.
 
 patch as a content manager. 
 
-### **mocking side effects**
+### mocking side effects
 
 ##### TODO give example of patch as a context manager.
-### **mock specifications**
+### mock specifications
 Because mock is v.lazy, it means that you can easily mock the wrong thing.
 A spec makes this harder to do. As you limit what can exist on your mock
 object.
@@ -1103,13 +1103,13 @@ with open('<filepath>', 'r') as L
 ```
 this will deal with alot of the nonsense with time stamps etc
 
-#### **dealing with objectids**
+#### dealing with objectids
 this is a mongo / bson thing
 ```python
 from bson import ObjectId
 ```
 
-#### **pretty print json as bson**
+#### pretty print json as bson
 ```python
 from bson import json_util
 json.dump(client_metadata,open(json_filename,'w'),
@@ -1147,7 +1147,7 @@ def csv_streamer(datain, dataout, transform_func, metrics_func=None)
 ### dateutils
 - - -
 
-#### **parse stupid timestamps**
+#### parse stupid timestamps
 
 ```python
 import dateutil.parser
@@ -1158,13 +1158,13 @@ dateutil.parser.parse("2015-10-19T00:00:00.000+0000")
 ### datetime
 - - - 
 
-#### **generate a max and min datetime from a date**
+#### generate a max and min datetime from a date
 
 ```python
 datetime.combine(date(date.today().year, date.today().month, 1), datetime.min.time())
 ```
 
-#### **genwerate all the times between two dates**     
+#### genwerate all the times between two dates     
 
 ```python
 def date_range_generator(now, then, delta):
@@ -1175,18 +1175,18 @@ def date_range_generator(now, then, delta):
 
 
 
-#### **current datetime**
+#### current datetime
 
 ```python
 now = datetime.datetime.now()
 ```
 
-#### **convert datatime dates to datetime datetimes**
+#### convert datatime dates to datetime datetimes
 ```python
 datehourfrom = datetime.datetime.combine(day, datetime.time.min)
 ```
 
-#### **convert timestamp to datetime**  
+#### convert timestamp to datetime  
 
 ```python
 datetime.fromtimestamp(1506729546)
@@ -1211,18 +1211,19 @@ import importlib
 
 module_name = input("Name of module? ")
 module = importlib.import_module(module_name)
-print(module.__doc__)```
+print(module.__doc__)
+```
 
-### ** itertools **
+###  itertools 
 
 
 [Removing duplicates from a list of lists](https://stackoverflow.com/questions/2213923/removing-duplicates-from-a-list-of-lists)
 [good intro](https://pymotw.com/3/itertools/index.html)
 
-#### **chain**
+#### chain
 link several iterables together without having to make one giant fisrt
 
-#### **tee**
+#### tee
 
 returns several independant iteratoor from original instead of 1
 
@@ -1233,7 +1234,7 @@ y = tee(test, 10)
 # note that this doesn't split the original data, only duplicates it.
 ```
 
-#### **starmap**
+#### starmap
 
 splits up input data into individual bits
 
@@ -1243,19 +1244,19 @@ for i in starmap(lambda x, y: (x, y, x*y), values):
     print("{} x {} = {}".formt(*i))
 ```
 
-#### **count**
+#### count
 
 counts incrementally indefinately, in a step size defined by you.
 
-#### **cycle**
+#### cycle
 
 create an iterable that is looped through indefinatly
 
-#### **repeat**
+#### repeat
 
 create a iterable that repeats the same single value again and again until death.
 
-#### **accumulates**
+#### accumulates
 
 accumulate products of functions as iterated across and out puts that instead. can be though of as a 
 cumulative sum.
@@ -1267,7 +1268,7 @@ list(accumulate(range(5)))
 
 can accumulate using other functions also
 
-#### **permutations / products**
+#### permutations / products
 
 good for determining all the possible outcomes i.e. bruteforce approach to various problems.
 
@@ -1282,7 +1283,7 @@ y = [1, 2, 3]
 [a for a in product(x, y)]
 ```
 
-#### **reduce**
+#### reduce
 
 ```python
 results = defaultdict(list)
@@ -1302,7 +1303,7 @@ reduce(reducer, [{'a':2, "b":3, "s":10},{"a":2}], dict())
 
 ```
 
-#### **groupby**
+#### groupby
 
 can do similar things to reduce. Need to work these examples out as they don't quite work at the moment
 ```python
@@ -1324,22 +1325,22 @@ for k, grouped in groupby(x):
 ### ipython
 - - -
 
-#### **enable autoreload**
+#### enable autoreload
 ```python
 %load_ext autoreload
 %autoreload 2
 ```
 
-#### **run scripts in ipython**
+#### run scripts in ipython
 ```python
 %run <script.py>
 ```
 
-#### **get history for ipython session**
+#### get history for ipython session
 ```python
 %history
 ``` 
-#### **time a function**
+#### time a function
 
 ```python
 %timeit -n 10000 <your_crappy_function(stupid_params)>
@@ -1367,14 +1368,14 @@ filepath = Path(filedir, filename)
 
 ### json
 
-#### **parse json straight into an object**
+#### parse json straight into an object
 
 this also just works for dicts
 ```
 ball = type('D', (object,), json.loads(temp))()
 ```
 
-#### **dealing with mongo queries as json**
+#### dealing with mongo queries as json
 
 Export your query as standard json (not the fancy Mongo Shiz). Either write to file or
 to clipboard.
@@ -1415,7 +1416,7 @@ for row in sys.stdin:
 ```
 
 
-#### **parse a string to a dict**
+#### parse a string to a dict
 [link](https://stackoverflow.com/questions/988228/convert-a-string-representation-of-a-dictionary-to-a-dictionary)
 ```python
 >>> x = '{"x": 1, "a": 3}'
@@ -1423,36 +1424,36 @@ for row in sys.stdin:
 {"x": 1, "a": 3}
 ```
 
-#### **parsing large files of json i.e. firehose data**
+#### parsing large files of json i.e. firehose data
 not really josn as no wrapping []
 [link](https://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-with-multiple-json-objects-in-python)
 
 ## os
 - - - 
 
-#### **check for directory**
+#### check for directory
 ```python
 os.path.isdir("/home/el"))
 ```
 
-#### **check file exists**
+#### check file exists
 
 ```python
 os.path.exists()
 ```
 
-#### **list all files in directory**
+#### list all files in directory
 ```python
 os.listdir(path)
 ```
 
-#### **recursively make directory structure*
+#### recursively make directory structure*
 ```python
 os.makedirs(<path>, exists_ok=True)
 # don't recreate if if exists already'
 ```
 
-#### **only make the folders if**
+#### only make the folders if
 
 ## pandas
 - - - - 
@@ -1462,7 +1463,7 @@ os.makedirs(<path>, exists_ok=True)
 https://www.stefaanlippens.net/python_profiling_with_pstats_interactive_modeA
 https://docs.python.org/3/library/profile.html#instant-user-s-manual
 
-#### **generate some profiling stats**
+#### generate some profiling stats
 ```bash
 python3 -m cProfile -o /tmp/profile.stats tvsquared/jobqueue/importer/collectortng.py 1366 1 2019-06-06T00 2019-06-06T00
 ```
@@ -1473,7 +1474,7 @@ We can then analyse using pstats. ncalss and cumtime are perceived as the most
 python3 -m pstats profile.stats
 ```
 
-#### **profiling in code**
+#### profiling in code
 
 ```python
 import cProfile
@@ -1481,7 +1482,7 @@ cProfile.run('sum([i * 2 for i in range(10000)])')
 cProfile.run('sum((i * 2 for i in range(10000)))')
 ```
 
-#### **useful profiling tricks**
+#### useful profiling tricks
 
 Use profile hooks to work out what individual functions are doing
 
@@ -1512,7 +1513,7 @@ with temp.NamedTempFile(mode='w') as f:
 
 ## pip
 
-#### **When checking for packages check casse insensitive**
+#### When checking for packages check casse insensitive
 
 often the package that you are looking 
 
@@ -1520,7 +1521,7 @@ often the package that you are looking
 pip3 freeze | grep -i django 
 ```
 
-#### **set up a package mirror**
+#### set up a package mirror
 
 Go to
 ```bash 
@@ -1532,25 +1533,25 @@ index-url = http://packagemirror.tvsquared.private/pip/simple/
 trusted-host = packagemirror.tvsquared.private
 ```
 
-#### **installing non-binary packages** 
+#### installing non-binary packages 
 Sometimes binary versions are incompatible with one another
 When people say install from source they mean this
 ```bash
 pip install --no-binary :all: scipy
 ```
 
-#### **show current package info i.e version, location**
+#### show current package info i.e version, location
 ```bash
 pip show <package>
 ```
 
-#### **unfuck a pip package**
+#### unfuck a pip package
 
 ```bash
 pip install --upgrade --force-reinstall pymongo
 ```
 
-#### **show all packages**
+#### show all packages
 
 ```bash
 pip freeze
@@ -1560,7 +1561,7 @@ or
 piplist
 ```
 
-#### **installing / uninstalling**
+#### installing / uninstalling
 ```bash
 pip install <package>==<specific version>
 pip uninstall <package>
@@ -1597,7 +1598,7 @@ conn.commit()
 
 
 
-#### **basic debugger in code
+#### basic debugger in code
 
 ```python
 import ipbd; ipdb.set_trace()
@@ -1607,20 +1608,20 @@ now
 breakpoint()
 ```
 
-#### **pdb out the code**
+#### pdb out the code
 
 ```bash
 python -m pdb <scriptname>.py
 ```
 
-#### **open nested python console within a pdb sesisons**
+#### open nested python console within a pdb sesisons
 
 
 ```python
 !import code; code.interact(local=vars())
 ```
 
-##### **display all local or global variables in debugger**
+##### display all local or global variables in debugger
 ```python
 local()
 global()
@@ -1630,20 +1631,20 @@ more functionality that unittest
 needs tests to be called test_<blah>
 but doesn't require class
 
-#### **basic running of tests**
+#### basic running of tests
 
 to run the test class that you are interested in.
 ```
 pytest -k 'SessionsTest' --disable-warnings --ignore=tvsquared/tmp/
 ```
 
-#### **get unit test coverage**
+#### get unit test coverage
 ```bash
 python -m pytest --cov
 ```
 can get carried away with what it is checking
 
-#### **better fixtures**
+#### better fixtures
 can make writing tests quicker
 
 ## numpy
@@ -1662,7 +1663,7 @@ Two main use types. Match and Search.
 Search finds the regex within the string
 Match matches from the start.
 
-#### **find version number in string**
+#### find version number in string
 
 ```python
 string = "pg_restore (PostgreSQL) 12.1"
@@ -1672,13 +1673,13 @@ matches = regex.search(string)
 version = matches.group()
 ```
 
-#### **compile a regex for use**
+#### compile a regex for use
 ```python
 regex_pattern_date = r'yy=\d{4}/mm=\d{2}/dd=\d{2}/hh=\d{2}'
 compiled = re.compile(regex_pattern_date)
 ```
 
-#### **search for on compiled regex**
+#### search for on compiled regex
 
 
 ```python
@@ -1686,14 +1687,14 @@ re.search(<compiled_regex>, <string>)
 ```
 will return aregex object of the matches
 
-#### **use matched regex**
+#### use matched regex
 
 ```python
 match_date.group()
 ```
 will return the matching string
 
-#### **pattern matching and grouping with ?P**
+#### pattern matching and grouping with ?P
 
 ```bash
 r'.+/group=(?P<yyyy>\d{4})_(?P<mm>\d{2})_(?P<dd>\d{2})_(?P<hh>\d{2})/(?P<file>.+parquet)'
@@ -1712,7 +1713,7 @@ matches 4 digits and assigns them to the group yyyy
 ## sys
 - - - 
 
-#### **determine the size of an object**
+#### determine the size of an object
 
 [link](https://stackoverflow.com/questions/449560/how-do-i-determine-the-size-of-an-object-in-python)
 
@@ -1720,7 +1721,7 @@ matches 4 digits and assigns them to the group yyyy
 sys.getsizeof(<thin you want size of>)
 ```
 
-#### **parse data from stout**
+#### parse data from stout
 
 ```python
 import sys
@@ -1740,7 +1741,7 @@ import timeit
 def my_function():
     y = 3.145
     for x in range(100):
-        y = y ** 0.7
+        y = y  0.7
     return y
 
 print(timeit.timeit(my_function, number=100000))i
@@ -1752,7 +1753,7 @@ Note: %timeit function in ipython is much easier to use
 
 ## unittest
 
-#### **basic boiler plate to get up and running**
+#### basic boiler plate to get up and running
 
 create a file named test_<thing to be tested>.py
 
@@ -1782,21 +1783,21 @@ python -m  unittest test_<thing to be tested>.py
 
 ## venv
 
-#### **create a virtual environment**
+#### create a virtual environment
 ```bash
 python3 -m venv testproject_env
 ```
-#### **Activate venv**
+#### Activate venv
 ```bash
 source testproject_env/bin/activate
 ```
 
-#### **Deactivate venv**
+#### Deactivate venv
 ```bash
 deactivate
 ```
 
-#### **requirements files**
+#### requirements files
 Use a requirements file to install all the packages that are present in this file
 ```bash
 pip install -r requirements.txt
