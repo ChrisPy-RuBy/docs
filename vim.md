@@ -9,6 +9,13 @@ summary: summary of useful stuff for writing code in vim
 [guides](https://www.ubuntupit.com/100-useful-vim-commands-that-youll-need-every-day/)
 [guides_2](https://hackernoon.com/useful-vim-tricks-for-2019-e7c1db7a18d6)
 
+## basics
+
+### get in and out of ex mode!
+
+to enter -> Q
+to exit -> :visual
+
 ## config
 
 ### understanding keymappings

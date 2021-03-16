@@ -117,7 +117,7 @@ awk '{printf "%s %15s %.1f\n", $1, $6, $5}
 ```
 
 
-### **conditional table processing**
+### conditional table processing
 
 ```bash
 # would print all rows  where column 1 is greater than 100
@@ -126,7 +126,7 @@ awk '$1 < 100 {print $0}'
 awk 'diff=$1-$2 {print $0, diff}'
 ```
 
-### **regex matching on specific columns**
+### regex matching on specific columns
 
 ```bash
 # would match all the rows where column one matches that regex 
@@ -135,13 +135,13 @@ awk '$1 ~ /-01$/'
 awk '$1 ~ /-01$/ {print $1, $3}'
 ```
 
-### **apply a regex to contents of a folder**
+### apply a regex to contents of a folder
 
 ```bash 
 awk '/l.c/{print}' /etc/hosts 
 ```
 
-### **cut sections from strings**
+### cut sections from strings
 similar to cut at a basic level, but much more powerful and esoteric.
 ```bash
 ls -l | awk '{print $5}'
@@ -206,11 +206,11 @@ awk -F'[,-]' '{volume[$1] += $8} END { for(year in volume) print year, volume[ye
 
 ## aws
 
-### **get sample of v.large files on s3**
+### get sample of v.large files on s3
 
 the  - arg pipes the output to stdout 
 ```bash
-s3://tvsquared-userdata/3871/1/app-usersessions/1547468023214-combined_Q3_8_app_FR_1.csv.gz - | gzcat | head
+s3://<bucketname>/3871/1/app-usersessions/1547468023214-combined_Q3_8_app_FR_1.csv.gz - | gzcat | head
 ```
 
 ## bc
@@ -219,8 +219,6 @@ use bc for maths
 ```bash
 echo "2+2" | bc
 ```
-
-
 
 ## chmod
 change permissions of files or folders
@@ -259,7 +257,7 @@ cmp --silent '<filename_1>' '<filename_2>' && echo 'files are the same brah' || 
 ## cut
 
 
-### **get specific column from csv**
+### get specific column from csv
 
 ```bash
 head <filename.csv> | cut -f 5 -d ,
@@ -307,20 +305,33 @@ Better calculator than bc
 
 ## curl
 
-## csvtools
+## csvtools / csvkit
 
 nice tool package for dealing with csv files
 
-### **dealing with excel files from cmdline**
+### csvsql
+
+#### query a csv file from the commandline
+
+```bash
+csvsql xaa.csv --query "SELECT * FROM xaa LIMIT 10;" -d "|"  | csvlook -d ","
+```
+
+#### load from csv into table
+
+```bash
+csvsql '/tmp/<filename>' --db 'postgresql://postgres:postgres@localhost/testing' -y 1000 --overwrite --insert
+```
+
+### in2csv
+
+#### dealing with excel files from cmdline
 ```bash 
 # get the sheet names
 in2csv -n sheetname.xlsx 
 # load specific sheet
 in2csv --sheet <sheetname> <spreadsheet>.xlsx
 ```
-
-
-
 
 ## date
 important: If you want to do anything remotely useful using bash and dates
@@ -348,7 +359,7 @@ echo "$then"
 done
 ```
 
-### **convert timestamps**
+### convert timestamps
 ```bash
 date -r 1555718402
 ```
@@ -358,7 +369,7 @@ TZ=UTC date -r 1559780588
 ```
 not 100 % trustworthy
 
-### **get current date in nice format**
+### get current date in nice format
 ```bash
 date -v -1d +"%Y-%m-%d"
 ```
@@ -376,17 +387,16 @@ row by row check to determine differences between 2 files.
 diff <(cat <file_1> ) <(cat /tmp/<file_2>)
 ```
 
-
 ## du
 
-#### **get folder size**
+#### get folder size
 ```bash
 du -sk ~/Downloads
 ```
 
 ## df
 
-### **get disk space**
+### get disk space
 
 ```bash
 ```
@@ -401,21 +411,21 @@ tell you what a file contains and or how its compressed
 
 ## find
 
-### **parallel processing with find**
+### parallel processing with find
 
 ```bash
 find . -name "*.mpeg" | xargs -P 4 -I {} ffmpeg -i {} -o {}.mp4
 ```
 
 
-### **flatten a file structure recursively into a new folder**
+### flatten a file structure recursively into a new folder
 
 ```bash
 mkdir flat;
 find . -type f -name \*.parquet -print -exec cp {} ./flat/ \
 ```
 
-### **find a file with specific name**
+### find a file with specific name
 
 where . is the directory to search.
 ```bash
@@ -424,13 +434,13 @@ find . -name <filename>.<file ending> -print
 find . -name '[a-zA-Z]*.sh' -print
 ```
 
-### **find file and open in vim**
+### find file and open in vim
 
 ```bash
 find . -name yarn-site.xml -type f -exec nvim \{\} \;
 ```
 
-### **find specific file types**
+### find specific file types
 
 use types.
 
@@ -443,7 +453,7 @@ find . -types l -print
 find . -types f -print
 ```
 
-### **find specific  files in specific paths**
+### find specific  files in specific paths
 
 ```bash
 # will return everything that has /session/ in the path
@@ -451,7 +461,7 @@ find . -path \*session\*
 ```
 
 
-### **find all existing repos** 
+### find all existing repos
 You can use the following to git init all your existing tvsquared local git repos:
 ```bash
 find . -type d -name tvsquared-\* -exec git init \{\} \;

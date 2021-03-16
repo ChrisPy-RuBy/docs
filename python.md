@@ -1121,6 +1121,29 @@ json.dump(client_metadata,open(json_filename,'w'),
 ### csv
 - - -
 
+#### stream from file to dest at same time
+
+```python
+def csv_streamer(datain, dataout, transform_func, metrics_func=None)
+    """Stream data from datain to dataout, applying tranform_func along the way
+    Optionally generate metrics about the data processed.
+    """
+    
+    metrics = {}
+    with open(datain, 'r') as finput, open(dataout, 'w') as foutput:
+        reader = csv.DictReader(finput, delimiter=',')
+        writer = csv.DictWriter(foutput)
+        writer.writeheader()
+        for row in reader:
+            if metrics_func:
+                metrics = metrics_func(row, metrics)
+            outrow = transform(row)
+            writer.writerow(outrow)
+
+    return metrics
+```
+
+
 ### dateutils
 - - -
 
