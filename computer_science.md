@@ -4,6 +4,12 @@ summary: useful concepts in compsci
 
 # comsci
 
+## databases
+
+### what is database normalisation
+
+dunno read a book. I think it is the idea that data should always be stored at the finest possible granularity. 
+
 ## general concepts
 
 ### bits, bytes etc

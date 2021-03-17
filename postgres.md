@@ -4,6 +4,18 @@ summary: Everything concerning dbs
 
 # postgres
 
+## basics
+
+### on the prompt
+
+```sql
+\du  -- get users and permissions
+\d scheam.table -- in db get all the useful details about a table
+\l -- list dbs 
+\q -- quit
+
+```
+
 ## tips / tricks
 
 - never cast against column cast against values
@@ -37,7 +49,7 @@ brew services start postgresql
 
 sometimes youjust need to delete the pid file.
 
-### **psql: could not connect to server: No such file or directory**
+### psql: could not connect to server: No such file or directory
 
 ```
 Is the server running locally and accepting
@@ -61,52 +73,52 @@ psql # set up relevant postgres roles and permissions
 ## theory
 - - - 
 
-### **types of deleting**
+### types of deleting
 
 - marking as deleted. The row is exists in table but is markied as deleted
 - autovacuumed. Row still exists
 - full vacuum.  table completely rebuilt from  scratch.
 
-### **index types**
+### index types
 
 sparse index:- only has values in the index that are populated
 
-### **Understanding Analze / Explain**
+### Understanding Analze / Explain
 
 Basic rules  
 1. Lower width = better  
 2. Examine the query for disk read / writes. These are slow  
 
-### **set working mem to be larger**
+### set working mem to be larger
 ```sql
 SET work_mem TO '200MB'
 RESET work_mem
 ```
 
-#### **join nodes**
+#### join nodes
 
-1. **nested loops**: good for small tables
-2. **merge joins**: sort then merge, index required. Fastest on large datasets
-3. **hash joins**: only on equality joins. Mem dependent.
+1. nested loops: good for small tables
+2. merge joins: sort then merge, index required. Fastest on large datasets
+3. hash joins: only on equality joins. Mem dependent.
 
-### **major scan nodes**
+### major scan nodes
 
-1. **seq scan**: Read all the table in order
-2. **index scan**: Read index to filter on the where clause
-3. **bitmap index**: Same as above but quicket for large number of rows
-4. **index only scan**: for covering index
+1. seq scan: Read all the table in order
+2. index scan: Read index to filter on the where clause
+3. bitmap index: Same as above but quicket for large number of rows
+4. index only scan: for covering index
 
 
 - - -
 ## accessing postgres
 - - - 
-### **access local postgres db**
+### access local postgres db
 
 ```bash
 psql
 ```
 
-### **access remote postgres dbs**
+### access remote postgres dbs
 
 ```bash
 psql -h <hostname> -U <user> postgres
@@ -116,24 +128,24 @@ example
 psql -h backendpg1-preprev.ciepqiqtkoex.eu-west-1.rds.amazonaws.com -U analysis postgres
 ```
 
-### **execute a sql query from the command line like a ninja**
+### execute a sql query from the command line like a ninja
 this would copy everything to the sys clipboard
 ```bash
 psql -d <database name> -A --csv -c "SELECT * FROM <schema>.<table>" | pbcopy
 ```
 
 
-### **leave server**
+### leave server
 ```bash
 \q
 ```
 
-### **list databases**
+### list databases
 ```bash
 \l
 ```
 
-### **display all data metadata**
+### display all data metadata
 
 ```
 \d+
@@ -188,25 +200,25 @@ ALTER ROLE backend CREATEDB;
 
 [guide to logging](https://tableplus.io/blog/2018/10/how-to-show-queries-log-in-postgresql.html)
 
-### **dump database**
+### dump database
 
 ```sql
 pg_dump -s c1129_australiademo > /tmp/schema.sql
 ```
   
-### **dump schema**
+### dump schema
 
 ```sql
 pg_dump -s c1129_australiademo -n usersessions > /tmp/usersessions.sql
 ```
 
-### **restore database**
+### restore database
 
 ```sql
 psql testdata < schema.sql
 ```
 
-### **creating indexes**
+### creating indexes
 
 ```sql
 ux_<index name>
@@ -215,7 +227,7 @@ ux_<index name>
   (hasheduserip COLLATE pg_catalog."default", datadatetime);
 ```
 
-### **Display all indexes for a schema**
+### Display all indexes for a schema
 
 ```sql
 SELECT
@@ -231,14 +243,14 @@ ORDER BY
     indexname;
 ```
 
-### **foreign keys**
+### foreign keys
 
 ```sql
 ALTER TABLE adspotvalues.data 
     DROP CONSTRAINT fk_adspotvalues_data_adspotid
 ```
 
-### **transactions**
+### transactions
 
 ```sql
 begin; 
@@ -259,7 +271,7 @@ GRANT ALL ON TABLE <schema>.<table> TO <profile>;
 GRANT SELECT ON TABLE <schema>.<table> TO <profile>;
 ```
 
-### **create a table**
+### create a table
 
 ```sql
 CREATE TABLE IF NOT EXISTS <schema. table> (
@@ -269,7 +281,7 @@ col3 col3type
 )
 ```
 
-### **Copy a table struture with no data**
+### Copy a table struture with no data
 
 ```sql
 SELECT INTO <new_table> 
@@ -277,7 +289,7 @@ SELECT INTO <new_table>
 WHERE 1 = 0 )
 ```
 
-### **copy data from db to disk**
+### copy data from db to disk
 
 ```sql
 COPY (SELECT * FROM <schema>.<table> 
@@ -297,7 +309,7 @@ COPY (SELECT * FROM <schema>.<table>
         to '/<filelocation>' with CSV HEADER;
 ```
 
-### **copy data from csv to db**
+### copy data from csv to db
 
 be aware there are issues between \copy and copy.
 Also the delimiter stuff is an arse
@@ -328,7 +340,7 @@ FROM '/tmp/collector_c_logs_complete' DELIMITER ',' CSV HEADER
 ## inserting / updating
 - - -
 
-### **anti-sql injection techs**
+### anti-sql injection techs
 
 Use string formatting in params rather than in statement 
 
@@ -346,7 +358,7 @@ params['interval'] = AsIs(5)
 
 
 
-#### **table of fake data**
+#### table of fake data
 
 ```sql
 CREATE table foo (c1 integer, c2 text, c3 integer);
@@ -354,7 +366,7 @@ INSERT INTO foo (SELECT i, md5(random()::text), i/10
         FROM generate_series(1, 1000000) AS i);
 ```
 
-### **add a column**
+### add a column
 
 
 ### basic update
@@ -385,9 +397,9 @@ FROM (VALUES ("a", 2), ("b", 4)) as data (orig, new)
 WHERE data.orig = col_name 
 ```
 
-#### **more complex updates**
+#### more complex updates
 
-##### **updating from values** can provide a tmp table of values to use to update the table 
+##### updating from values can provide a tmp table of values to use to update the table 
 
 ```sql
 UPDATE usersessions.data us
@@ -423,7 +435,7 @@ AND coalesce(us.tags -> 'cuserref','') <> q.userref
 
 
 
-### **basic insert**
+### basic insert
 
 ```sql
 INSERT into <table> ( col1, col2, col3)
@@ -432,7 +444,7 @@ FROM <table>
 WHERE col1 = 3
 ```
 
-### **insert scratch**
+### insert scratch
 
 ```sql
 INSERT INTO usersessions.data (include,
@@ -483,7 +495,7 @@ FROM randomtable WHERE id = 4;
 ## querying
 - - - 
 
-### **basics**
+### basics
 
 #### operators
 
@@ -492,14 +504,14 @@ FROM randomtable WHERE id = 4;
  -- not equal to
 ```
 
-#### **basic in clause**
+#### basic in clause
 
 ```sql
 SELECT * FROM <blah> 
 WHERE <col_derp> in ('thing1', 'thing2')
 ```
 
-#### **fuzzy string matching**
+#### fuzzy string matching
 ```sql
 SELECT * 
 FROM adspots.data 
@@ -507,7 +519,7 @@ WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
 AND tags::TEXT LIKE '%cost%'
 ```
 
-#### **querying ips**
+#### querying ips
 
 ```sql
 select *
@@ -516,7 +528,7 @@ where userip << '2001:0db8::/32'::cidr
 limit 10
 ```
 
-#### **generate unixtimestamp from timestmap**
+#### generate unixtimestamp from timestmap
 
 ```sql
 SELECT EXTRACT(EPOCH FROM datadatetime) * 1000 FROM 
@@ -525,7 +537,7 @@ WHERE brandid = 1
 AND usersessionid = 472809579
 ```
 
-#### **hashing ips**
+#### hashing ips
 
 ```sql
 SELECT ENCODE(DIGEST('120.145.43.100', 'sha1'), 'hex')
@@ -543,7 +555,7 @@ FROM <schema>.<table> WHERE brandid=1) to '<filelocation>' with CSV;
 create extension pgcrypto
 ```
 
-#### **pulling stuff out of tags/hstore**
+#### pulling stuff out of tags/hstore
 
 ```sql
 SELECT D.tags, D.channelid, channel,
@@ -557,7 +569,7 @@ D.tags -> ‘sh’    will create a column with the values of the ‘sh’ tag
 D.tags ? ‘prog’  will create a column of Boolean masks that determine weather prog is present in the table or not.   
 
 
-#### **hstore scratch**
+#### hstore scratch
  
 selecting shizzle 
 ```sql
@@ -595,7 +607,7 @@ where tags?'_supplieddatetime'
 
 ### joins
 
-#### **basic joins**
+#### basic joins
 
 
 [guide to joins](http://www.postgresqltutorial.com/postgresql-joins/)
@@ -617,7 +629,7 @@ AND tags::TEXT LIKE '%cost%'
 
 ### aggreate queries
 
-#### **case statements**
+#### case statements
 case statements can be used to do conditional shizzle
 ```sql
 SELECT deviceid,
@@ -643,7 +655,7 @@ GROUP BY 1
 ORDER BY 1, 2
 ```
 
-#### **average tables**
+#### average tables
 
 ```sql
 with day_count as(
@@ -653,7 +665,7 @@ with day_count as(
 )
 ```
 
-#### **group by datetimes**
+#### group by datetimes
 [v.useful groupby datetime](http://ben.goodacre.name/tech/Group_by_day,_week_or_month_%28PostgreSQL%29)
 ```sql
 SELECt date_trunc('day', datadatetime), count(*) FROM <schema>.<table>
@@ -669,6 +681,19 @@ number of unique dates but not the count per day.
 SELECT COUNT(DISTINCT CAST(datadatetime as Date))
 FROM adspots.data
 ```
+
+#### filtering a count * with having
+
+```sql
+SELECT group, count(*)
+FROM blah
+WHERE blarpped
+GROUP BY 1
+HAVING count(*) > 2
+ORDER BY 1
+```
+
+
 ### tricks and tips
 
 #### aggregate query results where the dates with missing data have values filled in
@@ -686,13 +711,13 @@ SELECT CTE.day, COALESCE(grouped_users.count, 0) FROM CTE
 LEFT JOIN grouped_users ON CTE.day = grouped_users.day
 ```
 
-#### **check something exists v.fast**
+#### check something exists v.fast
 good for v.large datasets. Will exist as soon as it finds something. 
 ```sql
 SELECT exists(SELECT 1 FROM <schema>.<table> WHERE <condition to check> LIMIT 1)
 ```
 
-#### **get the whole row that is distinct by the value provided**
+#### get the whole row that is distinct by the value provided
 This is good if you want to examine whole rows that have the same datetime, userip etc
 [good articles on distinct on](https://zaiste.net/postgresql_distinct_on/)
 ```sql
@@ -721,7 +746,7 @@ ORDER BY 1,2
 
 used a syntactic sugar to make editing the query easier
 
-#### **super smart way of getting largest / smallest value by another column**
+#### super smart way of getting largest / smallest value by another column
 
 ```
 SELECT DISTINCT ON (<col_1>) *
@@ -732,7 +757,7 @@ This will de-dupe by col_1 but keep the first row from each distinct value
 So if you sort by size DESC then the row displayed will have the largest value of col_2
 
 
-### **with temp tables**
+### with temp tables
 
 ```sql
 with temp as (
@@ -743,7 +768,7 @@ with temp as (
 ) 
 ```
 
-### **window functions
+### window functions
 window functions are similar to agg functions
 agg functions reduce the number of rows 
 window functions do not.
@@ -752,43 +777,7 @@ window functions do not.
 [guide to window functions](http://www.postgresqltutorial.com/postgresql-window-function/
 )
 
-### **userschema bug query**
-```sql
-WITH roothashes AS (
-	SELECT rootuserid, count(*), array_agg(distinct cookiehash) cookiehashes
-	FROM users.data 
-	GROUP BY 1
-)
-
-SELECT usd.cookiehash, usd.usersessionid, usd.userid, rh.rootuserid, rh.cookiehashes, ARRAY_LENGTH(rh.cookiehashes, 1) ch_length  FROM usersessions.data usd
-JOIN roothashes rh ON rh.rootuserid = usd.userid
-WHERE brandid = 1 
-AND datadatetime BETWEEN '2020-03-29'
-AND '2020-03-30' 
-AND usd.cookiehash <> all(rh.cookiehashes)
-ORDER BY ch_length DESC
-
-```
-
-### **scratch**
-```sql
--- query to try and work out which sessions are matched with original vs regex shizzle
-SELECT count(*) FROM (
-	SELECT usersessionid, datadatetime, action 
-	FROM usersessionactions.v_usersessionactions
-	WHERE datadatetime BETWEEN '2019-06-22' 
-		AND '2019-06-23'
-	AND brandid = 1
-	AND action = 'viewusedvehiclepage') tng
-RIGHT OUTER JOIN (
-	SELECT usersessionid, datadatetime, action FROM usersessionactions.v_usersessionactions
-	WHERE datadatetime BETWEEN '2019-06-22' 
-	AND '2019-06-23'
-	AND brandid = 1
-	AND action = 'tngviewusedvehiclepage') orig ON (orig.usersessionid = tng.usersessionid and orig.datadatetime = tng.datadatetime) 
-```
-
-### **temp tables examples**
+### temp tables examples
 
 ```sql
 WITH <tmp_table_name_1> 
@@ -824,7 +813,7 @@ FROM   cookiecount,
 ```
 
 
-### **quick way to get row count**
+### quick way to get row count
 
 ```sql
       SELECT 
@@ -837,17 +826,6 @@ FROM   cookiecount,
        and relname='data'
        and nspname='usersessions'
 ```
-### **filtering a count * with having**
-
-```sql
-SELECT group, count(*)
-FROM blah
-WHERE blarpped
-GROUP BY 1
-HAVING count(*) > 2
-ORDER BY 1
-```
-
 
 
 |Keywords | What it does |
@@ -933,7 +911,7 @@ ORDER BY 1
 |WHERE	|Filters a result set to include only records that fulfill a specified conditiona|
 
 
-## wuseful work queries
+## useful work queries
 
 ### cascade delete sessions 
 
@@ -987,5 +965,42 @@ with
     and d.brandid=1
     and d.datadatetime >= '2020-10-13T00:00:00'::timestamp   returning d.datadatetime )
     select min(datadatetime) mindatetime, max(datadatetime) maxdatetime
-        from deleterange```
+        from deleterange
+```
+
+### userschema bug query
+```sql
+WITH roothashes AS (
+	SELECT rootuserid, count(*), array_agg(distinct cookiehash) cookiehashes
+	FROM users.data 
+	GROUP BY 1
+)
+
+SELECT usd.cookiehash, usd.usersessionid, usd.userid, rh.rootuserid, rh.cookiehashes, ARRAY_LENGTH(rh.cookiehashes, 1) ch_length  FROM usersessions.data usd
+JOIN roothashes rh ON rh.rootuserid = usd.userid
+WHERE brandid = 1 
+AND datadatetime BETWEEN '2020-03-29'
+AND '2020-03-30' 
+AND usd.cookiehash <> all(rh.cookiehashes)
+ORDER BY ch_length DESC
+
+```
+
+### scratch
+```sql
+-- query to try and work out which sessions are matched with original vs regex shizzle
+SELECT count(*) FROM (
+	SELECT usersessionid, datadatetime, action 
+	FROM usersessionactions.v_usersessionactions
+	WHERE datadatetime BETWEEN '2019-06-22' 
+		AND '2019-06-23'
+	AND brandid = 1
+	AND action = 'viewusedvehiclepage') tng
+RIGHT OUTER JOIN (
+	SELECT usersessionid, datadatetime, action FROM usersessionactions.v_usersessionactions
+	WHERE datadatetime BETWEEN '2019-06-22' 
+	AND '2019-06-23'
+	AND brandid = 1
+	AND action = 'tngviewusedvehiclepage') orig ON (orig.usersessionid = tng.usersessionid and orig.datadatetime = tng.datadatetime) 
+```
 
