@@ -83,7 +83,15 @@ plot chart inline
 jupyter nbconvert --to FORMAT mynotebook.ipynb
 ```
 
+### dealing with issues
 
+#### more debug from notebook server
+
+```bash
+ jupyter notebook --allow-root --debug
+ # or
+jupyter lab --log-level=debug
+```
 
 ## pandas
 

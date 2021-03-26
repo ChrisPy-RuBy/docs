@@ -66,7 +66,7 @@ see tvs.md
 ## package management 
 - - - 
 
-### brew
+### homebrew
 
 system wide package manager for macOS
 ```bash
@@ -126,9 +126,24 @@ caveats:
 look into pg_upgrade
 run manually so you can see what is happening
 
-#### **link packages together**
+#### link packages together
 ```bash
 brew link <blah>
+```
+
+
+#### brewfile
+
+use this to install / maintain brew packages.  
+make sure you have the stuff installed
+
+```bash
+ brew tap Homebrew/bundle
+ ```
+
+install with
+```bash
+brew bundle
 ```
 
 ### python 
@@ -419,21 +434,21 @@ can see what scripts etc are being run here
 ![image](./img/teamcity_scripts_1.png)
 ![image](./img/teamcity_scripts_2.png)
 
-### **get actual teamcity output**
+### get actual teamcity output
 before running the TC script
 
 ```
 export TEAMCITY_VERSION=1
 ```
 
-### **unexpected error during build**
+### unexpected error during build
 
 ```
 Unexpected error during build messages processing in TeamCity 23:58:34
 Unexpected error occurred during build message processing in TeamCity, please contact your system administrator
 ```
 
-### **making a test in teamcity**
+### making a test in teamcity
 
  - TVS Core -> Testing -> Single Tests -> New build configuration 
 
@@ -443,7 +458,7 @@ Unexpected error occurred during build message processing in TeamCity, please co
 ![image](./img/new_build_config_4.png)
 
 
-### **make a test that used multiple repos**
+### make a test that used multiple repos
 
 - add all the repos in the VCS 
 ![image](./img/multirepo_1.png)
@@ -455,7 +470,7 @@ Unexpected error occurred during build message processing in TeamCity, please co
 zsh
 - - -
 
-## **what gets loaded and when**
+## what gets loaded and when
 | file | when its loaded | what to put in it |
 | :--- | :---: | ---: |
 | .zshenv | read every runtime | |

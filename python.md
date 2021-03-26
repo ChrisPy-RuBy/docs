@@ -35,7 +35,7 @@ do not mix types under the same variable
 
 #### Define Exceptions correctly
 
-``` python
+```python
 try:
     do somting
 except ValueError as e:
@@ -56,7 +56,7 @@ please dont use tuples again ever.
 
 #### single line if else statements
 
-``` python
+```python
 y = 1
 x = 10 if y > 10 else None
 ```
