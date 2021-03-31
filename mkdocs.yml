@@ -45,6 +45,7 @@ nav:
   - DATABASES:
       - postgres: postgres.md
       - mongodb : mongodb.md
+      - presto : presto.md
   - DATASCIENCE:
       - pandas: pandas.md
       - datascience: datascience.md
