@@ -1380,7 +1380,7 @@ ball = type('D', (object,), json.loads(temp))()
 Export your query as standard json (not the fancy Mongo Shiz). Either write to file or
 to clipboard.
 
-Read from clipboard
+#### parse json from clipboard
 
 ```python
 import pyperclip
@@ -1392,16 +1392,15 @@ parseddata = [json.loads(row) for row in datalist]
 # you now have the data as a list of dicts
 ```
 
-Read from file
+####  parse json from file
 
 ```python
 with open(<path>, 'r') as f:
-     list_of_rows = f.readlines()
-
-parserows = [json.loads(row) for row in list_of_rows]
+    list_of_rows = f.readlines()
+	parserows = [json.loads(row) for row in list_of_rows]
 ```
 
-Pipe in from stdin
+#### pipe in from stdin
 
 ```python
 import sys
@@ -1425,10 +1424,10 @@ for row in sys.stdin:
 ```
 
 #### parsing large files of json i.e. firehose data
-not really josn as no wrapping []
+not really json as no wrapping []
 [link](https://stackoverflow.com/questions/12451431/loading-and-parsing-a-json-file-with-multiple-json-objects-in-python)
 
-## os
+### os
 - - - 
 
 #### check for directory
@@ -1453,10 +1452,20 @@ os.makedirs(<path>, exists_ok=True)
 # don't recreate if if exists already'
 ```
 
-#### only make the folders if
+### subprocess
+
+#### shell out and run something
+
+```python
+p = subprocess.run(cmd, shell=True, check=True, text=True, capture_output=True)
+pout = p.stdout.splitlines()
+```
+
 
 ## pandas
 - - - - 
+
+see datascience.md
 
 ## performance / profiling
 - - - - 
