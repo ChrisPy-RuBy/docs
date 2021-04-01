@@ -1087,9 +1087,32 @@ def size_paginator(params):
 --- 
 stuff that is bz2 or from mongo is closer to bson than json
  
+#### dump something from mongo to a file
 
+```python
+from bson.json_util import dumps
+def dump_from_mongo(dump_to, collection, query):
 
-#### parse things out of mongo i.e. piwik* 
+    with open(dump_to, 'w') as f:
+        for doc in collection.find(query):
+            f.write(dumps(doc))
+```
+
+#### load some from mongo
+
+```python
+def load_from_mongo_json_dump(dump_from, collection, map_func=None):
+
+    with open(dump_from, 'r') as f:
+        data = f.readlines()
+        loaded_doc = loads(data[0])
+        if map_func:
+            loaded_doc = map_func(loaded_doc)
+        collection.insert_one(loaded_doc)
+```
+
+#### parse things out of mongo
+
 ```python
 from bson.json_util import loads, dumps
 
@@ -1583,6 +1606,18 @@ pipdeptree -r -p more-itertools
 ```
 
 ## pymongo
+
+#### dealing with ISODate from mongo
+
+```python
+# this bullshit. Not valid python
+ISODate("2020-09-18T15:30:41.900+0000")
+```
+
+becomes this
+```python
+datetime.datetime.strptime("2020-09-18T15:30:41.900+0000", "%Y-%m-%dT%H:%M:%S.%f%z")
+```
 
 ## psycopg2
 

@@ -3,6 +3,35 @@ summary: Doing stuff in presto
 - - - 
 
 # presto
+
+## admin
+
+### creating a table from a non-standard csv with no-header
+
+uses OpenCSVSerde
+change SERDEPROPERTIES 
+skip header line in Table props
+```
+CREATE EXTERNAL TABLE `outcomes_visits_file_cw_1`(
+  `userref` string COMMENT 'from deserializer', 
+  `datetime` string COMMENT 'from deserializer', 
+  `postcode` string COMMENT 'from deserializer')
+ROW FORMAT SERDE 
+  'org.apache.hadoop.hive.serde2.OpenCSVSerde' 
+WITH SERDEPROPERTIES ( 
+  'escapeChar'='\\', 
+  'separatorChar'='|') 
+STORED AS INPUTFORMAT 
+  'org.apache.hadoop.mapred.TextInputFormat' 
+OUTPUTFORMAT 
+  'org.apache.hadoop.hive.ql.io.HiveIgnoreKeyTextOutputFormat'
+LOCATION
+  's3://tvsquared-modeldata-backend-ds/experian/outcomes_visits_file'
+TBLPROPERTIES (
+  'has_encrypted_data'='false', 
+  'transient_lastDdlTime'='1617277978',
+  'skip.header.line.count'='1')
+```
 ## querying 
 
 
