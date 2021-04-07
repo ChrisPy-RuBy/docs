@@ -21,6 +21,23 @@ summary: Everything concerning dbs
 - never cast against column cast against values
 - always thing about what happens when you run an update / insert twice
 
+### union all vs in
+
+sometimes using "in" is slow
+Using "union all" can sometimes speed things up
+
+```sql 
+SELECT * FROM blarp
+WHERE bloop in ("a", "b", "c")
+
+-- vs 
+SELECT * FROM blarp
+WHERE bloop = "a"
+UNION ALL
+SELECT * FROM blarp
+WHERE bloop = "b"
+```
+
 ## troubleshooting
 
 just do this straight away
@@ -627,6 +644,8 @@ WHERE datadatetime BETWEEN '2017-08-02' AND '2017-08-03'
 AND tags::TEXT LIKE '%cost%'
 ```
 
+
+
 ### aggreate queries
 
 #### case statements
@@ -692,6 +711,42 @@ GROUP BY 1
 HAVING count(*) > 2
 ORDER BY 1
 ```
+
+#### window functions
+
+used for different types of aggregate statistics
+
+
+#### generate a row count for a specific grouping
+
+most basic type of window function.
+
+```sql
+SELECT 
+	tags->'prog' prog,
+	ROW_NUMBER () OVER (
+		PARTITION BY tags->'prog' 
+)
+FROM adspots.data
+WHERE brandid = 1
+AND datadatetime BETWEEN '2020-03-01' AND '2020-03-02'
+```
+
+#### generate a rank by a another columns for a specific grouping
+
+```sql
+SELECT 
+	tags->'prog' prog,
+	audience,
+	RANK () OVER (
+		PARTITION BY tags->'prog' 
+	ORDER BY audience DESC
+)
+FROM adspots.data
+WHERE brandid = 1
+AND datadatetime BETWEEN '2020-03-01' AND '2020-03-02'
+```
+
 
 
 ### tricks and tips

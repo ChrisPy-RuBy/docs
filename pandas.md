@@ -44,7 +44,7 @@ setcopy warning
 
 ## Selecting Data 
 
-### **The Index Operator**
+### The Index Operator
 
 using the index operator.
 Can be used in a variety of ways. Can pass in the following 
@@ -82,7 +82,7 @@ will true a df where all values where true
 
 ![mask](./img/pic5.png)
 
-### **The loc Operator**
+### The loc Operator
 
 loc and iloc always return a subset of a dataframe
 loc is used for columns with labels 
@@ -96,76 +96,76 @@ df.loc[<index row>,<index column>]
 df.loc[0, 'A'] # would return the contents for row 0, column 'A'
 ```
 
-#### **get a series for column label**
+#### get a series for column label
 
 ```python
 df.loc['a']
 ```
 
-#### **get a df for a column label**
+#### get a df for a column label
 
 ```python
 df.loc[['a']]
 ```
 
-#### **select a specific cell value**
+#### select a specific cell value
 
 ```python
 df.loc[0, 'A'] # would return the contents for row 0, column 'A'
 ```
 
-#### **selecting rows**
+#### selecting rows
 
 ```python
 df.loc[[1,4]] # would return a df with the rows [1-4] 
 df.loc[1] # would return a series from that role. 
 ```
 
-#### **selecting a column**
+#### selecting a column
 
 ```python
 df.loc[:, 5] # would return a series for all rows for column called 5
 df.loc[:,[1, 5]] # would return a df for all rows for columnd 1 and 5
 ```
 
-#### **create a sub-frame**
+#### create a sub-frame
  
  use a sub-frame of a larger df
 ```
 df.loc[[<row indexes>],[<column index>]] # would return a df that that.
 ```
 
-#### **create a subframe using slicing**
+#### create a subframe using slicing
 
 ```python
 df.loc[:3, 4:] # can pass in a slice or two. Although don't do this. It is impossible to read. 
 ```
 
-#### **get all columns that  aren't**
+#### get all columns that  aren't
 
 ```python
 df.loc[:, df.columns != 'blarp'] # would return everything that isn't in column blarp 
 ```
 
-#### **get the last row in a df**
+#### get the last row in a df
 ```python
 df.loc[df.index[-1], columns]
 ```
 
-### **iloc operators**
+### iloc operators
 
 filters frame based on column index ordinal rather that name
 
-#### **get series**
+#### get series
 
 ```
 df.iloc[-1]
 ```
 
-#### **get df**
+#### get df
 df.iloc[[0]]
 
-### **dot notation**
+### dot notation
 
 ```python
 df.a # returns a series with values in column a 
@@ -189,16 +189,16 @@ df.a # returns a series with values in column a
 
 [guide to write / read modes](https://stackoverflow.com/questions/16208206/confused-by-python-file-mode-w)
 
-### **excel sheets in pandas**
+### excel sheets in pandas
 [guide](https://chrisalbon.com/python/data_wrangling/pandas_dataframe_load_xls/)
 
 
 
-### **appending to a csv**
+### appending to a csv
 
 [append](https://stackoverflow.com/questions/17530542/how-to-add-pandas-data-to-an-existing-csv-file)
 
-### **read from clipboard**
+### read from clipboard
 
 ```python
 df = pd.read_clipboard(',', parse_dates=['jobstarted', 'jobfinished'])
@@ -209,66 +209,114 @@ df = pd.read_clipboard(',', parse_dates=['jobstarted', 'jobfinished'])
 
 ## Timeseries
 Using timeseries shizzle in pandas
-### **Useful timeseries stuff** 
+### Useful timeseries stuff 
 [useful article](https://jakevdp.github.io/PythonDataScienceHandbook/03.11-working-with-time-series.html)
 
-### **sampling a specific time**
+### datetime index stuff
+
+a lot of useful functionality comes from usings a datatime index 
+
+```
+df.index = pd.DatetimeIndex(df['datadatetime'])
+```
+
+#### trim a dataframe based on the dates
+
+with a datetimeindex
+
+```python
+trimmed_outcomes_df = df.loc['2020-03-01':'2021-01-01']
+```
+gives the rows between 2020-03-01 and 2021-01-01
+
+#### reindex a datetime index
+
+```python
+dataframe.reindex(alldays).fillna90
+```
+
+#### sampling a specific time
   
 ```python
 dt = df.between_time('21:00', '21:30')
 de = df.between_time('05:30', '06:00')
 ```
 
-### **comprehension to convert a timedelta inot hours**
+
+### timestamps / timeseries
+
+#### generate a timestamp timeseries
+
 ```python
-df['timedelta'] = [h.total_seconds()/3600 for h in df['time_difference']]
+df['datadatetime'] = pd.to_datetime(df['datadatetime'])
 ```
 
-### **datetime indexes**
-a lot of useful functionality comes from usings a datatime index 
+#### bucket timestamp series by a time grouping
+
+##### by day
+ 
+if you care about the ordering
+
+```python
+df['DOW'] = df['datadatetime'].dt.day_name()
+df['DOW'] = pd.Categorical(df['DOW'], categories=['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday', 'Sunday'],
+    ordered=True)
+to_plot = df['DOW'].value_counts().sort_index()
+```
+
+if you don't 
+
+```python
+df['datadatetime'].dt.day_name()
+```
+
+##### by hour
 
 ```
-df.index = pd.to_datetime(df.index) # one way to do it 
-tng_visits_df.index = pd.DatetimeIndex(tng_visits_df['datadatetime'])
-
+df['hour']= df['datadatetime'].dt.hour
+to_plot = df['hour'].value_counts().sort_index()
 ```
 
-### **geenrate a timeseries**
+
+#### generate a timeseries
+
 ```python
 all_days = pd.date_range(‘from’, ‘to’, freq=’D’)
 ```
 
-### **reindex a datetme index**
 
-```python
-dataframe.reindex(alldays).fillna90
-```
-
-### **Aggregate data into time buckets**
+### Aggregate data into time buckets
 
 ```python
 agg10min =  tng_visits_df.groupby(pd.TimeGrouper(freq='10Min')).agg({'time': 'count'})
 ```
 
-### **Plotting timedeltas**
+### timedeltas
+
+#### Plotting timedeltas
 
 ``` python
 df_combined['time_taken'].apply(lambda x: x.total_seconds() / 3600)
 ```
 
-### **convert unix to datetime**
+### datetime parsing
+
+#### convert unix to datetime
 
 ```python
 df['datetime'] = pd.to_datetime(df['clock'], unit='s')
 ```
 
-### **split datetime into date time**
+#### split datetime into date time
 
 ```python
 df['datetime'] = pd.to_datetime(df['clock'], unit='s')
 temp = pd.DatetimeIndex(df['datetime'])
 df["Date"] = temp.date
-df['Time'] = temp.timePA
+df['Time'] = temp.time
 ```
 
-
+### comprehension to convert a timedelta in to hours
+```python
+df['timedelta'] = [h.total_seconds()/3600 for h in df['time_difference']]
+```

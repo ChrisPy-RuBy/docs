@@ -73,6 +73,20 @@ system wide package manager for macOS
 /usr/local/Cellar/<package>
 ```
 
+#### brewfile
+
+use this to install / maintain brew packages.  
+make sure you have the stuff installed
+
+```bash
+ brew tap Homebrew/bundle
+```
+
+install with
+```bash
+brew bundle
+```
+
 #### get brew to update its package list
 ```bash
 brew update
@@ -131,20 +145,6 @@ run manually so you can see what is happening
 brew link <blah>
 ```
 
-
-#### brewfile
-
-use this to install / maintain brew packages.  
-make sure you have the stuff installed
-
-```bash
- brew tap Homebrew/bundle
- ```
-
-install with
-```bash
-brew bundle
-```
 
 ### python 
 
@@ -227,7 +227,19 @@ commit the lock and toml file once it goes through OK.
 ##### add a team specific dependency to the .toml file. 
 
 ```sh
-poetry add jupyterlab -E datascience
+poetry add jupyterlab -E datascience --optional
+```
+
+need to the following section of the pyproject.toml file also
+```
+[tool.poetry.extras]
+datascience = ['jupyterlab', 'seaborn']
+```
+
+then install the addtional packages with
+
+```
+poetry install -E datascience
 ```
 
 ##### troubleshooting

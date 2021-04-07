@@ -8,28 +8,28 @@ Title: mongoDB
 [methods_collection_ref](https://docs.mongodb.com/manual/reference/method/js-collection/)
 
 
-## **Maintainence and Manangment**
+## Maintainence and Manangment
 
-### **performance profiling etc**
+### performance profiling etc
 
 [tipson performance profiling](https://studio3t.com/knowledge-base/articles/mongodb-query-performance/)
 
-### **dealing with indexes**
+### dealing with indexes
 
 An index looks like this
 brand_1_gran_1_group_1_metric_1_date_1_split_1_splitname_1_action_1
 The query will go through the index sequentially until it can’t do anymore. Always specify the exact value not a range if possible. 
 
 
-### **setting up a raw db connection**
+### setting up a raw db connection
 
 ```python
 server_url =  mongodb://username:password@somewhere.mongolayer.com:10011/my_database
 username = analysis
-password = <fuck shit bum>
+password = <password>
 ```
 
-### **fast server stuff**
+### fast server stuff
 
 ```python
 for db in request.backenddb.mongo.list_databases():
@@ -38,26 +38,26 @@ for db in request.backenddb.mongo.list_databases():
         clientdb = request.backenddb.mongo.get_database(db['name'])
         collections  set(clientdb.collections_names(include_system_colelctions=False))
         for collection in collections :
-            <fuck shit bum>
+            <do something>
 ```
 
-#### **Deleting documents**
+#### Deleting documents
 
 ```javascript
 db.getCollection("jobqueue").deleteMany({'jobtype': 'INF.CRON', 'jobstatus': 'FAILED'}
 ```
 
-#### **Updating Docs**
+#### Updating Docs
 
 find and update multidocs
 ```javascript
 db.getCollection("jobqueue").update(<query>, {'$set': {'fuck': 'shit'}}, multi=True)
 ```
 
-#### **sorting with pymongo**
+#### sorting with pymongo
 [sorting](https://stackoverflow.com/questions/8109122/how-to-sort-mongodb-with-pymongo)
 
-## **terminal mongo**
+## terminal mongo
 
 ```javascript
 # Switching Mongo databases within a server
@@ -66,9 +66,9 @@ db = db.getSiblingDB(‘<database name>’)
 db.getCollection(<collection name>).find(<query>)
 ```
 
-## **Basic Queries**
+## Basic Queries
 
-### **Search for value where value is not equal to another value**
+### Search for value where value is not equal to another value
 
 ```javascript
 {
@@ -83,18 +83,18 @@ db.getCollection(<collection name>).find(<query>)
         }
     }
 ```
-#### **distinct values**
+#### distinct values
 
 ```javascript
 db.demographics.distinct('<thing>')
 ```
 
-#### **count docs**
+#### count docs
 ```javascript
 db.brands.find({}).count()
 ```
 
-### **conditional querying of sub-docs**
+### conditional querying of sub-docs
 
 example
 ```jvascript
@@ -106,25 +106,25 @@ if Object.keys(brand.viscodeSettings).length > 10 {
 ```
 
 
-#### **where field A > B**
+#### where field A > B
 
 ```javascript
 db.getCollection("piwik1410-1.sessions").find({$expr: {$gt: ["$lasttime", "$time"]}}).sort({lasttime: 1})
 ```
 
-#### **all values between two dates**
+#### all values between two dates
 
 ```python
 q = { "datetime": { $gte: ISODate("2017-06-30"),  $lt: ISODate("2017-07-01")}}
 ```
 
-#### **check whether a array exists and its not empty**
+#### check whether a array exists and its not empty
 
 ```
 db.getCollection("brands").find({'first_actions': {$exists: true, $ne: []}, 'first_all_response': true}, {'clientshortid': 1, 'shortid': 1})
 ```
 
-### **mongo regexes**
+### mongo regexes
 
 basic example
 ```javascript
@@ -136,15 +136,15 @@ $ is end
 i is case insensitive
 
 
-#### **search for a single field in multiple values**
+#### search for a single field in multiple values
 
 ```python
 q = {shortid: {$in: [282, 1229]}} 
 ```
 
-## **Aggregate Queries**
+## Aggregate Queries
 
-### **basic agg queries**
+### basic agg queries
 
 ```javascript
 db.demographicmaps.aggregate(
@@ -205,7 +205,7 @@ db.getCollection("jobqueue").aggregate(
 );
 ```
 
-#### **collection lookups**
+#### collection lookups
 
 If you want to join docs from multiple collections use a lookup
 ```javascript
@@ -352,9 +352,9 @@ db.getCollection("jobqueue").aggregate([
 
 same query with additional datatimne maths
 ```javascript
-/* Set the number of days you want to check */
+/ Set the number of days you want to check /
 var number_of_days_back = 10;
-var days_in_ms = number_of_days_back * 24 * 60 * 60 * 1000;
+var days_in_ms = number_of_days_back  24  60  60  1000;
 var today = Date.now();
 var then = today - days_in_ms;
 var then_str = new Date(then).toISOString();
@@ -412,9 +412,9 @@ db.getCollection("ts").aggregate([
 
 
 
-## **bugs**
+## bugs
 
-#### **data directory not found**
+#### data directory not found
 
 fixed with 
 ```bash

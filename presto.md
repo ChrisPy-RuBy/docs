@@ -36,6 +36,14 @@ TBLPROPERTIES (
 
 
 
+### DATE_PARSE
+
+minute is %i not %M you wazzock
+```sql
+DATE_PARSE(datetime, '%Y-%m-%dT%H:%i:%S')
+```
+
+
 ### regex shizzle
 
 ``` sql
