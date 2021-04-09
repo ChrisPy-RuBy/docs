@@ -52,6 +52,7 @@ nav:
       - spark: spark.md
       - sheets: sheets.md
       - maths: maths.md
+      - plotting: plotting.md
   - DEVOPS:
       - devops: devops.md
       - aws: aws.md
