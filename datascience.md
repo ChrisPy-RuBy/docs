@@ -301,37 +301,7 @@ plt.axis([-1, 11, -1.5, 1.5])
 plt.axis('tight')
 ```
 
-#### Add labels
-
-Basics
-```python
-# self explanatroy
-plt.ylabel('total seconds')
-plt.xlabel('Date')
-```
-
 #### Ticks
-
-Basics
-```python
-# rotate ticks
-plt.xticks(rotation=45)
-```
-
-#### Hide ticks
-```python
-ax = plt.axes()
-ax.yaxis.set_major_locator(plt.NullLocator()) # hides everything, tick and labels
-ax.xaxis.set_major_formatter(plt.NullFormatter()) # hides labels, keeps ticks 
-```
-
-#### Varying number of ticks
-
-```python
-ax = plt.axes()
-ax.xaxis.set_major_locator(plt.MaxNLocator(3))
-ax.yaxis.set_major_formatter(plt.MaxNLocator(3))
-```
 
 ### Error bars
 
@@ -365,31 +335,6 @@ with plt.xkcd():
 plt.show()
 ```
 
-#### two x one y plot
-
-
-```python
-def doubleYSingleXPlot(x, y1, y2, xlabel, y1label, y2label):
-
-    fig, ax1 = plt.subplots()
-    color = 'tab:red'
-    ax1.set_xlabel(xlabel)
-    ax1.set_ylabel(y1label, color=color)
-    ax1.plot(t, y1, color=color)
-    ax1.tick_params(axis='y', labelcolor=color)
-
-    ax2 = ax1.twinx()
-
-    color= 'tab:blue'
-    ax2.set_ylabel(y2label, color=color)
-    ax2.plot(t, y2, color=color)
-    ax2.tick_params(axis='y', labelcolor=color)
-
-    fig.tight_layout()
-    plt.show()
-
-doubleYSingleXPlot(t, y1, y2, 'x', 'a', 'b')
-```
 #### multiplots shared x axis, stacked y
 
 ```python
