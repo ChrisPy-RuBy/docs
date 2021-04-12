@@ -12,6 +12,17 @@ Summary: plotting
 
 ### histogram
 
+for viewing distributions of data. Count the frequency of a specific value and plot. 
+Binning is important as both too large bins or too small can hide the underlying behaviour.
+
+#### basic histogram
+
+#### cumulative histogram
+
+```python
+data.hist(bins=60, cumulative=True, histtype='step')
+```
+![image](./img/cum_histo.png)
 ###
 
 ## matplotlib
