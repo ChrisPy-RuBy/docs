@@ -10,13 +10,29 @@ Summary: plotting
 
 ### bar chart
 
+#### horizontal bar chart
+
+```python
+def plot_chart(data):
+    plt.rcdefaults()
+    fig, ax = plt.subplots()
+    plot_data = data
+    ax.barh([d[0] for d in plot_data],
+            [d[2] for d in plot_data],
+            left=[d[1] for d in plot_data],
+            align='center')
+    ax.set_xlabel('Seconds')
+```
+
+![image](./img/async.png)
+![image](./img/sync.png)
+
 ### venn diagram
 
 ### histogram
 
 for viewing distributions of data. Count the frequency of a specific value and plot. 
 Binning is important as both too large bins or too small can hide the underlying behaviour.
-
 
 #### basic histogram
 
@@ -29,7 +45,6 @@ data.hist(bins=60, cumulative=True, histtype='step')
 ###
 
 ## matplotlib
-
 
 ### plot customisation
 
@@ -78,10 +93,6 @@ plt.xlable("x_label")
 ax = plt.axes()
 ax.set_xlabel("x_label")
 ax.set_ylabel("y_label")
-```
-
-# or the underlying axes
-
 ```
 
 #### data points

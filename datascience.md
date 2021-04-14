@@ -63,6 +63,35 @@ prediction = test.predict(sample_house)
 
 ## jupyter notebooks
 
+
+### create a notebook template
+
+```bash
+pip install jupyterlab_templates
+jupyter labextension install jupyterlab_templates
+jupyter serverextension enable --py jupyterlab_templates
+jupyter notebook --generate-config
+```
+
+add the following to the 
+```python
+c.JupyterLabTemplates.template_dirs = ['$HOME/<some directory']
+c.JupyterLabTemplates.include_default = True
+c.JupyterLabTemplates.include_core_paths = True
+```
+in the $HOME/.jupyter/jupyter_notebook_config.py file
+
+now make a sub folder in the directory and put a template in it!
+jesus that was hard work
+
+### scrollable dataframes
+
+### script magic commands
+
+```python
+get_ipython().magic('matplotlib inline')
+```
+
 ### using venvs with notebooks
 
 ### useful magics
