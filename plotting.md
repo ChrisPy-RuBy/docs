@@ -115,7 +115,8 @@ plt.tight_layout()
 
 #### 1to2 plot
 
-empty 
+an empty plot  
+
 ![image](./img/1-2_plot_empty.png)
 ```python
 ax1 = plt.subplot(121)

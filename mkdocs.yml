@@ -53,6 +53,7 @@ nav:
       - sheets: sheets.md
       - maths: maths.md
       - plotting: plotting.md
+      - ml: machine_learning.md
   - DEVOPS:
       - devops: devops.md
       - aws: aws.md
