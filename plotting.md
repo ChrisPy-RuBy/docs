@@ -29,6 +29,42 @@ def plot_chart(data):
 
 ### venn diagram
 
+
+```python
+from matplotlib_venn import venn2, venn2_circles
+figure, axes = plt.subplots(2, 2)
+venn2(subsets={'10': 1, '01': 1, '11': 1}, set_labels = ('A', 'B'), ax=axes[0][0])
+venn2_circles((1, 2, 3), ax=axes[0][1])
+venn3(subsets=(1, 1, 1, 1, 1, 1, 1), set_labels = ('A', 'B', 'C'), ax=axes[1][0])
+# Abc, aBc, ABc, abC, AbC, aBC, ABC
+venn3_circles({'001': 10, '100': 20, '010': 21, '110': 13, '011': 14}, ax=axes[1][1])
+plt.show()
+```
+
+![image](./img/venn.png)
+
+### Up Set Plot
+
+```python
+from upsetplot import generate_counts, from_memberships
+from upsetplot import plot
+example = from_memberships(
+[[],
+['cat2'],
+['cat1'],
+['cat1', 'cat2'],
+['cat0'],
+['cat0', 'cat2'],
+['cat0', 'cat1'],
+['cat0', 'cat1', 'cat2'],
+],
+data=[56, 283, 1279, 5882, 24, 90, 429, 1957]
+)
+plot(example)
+```
+
+![image](./img/upset.png)
+
 ### histogram
 
 for viewing distributions of data. Count the frequency of a specific value and plot. 
