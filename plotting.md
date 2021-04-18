@@ -29,6 +29,7 @@ def plot_chart(data):
 
 ### venn diagram
 
+<<<<<<< Updated upstream
 
 ```python
 from matplotlib_venn import venn2, venn2_circles
@@ -64,6 +65,13 @@ plot(example)
 ```
 
 ![image](./img/upset.png)
+=======
+rule of thumb, don't plot more than 3 - 4 components
+
+### up set plot
+
+good alternative to a venn diagram with more than 4 components.
+>>>>>>> Stashed changes
 
 ### histogram
 
