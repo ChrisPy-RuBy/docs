@@ -207,7 +207,23 @@ axins = ax.inset_axes([0.5, 0.5, 0.47, 0.47])
 axins.hist(<histo_df>, bins=60, cumulative=True, histtype='step')
 ```
 
-#### shared axis
+#### shared y axis
+
+```python
+fig, (ax1, ax2) = plt.subplots(1, 2, sharey=True, figsize=[10, 4])
+ax1.set_title('left title')
+ax1.set_xlabel('left x axis')
+ax1.set_ylabel('y axis')
+
+ax2.set_title('right title')
+ax2.set_xlabel('right x axis')
+
+plt.tight_layout()
+```
+
+![image](./img/shared_y.png)
+
+#### shared x axis
 
 plot two sets of data with different y axes on the same x.
 
@@ -219,14 +235,14 @@ def doubleYSingleXPlot(x, y1, y2, xlabel, y1label, y2label):
     ax1.set_xlabel(xlabel)
     ax1.set_ylabel(y1label, color=color)
     ax1.plot(t, y1, color=color)
-    ax1.tick_params(axis='y', labelcolor=color)
+    ax1.tick_params(axis='y', labelcolor='black')
 
     ax2 = ax1.twinx()
 
     color= 'tab:blue'
     ax2.set_ylabel(y2label, color=color)
     ax2.plot(t, y2, color=color)
-    ax2.tick_params(axis='y', labelcolor=color)
+    ax2.tick_params(axis='y', labelcolor='black')
 
     fig.tight_layout()
     plt.show()
