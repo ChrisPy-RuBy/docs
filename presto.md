@@ -32,6 +32,28 @@ TBLPROPERTIES (
   'transient_lastDdlTime'='1617277978',
   'skip.header.line.count'='1')
 ```
+
+### creating a new atable from another table
+
+```sql
+CREATE TABLE test_crosswalk_2
+with (
+  format = 'PARQUET',  
+  external_location = 's3://tvsquared-athena-ds/testcrosswalk_2/', 
+  partitioned_by = ARRAY['vendor_name', 
+                         'key_name', 
+                         'yy', 
+                         'mm', 
+                         'dd']
+  )
+as SELECT cw.key_value, cw.excluded_stamp, cw.excluded_reason, cw.complex_range, obf.vendor_name, cw.key_name, cw.yy, cw.mm, cw.dd
+   FROM "crosswalk_ds"."crosswalk" cw
+   JOIN experian.outcomes_basefile_for_filtering obf ON obf.outcomes_experianid = cw.key_value
+   WHERE cw.vendor_name = 'historicinscape'
+   AND cw.key_name = 'experian_hh_id'
+```
+
+
 ## querying 
 
 

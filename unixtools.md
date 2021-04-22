@@ -1,5 +1,5 @@
 Title: unixtools
-shummary: Notes on Useful unix tools
+summary: Notes on Useful unix tools
 - - - 
 
 # unixtools
@@ -614,14 +614,34 @@ htop
 
 
 
-## **jq**
+## jq
 - - - 
 
 Tools for doing stuff with json.
 jq is a super useful tool for processing json from cmdline  
 Can easily pipe results to other cmdline tools.
 [docs](https://stedolan.github.io/jq/manual/)  
-[useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
+[useful cheat sheet](https://lzone.e/cheat-sheet/jq)  
+
+
+### compare two json files
+
+
+This compares two sorted json files with whitespare stripped. It provides a yes / no to whether they
+are the same.
+```bash
+cmp <(jq -cS . A.json) <(jq -cS . B.json)
+```
+
+
+### diff two json files
+
+alternative [here](http://play.jd-tool.io/)
+Similar to above but human readable diff 
+```bash
+vimdiff <(jq -S . A.json) <(jq -S . B.json)
+```
+
 
 
 ### extract nested key from json
@@ -635,7 +655,7 @@ Can easily pipe results to other comdline tools.
 [docs](https://stedolan.github.io/jq/manual/)  
 [useful cheat sheet](https://lzone.de/cheat-sheet/jq)  
 
-### **pipecomplressed files to jq**
+### pipecomplressed files to jq
 ```bash
 bzcat <filename>.json.bz2 | jq '.' - | sort | less
 ```
@@ -864,7 +884,7 @@ useful flags
 -n: inverse, get everything that doesn't match.
 -g: global, all instances of match in whole file.
 
-### **find and replace**
+### find and replace
 ```bash
 sed 's/<thing to find>/<thing to replace with>/g' <filelocation>.csv > <filedestination>.txt
 ```
@@ -873,7 +893,14 @@ example
 sed 's/"/""/g' extra.holidays.2018.csv> whatnewcsv.txt
 ```
 
-### **find and delete**
+### append to a row 
+
+```bash
+# append ,<stuff>
+sed 's/$/,stuffuwantattheendoftheline/' readfrom.csv | tee output.csv
+```
+
+### find and delete
 https://stackoverflow.com/questions/5410757/delete-lines-in-a-text-file-that-contain-a-specific-string
 
 ```bash
