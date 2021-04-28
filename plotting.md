@@ -6,6 +6,9 @@ Summary: plotting
 
 ## plot types
 
+### interactive plots
+
+see (here)[]
 ### scatter plot
 
 ### bar chart
@@ -27,9 +30,11 @@ def plot_chart(data):
 ![image](./img/async.png)
 ![image](./img/sync.png)
 
+#### vertical bar charts
+
+
 ### venn diagram
 
-<<<<<<< Updated upstream
 
 ```python
 from matplotlib_venn import venn2, venn2_circles
@@ -65,7 +70,6 @@ plot(example)
 ```
 
 ![image](./img/upset.png)
-=======
 rule of thumb, don't plot more than 3 - 4 components
 
 ### up set plot
@@ -86,7 +90,6 @@ Binning is important as both too large bins or too small can hide the underlying
 data.hist(bins=60, cumulative=True, histtype='step')
 ```
 ![image](./img/cum_histo.png)
-###
 
 ## matplotlib
 
