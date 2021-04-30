@@ -75,7 +75,12 @@ fi
 
 #### negation
 
-write something
+```bash
+if ! [ -f $FILE ]; then
+    echo "Not here"
+fi
+```
+
 
 ### variables / assignment
 
