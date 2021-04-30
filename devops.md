@@ -170,6 +170,11 @@ pipx runpip mkdocs install mkdocs-material-extensions
 
 Have multiple python versions on your machine
 
+##### set up a venv with a specific python version
+
+```bash
+pyenv local <py version>
+python3 -m venv env
 ##### List all available versions
 
 ```

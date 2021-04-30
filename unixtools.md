@@ -266,7 +266,18 @@ will get the contents of the 5th column split on ,
 
 ## cron
 https://opensource.com/article/17/11/how-use-cron-linux
-### **edit the crontab**
+
+### run something in a cron every blah minutes
+
+```bash
+*/5 * * * * <do something>
+# alternative that would run between 0 and 30 mins every 5 mins
+0,5,10,15,20,25,30 * * * *  <do something>
+
+```
+
+### edit the crontab
+
 ```bash
 vim crontab -e
 ```

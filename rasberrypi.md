@@ -1,6 +1,18 @@
 Title: Raspberry Pi 
 - - - 
 
+# raspberry pi
+
+## setup
+
+open up the config menu. 
+You can use this menu in order 
+```bash
+sudo raspi-config
+```
+
+
+
 # give a pi a static address on a network
 
 [read this](https://pimylifeup.com/raspberry-pi-static-ip-address/)
