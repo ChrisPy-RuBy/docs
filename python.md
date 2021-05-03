@@ -1374,12 +1374,14 @@ for k, grouped in groupby(x):
 #### where a script is run 
 ```python
 cwd = pathlib.Path().cwd()
+# where you called the script from
 ```
 
 #### path to where a file is actually located
 
 ```python
 rwd = pathlib.Path(__file__)
+/Users/chriswoodall/dev/<somedir>/<somesub>/file.py
 ```
 
 #### join file to path

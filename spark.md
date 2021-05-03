@@ -5,6 +5,19 @@ summary: Notes on spark
 
 ## troubleshooting / config
 
+###
+
+```python
+raise Exception(("Python in worker has different version %s than that in " +
+Exception: Python in worker has different version 3.9 than that in driver 3.7, PySpark cannot run with different minor versions. Please check environment variables PYSPARK_PYTHON and PYSPARK_DRIVER_PYTHON are correctly set.
+```
+
+due to issues with the PYSPARK_PYTHON variable
+had to reset and put into the my zshrc rather than in 
+$HOME/spark/spark/conf/spark-env.sh
+It seems to be being ignored here.
+
+
 ### java process hangs when creating a spark context 
 
 java out of date

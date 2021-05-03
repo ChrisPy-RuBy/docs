@@ -68,6 +68,28 @@ DATE_PARSE(datetime, '%Y-%m-%dT%H:%i:%S')
 
 ### regex shizzle
 
+#### generate keys from strings
+
+```
+with spot_keys as (
+  SELECT distinct(spot_key)
+  FROM db.table
+  WHERE event_class = 'impression'
+  AND event = 'linear'
+), argh as (
+SELECT regexp_extract_all(spot_key, '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})_(\d+)_(\d+)_(\d+)_(\d+)', 1)[1] as timestamp,
+       regexp_extract_all(spot_key, '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})_(\d+)_(\d+)_(\d+)_(\d+)', 2)[1] as modelid,
+       regexp_extract_all(spot_key, '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})_(\d+)_(\d+)_(\d+)_(\d+)', 3)[1] as channelid,
+       regexp_extract_all(spot_key, '(\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2})_(\d+)_(\d+)_(\d+)_(\d+)', 4)[1] as regionid
+FROM spot_keys
+) 
+SELECT regionid, count(*)
+FROM argh
+GROUP BY 1
+ORDER BY 2 DESC
+"""
+```
+
 ``` sql
 SELECT regexp_like(url, <regex> FROM <blah> 
 ```
