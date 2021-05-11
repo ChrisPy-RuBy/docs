@@ -54,6 +54,16 @@ as SELECT cw.key_value, cw.excluded_stamp, cw.excluded_reason, cw.complex_range,
 ```
 
 
+### alter partitions
+
+```sql
+ALTER TABLE raw_collector_logs_eu_west_1 ADD 
+    PARTITION (collector='collectori-prod', year='2021', month='05', day='04') 
+    location "s3://DERP"
+```
+
+
+
 ## querying 
 
 

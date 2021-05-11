@@ -12,22 +12,22 @@ summary: everything to do with git.
 
 [git basics](https://git-scm.com/book/en/v2/Git-Basics-Undoing-Things)
 
-## **setup**
+## setup
 - - - - - 
 
-#### **gitignore files**
+#### gitignore files
 
 create a gitignore whitelist
 ```bash
-*
-!*/
-!/<whitelist_item>/**
+
+!/
+!/<whitelist_item>/
 ```
 
-#### **setup pre-commit checks**
+#### setup pre-commit checks
 
 
-#### **setuping up git hooks**
+#### setuping up git hooks
 
 ```bash 
 mkdir -p ~/.git-templates/hooks
@@ -37,9 +37,9 @@ git config --global init.templatedir '~/.git-templates'
 ```bash
 #!/bin/bash
 
-current_branch=$(git symbolic-ref HEAD | sed -e 's,.*/\(.*\),\1,')
+current_branch=$(git symbolic-ref HEAD | sed -e 's,./\(.\),\1,')
 
-if [[ $current_branch == *"tvsrelease"* ]]  
+if [[ $current_branch == "tvsrelease" ]]  
 then  
 	echo "Trying to push to a protected branch, use a pull request instead"
     exit 1 # push will not execute
@@ -55,7 +55,7 @@ chmod a+x ~/.git-templates/hooks/pre-push
 Then go into all currently checked out repositories (backend, frontend, common, misc, anisble etc.) and do git init.
 It should automatically run git init and insert the hook when you do git clone to get a new repository down so if you do this before fetching any of the repos you won't have to do "git init"
 
-#### **add automatic linting / formating to pre-commit**
+#### add automatic linting / formating to pre-commit
 
 https://ljvmiranda921.github.io/notebook/2018/06/21/precommits-using-black-and-flake8/
 
@@ -74,14 +74,14 @@ git apply <path to diff>
 Useful alternative to merge or rebase. Used to pick individual commits to release branches in 
 prod.
 
-#### **Basic usage** 
+#### Basic usage 
 
 ```bash
 git checkout master
 git cherry-pick <commit hash>
 ```
 
-#### **Update the release branch**
+#### Update the release branch
 
 Procedure for pulling commits onto release branch
 ```bash
@@ -92,13 +92,13 @@ git cherry-pick <commit hash>
 
 ## commit 
 - - - - -
-#### **Amend last commit message**
+#### Amend last commit message
 
 ```bash
 git commit --amend -m "ref T6251 - WIP"
 ```
 
-#### **amend the previous commit**
+#### amend the previous commit
 
 good to do if the previous commit failed due to pep8 etc
 
@@ -106,7 +106,7 @@ good to do if the previous commit failed due to pep8 etc
 git commit --amend
 ```
 
-#### **Commit without pre-commit hook**
+#### Commit without pre-commit hook
 
 ```bash
 git commit -m "I'm going to kill them all" --no-verify
@@ -127,17 +127,17 @@ glol
 
 ## branch
 - - - - - 
-#### **display all local branches**
+#### display all local branches
 ```bash
 git branch
 ```
 
-#### **display all remote branches**
+#### display all remote branches
 ```bash
 git branch -4
 ```
 
-#### **delete local branch**
+#### delete local branch
 
 ```bash
 git branch -d <branch name>
@@ -152,25 +152,25 @@ in branch where you want the file
 git checkout <branch from> <pathtofile>
 ```
 
-#### **create new branch**
+#### create new branch
 
 ```bash
 get checkout -b <new-branch-name>
 ```
 This will take all the changes across to the new branch
 
-#### **change branch**
+#### change branch
 
 ```bash
 git checkout <other branch>
 ```
 
-#### **drop all changes in a specfic file**
+#### drop all changes in a specfic file
 ```bash
 git checkout -- <specific file path>
 ```
 
-#### **drop all unstaged changes**
+#### drop all unstaged changes
 
 ```bash
 git checkout .
@@ -179,27 +179,33 @@ git checkout .
 ## diff
 - - - - 
 
-#### **files with differences between two branches**
+#### generate a diff that you can then use as a patch
+
+```bash
+git diff branch_1..branch_2 -- file_to_diff.py > patch.diff
+```
+
+#### files with differences between two branches
 
 ```bash
 git diff --name-only <branch1> <branch2>
 ```
 
 
-#### **difference between two files**
+#### difference between two files
 
 ```bash
-git diff *
+git diff 
 ```
 
-#### **differences between two branches**
+#### differences between two branches
 ```bash
 git diff <branch_1> <branch_2>
 ```
 
 ## pull
 - - - - -
-#### **cleaner work history and no pointless merge commits** 
+#### cleaner work history and no pointless merge commits 
 
 !!! note
     Only do this from remote into local. Never the other way round.
@@ -224,7 +230,7 @@ will rebase in inteactive mode with some instructures. I might want to investiga
 ## reset
 - - - -
 
-#### **reset a local branch to be the same a remote**
+#### reset a local branch to be the same a remote
 
 do this when you get a horrible merge mess locally. 
 ```
@@ -232,12 +238,12 @@ git reset --hard origin/tvsdev.133
 ```
 
 
-#### **unstage specific files** 
+#### unstage specific files 
 ```bash
 git reset HEAD <filename.py> 
 ```
 
-#### **reset branch locally to head i.e. last commit** 
+#### reset branch locally to head i.e. last commit 
 ```bash
 git reset --hard HEAD
 ``` 
@@ -248,7 +254,7 @@ alternativly
 git reset --hard origin/master
 ```
 
-#### **undo the last commit**
+#### undo the last commit
 ```bash
 git reset --hard HEAD^
 ```
@@ -259,14 +265,14 @@ Stashing stores tracked and untracked changes for a later date so that you can a
 
 https://git-scm.com/docs/git-stash
 
-#### **name your stash like a mad lad!**
+#### name your stash like a mad lad!
 
 ```bash
 git stash save <your crappy name!>
 ``` 
 
 
-#### **stash all stages and unstaged changes**
+#### stash all stages and unstaged changes
 
 Allows you to change branches and pull etc without merge issues
 ```bash
@@ -274,34 +280,34 @@ git stash
 ```
 Results in a stash associated with a specific commit message
 
-#### **bring back last stashed changes**
+#### bring back last stashed changes
 
 ```bash 
 git stash pop
 ```
 
-#### **clear all stashes**
+#### clear all stashes
 
 ```bash
 git stash clear
 ```
 
-#### **list all stashes**
+#### list all stashes
 ```bash
 git stash list 
 ```
 
-#### **show contents of specific stash**
+#### show contents of specific stash
 ```bash
 git stash show -p stash@{1}
 ```
 
-#### **drop a single stash**
+#### drop a single stash
 ```bash
 git stash drop <stash hash or number>
 ```
 
-#### **apply a specific stash**
+#### apply a specific stash
 not the same as pop but similar
 ```bash
 git stash apply stash@{1}
@@ -330,7 +336,7 @@ clone a repo from somewhere
 
 ## Gitlab
 - - - - 
-#### **deleting remote branches**
+#### deleting remote branches
 use the git lab gui
 ## Github
 - - - -

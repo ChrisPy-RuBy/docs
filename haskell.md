@@ -4,6 +4,7 @@ summary: quick guide to some interesting haskell stuff
 
 # basics
 
+
 ## open the interpreter
 
 ```haskell
