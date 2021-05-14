@@ -66,8 +66,18 @@ ALTER TABLE raw_collector_logs_eu_west_1 ADD
 
 ## querying 
 
+### DATE_PARSE with INTERVAL
 
-
+```
+with b as (
+  SELECT *, DATE_PARSE(protected_timestamp,  '%Y-%m-%d %H:%i:%S') as dt 
+  FROM "experian"."foursquare_visits_file"
+  WHERE chainname LIKE '%ture'
+)
+SELECT b.tvs_synthetic_id as userref, dt - interval '182' day as sessiondatetime, b.zip FROM b
+WHERE dt BETWEEN TIMESTAMP '2020-07-01' AND TIMESTAMP '2020-08-29'
+ORDER BY dt
+``` 
 ### DATE_PARSE
 
 minute is %i not %M you wazzock

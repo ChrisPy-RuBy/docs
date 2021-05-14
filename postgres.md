@@ -586,6 +586,23 @@ D.tags -> ‘sh’    will create a column with the values of the ‘sh’ tag
 D.tags ? ‘prog’  will create a column of Boolean masks that determine weather prog is present in the table or not.   
 
 
+#### jsonb 
+
+```sql
+select
+adspotid,
+sessions->>'usersessionid' as sessionid,
+cast(sessions->>'proportion' as float) as attribution
+FROM adspots."data", jsonb_array_elements(advancedtvdata->'sessions') sessions
+where 
+brandid = 1
+and tags->'datagroup' = '_advancedtv_vod'
+and datadatetime between '2020-07-10' and '2020-08-01'
+and sessions->>'action' = 'all response'
+order by 1 desc
+limit 10;
+```
+
 #### hstore scratch
  
 selecting shizzle 
