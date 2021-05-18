@@ -8,6 +8,11 @@ summary: useful maths
 ## mathjax guide
 
 $$
+\bar x
+\hat y
+$$
+
+$$
 \int f(x)dx  
 $$  
 

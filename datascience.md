@@ -61,7 +61,20 @@ sample_house = [[2.29690000e-01, 0.00000000e+00, 1.05900000e+01, 0.00000000e+00,
 prediction = test.predict(sample_house)
 ```
 
-## jupyter notebooks
+## jupyter notebooks / lab
+
+### getting notebooks to work with venvs
+
+setup venv as expected 
+```bash
+python -m ipykernel
+ipython kernel install --user --name=<env name>
+```
+
+how this doesn't seem to be working with my setup. It still gets the packages from pyenv installation rather than the 
+venv installation.
+
+
 
 
 ### create a notebook template
