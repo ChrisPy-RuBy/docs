@@ -571,6 +571,16 @@ check all files leading with crontab to see if they contain python
 grep python crontab*
 ```
 
+## graphviz
+
+plot graphs as in graphs 
+
+### from dot file to png
+
+```
+dot.file | dot -Tpng -x > dot.png
+```
+
 ## head/tail
 
 ### **subsection of file**
@@ -597,6 +607,10 @@ tail -n +2 <filename>.csv | head
 ```
 
 ### **stream a logfile**
+
+```bash
+tail -f /usr/local/var/log/postgres.log
+```
 
 
 ## htop

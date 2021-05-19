@@ -603,6 +603,18 @@ order by 1 desc
 limit 10;
 ```
 
+##### pulling stuff from top layer postgres json
+
+```
+SELECT bum,
+jsonb(foo->>'bah') as scalefactor, 
+datadatetime
+FROM adspots.v_adspots
+WHERE yo_mama is not null
+ORDER BY 3
+```
+
+
 #### hstore scratch
  
 selecting shizzle 
