@@ -65,6 +65,18 @@ $$
 
 ## probabilty
 
+### the normal distribution
+
+without normalising. doesn't sum to 1
+$$
+f(x) = e^{\frac{(x-a)^2}{2\sigma^2}}
+$$
+
+with normalising
+$$
+f(x) = \frac{1}{\sqrt{2\pi\sigma}}e^{\frac{(x-a)^2}{2\sigma^2}}
+$$
+
 ### entropy and probability
 
 to calculate the entropy of a system.
