@@ -173,6 +173,19 @@ df.a # returns a series with values in column a
 
 ## Indexing 
 
+###
+
+change index
+Make sure the index is the type you want if you are going to merging
+dfs
+
+```python
+df.set_index('new_index', inplace=true)
+```
+
+
+
+
 ## Renaming
 
 ## Filtering

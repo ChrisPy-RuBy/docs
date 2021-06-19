@@ -651,6 +651,22 @@ where tags?'_supplieddatetime'
 
 ### subqueries 
 
+to use a subquery the subquery needs to return a single value for a where clause and 
+can return a range for a where in clause
+
+#### where in
+
+```sql
+UPDATE adspots."data" SET tags = tags || '"mediatype" => "Advanced Linear"'::hstore 
+WHERE adspotid in (
+	SELECT baseadspotid from adspots.data 
+	WHERE tags->'mediatype' = 'Advanced Linear' and baseadspotid is not null
+)
+```
+
+
+
+
 ### joins
 
 #### basic joins

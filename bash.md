@@ -12,6 +12,12 @@ Important point! Syntax for running stuff from the command line is v. different 
 
 ## basics 
 
+### shebang
+
+```bash
+#! /bin/bash
+```
+
 ### comparison operators
 
 #### basic string comparisons
@@ -100,77 +106,27 @@ ls $sample
 NAME=${1?Error: no name given}
 ```
 
-### command execution
-
-####  on the command line**
-
-```bash
-test_func () {<do something> $1}
-```
-
-a useful example 
-
-```bash
-site_collector_copy () {aws s3 cp s3://<something> s3://<something> --recursive}
-```
-
-#### running a python program from a bash script
-
-super easy
-```bash
-python -m <script_name>
-```
-
-#### run command and catch output to a variable
-
-need to make sure that stdout and stderr go to the same place!
-
-```bash
-VAR=$(python --version 2>&1)
-```
-
-direct 2 i.e. stderr to the same place as 1 i.e. stdout
-
-
-### data input
-
-#### userinput
-
-```bash
-read -rp "Enter site ids you want to move . . .  " var1
-read -rp "Enter list of env's to move data to, i.e. x, y: " var2
-```
-
-#### getops
-
-a way of dealing with commandline arguements 
-still not that straight forward.
- [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
-
-#### using read for fun and profit
-
-read a csv 
-```bash 
-# on the cmdline
-cat <your>.csv | bash <your script>.sh
-```
-
-in the script
-```bash
-while IFS=, read -r field1 field2
-do
-<do the thing>
-done
-```
-
-IFS specifies the delimiter and parses it into the mulitple fiel 
-
-
 ### assignment
 
 ### datatypes / structures
 
 #### strings
+
+#### regexes 	
+
+```bash
+pre_reg=$IN_FOLDER'\/(.*)\/yy=([0-9]+)\/mm=([0-9]+)\/dd=([0-9]+)\/(.*$)'
+regex=$pre_reg 
+
+FILE=$1
+if [[ $FILE =~ $regex ]]; then
+	subfolders=${BASH_REMATCH[1]}
+	year=${BASH_REMATCH[2]}
+	month=${BASH_REMATCH[3]}
+	day=${BASH_REMATCH[4]}
+	filename=${BASH_REMATCH[5]}
+```
+
 
 ##### string cleaning
 
@@ -273,6 +229,15 @@ elif [[ $file =~ \.bz2$ ]]
 
 xarsg and parallel are alternatives to looping
 
+#### run bash functions in parallel
+
+need to export the bash function before you can use it.
+
+```bash
+export -f regex_match
+aws s3 ls <somewthing> --recursive | awk '{print $4}' | xargs -P 4 -I {} bash -c 'regex_match {}  s3://tvsquared-athena-ds/ filtered_outcomes_crosswalk_test_2 renamed'
+```
+
 #### basic loop
 
 basic loop
@@ -322,6 +287,73 @@ for file in ./*.log; do
 echo $file; <do something>; 
 done
 ```
+
+
+## command execution
+
+###  on the command line**
+
+```bash
+test_func () {<do something> $1}
+```
+
+a useful example 
+
+```bash
+site_collector_copy () {aws s3 cp s3://<something> s3://<something> --recursive}
+```
+
+### running a python program from a bash script
+
+super easy
+```bash
+python -m <script_name>
+```
+
+### run command and catch output to a variable
+
+need to make sure that stdout and stderr go to the same place!
+
+```bash
+VAR=$(python --version 2>&1)
+```
+
+direct 2 i.e. stderr to the same place as 1 i.e. stdout
+
+
+## data input
+
+#### userinput
+
+```bash
+read -rp "Enter site ids you want to move . . .  " var1
+read -rp "Enter list of env's to move data to, i.e. x, y: " var2
+```
+
+### getops
+
+a way of dealing with commandline arguements 
+still not that straight forward.
+ [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
+
+### using read for fun and profit
+
+read a csv 
+```bash 
+# on the cmdline
+cat <your>.csv | bash <your script>.sh
+```
+
+in the script
+```bash
+while IFS=, read -r field1 field2
+do
+<do the thing>
+done
+```
+
+IFS specifies the delimiter and parses it into the mulitple fiel 
+
 
 
 

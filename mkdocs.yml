@@ -58,6 +58,7 @@ nav:
       - devops: devops.md
       - aws: aws.md
       - networking: networking.md
+      - system: system.md
   - DEV:
     - git: git.md
     - vim: vim.md

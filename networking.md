@@ -4,6 +4,14 @@ summary: a guide to the tools and concepts of how information is passed around t
 
 # networking
 
+## networking troubleshooting
+
+### why can't I access this url?
+
+### why is the internet so slow
+
+
+
 ## networking concepts
 
 ### vpn

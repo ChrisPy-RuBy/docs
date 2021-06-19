@@ -370,6 +370,13 @@ echo "$then"
 done
 ```
 
+### issues with padding 
+
+```+%-m```
+drops the leading 0
+so 2020-01-01
+becomes 2020-1-01
+
 ### convert timestamps
 ```bash
 date -r 1555718402
