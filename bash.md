@@ -65,6 +65,14 @@ if [[ -x "$FILE" ]]; then
 fi
 ```
 
+##### good check to see if something is installed
+
+```bash
+if ! [ -x "$(command -v pyenv)" ];then
+	echo "not installed"
+fi
+```
+
 ##### string empty / not empty
 
 ```bash
@@ -101,6 +109,13 @@ ls $sample
 ```
 
 #### set defaults for variables
+
+##### set a default value and continue
+```bash
+NAME=${1:-'default'}
+```
+
+##### raise an error and exit
 
 ```bash
 NAME=${1?Error: no name given}
@@ -335,6 +350,45 @@ read -rp "Enter list of env's to move data to, i.e. x, y: " var2
 a way of dealing with commandline arguements 
 still not that straight forward.
  [see here](https://sookocheff.com/post/bash/parsing-bash-script-arguments-with-shopts/)
+
+
+#### basic getopts example
+
+```
+#! /usr/bin/env bash
+
+while getopts ":hd:l:" opt; do
+  case ${opt} in
+    h )
+      echo "Usage:"
+      echo "    tool -h                      Display this help message."
+      echo "    tool -d                      The d: means that this requires an argument."
+      echo "    tool -l                      The l: means that this requires an argument."
+      exit 0
+      ;;
+	d )
+	  target=$OPTARG
+	  echo $target
+	  ;;
+	l )
+	  location=$OPTARG
+	  echo $location
+	  ;;
+    \? )
+      echo "Invalid Option: -$OPTARG" 1>&2
+      exit 1
+      ;;
+	: ) 
+	  echo "Invalid Option: -$OPTARG requires an argument" 1>&2
+	  exit 1
+	  ;;
+  esac
+done
+shift $((OPTIND -1))
+
+echo "$target $location"
+```
+
 
 ### using read for fun and profit
 
