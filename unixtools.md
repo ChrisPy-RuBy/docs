@@ -1037,7 +1037,16 @@ Here the -t is the delimiter, -k means 2nd column, -n means numeric
 
 ## ssh
 
-### **what profile gets loaded on login**
+
+### basics
+
+#### add key to remote host for ssh logib
+
+```bash
+cat ~/.ssh/id_rsa.pub | ssh USER@HOSTNAME 'cat >> .ssh/authorized_keys'
+```
+
+### what profile gets loaded on login
 
 /etc/profile then /.bash_profile
 
@@ -1046,31 +1055,31 @@ can run another profile within this profile by adding
 . $HOME/.bashrc
 ```
 
-### **login into server using private key**
+### login into server using private key
 
 ```
 ssh -i <private_key> hostname
 ```
 
-### **run commands on remote server without shell**
+### run commands on remote server without shell
 
 ```
 ssh hostname 'ls etc'
 ```
 
-### **attach a tty shell and run vim**
+### attach a tty shell and run vim
 
 ```
 ssh -t -i bandit26.sshkey bandit26@localhost -t vim
 ```
 
-### **view all failed login attempts**
+### view all failed login attempts
 
 ```
 grep "Failed password" /var/log/auth.log
 ```
 
-### **generate ssh key**
+### **generate ssh key
 might want to check this
 ```bash
 echo '$(cat ~/.ssh/id_rsa.pub)'

@@ -11,6 +11,13 @@ You can use this menu in order
 sudo raspi-config
 ```
 
+## update hostname on network
+
+edit 
+```
+/etc/hostname
+```
+
 
 
 # give a pi a static address on a network
